@@ -1,0 +1,116 @@
+/* Publication and project listings, project status guide and publication details. */
+.publication-filters {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 30px;
+  padding: 28px;
+  background: #eaf1fa;
+}
+.publication-count {
+  margin-block: 24px;
+  font-size: 13px;
+}
+.publication-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 42px;
+  margin-bottom: 60px;
+}
+.publication-card {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 30px;
+  min-width: 0;
+}
+.publication-card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  margin-bottom: 22px;
+}
+.publication-card h2 {
+  font-size: 30px;
+}
+.publication-card time {
+  font-size: 11px;
+  color: var(--muted);
+}
+.publication-card a:hover {
+  color: var(--brand-blue);
+}
+.publication-card .text-link {
+  display: inline-block;
+}
+.publication-empty {
+  padding: 48px;
+  background: #eaf1fa;
+  margin-bottom: 60px;
+  border-top: 3px solid var(--brand-yellow);
+}
+.publication-empty svg {
+  color: var(--brand-blue);
+  margin-bottom: 14px;
+}
+.publication-empty h2 {
+  max-width: 750px;
+}
+.publication-empty p {
+  max-width: 670px;
+}
+.publication-empty .text-link {
+  display: inline-block;
+  margin-top: 16px;
+  white-space: normal;
+}
+.project-status-guide {
+  margin: 0;
+}
+.project-status-guide > div + div {
+  margin-top: 24px;
+}
+.project-status-guide dt {
+  font-size: 15px;
+  color: var(--brand-blue);
+  margin-bottom: 10px;
+}
+.project-status-guide dd {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.publication-detail {
+  padding-top: 40px;
+}
+.publication-detail > header {
+  margin-block: 50px;
+}
+.publication-detail .publication-lead {
+  font-size: 17px;
+}
+.publication-date {
+  font-size: 12px !important;
+}
+.publication-cover {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 650px;
+  object-fit: cover;
+}
+.publication-figure {
+  margin: 0;
+}
+.publication-body {
+  max-width: 780px;
+  margin: 60px auto;
+}
+.publication-body section + section {
+  margin-top: 40px;
+}
+.publication-body p {
+  white-space: pre-line;
+}
+.school-project-links {
+  padding-left: 18px;
+}

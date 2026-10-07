@@ -1,0 +1,120 @@
+/* Page intros, editorial headings, split layouts, photos and numbered columns. */
+.section-space {
+  padding-block: 100px;
+}
+.editorial-page {
+  padding-bottom: 100px;
+}
+.editorial-page > section + section {
+  margin-top: 80px;
+}
+.page-intro {
+  padding-block: 38px 70px;
+}
+.page-intro .school-breadcrumb {
+  margin-bottom: 52px;
+}
+.page-intro h1,
+.publication-detail h1 {
+  max-width: 1030px;
+  font-size: clamp(2.8rem, 5.5vw, 5.6rem);
+  line-height: 1.08;
+  margin: 22px 0 30px;
+  text-wrap: balance;
+}
+.page-intro-description,
+.publication-lead {
+  max-width: 720px;
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--muted);
+}
+.editorial-page h2,
+.experience-section h2 {
+  font-size: clamp(2rem, 3.1vw, 3.2rem);
+  line-height: 1.15;
+  margin: 14px 0 24px;
+  text-wrap: balance;
+}
+.editorial-page h3 {
+  font-size: 18px;
+  line-height: 1.45;
+  font-weight: 500;
+}
+.editorial-page p,
+.editorial-page li,
+.experience-grid > div > p:not(.eyebrow) {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--muted);
+}
+.editorial-page .eyebrow {
+  font-size: 10px;
+  color: var(--brand-blue);
+}
+.editorial-split,
+.experience-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10%;
+  padding-block: 44px;
+  border-top: 1px solid var(--line);
+  align-items: start;
+}
+.editorial-split > * {
+  min-width: 0;
+}
+.editorial-split p:first-child {
+  margin-top: 0;
+}
+.editorial-split .text-link {
+  display: inline-block;
+  margin-top: 14px;
+  white-space: normal;
+}
+.editorial-band {
+  background: #eaf1fa;
+  padding: 48px;
+  border: 0;
+}
+.editorial-photo {
+  margin: 40px 0 70px;
+}
+.editorial-photo img {
+  display: block;
+  width: 100%;
+  max-height: 570px;
+  object-fit: cover;
+  object-position: 50% 38%;
+}
+.editorial-photo figcaption,
+.publication-figure figcaption {
+  padding: 12px 0;
+  font-size: 11px;
+  color: var(--muted);
+}
+.editorial-columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 46px;
+  margin: 40px 0;
+}
+.editorial-columns article {
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+.editorial-columns h3 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-block: 24px 14px;
+  line-height: 1.35;
+}
+.editorial-columns p {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--muted);
+}
+.editorial-number {
+  font-size: 12px;
+  color: var(--brand-red);
+}
