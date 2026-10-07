@@ -8,7 +8,7 @@ import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import process from 'node:process';
 import { log } from 'node:console';
-import { Group, Mesh, MeshStandardMaterial, MeshPhysicalMaterial, BoxGeometry, CylinderGeometry, TorusGeometry, Shape, Path, ExtrudeGeometry, TubeGeometry, CatmullRomCurve3, Vector3, Matrix4, Box3 } from 'three';
+import { Group, Mesh, MeshStandardMaterial, MeshPhysicalMaterial, BoxGeometry, CylinderGeometry, TorusGeometry, Shape, Path, ExtrudeGeometry, TubeGeometry, LatheGeometry, CatmullRomCurve3, Vector2, Vector3, Matrix4, Box3, DoubleSide } from 'three';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 import { mergeGeometries, mergeVertices, toCreasedNormals } from 'three/addons/utils/BufferGeometryUtils.js';
 import { GLTFExporter } from 'three/addons/exporters/GLTFExporter.js';
@@ -38,6 +38,11 @@ const mats = {
   inside: material('Container interior','#9caaa9',.75,.15),
   seal: material('Door seals','#272d2e',.93),
   lamp: material('Rear lamp','#a3141a',.35,.1,{emissive:'#4a0407'}),
+  glass: new MeshPhysicalMaterial({name:'Laboratory glass',color:'#dcefee',metalness:0,roughness:.05,clearcoat:1,clearcoatRoughness:.03,transparent:true,opacity:.3,side:DoubleSide,depthWrite:false}),
+  liquidBlue: material('Blue solution','#2f7fd1',.15,0,{transparent:true,opacity:.82}),
+  liquidAmber: material('Amber solution','#d9952f',.15,0,{transparent:true,opacity:.82}),
+  liquidGreen: material('Green solution','#3aa26a',.15,0,{transparent:true,opacity:.82}),
+  display: material('Balance display','#7dffb0',.3,0,{emissive:'#2fbf6a'}),
 };
 const cache = new Map();
 function cached(key, fn) { if(!cache.has(key)) cache.set(key,fn()); return cache.get(key); }
@@ -288,6 +293,35 @@ function chassis() {
   return g;
 }
 
+function lathe(g,name,points,mat,segments=48) {
+  return part(g,name,new LatheGeometry(points.map(([x,y])=>new Vector2(x,y)),segments),mat);
+}
+function labware() {
+  // Matériel collecté avec le microscope ; chaque objet a sa base à l'origine de son groupe.
+  const g=group(null,'Laboratory equipment');
+  const flask=group(g,'Flask');
+  lathe(flask,'Flask glass',[[0,0],[.25,0],[.27,.02],[.27,.045],[.09,.42],[.075,.46],[.075,.62],[.092,.64],[.092,.665],[.07,.665]],'glass');
+  lathe(flask,'Flask solution',[[0,.012],[.245,.012],[.25,.03],[.17,.2],[0,.2]],'liquidBlue');
+  for(let i=0;i<3;i++) box(flask,'Flask graduation',[.07-i*.012,.006,.004],'paper',[0,.08+i*.06,.255-i*.035],0,[-.35,0,0]);
+  const beaker=group(g,'Beaker');
+  lathe(beaker,'Beaker glass',[[0,0],[.2,0],[.215,.015],[.215,.5],[.235,.525],[.215,.525]],'glass');
+  lathe(beaker,'Beaker solution',[[0,.012],[.205,.012],[.205,.22],[0,.22]],'liquidAmber');
+  for(let i=0;i<5;i++) box(beaker,'Beaker graduation',[i%2?.05:.08,.006,.004],'paper',[0,.1+i*.075,.217],0);
+  const cylinder=group(g,'Cylinder');
+  cyl(cylinder,'Cylinder foot',.15,.16,.04,'base',[0,.02,0],[0,0,0],6);
+  lathe(cylinder,'Cylinder glass',[[0,.04],[.065,.04],[.065,.8],[.085,.82],[.065,.82]],'glass');
+  lathe(cylinder,'Cylinder solution',[[0,.045],[.058,.045],[.058,.48],[0,.48]],'liquidGreen');
+  for(let i=0;i<12;i++) box(cylinder,'Cylinder graduation',[i%4?.025:.045,.004,.003],'paper',[0,.12+i*.055,.066],0);
+  const balance=group(g,'Balance');
+  box(balance,'Balance body',[.66,.14,.5],'enamel',[0,.07,0],.03);
+  box(balance,'Display panel',[.34,.09,.03],'black',[0,.12,.255],.01,[-.5,0,0]);
+  box(balance,'Display digits',[.2,.035,.004],'display',[0,.125,.272],0,[-.5,0,0]);
+  for(const x of [-.25,.25]) box(balance,'Balance key',[.06,.022,.04],'black',[x,.15,.2],.008);
+  cyl(balance,'Pan support',.035,.035,.05,'chrome',[0,.165,-.05],[0,0,0],16);
+  cyl(balance,'Weighing pan',.18,.18,.016,'chrome',[0,.195,-.05],[0,0,0],48);
+  return g;
+}
+
 function batch(root, articulated=[]) {
   root.updateMatrixWorld(true);
   const inverse=new Matrix4().copy(root.matrixWorld).invert();
@@ -316,7 +350,7 @@ function batch(root, articulated=[]) {
 const out=new URL('../public/models/immersive/',import.meta.url);await mkdir(out,{recursive:true});
 // Optional model names on the command line regenerate only those files.
 const only=process.argv.slice(2);
-for(const [name,build,joints] of [['microscope-v2',microscope,[]],['crate-v2',crate,['CrateLid']],['container-v2',container,['DoorLeft','DoorRight']],['container-chassis-v2',chassis,['AxleFront','AxleRear']]]){
+for(const [name,build,joints] of [['microscope-v2',microscope,[]],['crate-v2',crate,['CrateLid']],['container-v2',container,['DoorLeft','DoorRight']],['container-chassis-v2',chassis,['AxleFront','AxleRear']],['labware-v2',labware,['Flask','Beaker','Cylinder','Balance']]]){
   if(only.length&&!only.includes(name))continue;
   const scene=build();
   batch(scene,joints);scene.updateMatrixWorld(true);

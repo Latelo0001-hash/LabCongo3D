@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
-import ImmersiveJourney from "../../features/immersive/ImmersiveJourney";
+import FilmSequence from "../../features/film/FilmSequence";
+import JourneyAccess from "../../features/film/JourneyAccess";
 import HomeDetails from "./HomeDetails";
 import CTASection from "./sections/CTASection";
 export default function Home() {
@@ -11,7 +12,8 @@ export default function Home() {
           content="LabCongo relie le matériel scientifique disponible en Europe aux besoins des écoles de RDC. Découvrez le projet et contribuez à la pratique des sciences."
         />
       </Helmet>
-    <ImmersiveJourney />
+    <FilmSequence />
+    <JourneyAccess />
     <HomeDetails />
     <CTASection />
   </>;
