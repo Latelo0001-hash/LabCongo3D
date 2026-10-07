@@ -37,6 +37,7 @@ const mats = {
   paint: material('Container enamel','#284f68',.48,.38),
   inside: material('Container interior','#9caaa9',.75,.15),
   seal: material('Door seals','#272d2e',.93),
+  lamp: material('Rear lamp','#a3141a',.35,.1,{emissive:'#4a0407'}),
 };
 const cache = new Map();
 function cached(key, fn) { if(!cache.has(key)) cache.set(key,fn()); return cache.get(key); }
@@ -255,6 +256,38 @@ function container() {
   return g;
 }
 
+function chassis() {
+  // Skeletal 20 ft trailer; front toward +X, king pin at the origin to sit on the tractor's fifth wheel.
+  const g=group(null,'Container chassis');
+  const top=1.25, length=5.9, front=.7, rear=front-length;
+  for(const z of [-.48,.48]) box(g,'Main beam',[length,.32,.16],'darkSteel',[front-length/2,top-.2,z],.02);
+  for(const z of [-1.18,1.18]) box(g,'Side rail',[length-.3,.12,.1],'darkSteel',[front-length/2,top-.08,z],.012);
+  for(let i=0;i<9;i++) box(g,'Cross member',[.12,.16,2.36],'darkSteel',[front-.25-i*(length-.5)/8,top-.12,0],.012);
+  box(g,'Upper coupler plate',[1.5,.08,1.1],'darkSteel',[.05,top-.06,0],.02);
+  cyl(g,'King pin',.045,.045,.12,'edgeSteel',[0,top-.16,0],[0,0,0],16);
+  for(const x of [.25,-4.65]) for(const z of [-1.2,1.2]) box(g,'Twist lock',[.16,.08,.16],'edgeSteel',[x,top+.01,z],.01);
+  for(const z of [-.9,.9]){
+    box(g,'Landing leg',[.12,.72,.12],'darkSteel',[-1.1,top-.6,z],.01);
+    box(g,'Landing foot',[.3,.05,.22],'darkSteel',[-1.1,top-.97,z],.01);
+  }
+  for(const x of [-3.55,-4.45]) for(const z of [-.48,.48]) box(g,'Spring hanger',[.5,.3,.1],'darkSteel',[x,top-.42,z],.01);
+  for(const [name,x] of [['AxleFront',-3.55],['AxleRear',-4.45]]){
+    const axle=group(g,name,[x,.5,0]);
+    cyl(axle,'Axle beam',.06,.06,2.2,'darkSteel',[0,0,0],[Math.PI/2,0,0],16);
+    for(const z of [-1,1]){
+      cyl(axle,'Tyre tread',.5,.5,.26,'rubber',[0,0,z],[Math.PI/2,0,0],40);
+      for(const side of [-.13,.13]) ring(axle,'Tyre shoulder',.44,.06,'rubber',[0,0,z+side]);
+      cyl(axle,'Rim',.29,.29,.28,'edgeSteel',[0,0,z],[Math.PI/2,0,0],24);
+      cyl(axle,'Hub',.1,.1,.3,'darkSteel',[0,0,z],[Math.PI/2,0,0],12);
+      for(let i=0;i<8;i++){const a=i/8*Math.PI*2;cyl(axle,'Wheel nut',.018,.018,.31,'chrome',[Math.cos(a)*.16,Math.sin(a)*.16,z],[Math.PI/2,0,0],6);}
+    }
+  }
+  for(const z of [-1,1]) box(g,'Mudguard',[1.7,.04,.42],'black',[-4,1.07,z],.01);
+  box(g,'Rear bumper',[.12,.14,2.3],'darkSteel',[rear+.1,.55,0],.012);
+  for(const z of [-.95,.95]) box(g,'Rear lamp',[.06,.12,.32],'lamp',[rear+.04,.75,z],.01);
+  return g;
+}
+
 function batch(root, articulated=[]) {
   root.updateMatrixWorld(true);
   const inverse=new Matrix4().copy(root.matrixWorld).invert();
@@ -281,7 +314,11 @@ function batch(root, articulated=[]) {
   root.traverse(object=>{for(const child of [...object.children])if(child.isGroup&&!child.children.length)child.removeFromParent();});
 }
 const out=new URL('../public/models/immersive/',import.meta.url);await mkdir(out,{recursive:true});
-for(const [name,scene,joints] of [['microscope-v2',microscope(),[]],['crate-v2',crate(),['CrateLid']],['container-v2',container(),['DoorLeft','DoorRight']]]){
+// Optional model names on the command line regenerate only those files.
+const only=process.argv.slice(2);
+for(const [name,build,joints] of [['microscope-v2',microscope,[]],['crate-v2',crate,['CrateLid']],['container-v2',container,['DoorLeft','DoorRight']],['container-chassis-v2',chassis,['AxleFront','AxleRear']]]){
+  if(only.length&&!only.includes(name))continue;
+  const scene=build();
   batch(scene,joints);scene.updateMatrixWorld(true);
   let meshes=0,triangles=0;scene.traverse(o=>{if(o.isMesh){meshes++;triangles+=(o.geometry.index?.count??o.geometry.attributes.position.count)/3;}});
   const bounds=new Box3().setFromObject(scene).getSize(new Vector3());

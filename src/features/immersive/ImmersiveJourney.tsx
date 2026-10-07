@@ -7,6 +7,7 @@ import { chapters, chapterIndex, between, clamp, interpolate, mix, sample } from
 import { seekChapter, useJourney, useJourneyScroll } from './useJourney';
 import './immersive.css';
 import { scrollImmediately } from '../../lib/lenis';
+import FilmSequence from '../film/FilmSequence';
 
 const JourneyCanvas = lazy(() => import('./JourneyCanvas'));
 class CanvasBoundary extends Component<PropsWithChildren<{ onFailure: () => void }>, { failed: boolean }> {
@@ -125,7 +126,7 @@ export default function ImmersiveJourney() {
       </article>)}
       <p className="journey-simple-note">Scénographie illustrative. Les images générées présentent le récit envisagé ; elles ne documentent pas des interventions réalisées.</p>
     </div>}
-    </section><div className="journey-access" id="decouvrir">
+    </section><FilmSequence animated={animated} /><div className="journey-access" id="decouvrir">
       <div className="container">
         <p className="eyebrow">LabCongo · La science en pratique</p>
         <h2>Donner une seconde vie au matériel scientifique.<br /><em>Ouvrir de nouvelles possibilités d’apprentissage.</em></h2>

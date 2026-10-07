@@ -1,26 +1,7 @@
-import { useEffect } from 'react';
-import { useThree } from '@react-three/fiber';
-import { PMREMGenerator } from 'three';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { useRoomEnvironment } from './useRoomEnvironment';
 
 export default function StudioLighting() {
-  const getState = useThree((state) => state.get);
-  useEffect(() => {
-    const { gl, scene, invalidate } = getState();
-    // Reflets calculés localement : aucune image HDR externe ni requête tierce.
-    const generator = new PMREMGenerator(gl);
-    const room = new RoomEnvironment();
-    const environment = generator.fromScene(room, .025);
-    const previous = scene.environment;
-    scene.environment = environment.texture;
-    room.dispose();
-    generator.dispose();
-    invalidate();
-    return () => {
-      scene.environment = previous;
-      environment.dispose();
-    };
-  }, [getState]);
+  useRoomEnvironment();
   return <>
     <ambientLight intensity={.18} />
     <hemisphereLight args={['#e5eff9', '#45423c', .5]} />
