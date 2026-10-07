@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-07",
+  "checks": [
+    "Ordinateur 1440 × 900 : un titre principal, un canvas, aucun débordement",
+    "Cinq étapes au clavier, textes actifs et conservation du même canvas",
+    "Aucun rendu WebGL supplémentaire à l’arrêt du défilement",
+    "Le défilement réel fait progresser le récit",
+    "Lecture simple puis retour au chapitre 4 animé",
+    "Sortie de l’expérience et ouverture / fermeture des sections détaillées",
+    "Ancien lien direct #collecte : section ouverte et atteinte",
+    "Pages équipements, don, expérience et contact ; retour à l’accueil sans résidu de scène",
+    "Écran 820 × 1180 : textes, navigation et largeur",
+    "Écran 390 × 844 : textes, navigation et largeur",
+    "Écran 320 × 568 : textes, navigation et largeur",
+    "Téléphone en paysage : lecture simple automatique",
+    "Aucune erreur JavaScript pendant la navigation normale",
+    "Mouvements réduits : cinq scènes lisibles, aucun modèle ni moteur 3D téléchargé",
+    "WebGL indisponible : repli de lecture complet",
+    "Échec de chargement du modèle : lecture de secours accessible",
+    "Perte du contexte WebGL : bascule vers les illustrations et le texte",
+    "Texture indisponible : lecture simple accessible",
+    "Captures des raccords microscope-caisse-conteneur et retour arrière"
+  ],
+  "errors": []
+}
