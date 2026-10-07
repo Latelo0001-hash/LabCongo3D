@@ -1,0 +1,128 @@
+/* Direction du Hero : bleu institutionnel, rouge du logo, jaune en détail. */
+.hero {
+  padding-bottom: 12px;
+}
+.hero-copy,
+.hero-visual {
+  min-width: 0;
+}
+.hero h1 {
+  font-size: clamp(2.8rem, 5.3vw, 5.5rem);
+  line-height: 1.08;
+}
+.hero-line-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.hero-line {
+  display: block;
+}
+.hero-photo-frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #e8f0fb;
+}
+.hero-photo {
+  display: block;
+  height: 110%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.hero-photo-label {
+  position: absolute;
+  z-index: 2;
+  top: 22px;
+  left: 22px;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 10px 14px;
+  font-size: 10px;
+  letter-spacing: 0.025em;
+  border-left: 3px solid var(--brand-yellow);
+}
+.hero .instrument-card {
+  border-top: 3px solid var(--brand-yellow);
+  box-shadow: none;
+  width: 220px;
+  height: 260px;
+}
+.hero .instrument-card > .eyebrow {
+  font-size: 8px;
+  letter-spacing: 0.1em;
+}
+.hero .hero-bottom {
+  margin-top: 15px;
+}
+.hero .hero-bottom ol {
+  flex-wrap: wrap;
+}
+.hero .hero-bottom b {
+  font-weight: 600;
+}
+.hero .scroll-cue {
+  width: fit-content;
+  padding-block: 12px;
+}
+.hero .hero-location {
+  letter-spacing: 0.08em;
+}
+.hero .hero-topline {
+  color: var(--muted);
+}
+.hero .hero-description {
+  max-width: 430px;
+}
+@media (max-width: 1050px) {
+  .hero .instrument-card {
+    width: 190px;
+    height: 245px;
+  }
+  .hero .hero-bottom {
+    align-items: flex-start;
+  }
+  .hero .hero-bottom ol {
+    gap: 18px;
+  }
+}
+@media (max-width: 760px) {
+  .hero h1 {
+    font-size: clamp(2.5rem, 10.5vw, 4.5rem);
+  }
+  .hero .hero-visual {
+    height: clamp(340px, 105vw, 500px);
+    margin-left: 0;
+  }
+  .hero .instrument-card {
+    width: 175px;
+    height: 230px;
+    left: 12px;
+    bottom: 72px;
+    padding: 14px;
+  }
+  .hero .hero-photo-label {
+    left: 14px;
+    top: 14px;
+    font-size: 9px;
+  }
+  .hero .photo-caption {
+    left: 14px;
+    right: 14px;
+    bottom: 18px;
+  }
+  .hero .photo-caption span:last-child {
+    font-size: 7px;
+  }
+  .hero .hero-bottom ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hero .hero-actions .button {
+    min-height: 48px;
+  }
+  .hero .scene-fallback {
+    height: 150px;
+  }
+}

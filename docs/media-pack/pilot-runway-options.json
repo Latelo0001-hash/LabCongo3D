@@ -1,0 +1,66 @@
+{
+  "status": "awaiting-runway-connection",
+  "preparedAt": "2026-10-05",
+  "scene": "01-europe-arrival",
+  "purpose": "Options à examiner après connexion et vérification du coût exact. Aucune génération ni transmission de média à Runway effectuée.",
+  "inputAsset": {
+    "localPath": "public/media/experience/01-europe-arrival/reference-v2.png",
+    "role": "first-frame",
+    "approvedReference": true,
+    "exportToRunwayApproved": false
+  },
+  "endpoint": "POST /v1/image_to_video",
+  "pricingBasis": "Runway Dev API, 0.01 USD par crédit. Ce ne sont ni les crédits Higgsfield ni un devis du connecteur Runway.",
+  "options": [
+    {
+      "name": "Essai économique recommandé",
+      "model": "veo3.1_fast",
+      "estimatedApiCredits": 60,
+      "estimatedApiUsd": 0.6,
+      "params": {
+        "model": "veo3.1_fast",
+        "duration": 6,
+        "ratio": "1920:1080",
+        "audio": false,
+        "promptText": "Use the supplied image as the first frame. One continuous six-second documentary shot outside the same European scientific centre. Preserve the exact three adults, their faces, hair, clothes, shoes and the woman’s black bag. The group takes a few relaxed steps, then gently turns toward the glass entrance on their right. The camera tracks slowly sideways at eye level, keeping the three people and doorway readable. End outside near the door. Natural daylight, realistic skin and fabric, moderate depth of field, stable architecture and grounded walking. Quiet expressions and small natural gestures. No scene change, extra people, identity changes, distorted hands, floating feet, text, logos or audio."
+      }
+    },
+    {
+      "name": "Même modèle que le pilote initial",
+      "model": "seedance2_5",
+      "estimatedApiCredits": 408,
+      "estimatedApiUsd": 4.08,
+      "params": {
+        "model": "seedance2_5",
+        "duration": 6,
+        "ratio": "1920:1080",
+        "audio": false,
+        "promptText": "Use the supplied image as the first frame. One continuous six-second documentary shot outside the same European scientific centre. Preserve the exact three adults, their faces, hair, clothes, shoes and the woman’s black bag. The group takes a few relaxed steps, then gently turns toward the glass entrance on their right. The camera tracks slowly sideways at eye level, keeping the three people and doorway readable. End outside near the door. Natural daylight, realistic skin and fabric, moderate depth of field, stable architecture and grounded walking. Quiet expressions and small natural gestures. No scene change, extra people, identity changes, distorted hands, floating feet, text, logos or audio."
+      }
+    }
+  ],
+  "executionNotes": [
+    "Préparation de paramètres uniquement : promptImage doit être renseigné avec la référence selon le mode d’envoi accepté au moment de la soumission.",
+    "Vérifier le modèle, les champs et le devis de la voie choisie avant exécution ; le connecteur Runway utilise sa propre interface et son propre devis.",
+    "L’autorisation précédente concernait Higgsfield uniquement. Un nouvel envoi vers Runway et la dépense correspondante doivent être autorisés avant exécution.",
+    "Le tarif API exclut taxes et nouvelles tentatives. Runway Dev indique un achat initial minimum de 10 USD de crédits.",
+    "La qualité et la continuité des visages restent à vérifier sur le clip réel. Le recours au même modèle ne garantit pas un rendu identique."
+  ],
+  "sources": [
+    "https://docs.dev.runwayml.com/guides/pricing/",
+    "https://docs.dev.runwayml.com/guides/models/",
+    "https://docs.dev.runwayml.com/guides/setup/",
+    "https://github.com/runwayml/sdk-python/blob/main/src/runwayml/resources/image_to_video.py"
+  ],
+  "selectedModel": "veo3.1_fast",
+  "userTrialRequest": "essayons",
+  "connectionCheck": {
+    "date": "2026-10-05",
+    "pluginInstalled": false,
+    "generationToolsAvailable": false,
+    "apiCredentialConfigured": false
+  },
+  "generationSubmitted": false,
+  "uploadedToRunway": false,
+  "nextStep": "Installer l’intégration Runway et associer le compte. Vérifier ensuite les droits d’accès, le solde et le devis exact du pilote de 6 secondes en 1080p sans son avant sa soumission."
+}

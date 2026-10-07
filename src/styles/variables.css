@@ -1,0 +1,13 @@
+/* Bleu, rouge et jaune extraits des aplats du logo fourni. */
+:root {
+  --brand-blue: #0054a6;
+  --brand-red: #e21a22;
+  --brand-yellow: #fff200;
+  --paper: #f6faff;
+  --ink: #031b4e;
+  --muted: #52627c;
+  --accent: var(--brand-red);
+  --line: #d5deec;
+  --font-body: Arial, Helvetica, sans-serif;
+  --font-editorial: Georgia, "Times New Roman", serif;
+}

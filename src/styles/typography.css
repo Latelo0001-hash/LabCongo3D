@@ -1,0 +1,15 @@
+body {
+  font-family: var(--font-body);
+}
+h1,
+h2 {
+  font-family: var(--font-editorial);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+}
+.eyebrow {
+  font-size: 0.67rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+}

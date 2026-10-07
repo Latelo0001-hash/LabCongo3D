@@ -1,0 +1,570 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-05",
+  "status": "master-approved-six-still-references-awaiting-review",
+  "purpose": "Plan de production, non importé par le site. Les plannedDeliverables ne sont pas des fichiers disponibles.",
+  "sourceBrief": "docs/media-pack/cahier-des-medias.md",
+  "masterReference": {
+    "path": "public/media/experience/01-europe-arrival/reference-v2.png",
+    "generator": "built-in image_gen",
+    "provenance": "AI-generated illustration with fictional people and place",
+    "width": 1672,
+    "height": 941,
+    "bytes": 2383242,
+    "sha256": "39721abc6400ee48e3d6f6472b7ea30ddb48307db8d915a282a512ca27cc6da9",
+    "approved": true,
+    "promptFile": "docs/media-pack/prompts-scene-01.md",
+    "approvedAt": "2026-10-05",
+    "approvalEvidence": "Message utilisateur : « je valide » en réponse à la validation des trois personnages, du bâtiment et du rendu photographique."
+  },
+  "continuity": {
+    "characters": [
+      "A",
+      "B",
+      "C"
+    ],
+    "europeanLocationScenes": [
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06"
+    ],
+    "useMasterImageAsReference": true,
+    "laboratoryReference": "public/media/experience/02-laboratory-entry/reference-v1.png",
+    "microscopeReference": "public/media/experience/05-equipment-closeup/reference-v2.png",
+    "openCrateReference": "public/media/experience/06-equipment-packing/reference-v1.png",
+    "closedCrateReference": "public/media/experience/07-ready-crates/reference-v1.png",
+    "containerReference": "public/media/experience/08-container-loading/reference-v1.png"
+  },
+  "reviewGate": "L’image maître et le trio sont validés. Faire valider les six nouvelles références fixes et leurs raccords avant de produire les vidéos.",
+  "scenes": [
+    {
+      "id": "01-europe-arrival",
+      "title": "Centre scientifique en Europe",
+      "mediaKind": "video",
+      "durationSeconds": [
+        6,
+        8
+      ],
+      "provenancePolicy": "illustration",
+      "status": "reference-approved-video-planned",
+      "availableFiles": [
+        "public/media/experience/01-europe-arrival/reference-v2.png"
+      ],
+      "approved": false,
+      "plannedDeliverables": [
+        "public/media/experience/01-europe-arrival/poster.webp",
+        "public/media/experience/01-europe-arrival/desktop.webm",
+        "public/media/experience/01-europe-arrival/desktop.mp4",
+        "public/media/experience/01-europe-arrival/mobile.webm"
+      ],
+      "referenceApproved": true
+    },
+    {
+      "id": "02-laboratory-entry",
+      "title": "Entrée dans le laboratoire",
+      "mediaKind": "video",
+      "durationSeconds": [
+        5,
+        7
+      ],
+      "provenancePolicy": "illustration",
+      "status": "reference-awaiting-review",
+      "availableFiles": [
+        "public/media/experience/02-laboratory-entry/reference-v1.png"
+      ],
+      "approved": false,
+      "plannedDeliverables": [
+        "public/media/experience/02-laboratory-entry/poster.webp",
+        "public/media/experience/02-laboratory-entry/desktop.webm",
+        "public/media/experience/02-laboratory-entry/desktop.mp4",
+        "public/media/experience/02-laboratory-entry/mobile.webm"
+      ],
+      "referenceApproved": false,
+      "reference": {
+        "path": "public/media/experience/02-laboratory-entry/reference-v1.png",
+        "generator": "built-in image_gen",
+        "provenance": "AI-generated fictional illustration",
+        "approved": false,
+        "width": 1672,
+        "height": 941,
+        "bytes": 1981071,
+        "sha256": "8265081069ec3d856cc2de3b0905557ffd90afda624c945f3b38bf147700d14f",
+        "promptFile": "docs/media-pack/prompts-scene-02.md",
+        "referenceScenes": [
+          "01-europe-arrival"
+        ],
+        "visualReview": "Le trio entre dans le laboratoire. Les fenêtres à gauche, les armoires et la paillasse établissent le décor intérieur."
+      }
+    },
+    {
+      "id": "03-laboratory-meeting",
+      "title": "Rencontre avec les laborantins",
+      "mediaKind": "video",
+      "durationSeconds": [
+        6,
+        8
+      ],
+      "provenancePolicy": "illustration",
+      "status": "reference-awaiting-review",
+      "availableFiles": [
+        "public/media/experience/03-laboratory-meeting/reference-v1.png"
+      ],
+      "approved": false,
+      "plannedDeliverables": [
+        "public/media/experience/03-laboratory-meeting/poster.webp",
+        "public/media/experience/03-laboratory-meeting/desktop.webm",
+        "public/media/experience/03-laboratory-meeting/desktop.mp4",
+        "public/media/experience/03-laboratory-meeting/mobile.webm"
+      ],
+      "referenceApproved": false,
+      "reference": {
+        "path": "public/media/experience/03-laboratory-meeting/reference-v1.png",
+        "generator": "built-in image_gen",
+        "provenance": "AI-generated fictional illustration",
+        "approved": false,
+        "width": 1671,
+        "height": 941,
+        "bytes": 2014287,
+        "sha256": "a43ca4f147afc6c881bb7d3d430aac39d1b5271b3fabbf18e9a38e989846caf2",
+        "promptFile": "docs/media-pack/prompts-scene-03.md",
+        "referenceScenes": [
+          "02-laboratory-entry",
+          "01-europe-arrival"
+        ],
+        "visualReview": "Les mêmes représentants rencontrent deux laborantins autour du microscope."
+      }
+    },
+    {
+      "id": "04-equipment-presentation",
+      "title": "Présentation du matériel inutilisé",
+      "mediaKind": "video",
+      "durationSeconds": [
+        6,
+        8
+      ],
+      "provenancePolicy": "illustration",
+      "status": "planned",
+      "availableFiles": [],
+      "approved": false,
+      "plannedDeliverables": [
+        "public/media/experience/04-equipment-presentation/poster.webp",
+        "public/media/experience/04-equipment-presentation/desktop.webm",
+        "public/media/experience/04-equipment-presentation/desktop.mp4",
+        "public/media/experience/04-equipment-presentation/mobile.webm"
+      ],
+      "referenceScenes": [
+        "03-laboratory-meeting",
+        "05-equipment-closeup"
+      ],
+      "productionNote": "La présentation utilisera les références de rencontre et de gros plan ; aucune image supplémentaire générée pour ce plan intermédiaire. Vidéo non produite."
+    },
+    {
+      "id": "05-equipment-closeup",
+      "title": "Gros plan matériel scientifique",
+      "mediaKind": "photo",
+      "durationSeconds": null,
+      "provenancePolicy": "illustration",
+      "status": "reference-awaiting-review",
+      "availableFiles": [
+        "public/media/experience/05-equipment-closeup/reference-v2.png"
+      ],
+      "approved": false,
+      "plannedDeliverables": [
+        "public/media/experience/photos/05-equipment-closeup.webp"
+      ],
+      "referenceApproved": false,
+      "reference": {
+        "path": "public/media/experience/05-equipment-closeup/reference-v2.png",
+        "generator": "built-in image_gen",
+        "provenance": "AI-generated fictional illustration",
+        "approved": false,
+        "width": 1672,
+        "height": 941,
+        "bytes": 1839174,
+        "sha256": "6ac1acb0b54016829fe0cbc1c981a0ede15a09e1e9a79eb7bb4fe4fc03427053",
+        "promptFile": "docs/media-pack/prompts-scene-05.md",
+        "referenceScenes": [
+          "03-laboratory-meeting",
+          "02-laboratory-entry"
+        ],
+        "visualReview": "Microscope ivoire à socle bleu-gris, verrerie et balance. La prise a été corrigée pour la continuité européenne."
+      }
+    },
+    {
+      "id": "06-equipment-packing",
+      "title": "Conditionnement du matériel",
+      "mediaKind": "video",
+      "durationSeconds": [
+        6,
+        8
+      ],
+      "provenancePolicy": "illustration",
+      "status": "reference-awaiting-review",
+      "availableFiles": [
+        "public/media/experience/06-equipment-packing/reference-v1.png"
+      ],
+      "approved": false,
+      "plannedDeliverables": [
+        "public/media/experience/06-equipment-packing/poster.webp",
+        "public/media/experience/06-equipment-packing/desktop.webm",
+        "public/media/experience/06-equipment-packing/desktop.mp4",
+        "public/media/experience/06-equipment-packing/mobile.webm"
+      ],
+      "referenceApproved": false,
+      "reference": {
+        "path": "public/media/experience/06-equipment-packing/reference-v1.png",
+        "generator": "built-in image_gen",
+        "provenance": "AI-generated fictional illustration",
+        "approved": false,
+        "width": 1672,
+        "height": 941,
+        "bytes": 2174469,
+        "sha256": "e63702482ff149aa95e39c4a9da912cd123e9efbfd42e2ee40d4b919317eb9a7",
+        "promptFile": "docs/media-pack/prompts-scene-06.md",
+        "referenceScenes": [
+          "01-europe-arrival",
+          "02-laboratory-entry",
+          "05-equipment-closeup"
+        ],
+        "visualReview": "Le microscope est soutenu par le bras et la base, puis présenté au-dessus du logement en mousse de la caisse ouverte."
+      }
+    },
+    {
+      "id": "07-ready-crates",
+      "title": "Caisses prêtes à partir",
+      "mediaKind": "photo",
+      "durationSeconds": null,
+      "provenancePolicy": "illustration",
+      "status": "reference-awaiting-review",
+      "availableFiles": [
+        "public/media/experience/07-ready-crates/reference-v1.png"
+      ],
+      "approved": false,
+      "plannedDeliverables": [
+        "public/media/experience/photos/07-ready-crates.webp"
+      ],
+      "referenceApproved": false,
+      "reference": {
+        "path": "public/media/experience/07-ready-crates/reference-v1.png",
+        "generator": "built-in image_gen",
+        "provenance": "AI-generated fictional illustration",
+        "approved": false,
+        "width": 1672,
+        "height": 941,
+        "bytes": 2082859,
+        "sha256": "20a2fe36d64b453797b2dde8cc364585e7571466dc1cb67d473119e0eb22717f",
+        "promptFile": "docs/media-pack/prompts-scene-07.md",
+        "referenceScenes": [
+          "06-equipment-packing",
+          "02-laboratory-entry"
+        ],
+        "visualReview": "La caisse fermée reprend le bois clair, les renforts, les poignées et les coins métalliques ; deux sangles bleues la fixent à une palette."
+      }
+    },
+    {
+      "id": "08-container-loading",
+      "title": "Chargement du conteneur",
+      "mediaKind": "video",
+      "durationSeconds": [
+        6,
+        8
+      ],
+      "provenancePolicy": "illustration",
+      "status": "reference-awaiting-review",
+      "availableFiles": [
+        "public/media/experience/08-container-loading/reference-v1.png"
+      ],
+      "approved": false,
+      "plannedDeliverables": [
+        "public/media/experience/08-container-loading/poster.webp",
+        "public/media/experience/08-container-loading/desktop.webm",
+        "public/media/experience/08-container-loading/desktop.mp4",
+        "public/media/experience/08-container-loading/mobile.webm"
+      ],
+      "referenceApproved": false,
+      "reference": {
+        "path": "public/media/experience/08-container-loading/reference-v1.png",
+        "generator": "built-in image_gen",
+        "provenance": "AI-generated fictional illustration",
+        "approved": false,
+        "width": 1672,
+        "height": 941,
+        "bytes": 2192399,
+        "sha256": "ee95931e8bf35f69c4bf0daa851647815bcff27ad3604f36018e3743c0943881",
+        "promptFile": "docs/media-pack/prompts-scene-08.md",
+        "referenceScenes": [
+          "07-ready-crates",
+          "01-europe-arrival"
+        ],
+        "visualReview": "La caisse et sa palette passent le seuil du conteneur bleu avec un transpalette. Le manutentionnaire est un personnage distinct du trio."
+      }
+    },
+    {
+      "id": "09-container-truck",
+      "title": "Conteneur et camion",
+      "mediaKind": "model",
+      "durationSeconds": null,
+      "provenancePolicy": "illustration",
+      "status": "planned",
+      "availableFiles": [],
+      "approved": false,
+      "plannedDeliverables": []
+    },
+    {
+      "id": "10-port-terminal",
+      "title": "Terminal portuaire",
+      "mediaKind": "video",
+      "durationSeconds": [
+        6,
+        8
+      ],
+      "provenancePolicy": "illustration",
+      "status": "planned",
+      "availableFiles": [],
+      "approved": false,
+      "plannedDeliverables": [
+        "public/media/experience/10-port-terminal/poster.webp",
+        "public/media/experience/10-port-terminal/desktop.webm",
+        "public/media/experience/10-port-terminal/desktop.mp4",
+        "public/media/experience/10-port-terminal/mobile.webm"
+      ]
+    },
+    {
+      "id": "11-ship-loading",
+      "title": "Conteneur chargé sur le navire",
+      "mediaKind": "video-or-model",
+      "durationSeconds": [
+        5,
+        7
+      ],
+      "provenancePolicy": "illustration",
+      "status": "planned",
+      "availableFiles": [],
+      "approved": false,
+      "plannedDeliverables": []
+    },
+    {
+      "id": "12-ship-at-sea",
+      "title": "Navire en mer",
+      "mediaKind": "video",
+      "durationSeconds": [
+        5,
+        6
+      ],
+      "provenancePolicy": "illustration",
+      "status": "planned",
+      "availableFiles": [],
+      "approved": false,
+      "plannedDeliverables": [
+        "public/media/experience/12-ship-at-sea/poster.webp",
+        "public/media/experience/12-ship-at-sea/desktop.webm",
+        "public/media/experience/12-ship-at-sea/desktop.mp4",
+        "public/media/experience/12-ship-at-sea/mobile.webm"
+      ]
+    },
+    {
+      "id": "13-europe-drc-map",
+      "title": "Europe → RDC",
+      "mediaKind": "interactive-map",
+      "durationSeconds": null,
+      "provenancePolicy": "schematic",
+      "status": "planned",
+      "availableFiles": [],
+      "approved": false,
+      "plannedDeliverables": []
+    },
+    {
+      "id": "14-drc-unloading",
+      "title": "Arrivée et déchargement en RDC",
+      "mediaKind": "video",
+      "durationSeconds": [
+        6,
+        8
+      ],
+      "provenancePolicy": "illustration-or-documented-project",
+      "status": "planned",
+      "availableFiles": [],
+      "approved": false,
+      "plannedDeliverables": [
+        "public/media/experience/14-drc-unloading/poster.webp",
+        "public/media/experience/14-drc-unloading/desktop.webm",
+        "public/media/experience/14-drc-unloading/desktop.mp4",
+        "public/media/experience/14-drc-unloading/mobile.webm"
+      ],
+      "publicationRule": "Illustration annoncée comme telle, ou vrais médias sourcés pour toute réalisation attribuée à LabCongo."
+    },
+    {
+      "id": "15-school-transport",
+      "title": "Transport vers l’école",
+      "mediaKind": "video",
+      "durationSeconds": [
+        5,
+        6
+      ],
+      "provenancePolicy": "illustration-or-documented-project",
+      "status": "planned",
+      "availableFiles": [],
+      "approved": false,
+      "plannedDeliverables": [
+        "public/media/experience/15-school-transport/poster.webp",
+        "public/media/experience/15-school-transport/desktop.webm",
+        "public/media/experience/15-school-transport/desktop.mp4",
+        "public/media/experience/15-school-transport/mobile.webm"
+      ],
+      "publicationRule": "Illustration annoncée comme telle, ou vrais médias sourcés pour toute réalisation attribuée à LabCongo."
+    },
+    {
+      "id": "16-classroom-before",
+      "title": "Salle de sciences avant",
+      "mediaKind": "photo",
+      "durationSeconds": null,
+      "provenancePolicy": "documentary-required",
+      "status": "awaiting-project-media",
+      "availableFiles": [],
+      "approved": false,
+      "plannedDeliverables": [
+        "public/media/experience/photos/16-classroom-before.webp"
+      ]
+    },
+    {
+      "id": "17-equipment-installation",
+      "title": "Installation du matériel",
+      "mediaKind": "video",
+      "durationSeconds": [
+        7,
+        10
+      ],
+      "provenancePolicy": "illustration-or-documented-project",
+      "status": "planned",
+      "availableFiles": [],
+      "approved": false,
+      "plannedDeliverables": [
+        "public/media/experience/17-equipment-installation/poster.webp",
+        "public/media/experience/17-equipment-installation/desktop.webm",
+        "public/media/experience/17-equipment-installation/desktop.mp4",
+        "public/media/experience/17-equipment-installation/mobile.webm"
+      ],
+      "publicationRule": "Illustration annoncée comme telle, ou vrais médias sourcés pour toute réalisation attribuée à LabCongo."
+    },
+    {
+      "id": "18-classroom-after",
+      "title": "Salle équipée après",
+      "mediaKind": "photo",
+      "durationSeconds": null,
+      "provenancePolicy": "documentary-required",
+      "status": "awaiting-project-media",
+      "availableFiles": [],
+      "approved": false,
+      "plannedDeliverables": [
+        "public/media/experience/photos/18-classroom-after.webp"
+      ]
+    },
+    {
+      "id": "19-students-discovery",
+      "title": "Élèves découvrant le matériel",
+      "mediaKind": "video",
+      "durationSeconds": [
+        8,
+        10
+      ],
+      "provenancePolicy": "illustration-or-documented-project",
+      "status": "planned",
+      "availableFiles": [],
+      "approved": false,
+      "plannedDeliverables": [
+        "public/media/experience/19-students-discovery/poster.webp",
+        "public/media/experience/19-students-discovery/desktop.webm",
+        "public/media/experience/19-students-discovery/desktop.mp4",
+        "public/media/experience/19-students-discovery/mobile.webm"
+      ],
+      "publicationRule": "Illustration annoncée comme telle, ou vrais médias sourcés pour toute réalisation attribuée à LabCongo."
+    },
+    {
+      "id": "20-student-microscope",
+      "title": "Élève au microscope",
+      "mediaKind": "video",
+      "durationSeconds": [
+        6,
+        8
+      ],
+      "provenancePolicy": "illustration-or-documented-project",
+      "status": "planned",
+      "availableFiles": [],
+      "approved": false,
+      "plannedDeliverables": [
+        "public/media/experience/20-student-microscope/poster.webp",
+        "public/media/experience/20-student-microscope/desktop.webm",
+        "public/media/experience/20-student-microscope/desktop.mp4",
+        "public/media/experience/20-student-microscope/mobile.webm"
+      ],
+      "publicationRule": "Illustration annoncée comme telle, ou vrais médias sourcés pour toute réalisation attribuée à LabCongo."
+    },
+    {
+      "id": "21-scientific-macro",
+      "title": "Microscope et vue scientifique",
+      "mediaKind": "model-or-macro",
+      "durationSeconds": [
+        4,
+        5
+      ],
+      "provenancePolicy": "illustration",
+      "status": "planned",
+      "availableFiles": [],
+      "approved": false,
+      "plannedDeliverables": []
+    }
+  ],
+  "models": [
+    {
+      "targetName": "microscope.glb",
+      "existingPrototype": "public/models/microscope.glb",
+      "productionAsset": null,
+      "status": "prototype-to-review"
+    },
+    {
+      "targetName": "equipment-crate.glb",
+      "existingPrototype": "public/models/transport-crate.glb",
+      "productionAsset": null,
+      "status": "prototype-to-review"
+    },
+    {
+      "targetName": "shipping-container.glb",
+      "existingPrototype": "public/models/story/container.glb",
+      "productionAsset": null,
+      "status": "prototype-to-review"
+    },
+    {
+      "targetName": "cargo-ship.glb",
+      "existingPrototype": "public/models/story/ship.glb",
+      "productionAsset": null,
+      "status": "prototype-to-review"
+    },
+    {
+      "targetName": "truck.glb",
+      "existingPrototype": "public/models/story/truck.glb",
+      "productionAsset": null,
+      "status": "prototype-to-review"
+    }
+  ],
+  "reviewGallery": "docs/media-pack/revue.html",
+  "transitionNotes": "docs/media-pack/raccords.md",
+  "videoPilot": {
+    "status": "blocked-provider-plan-and-credits",
+    "scene": "01-europe-arrival",
+    "provider": "Higgsfield",
+    "estimatedCredits": 72,
+    "generationSubmitted": false,
+    "jobId": null,
+    "gateReason": "Accès au modèle refusé par Higgsfield (formule Plus ou supérieure requise). Solde 0,5 crédit, inférieur aux 72 crédits du devis.",
+    "outputTarget": "public/media/experience/01-europe-arrival/pilot-v1.mp4",
+    "outputExists": false,
+    "externalTransferApproved": true,
+    "remoteMediaConfirmed": true,
+    "requestFile": "docs/media-pack/pilot-scene-01.json",
+    "briefFile": "docs/media-pack/pilot-scene-01.md"
+  },
+  "continuationInstruction": "L’utilisateur a demandé de poursuivre après la création des références. Le lot fixe reste indiqué à examiner ; seule l’image maître bénéficie d’une validation explicite."
+}

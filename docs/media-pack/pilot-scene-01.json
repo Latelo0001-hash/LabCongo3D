@@ -1,0 +1,53 @@
+{
+  "status": "blocked-provider-plan-and-credits",
+  "scene": "01-europe-arrival",
+  "provider": "Higgsfield",
+  "input": {
+    "localPath": "public/media/experience/01-europe-arrival/reference-v2.png",
+    "role": "start_image",
+    "sourceApproved": true,
+    "remoteMediaConfirmed": true,
+    "transferEncoding": "WebP, mêmes dimensions, qualité 90 ; original PNG inchangé",
+    "remoteMediaId": "873dfe15-e80a-4adc-a04f-cc67d85b6b0e",
+    "transferSha256": "a26eb8341dabb443f737fcbb6c9d0e250e1a1f73dddca60f13c3aec3a78a4252"
+  },
+  "params": {
+    "model": "seedance_2_5",
+    "mode": "omni_reference",
+    "duration": 6,
+    "aspect_ratio": "16:9",
+    "resolution": "1080p",
+    "generate_audio": false,
+    "count": 1,
+    "prompt": "Animate the supplied approved master photograph as the first frame of one continuous six-second cinematic documentary shot. Keep EXACTLY the same three adult visitors throughout: the older man in navy blazer, white shirt and charcoal trousers; the younger man in charcoal overshirt, light-blue shirt and beige chinos; the woman with low bun, stone blazer, ivory blouse, navy trousers and black shoulder bag. Preserve their faces, hair, facial hair, body proportions, clothes, shoes and accessories frame to frame. Keep the same pale-stone and grey-glass European scientific centre, autumn trees and natural daylight.\n\n0–1 seconds: begin with the approved image composition; subtle breathing, a quiet glance between colleagues and natural small hand movements.\n1–4 seconds: the group takes a few relaxed, physically plausible steps and gently turns toward the glazed entrance on their right. Use a restrained lateral tracking movement to reveal their approach while keeping the three faces and the doorway readable. Their feet contact the pavement naturally and their bodies do not slide or float.\n4–6 seconds: ease the camera movement as they approach the entrance. End outside, near the doorway, ready for the next scene. Do not jump into the laboratory or attempt a scene change in this clip.\n\nOne coherent eye-level documentary camera, roughly 35 mm optics, moderate depth of field, subtle motion, realistic skin and clothing, stable building geometry. No cuts, dissolves, time skips, fast zoom, dramatic orbit, sudden lighting changes, duplicated people, identity drift, extra limbs, logos, titles, subtitles or watermark. No music, speech or generated audio. This is an illustrative fictional scene for a website, not footage of a real LabCongo visit.",
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "873dfe15-e80a-4adc-a04f-cc67d85b6b0e"
+      }
+    ]
+  },
+  "estimatedCredits": 72,
+  "estimatedAt": "2026-10-05",
+  "generationSubmitted": false,
+  "jobId": null,
+  "approvalScope": "Envoyer cette seule image maître au service Higgsfield et lancer un seul essai vidéo de 6 secondes, 1080p, sans son, au coût estimé de 72 crédits existants. Aucun achat de crédits et aucune autre génération inclus.",
+  "gateReason": "Accès au modèle refusé par Higgsfield (formule Plus ou supérieure requise). Solde 0,5 crédit, inférieur aux 72 crédits du devis.",
+  "mediaBinding": "Image maître transférée et confirmée ; réutiliser ce media_id, sans nouvel envoi, si une nouvelle tentative est possible.",
+  "outputTarget": "public/media/experience/01-europe-arrival/pilot-v1.mp4",
+  "outputExists": false,
+  "authorization": {
+    "approved": true,
+    "approvedAt": "2026-10-05",
+    "userAnswer": "Oui, envoyer l’image et lancer cet essai",
+    "scope": "Une image maître vers Higgsfield ; un essai vidéo de 6 secondes en 1080p sans son, 72 crédits, aucun achat de crédits."
+  },
+  "generationAttempted": true,
+  "providerError": "Requires plus plan or higher.",
+  "providerStateAtAttempt": {
+    "subscriptionPlan": "starter",
+    "credits": 0.5,
+    "trialUnlimitedAvailable": false
+  },
+  "resumeInstructions": "Vérifier à nouveau l’accès et le devis après changement de l’état du compte. L’autorisation de cet unique essai est enregistrée. Ne pas acheter de crédits, changer de formule, lancer un lot ni dépasser 72 crédits. Aucun job ne peut être suivi actuellement car le prestataire a rejeté la requête avant sa création."
+}

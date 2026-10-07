@@ -1,0 +1,504 @@
+/* Catalogue public : fiches validées et états de publication explicites. */
+.schools-section {
+  padding-block: 90px;
+  background: #eaf1fa;
+  border-block: 1px solid var(--line);
+}
+.schools-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+.schools-heading h2 {
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  line-height: 1.12;
+  margin: 22px 0 0;
+}
+.schools-heading h2 em {
+  font-weight: 400;
+  color: var(--brand-blue);
+}
+.school-directory-link {
+  display: inline-flex;
+  gap: 20px;
+  align-items: center;
+  font-size: 13px;
+  border-bottom: 1px solid var(--brand-blue);
+  padding: 12px 0;
+  white-space: nowrap;
+}
+.school-empty {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 35px;
+  padding: 46px;
+  background: var(--paper);
+  border-left: 3px solid var(--brand-yellow);
+}
+.school-empty-symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border: 1px solid var(--line);
+  color: var(--brand-blue);
+}
+.school-empty h3 {
+  font: 400 clamp(1.6rem, 2.4vw, 2.4rem)/1.2 var(--font-editorial);
+  letter-spacing: -0.03em;
+  margin: 16px 0;
+}
+.school-empty p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 650px;
+  margin: 0 0 18px;
+}
+.school-empty .eyebrow {
+  margin: 0;
+  color: var(--brand-blue);
+}
+.school-empty-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--brand-blue);
+  min-height: 44px;
+}
+.school-empty button {
+  color: var(--ink);
+  background: transparent;
+  cursor: pointer;
+  min-height: 44px;
+}
+.school-information {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 46px;
+  margin-top: 38px;
+}
+.school-information > div {
+  border-top: 1px solid #c4d4e7;
+  padding-top: 24px;
+}
+.school-information svg {
+  color: var(--brand-blue);
+}
+.school-information h3 {
+  margin: 16px 0 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+.school-information p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+.school-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+.school-card {
+  border-bottom: 1px solid var(--line);
+  min-width: 0;
+}
+.school-card-image {
+  aspect-ratio: 3/2;
+  background: #dfeaf7;
+}
+.school-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.school-photo-placeholder {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: var(--brand-blue);
+}
+.school-photo-placeholder span {
+  color: var(--muted);
+  font-size: 12px;
+}
+.school-card-content {
+  padding: 24px 0;
+}
+.school-status {
+  display: inline-block;
+  padding: 7px 10px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: #e2e9f3;
+  border-left: 2px solid var(--brand-blue);
+}
+.school-status--in_progress {
+  background: #fff9cf;
+  border-color: #9a8100;
+}
+.school-status--equipped {
+  color: #fff;
+  background: var(--brand-blue);
+}
+.school-location {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 18px 0 12px;
+}
+.school-location svg {
+  flex-shrink: 0;
+}
+.school-card h3 {
+  font: 400 26px/1.2 var(--font-editorial);
+  letter-spacing: -0.03em;
+  margin: 14px 0;
+}
+.school-card h3 a {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.school-card h3 svg {
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+.school-summary {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin: 0;
+}
+.school-directory,
+.school-details-page {
+  padding-block: 36px 100px;
+}
+.school-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-bottom: 55px;
+}
+.school-breadcrumb a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.school-directory-heading h1 {
+  font-size: clamp(2.7rem, 5vw, 5rem);
+  line-height: 1.1;
+  margin: 24px 0;
+}
+.school-directory-heading h1 em {
+  color: var(--brand-blue);
+}
+.school-directory-heading > p:not(.eyebrow) {
+  max-width: 620px;
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+.school-directory-heading > a {
+  display: inline-flex;
+  margin-bottom: 40px;
+}
+.school-filters {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr auto;
+  align-items: end;
+  gap: 18px;
+  padding-block: 26px;
+  border-block: 1px solid var(--line);
+}
+.school-filters > div {
+  min-width: 0;
+}
+.school-filters label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 9px;
+}
+.school-filters input,
+.school-filters select {
+  font: inherit;
+  font-size: 13px;
+  width: 100%;
+  min-width: 0;
+  height: 48px;
+  border: 1px solid #91aaca;
+  border-radius: 0;
+  padding: 10px 12px;
+  background: white;
+  color: var(--ink);
+}
+.school-filters select {
+  appearance: auto;
+}
+.school-filters input:focus-visible,
+.school-filters select:focus-visible {
+  outline: 3px solid var(--brand-blue);
+  outline-offset: 2px;
+}
+.school-input-wrap {
+  position: relative;
+}
+.school-input-wrap > svg {
+  position: absolute;
+  left: 13px;
+  top: 15px;
+  color: var(--muted);
+  pointer-events: none;
+}
+.school-input-wrap input {
+  padding-left: 40px;
+}
+.school-filter-reset {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 48px;
+  padding: 10px 15px;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid #91aaca;
+  font-size: 12px;
+}
+.school-filter-reset:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.school-results-count {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-block: 22px;
+}
+.school-directory .school-empty {
+  background: #eaf1fa;
+}
+.school-directory-note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+}
+.school-directory-note p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--muted);
+  margin: 0;
+}
+.school-directory-note strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+.school-directory-note a {
+  font-size: 13px;
+  padding-block: 12px;
+  border-bottom: 1px solid var(--ink);
+}
+.school-not-found {
+  padding-block: 90px;
+  min-height: 65vh;
+}
+.school-not-found > svg {
+  color: var(--brand-blue);
+  margin-bottom: 25px;
+}
+.school-not-found h1 {
+  font-size: clamp(2.7rem, 4vw, 4rem);
+  margin-top: 25px;
+  max-width: 800px;
+}
+.school-not-found p:not(.eyebrow) {
+  margin-bottom: 30px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.school-detail-heading {
+  max-width: 950px;
+}
+.school-detail-heading h1 {
+  font-size: clamp(2.7rem, 5vw, 5rem);
+  margin: 24px 0;
+  overflow-wrap: anywhere;
+}
+.school-detail-summary {
+  font-size: 17px;
+  line-height: 1.85;
+  max-width: 700px;
+  color: var(--muted);
+  margin: 24px 0 38px;
+}
+.school-detail-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 580px;
+  object-fit: cover;
+}
+.school-detail-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 10%;
+  margin-block: 55px;
+  align-items: start;
+}
+.school-detail-grid h2 {
+  font-size: clamp(1.7rem, 2.5vw, 2.5rem);
+  line-height: 1.2;
+  margin: 18px 0 22px;
+}
+.school-description {
+  white-space: pre-line;
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--muted);
+}
+.school-detail-facts {
+  padding: 30px;
+  background: #eaf1fa;
+  border-top: 3px solid var(--brand-yellow);
+}
+.school-detail-facts h2 {
+  font-size: 24px;
+  margin: 0 0 18px;
+}
+.school-detail-facts h2:not(:first-child) {
+  margin-top: 28px;
+}
+.school-detail-facts p,
+.school-detail-facts ul {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+.school-detail-facts ul {
+  list-style: disc;
+  padding-left: 18px;
+}
+.school-students {
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--muted);
+}
+.school-students strong {
+  font-size: 26px;
+  color: var(--brand-blue);
+  margin-right: 8px;
+}
+.province-school-links {
+  list-style: none;
+  margin: 14px 0;
+  padding: 0;
+}
+.province-school-links li {
+  padding: 9px 0;
+  font-size: 13px;
+  color: var(--brand-blue);
+}
+.province-school-links a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.province-directory-link {
+  display: block;
+  margin-top: 15px;
+  padding-block: 10px;
+  font-size: 12px;
+  color: var(--brand-blue);
+}
+@media (max-width: 1050px) {
+  .school-filters {
+    grid-template-columns: 1fr 1fr;
+  }
+  .school-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .school-information {
+    gap: 26px;
+  }
+  .school-detail-grid {
+    gap: 6%;
+  }
+}
+@media (max-width: 760px) {
+  .schools-section {
+    padding-block: 60px;
+  }
+  .schools-heading {
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+  }
+  .school-empty {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 28px 24px;
+  }
+  .school-empty-symbol {
+    width: 75px;
+    height: 75px;
+  }
+  .school-information,
+  .school-grid {
+    grid-template-columns: 1fr;
+  }
+  .school-information {
+    gap: 26px;
+  }
+  .school-directory,
+  .school-details-page {
+    padding-block: 28px 65px;
+  }
+  .school-breadcrumb {
+    margin-bottom: 36px;
+  }
+  .school-filters {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .school-filters input,
+  .school-filters select {
+    font-size: 16px;
+  }
+  .school-directory-note {
+    flex-direction: column;
+    align-items: start;
+  }
+  .school-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-block: 40px;
+  }
+  .school-not-found {
+    padding-block: 60px;
+  }
+}
