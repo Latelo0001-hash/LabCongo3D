@@ -35,7 +35,7 @@ export default function SchoolsSection() {
         <FadeIn>
           <div className="schools-heading">
             <div>
-              <p className="eyebrow">08 — Les écoles au cœur du projet</p>
+              <p className="eyebrow">09 — Les écoles au cœur du projet</p>
               <h2 id="schools-home-title">
                 Une école, des besoins.
                 <br />

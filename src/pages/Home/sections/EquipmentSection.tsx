@@ -13,7 +13,7 @@ export default function EquipmentSection() {
         <FadeIn>
           <div className="media-section-heading">
             <div>
-              <p className="eyebrow">10 — Les outils de l’apprentissage</p>
+              <p className="eyebrow">11 — Les outils de l’apprentissage</p>
               <h2 id="equipment-home-title">
                 Observer. Expérimenter.
                 <br />

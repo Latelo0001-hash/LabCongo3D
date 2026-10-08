@@ -1,60 +1,74 @@
 import { PhotoImage, PhotoCredit } from "../../components/common/Photo";
-import { narrativePhotos } from "../../features/experience/photos";
 import { Link } from "react-router-dom";
 import PageIntro from "../../components/common/PageIntro";
 import EditorialCTA from "../../components/common/EditorialCTA";
+import { presentationPhotos, response, team } from "../../data/presentation";
 export default function About() {
   return (
     <>
       <PageIntro
         eyebrow="Le projet LabCongo"
-        title="Du matériel disponible. Un savoir à transmettre."
-        description="LabCongo relie les équipements scientifiques disponibles en Europe aux besoins d’apprentissage des écoles de République démocratique du Congo."
+        title="Une ASBL au service de la formation scientifique et technique des jeunes."
+        description={response.lead}
       />
       <div className="container editorial-page">
+        <section aria-labelledby="about-pillars">
+          <h2 id="about-pillars" className="sr-only">
+            L’association en bref
+          </h2>
+          <div className="editorial-columns">
+            {response.pillars.map((pillar) => (
+              <article key={pillar.title}>
+                <h3>{pillar.title}</h3>
+                <p>{pillar.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+        <figure className="editorial-photo">
+          <PhotoImage photo={presentationPhotos.travauxPratiques} />
+          <figcaption>
+            <PhotoCredit photo={presentationPhotos.travauxPratiques} />
+          </figcaption>
+        </figure>
         <section className="editorial-split">
           <div>
             <p className="eyebrow">La science en pratique</p>
-            <h2>Faire le lien entre une leçon et une expérience.</h2>
+            <h2>Apprendre en manipulant, en expérimentant.</h2>
           </div>
           <div>
             <p>
               Observer au microscope, mesurer une grandeur, comparer des
               résultats : la pratique donne une autre dimension aux sciences.
-              LabCongo veut aider les écoles à créer ces moments
-              d’apprentissage.
+              LabCongo équipe des laboratoires, forme les encadreurs et
+              accompagne les élèves pour que ces moments d’apprentissage
+              deviennent réguliers.
             </p>
             <p>
-              La démarche consiste à collecter du matériel scientifique en
-              Belgique et en France, à le préparer, puis à organiser son
-              acheminement et sa mise en service en RDC.
+              Pour équiper les laboratoires, LabCongo collecte aussi du
+              matériel scientifique en Belgique et en France, le prépare, puis
+              organise son acheminement et sa mise en service en RDC.
             </p>
-            <Link className="text-link" to="/mission">
-              Découvrir notre mission ↗
+            <Link className="text-link" to="/notre-demarche">
+              Découvrir notre démarche ↗
             </Link>
           </div>
         </section>
-        <figure className="editorial-photo">
-          <PhotoImage photo={narrativePhotos.pratique} />
-          <figcaption>
-            <PhotoCredit photo={narrativePhotos.pratique} />
-          </figcaption>
-        </figure>
         <section className="editorial-split">
-          <h2>Une démarche guidée par les besoins des écoles.</h2>
+          <h2>Des sciences de base aux métiers des secteurs stratégiques.</h2>
           <div>
             <p>
-              Le choix du matériel part des enseignements, des conditions
-              d’accueil et des possibilités d’utilisation. Une attention
-              particulière est portée aux provinces minières, où les sciences et
-              les techniques peuvent ouvrir de nouvelles perspectives.
+              Susciter l’intérêt des jeunes pour les sciences, c’est aussi les
+              préparer aux métiers dont la RDC a besoin : les mines, la
+              transformation locale et les technologies.
             </p>
             <p>
-              Équiper un espace ne suffit pas : la prise en main, l’entretien et
-              l’accompagnement des enseignants font partie de la démarche.
+              Équiper un espace ne suffit pas : la formation des encadreurs, le
+              mentorat, les stages et la maintenance des équipements font partie
+              de la démarche.
             </p>
-            <Link className="text-link" to="/notre-demarche">
-              Suivre le parcours du matériel ↗
+            <Link className="text-link" to="/mission">
+              Découvrir notre mission ↗
             </Link>
           </div>
         </section>
@@ -76,6 +90,20 @@ export default function About() {
               l’éducation scientifique.
             </p>
           </div>
+        </section>
+        <section className="editorial-split" aria-labelledby="about-team">
+          <div>
+            <p className="eyebrow">L’équipe</p>
+            <h2 id="about-team">Les personnes qui portent LabCongo.</h2>
+          </div>
+          <ul className="team-list">
+            {team.map((member) => (
+              <li key={member.name}>
+                <strong>{member.name}</strong>
+                <span>{member.role}</span>
+              </li>
+            ))}
+          </ul>
         </section>
         <EditorialCTA />
       </div>

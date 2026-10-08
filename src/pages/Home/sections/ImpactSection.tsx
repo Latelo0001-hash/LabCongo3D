@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import FadeIn from "../../../components/animations/FadeIn";
-import { impactAxes } from "../../../data/impact";
+import { results } from "../../../data/presentation";
 export default function ImpactSection() {
   return (
     <section
@@ -12,26 +12,30 @@ export default function ImpactSection() {
         <FadeIn>
           <div className="media-section-heading">
             <div>
-              <p className="eyebrow">11 — L’impact recherché</p>
+              <p className="eyebrow">05 — Les résultats attendus</p>
               <h2 id="impact-title">
-                Au-delà des instruments,
+                Développer un capital humain
                 <br />
-                <em>des possibilités.</em>
+                <em>scientifique et technique.</em>
               </h2>
             </div>
             <p>
-              Le matériel est un point de départ. Notre ambition : rendre la
-              pratique des sciences plus accessible, utile et durable dans les
-              écoles.
+              Pour une RDC plus compétitive et plus prospère : voici les
+              résultats que LabCongo cherche à obtenir. Ils seront mesurés au fil
+              des interventions.
             </p>
           </div>
         </FadeIn>
-        <div className="editorial-columns">
-          {impactAxes.map((item, i) => (
+        <div className="editorial-columns is-quad">
+          {results.outcomes.map((item, i) => (
             <article key={item.title}>
               <span className="editorial-number">0{i + 1}</span>
               <h3>{item.title}</h3>
-              <p>{item.text}</p>
+              <ul className="editorial-list">
+                {item.items.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
             </article>
           ))}
         </div>

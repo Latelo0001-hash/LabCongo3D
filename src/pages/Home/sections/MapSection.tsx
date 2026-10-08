@@ -22,7 +22,7 @@ export default function MapSection() {
       <FadeIn>
         <div className="map-heading">
           <div>
-            <p className="eyebrow">07 — Ancrer le projet en RDC</p>
+            <p className="eyebrow">08 — Ancrer le projet en RDC</p>
             <h2 id="map-title">
               Au plus près des écoles.
               <br />

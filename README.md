@@ -1,10 +1,10 @@
 # LabCongo 3D
 
-Projet React indépendant du site PHP historique. Accueil immersif en cinq premières étapes, contenus détaillés accessibles à la demande, parcours photographique en douze scènes et pages publiques. Voir la [reprise du 7 octobre](docs/accueil-immersif.md) et la [passe sur le réalisme](docs/amelioration-realisme.md). Les informations de terrain attendent leur validation ; le serveur et l’administration restent une phase distincte.
+Projet React indépendant du site PHP historique. L’accueil présente un film au défilement en **huit étapes**, de la récolte du matériel en Europe à l’arrivée en RDC, avec vidéos et objets 3D. Les contenus détaillés, le parcours photographique en douze scènes et les pages publiques restent accessibles. Voir [le film actuel et ses limites](docs/film-du-parcours.md). La [reprise à cinq scènes](docs/accueil-immersif.md) et la [passe sur le réalisme](docs/amelioration-realisme.md) documentent les versions précédentes. Le constat, l’enjeu, l’approche, les phases, le diagnostic et les résultats attendus reprennent la [présentation de LabCongo](docs/contenu-presentation.md). Les informations de terrain attendent leur validation ; le serveur et l’administration restent une phase distincte.
 
 ## Pack visuel de la nouvelle expérience
 
-L’image maître et les trois personnages sont validés. Six nouvelles références fixes couvrent le laboratoire, le matériel, la mise en caisse et le conteneur : voir la [galerie de revue](docs/media-pack/revue.html) et le [pack média en préparation](docs/media-pack/README.md), avec l’inventaire des 21 médias. Cinq références sont désormais intégrées à l’accueil sous forme de copies WebP : fonds de scène et lecture simple. Les vidéos restent une production distincte ; elles ne sont pas nécessaires au prototype au défilement.
+L’image maître et les trois personnages sont validés. Six nouvelles références fixes couvrent le laboratoire, le matériel, la mise en caisse et le conteneur : voir la [galerie de revue](docs/media-pack/revue.html) et le [pack média en préparation](docs/media-pack/README.md), avec l’inventaire des 21 médias. Les cinq copies WebP de l’ancien accueil à cinq scènes restent dans `public/media/experience/web/`, mais aucun code ne les affiche plus : le composant `ImmersiveJourney` a été retiré le 8 octobre 2026. L’accueil actuel utilise trois vidéos d’illustration locales (séquence générée de la récolte, pont du navire, navire en mer), un camion importé et les objets de continuité. Le pack d’images générées constitue une référence antérieure ; il ne décrit plus à lui seul l’accueil.
 
 ## Lancer
 
@@ -26,11 +26,11 @@ npm run preview
 ## Architecture
 
 - `src/app` : providers et routes avec chargement différé.
-- `src/features/immersive` : accueil au défilement, scène R3F persistante, timeline commune et lecture simple.
-- `src/pages/Home/sections` : sections éditoriales conservées dans « Le projet en détail », avec chargement différé. Le CTA reste visible après cette zone et l’ancien hero reste archivé dans les sources. Les zones sans données validées présentent un état explicatif.
+- `src/features/film` : accueil actuel, huit chapitres, une scène R3F persistante, vidéos pilotées au défilement, navigation et lecture simple. Le dossier regroupe aussi les matériaux, l’environnement lumineux et les fonctions d’interpolation repris de l’ancien accueil à cinq scènes, dont le code a été retiré le 8 octobre 2026 (historique git, commit `64cbf4a`).
+- `src/pages/Home/sections` : cinq sections de présentation visibles après le film ; sections 06 à 15 chargées à l’ouverture de « Le projet en détail », puis appel à participer. Un sommaire rejoint les cinq sections principales. La mise en page et la palette sont décrites dans [la présentation des sections](docs/presentation-sections.md) ; les styles sont limités à `.home-content` dans `src/styles/home-editorial.css`. Les zones sans données validées présentent un état explicatif.
 - `src/pages` : toutes les routes demandées, avec annuaire et fiches d’écoles, catalogue et fiches d’équipements. Les pages du projet, de mission, de démarche, d’impact, des partenaires, des dons et du contact sont développées, ainsi que les listes et fiches de projets et actualités. `/realisations` redirige vers les projets réalisés.
 - `src/components/animations` et `src/hooks` : GSAP/ScrollTrigger et Lenis, nettoyés au démontage ; réduction des animations respectée.
-- `src/features/experience` : parcours photographique en douze scènes, navigation par défilement ou commandes, mode sans animation et crédits. Les anciens décors humains en blocs restent archivés. Le nouvel accueil utilise trois modèles détaillés dans une scène distincte, générés par `npm run models:immersive`.
+- `src/features/experience` : parcours photographique en douze scènes, navigation par défilement ou commandes, mode sans animation et crédits. Les anciens décors humains en blocs restent archivés. Le film de l’accueil utilise six GLB : cinq générés par `npm run models:immersive` et le camion Scania importé. Le script permet une génération ciblée, par exemple `npm run models:immersive -- labware-v2`.
 - `src/services` : frontière API, pas de requête sans `VITE_API_BASE_URL`.
 - `src/features`, `src/types`, `src/data`, `src/config` : domaines réservés et configuration.
 - `server` et `admin` : prochaines phases uniquement.
@@ -39,7 +39,7 @@ React 19, TypeScript, Vite, Tailwind (plugin Vite), React Router, GSAP, Lenis, T
 
 ## Limites de cette étape
 
-Pas de back-end, d’administration fonctionnelle ni d’envoi côté serveur. Les formulaires préparent un e-mail que le visiteur doit relire et envoyer dans sa messagerie ; aucun paiement n’est encaissé. Pas d’école, de réalisation, de partenaire, de témoignage ni de chiffre inventé. L’accueil utilise des illustrations générées, explicitement identifiées, et des objets 3D provisoires. Les photos documentaires et leurs crédits restent dans le parcours photographique existant. Les photos de laboratoire fournies restent à valider pour publication. L’équipement hospitalier est décrit uniquement comme expérience antérieure de l’équipe et preuve de capacité logistique, conformément au cahier des charges. Aucun lieu, date, établissement ou résultat chiffré non confirmé n’est ajouté.
+Pas de back-end, d’administration fonctionnelle ni d’envoi côté serveur. Les formulaires préparent un e-mail que le visiteur doit relire et envoyer dans sa messagerie ; aucun paiement n’est encaissé. Pas d’école, de réalisation, de partenaire, de témoignage ni de chiffre inventé. L’accueil utilise des vidéos d’illustration et une scénographie 3D ; les médias ne documentent pas des actions de LabCongo. Les sources sont accessibles dans « Images d’illustration · Crédits ». La livraison aux écoles, l’installation et les expériences des élèves restent à intégrer au film. Les photos documentaires et leurs crédits restent dans le parcours photographique existant. Les photos de laboratoire fournies restent à valider pour publication. L’équipement hospitalier est décrit uniquement comme expérience antérieure de l’équipe et preuve de capacité logistique, conformément au cahier des charges. Aucun lieu, date, établissement ou résultat chiffré non confirmé n’est ajouté.
 
 En production, configurer le serveur pour rediriger les routes publiques vers `index.html`. Générer un sitemap avec le domaine final et les contenus publiables ; pour un référencement complet, prévoir pré-rendu/SSR lors de la phase SEO. Aucun secret ne doit être placé dans les variables `VITE_*`.
 
@@ -49,7 +49,7 @@ Logo couleur et version blanche fournis dans `src/assets/img/Logo/PNG`, réduits
 
 ## Accueil : collecte et acheminement
 
-Les sections Collecte et Voyage présentent le matériel concerné et les étapes prévues de sa transmission. Le tracé SVG est schématique (aucun port, délai ni itinéraire réel annoncé). GSAP anime le tracé et un colis au défilement sur ordinateur ; les étapes restent lisibles sur mobile et avec réduction des animations. La page de don permet de préparer une proposition ; les écoles attendent leurs données validées.
+Le film ouvre l’accueil : Récolte → Matériel → Assemblage → Conteneur → Route → Navire → Traversée → Arrivée. Les sections Collecte et Voyage, dans « Le projet en détail », présentent aussi le matériel concerné et les étapes prévues de sa transmission. Le tracé SVG est schématique (aucun port, délai ni itinéraire réel annoncé). GSAP anime le tracé et un colis au défilement sur ordinateur ; les étapes restent lisibles sur mobile et avec réduction des animations. La page de don permet de préparer une proposition ; les écoles attendent leurs données validées.
 
 ## Carte des provinces
 
@@ -70,7 +70,7 @@ Quatre familles pédagogiques, sans stock ni quantité de dons annoncés, sont d
 
 ## Expérience photographique et performances
 
-Le choix visuel du 5 octobre remplace les décors et personnages en blocs par des photographies. Voir [la direction, la couverture et les sources du parcours](docs/experience-photographique.md). `/experience` conserve les douze scènes et le défilement avec navigation directe. Les images sont locales, livrées en variantes adaptées à l’écran, et les crédits sont accessibles dans le récit. Depuis la reprise du 7 octobre, l’accueil charge à nouveau Three.js et trois GLB compressés en mode animé uniquement ; le parcours photographique `/experience` reste indépendant.
+Le choix visuel du 5 octobre remplace les décors et personnages en blocs par des photographies. Voir [la direction, la couverture et les sources du parcours](docs/experience-photographique.md). `/experience` conserve les douze scènes et le défilement avec navigation directe. Les images sont locales, livrées en variantes adaptées à l’écran, et les crédits sont accessibles dans le récit. L’accueil charge Three.js, six GLB compressés et trois vidéos en mode animé. Le laboratoire se charge à l’approche du film, le navire une fois les modèles prêts. Comme le film est en tête de page, ce chargement commence dès l’arrivée sur l’accueil. La lecture simple et les mouvements réduits affichent les huit chapitres sans canvas ni vidéo ; le parcours photographique `/experience` reste indépendant.
 
 Les scripts `models:generate` et `models:story`, les modèles et les anciens composants restent disponibles. Le nouvel accueil utilise désormais les versions détaillées distinctes dans `public/models/immersive/`, dont les matériaux restent illustratifs. Les exécuter ne modifie pas la présentation photographique actuelle.
 
@@ -95,4 +95,4 @@ Le texte institutionnel reprend le cahier des charges fourni et les pages édito
 
 ## Validation
 
-Voir [le compte rendu de validation de la partie publique](docs/validation-front-end.md) pour les essais réalisés, les corrections et les limites de cette version.
+Voir [la validation du film et de son affichage mobile](docs/film-du-parcours.md#vérification) pour la version actuelle, et [le compte rendu de la partie publique](docs/validation-front-end.md) pour les contrôles antérieurs.

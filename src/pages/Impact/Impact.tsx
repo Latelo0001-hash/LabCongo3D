@@ -1,26 +1,53 @@
 import PageIntro from "../../components/common/PageIntro";
 import EditorialCTA from "../../components/common/EditorialCTA";
 import ImpactIndicators from "../../components/common/ImpactIndicators";
-import { impactAxes } from "../../data/impact";
+import { results } from "../../data/presentation";
 export default function Impact() {
   return (
     <>
       <PageIntro
         eyebrow="Notre impact"
-        title="Le matériel compte. Son utilisation aussi."
-        description="Notre ambition est de renforcer la pratique des sciences. Le suivi doit rendre visibles les équipements en service, les usages pédagogiques et les retours des écoles."
+        title="Développer un capital humain scientifique et technique."
+        description="Pour une RDC plus compétitive et plus prospère. Voici les résultats que LabCongo cherche à obtenir ; ils seront mesurés et publiés au fil des interventions documentées."
       />
       <div className="container editorial-page">
-        <section>
-          <h2>Ce que nous voulons rendre possible.</h2>
-          <div className="editorial-columns">
-            {impactAxes.map((item) => (
+        <section aria-labelledby="impact-levers">
+          <p className="eyebrow">L’intervention de LabCongo</p>
+          <h2 id="impact-levers">Quatre leviers.</h2>
+          <ul className="lever-list">
+            {results.levers.map((lever) => (
+              <li key={lever}>{lever}</li>
+            ))}
+          </ul>
+        </section>
+        <section aria-labelledby="impact-results">
+          <p className="eyebrow">Les résultats attendus</p>
+          <h2 id="impact-results">Ce que nous voulons rendre possible.</h2>
+          <div className="editorial-columns is-quad">
+            {results.outcomes.map((item, i) => (
               <article key={item.title}>
+                <span className="editorial-number">0{i + 1}</span>
                 <h3>{item.title}</h3>
-                <p>{item.text}</p>
+                <ul className="editorial-list">
+                  {item.items.map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>
+        </section>
+        <section className="virtuous-circle editorial-band" aria-labelledby="impact-circle">
+          <h2 id="impact-circle">{results.circle.title}.</h2>
+          <ol>
+            {results.circle.steps.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
+          <p>
+            <span aria-hidden="true">↻ </span>
+            {results.circle.loop}
+          </p>
         </section>
         <section id="suivi" className="impact-followup">
           <p className="eyebrow">Indicateurs et méthode</p>

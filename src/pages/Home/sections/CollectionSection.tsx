@@ -35,7 +35,7 @@ export default function CollectionSection() {
         <FadeIn>
           <div className="collection-heading">
             <div>
-              <p className="eyebrow">05 — La collecte en Europe</p>
+              <p className="eyebrow">06 — La collecte en Europe</p>
               <h2 id="collection-title">
                 Vos outils ont encore
                 <br />

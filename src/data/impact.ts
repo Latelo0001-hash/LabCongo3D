@@ -1,17 +1,3 @@
-export const impactAxes = [
-  {
-    title: "Apprendre en pratiquant",
-    text: "Permettre aux élèves d’observer, de manipuler et de relier les notions scientifiques à des expériences concrètes.",
-  },
-  {
-    title: "Accompagner les enseignants",
-    text: "Faciliter la préparation de travaux pratiques et la prise en main durable du matériel.",
-  },
-  {
-    title: "Ouvrir des perspectives",
-    text: "Éveiller l’intérêt pour les filières scientifiques et techniques, en lien avec les réalités de la RDC.",
-  },
-];
 export const impactMeasures = [
   {
     title: "Écoles équipées",

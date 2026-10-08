@@ -16,7 +16,7 @@ export default function JourneySection() {
       <div className="container">
         <FadeIn>
           <div className="journey-heading">
-            <p className="eyebrow">06 — Le voyage du matériel</p>
+            <p className="eyebrow">07 — Le voyage du matériel</p>
             <h2 id="journey-title">
               Changer de continent.
               <br />

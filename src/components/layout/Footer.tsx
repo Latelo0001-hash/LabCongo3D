@@ -64,7 +64,7 @@ export default function Footer() {
           ))}
         </div>
         <div className="footer-bottom">
-          <p>Belgique · France → République démocratique du Congo</p>
+          <p>ASBL créée à Kinshasa · Collecte de matériel en Belgique et en France</p>
           <p>© {new Date().getFullYear()} LabCongo</p>
         </div>
       </div>

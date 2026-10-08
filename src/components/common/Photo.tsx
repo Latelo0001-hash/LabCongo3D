@@ -40,7 +40,7 @@ export function PhotoImage({
 export function PhotoCredit({ photo }: { photo: NarrativePhoto }) {
   return (
     <span className="photo-credit">
-      <span>Photographie d’illustration · {photo.caption}</span>
+      <span>{photo.label ?? "Photographie d’illustration"} · {photo.caption}</span>
       <span>
         {photo.source ? (
           <a href={photo.source} target="_blank" rel="noreferrer">

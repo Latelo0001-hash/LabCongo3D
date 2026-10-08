@@ -11,6 +11,8 @@ export interface NarrativePhoto {
   license?: string;
   licenseUrl?: string;
   position?: string;
+  // Mention affichée avant la légende (par défaut « Photographie d’illustration »).
+  label?: string;
 }
 export const narrativePhotos: Record<string, NarrativePhoto> = {
   rencontre: {

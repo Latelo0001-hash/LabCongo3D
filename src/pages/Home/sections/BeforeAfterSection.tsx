@@ -14,7 +14,7 @@ export default function BeforeAfterSection() {
       <FadeIn>
         <div className="media-section-heading">
           <div>
-            <p className="eyebrow">09 — Le suivi en images</p>
+            <p className="eyebrow">10 — Le suivi en images</p>
             <h2 id="before-after-title">
               Un même lieu.
               <br />

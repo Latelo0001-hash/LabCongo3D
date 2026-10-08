@@ -1,16 +1,17 @@
 import { Link } from "react-router-dom";
 import PageIntro from "../../components/common/PageIntro";
 import EditorialCTA from "../../components/common/EditorialCTA";
-import { impactAxes } from "../../data/impact";
+import StakesFigures from "../../components/common/StakesFigures";
 import { PhotoImage, PhotoCredit } from "../../components/common/Photo";
+import { approach, presentationPhotos } from "../../data/presentation";
 import { narrativePhotos } from "../../features/experience/photos";
 export default function Mission() {
   return (
     <>
       <PageIntro
         eyebrow="Notre mission"
-        title="Rendre la science accessible par l’expérience."
-        description="Accompagner progressivement les écoles de RDC pour que les élèves puissent observer, expérimenter et comprendre avec du matériel adapté."
+        title="Susciter l’intérêt des jeunes pour les sciences."
+        description="Susciter l’intérêt des jeunes pour les sciences de base et les préparer aux métiers des secteurs stratégiques de la RDC."
       />
       <div className="container editorial-page">
         <section
@@ -22,8 +23,9 @@ export default function Mission() {
             <h2>Le laboratoire commence avec un usage.</h2>
             <p>
               Un instrument doit répondre à un objectif pédagogique. LabCongo
-              souhaite réunir du matériel, un espace adapté et des enseignants
-              accompagnés pour donner une place durable aux travaux pratiques.
+              réunit des laboratoires équipés, des encadreurs formés et des
+              travaux pratiques réguliers pour donner une place durable à
+              l’expérimentation.
             </p>
             <Link className="text-link" to="/equipements">
               Explorer les équipements ↗
@@ -36,25 +38,34 @@ export default function Mission() {
             </figcaption>
           </figure>
         </section>
-        <section aria-labelledby="mission-objectives">
-          <h2 id="mission-objectives">Trois objectifs qui se complètent.</h2>
+        <StakesFigures eyebrow="Pourquoi c’est essentiel" />
+        <section aria-labelledby="mission-approach">
+          <p className="eyebrow">Notre approche</p>
+          <h2 id="mission-approach">{approach.title}.</h2>
           <div className="editorial-columns">
-            {impactAxes.map((item) => (
-              <article key={item.title}>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
+            {approach.steps.map((step) => (
+              <article key={step.number}>
+                <span className="editorial-number">{step.number}</span>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
               </article>
             ))}
           </div>
         </section>
+        <figure className="editorial-photo">
+          <PhotoImage photo={presentationPhotos.siteMinier} />
+          <figcaption>
+            <PhotoCredit photo={presentationPhotos.siteMinier} />
+          </figcaption>
+        </figure>
         <section className="editorial-split editorial-band">
           <h2>Relier les sciences aux réalités du territoire.</h2>
           <div>
             <p>
               Mathématiques, physique, chimie, biologie, mécanique et
-              électronique offrent des outils pour comprendre le monde. Dans les
-              provinces minières notamment, cette culture scientifique peut
-              nourrir des vocations et des parcours de formation.
+              électronique offrent des outils pour comprendre le monde. Elles
+              ouvrent aussi la voie aux métiers des mines, de la transformation
+              locale et des technologies.
             </p>
             <p>
               Les activités et les équipements doivent être adaptés à l’âge des
