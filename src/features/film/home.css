@@ -1,0 +1,22 @@
+/* Accueil : en-tête transparent, bloc d’accès sous le film et « Le projet en détail ». */
+.site-header.home-header { position: absolute; z-index: 20; inset: 0 0 auto; color: white; border-bottom-color: #ffffff24; }
+.home-header .header-cta { border-color: #ffffff70; border-radius: 30px; }
+.home-header .desktop-nav .active { border-color: white; }
+.home-header .menu-toggle { color: white; }
+.journey-access { position: relative; background: var(--paper); color: var(--ink); padding: 100px 0 75px; }
+.journey-access h2 { max-width: 950px; font-size: clamp(32px, 4vw, 60px); }
+.journey-access > .container > p:not(.eyebrow) { max-width: 60ch; color: var(--muted); line-height: 1.8; }
+.journey-access-links { display: flex; flex-wrap: wrap; gap: 0 35px; margin: 35px 0 20px; }
+.journey-access-links a { display: flex; justify-content: space-between; gap: 25px; padding: 15px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+.journey-support { display: inline-flex; gap: 25px; align-items: center; font-size: 13px; font-weight: 700; margin-top: 20px; }
+.home-details { background: var(--paper); }
+.home-details > summary { padding: 22px 0; border-block: 1px solid var(--line); cursor: pointer; font-weight: 600; font-size: 14px; }
+.home-details > summary span { margin-left: 12px; font-weight: 400; color: var(--muted); }
+.home-details-loading { padding-block: 40px; }
+@media (max-width: 999px) {
+  .journey-access { padding: 60px 0 45px; }
+  .journey-access-links { gap: 0 25px; }
+  .home-details > summary span { display: block; margin: 8px 0 0 16px; font-size: 12px; }
+}
+
+@media (max-width: 999px) { .home-header .desktop-nav, .home-header .header-cta { display: none; } .home-header .menu-toggle { display: block; } }

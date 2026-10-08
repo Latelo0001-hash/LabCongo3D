@@ -3,7 +3,12 @@ import { useLoader } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import { DataTexture, Mesh, MeshStandardMaterial, RepeatWrapping, RGBAFormat, SRGBColorSpace, TextureLoader, Vector2 } from 'three';
 import type { Material, Object3D, Texture } from 'three';
-import { models } from './timeline';
+
+const models = {
+  microscope: '/models/immersive/microscope-v2.glb',
+  container: '/models/immersive/container-v2.glb',
+  crate: '/models/immersive/crate-v2.glb',
+} as const;
 
 // Fine relief for paint, rubber and foam. Deterministic, created once per mounting.
 function microSurface() {

@@ -1,5 +1,7 @@
 # Reprise de l’accueil immersif — 7 octobre 2026
 
+> Archive de la version précédente. L’accueil actuel utilise le [film en huit étapes](film-du-parcours.md). Les vérifications ci-dessous portent sur l’ancien accueil à cinq scènes.
+
 La référence fournie dans `/Users/latelo01/Downloads/index.html` fixe le principe visuel : une scène persistante, de grands titres, des objets animés au défilement et des fonds qui évoluent. Ce principe est maintenant intégré au projet React existant, avec le logo fourni et les couleurs LabCongo. Les coordonnées fictives et le script Three.js ancien du fichier de référence n’ont pas été repris.
 
 > Mise à jour : la [passe sur le réalisme des objets et décors](amelioration-realisme.md) remplace les modèles initiaux, ajoute des matériaux et affine l’éclairage. Le périmètre reste de cinq chapitres.
@@ -13,6 +15,8 @@ Un microscope accompagne les trois premiers chapitres, descend dans une caisse, 
 Les personnes et les lieux apparaissent dans les illustrations du pack média. Ils ne sont pas animés. L’entrée physique de la caméra par la porte du laboratoire, les gestes humains, la traversée maritime et l’arrivée dans l’école ne sont pas réalisés dans ce prototype.
 
 ## Fichiers
+
+> Le code de cette version a été retiré le 8 octobre 2026 : le film du parcours le remplace. Les cinq fichiers de `src/features/immersive/` restent consultables dans l’historique git, au commit `64cbf4a`. Les styles encore utilisés (en-tête de l’accueil, bloc d’accès, contenus détaillés) sont dans `src/features/film/home.css`.
 
 | Fichier | Rôle |
 | --- | --- |

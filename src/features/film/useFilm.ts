@@ -1,14 +1,17 @@
 import { useEffect } from 'react';
 import type { RefObject } from 'react';
 import { create } from 'zustand';
-import { clamp } from '../immersive/timeline';
+import { clamp } from './filmTimeline';
 
-export const useFilm = create<{ progress: number; setProgress: (progress: number) => void }>((set) => ({
+// `controls` : haut des commandes du film, en fraction de la hauteur de la scène (mesuré par FilmSequence).
+export const useFilm = create<{ progress: number; controls: number; setProgress: (progress: number) => void; setControls: (controls: number) => void }>((set) => ({
   progress: 0,
+  controls: 1,
   setProgress: (progress) => set((state) => {
     const next = clamp(progress);
     return state.progress === next ? state : { progress: next };
   }),
+  setControls: (controls) => set((state) => state.controls === controls ? state : { controls }),
 }));
 
 export function useFilmScroll(ref: RefObject<HTMLElement | null>, enabled: boolean) {

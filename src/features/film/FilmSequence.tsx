@@ -5,8 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getProvinceShapes } from '../../services/provinces.api';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { scrollImmediately } from '../../lib/lenis';
-import { clamp, mix } from '../immersive/timeline';
-import { at, backdrop, cards, chapterAt, chapters, equipment, equipmentAt, milestones, screens, seg, steps, stripWidth } from './filmTimeline';
+import { at, backdrop, cards, chapterAt, chapters, clamp, equipment, equipmentAt, milestones, mix, opening, openingFrame, openingTime, screens, seg, steps, stripWidth } from './filmTimeline';
 import { useFilm, useFilmScroll } from './useFilm';
 import './film.css';
 
@@ -18,16 +17,16 @@ class CanvasBoundary extends Component<PropsWithChildren<{ onFailure: () => void
   render() { return this.state.failed ? null : this.props.children; }
 }
 
-const media = { lab: '/media/parcours/laboratoire', port: '/media/parcours/port-grues', deck: '/media/parcours/navire-pont', sea: '/media/parcours/navire-mer' };
+const media = { opening: '/media/parcours/recolte', port: '/media/parcours/port-grues', deck: '/media/parcours/navire-pont', sea: '/media/parcours/navire-mer' };
 // Tracé schématique depuis le nord, jusqu'à l'embouchure : ni port, ni durée, ni itinéraire réel.
 const route = 'M-300 -180C-260 60-60 360 76 374';
 const ghosts = [
-  { word: 'Collecter', from: .6, to: 3, tone: 'light' },
+  { word: 'Collecter', from: 1, to: 3, tone: 'light' },
   { word: 'Préparer', from: 3, to: 4.6, tone: 'light' },
   { word: 'Acheminer', from: 6, to: 9.8, tone: 'dark' },
 ] as const;
 const credits = <>
-  Images d’illustration : elles ne montrent pas des actions de LabCongo · Vidéos : TimePRO TV, K et Alexander Bobrov (Pexels) · Camion : « <a href="https://sketchfab.com/3d-models/scania-truck-59889032d0ad457c81d7e058c79eedf8" target="_blank" rel="noreferrer">Scania truck</a> » de PAndras, <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank" rel="noreferrer">CC BY 4.0</a>, allégé et sans logo · Carte : geoBoundaries, © OpenStreetMap (ODbL)
+  Images d’illustration : elles ne montrent pas des actions de LabCongo · Récolte : séquence générée · Navire : vidéos de K et Alexander Bobrov (Pexels) · Camion : « <a href="https://sketchfab.com/3d-models/scania-truck-59889032d0ad457c81d7e058c79eedf8" target="_blank" rel="noreferrer">Scania truck</a> » de PAndras, <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank" rel="noreferrer">CC BY 4.0</a>, allégé et sans logo · Carte : geoBoundaries, © OpenStreetMap (ODbL)
 </>;
 
 // Les lettres se décodent avant de se fixer, comme dans la référence.
@@ -47,7 +46,7 @@ function scramble(element: HTMLElement, text: string) {
 
 function StaticFilm({ onAnimate }: { onAnimate?: () => void }) {
   const images: Record<string, [string, string]> = {
-    recolte: [media.lab, 'des scientifiques au microscope dans un laboratoire.'],
+    recolte: [media.opening, 'séquence générée, une équipe et le personnel d’un laboratoire examinent du matériel.'],
     route: [media.port, 'un navire à quai sous les grues d’un port à conteneurs, vu du ciel.'],
     navire: [media.deck, 'le pont d’un porte-conteneurs vu du ciel.'],
     ocean: [media.sea, 'un porte-conteneurs en pleine mer.'],
@@ -68,7 +67,7 @@ function StaticFilm({ onAnimate }: { onAnimate?: () => void }) {
 export default function FilmSequence() {
   const track = useRef<HTMLElement>(null);
   const stage = useRef<HTMLDivElement>(null);
-  const lab = useRef<HTMLVideoElement>(null);
+  const openingVideo = useRef<HTMLVideoElement>(null);
   const deck = useRef<HTMLVideoElement>(null);
   const sea = useRef<HTMLVideoElement>(null);
   const reduced = useMediaQuery('(prefers-reduced-motion: reduce)');
@@ -119,7 +118,7 @@ export default function FilmSequence() {
   useEffect(() => {
     if (!live || !near || !stage.current) return;
     const element = stage.current;
-    const videos = [lab.current, deck.current, sea.current];
+    const videos = [openingVideo.current, deck.current, sea.current];
     const targets = [0, 0, 0];
     // Les vidéos suivent le défilement image par image, dans les deux sens.
     const seek = () => videos.forEach((video, i) => {
@@ -133,7 +132,15 @@ export default function FilmSequence() {
       const set = (name: string, value: number | string) => element.style.setProperty(name, String(value));
       element.style.backgroundColor = `rgb(${backdrop(x)})`;
       set('--film-progress', p);
-      set('--lab-opacity', (1 - seg(x, 2.9, 3.3)) * .38);
+      // La récolte reste nette sous le titre (le masque assombrit seulement le côté du texte), puis s'efface quand la fiole devient 3D.
+      const reveal = seg(x, ...opening.reveal);
+      set('--opening-opacity', 1 - seg(x, opening.match, opening.match + .12));
+      set('--opening-mask', mix(1, .6, reveal));
+      set('--mobile-shade-opacity', (1 - .6 * reveal * (1 - seg(x, 1.1, 1.25))) * (1 - seg(x, 4.55, 4.8)));
+      if (openingVideo.current) {
+        const frame = openingFrame(element.clientWidth, element.clientHeight, x, useFilm.getState().controls);
+        Object.assign(openingVideo.current.style, { width: `${frame.w}px`, height: `${frame.h}px`, left: `${frame.left}px`, top: `${frame.top}px` });
+      }
       set('--canvas-opacity', 1 - seg(x, 11.5, 12.1));
       element.querySelectorAll<HTMLElement>('.film-ghost').forEach((ghost, i) => {
         const { from, to } = ghosts[i];
@@ -156,7 +163,7 @@ export default function FilmSequence() {
       set('--map-opacity', seg(x, 14.5, 15));
       set('--map-scale', mix(.62, 1, seg(x, 14.5, 15.8)));
       set('--route-draw', 1 - seg(x, 14.6, 15.4));
-      targets[0] = 10.5 * seg(x, 0, 3.2);
+      targets[0] = openingTime(x);
       targets[1] = 13.5 * seg(x, 10.8, 13.4);
       targets[2] = 19.5 * seg(x, 13, 15.1);
       seek();
@@ -175,12 +182,18 @@ export default function FilmSequence() {
         }
       });
     };
+    // La vidéo d'ouverture se cale au-dessus des commandes : leur position est mesurée à chaque redimensionnement.
+    const footer = element.querySelector<HTMLElement>('.film-footer');
+    const measure = () => useFilm.getState().setControls(footer ? footer.offsetTop / Math.max(1, element.clientHeight) : 1);
+    measure();
     paint();
     videos.forEach((video) => video?.addEventListener('seeked', seek));
+    window.addEventListener('resize', measure);
     window.addEventListener('resize', paint);
     const unsubscribe = useFilm.subscribe(paint);
     return () => {
       unsubscribe();
+      window.removeEventListener('resize', measure);
       window.removeEventListener('resize', paint);
       videos.forEach((video) => video?.removeEventListener('seeked', seek));
       scrambles.forEach((cancel) => cancel());
@@ -191,7 +204,9 @@ export default function FilmSequence() {
     const element = track.current;
     const stageHeight = stage.current?.offsetHeight ?? window.innerHeight;
     if (!element) return;
-    scrollImmediately(window.scrollY + element.getBoundingClientRect().top + chapters[index].start / screens * (element.offsetHeight - stageHeight));
+    // Atteindre le texte pleinement visible, après son fondu d’entrée.
+    const destination = Math.max(chapters[index].start, cards[index].from + .2);
+    scrollImmediately(window.scrollY + element.getBoundingClientRect().top + destination / screens * (element.offsetHeight - stageHeight));
   };
   const changeMode = () => {
     setSimple((value) => !value);
@@ -202,8 +217,8 @@ export default function FilmSequence() {
   return <section id="le-voyage" ref={track} className="film" style={{ height: `${(screens + 1) * 100}svh` }} aria-label="Le voyage du matériel scientifique, de l’Europe à la RDC">
     <div ref={stage} className="film-stage">
       <div className="film-progress" aria-hidden="true" />
-      <div className="film-video film-lab" aria-hidden="true">
-        {near && <video ref={lab} src={`${media.lab}.mp4`} poster={`${media.lab}.jpg`} muted playsInline preload="auto" />}
+      <div className="film-video film-opening" aria-hidden="true">
+        {near && <video ref={openingVideo} src={`${media.opening}.mp4`} poster={`${media.opening}.jpg`} muted playsInline preload="auto" />}
       </div>
       {ghosts.map((ghost) => <p key={ghost.word} className={`film-ghost is-${ghost.tone}`} aria-hidden="true">{ghost.word}</p>)}
       <div className="film-canvas" aria-hidden="true">
@@ -238,24 +253,29 @@ export default function FilmSequence() {
       <div className="film-cards">
         {cards.map((card, i) => {
           const Heading = i === 0 ? 'h1' : 'h2';
-          return <div key={card.id} className={`film-card is-${card.place} is-${card.tone}${card.id === 'navire' ? ' is-echo' : ''}${card.title.length > 40 ? ' is-long' : ''}`} aria-hidden="true">
+          return <div key={card.id} className={`film-card is-${card.place} is-${card.tone}${card.title.length > 40 ? ' is-long' : ''}`} aria-hidden="true">
             <p className="film-kicker">{card.kicker}</p>
-            <Heading aria-label={card.title} data-echo={card.title}><span className="film-title-text" aria-hidden="true">{card.title}</span></Heading>
+            <Heading aria-label={card.title}><span className="film-title-text" aria-hidden="true">{card.title}</span></Heading>
             {card.text && <p className="film-text">{card.text}</p>}
             {card.id === 'arrivee' && <a href="#decouvrir" className="film-link">Découvrir le projet <ArrowUpRight size={18} aria-hidden="true" /></a>}
           </div>;
         })}
       </div>
-      <div className="film-bottom">
-        <a href="#decouvrir" className="film-skip"><MoveDown size={18} aria-hidden="true" /><span>Passer le film</span></a>
-        <nav className="film-chapters" aria-label="Étapes du voyage">
-          {chapters.map((chapter, i) => <button key={chapter.label} type="button" aria-label={`Étape ${i + 1} : ${chapter.label}`} aria-current={i === active ? 'step' : undefined} onClick={() => seekChapter(i)}>
-            <span>0{i + 1}</span><span className="film-chapter-label">{chapter.label}</span>
-          </button>)}
-        </nav>
-        <button type="button" className="film-mode" onClick={changeMode}>Lecture simple</button>
+      <div className="film-footer">
+        <div className="film-bottom">
+          <a href="#decouvrir" className="film-skip"><MoveDown size={18} aria-hidden="true" /><span>Passer le film</span></a>
+          <nav className="film-chapters" aria-label="Étapes du voyage">
+            {chapters.map((chapter, i) => <button key={chapter.label} type="button" aria-label={`Étape ${i + 1} : ${chapter.label}`} aria-current={i === active ? 'step' : undefined} onClick={() => seekChapter(i)}>
+              <span>0{i + 1}</span><span className="film-chapter-label">{chapter.label}</span>
+            </button>)}
+          </nav>
+          <button type="button" className="film-mode" onClick={changeMode}>Lecture simple</button>
+        </div>
+        <details className="film-credits">
+          <summary>Images d’illustration · Crédits</summary>
+          <p data-lenis-prevent>{credits}</p>
+        </details>
       </div>
-      <p className="film-credits">{credits}</p>
     </div>
   </section>;
 }

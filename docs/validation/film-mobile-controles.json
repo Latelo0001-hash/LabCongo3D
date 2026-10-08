@@ -1,0 +1,19 @@
+{
+  "checks": [
+    "1440 × 900 : huit chapitres lisibles, commandes accessibles sans chevauchement, pas de débordement",
+    "1440 px : crédits ouverts/fermés au clavier, panneau au-dessus des commandes",
+    "820 × 1180 : huit chapitres lisibles, commandes accessibles sans chevauchement, pas de débordement",
+    "820 px : crédits ouverts/fermés au clavier, panneau au-dessus des commandes",
+    "390 × 844 : huit chapitres lisibles, commandes accessibles sans chevauchement, pas de débordement",
+    "390 px : crédits ouverts/fermés au clavier, panneau au-dessus des commandes",
+    "320 × 568 : huit chapitres lisibles, commandes accessibles sans chevauchement, pas de débordement",
+    "320 px : crédits ouverts/fermés au clavier, panneau au-dessus des commandes",
+    "Lecture simple : huit chapitres conservés",
+    "Mouvements réduits : huit chapitres, sans canvas ni vidéo",
+    "Premier chapitre à 320 × 568 et 820 × 1180 : espacement sous le logo, texte au-dessus des commandes",
+    "Compilation TypeScript/Vite et lint réussis"
+  ],
+  "errors": [],
+  "date": "2026-10-07",
+  "environment": "Chrome pour macOS, rendu WebGL logiciel, version compilée"
+}

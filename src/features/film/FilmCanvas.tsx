@@ -2,12 +2,11 @@ import { Suspense, useEffect, useMemo, useRef } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import { Box3, BoxGeometry, DirectionalLight, ExtrudeGeometry, Group, InstancedMesh, Matrix4, Mesh, MeshStandardMaterial, Quaternion, Shape, Vector3 } from 'three';
-import type { Object3D, PerspectiveCamera } from 'three';
-import { useRoomEnvironment } from '../immersive/useRoomEnvironment';
-import { useSceneAssets } from '../immersive/sceneAssets';
-import { mix } from '../immersive/timeline';
+import type { Camera, Object3D, PerspectiveCamera } from 'three';
+import { useRoomEnvironment } from './useRoomEnvironment';
+import { useSceneAssets } from './sceneAssets';
 import { useFilm } from './useFilm';
-import { at, fov, framing, road, roadLength, roadPoint, seg, travel, workshop } from './filmTimeline';
+import { at, flask, fov, framing, mix, opening, openingFrame, road, roadLength, roadPoint, seg, travel, workshop } from './filmTimeline';
 
 const files = {
   truck: '/models/immersive/scania-truck.glb',
@@ -23,15 +22,25 @@ type Vec = readonly [number, number, number];
 const truckModel = { scale: .18, wheelRadius: .536, forward: new Vector3(-17.96, 0, 15.24).normalize(), fifthWheel: new Vector3(18.25, 6.53, -22.21) };
 
 // Récolte : place dans l'arc (par rapport à son centre), point d'entrée, arrivée et mise en caisse, en écrans.
+// La fiole n'a pas de point d'entrée fixe : elle prend la place de l'erlenmeyer filmé (voir `opening` dans filmTimeline).
 const gathered: { name: string; slot: Vec; from: Vec; arrive: readonly [number, number]; pack: readonly [number, number]; scale: number; base: number }[] = [
-  { name: 'Microscope', slot: [0, .62, -.2], from: [0, .25, .7], arrive: [.8, 1.3], pack: [3.45, 3.8], scale: .7, base: .79 },
-  { name: 'Flask', slot: [-1.8, -.35, .2], from: [-9, -1, 2], arrive: [.9, 1.35], pack: [3.6, 3.95], scale: 1.6, base: 0 },
+  { name: 'Microscope', slot: [0, .62, -.2], from: [0, -4.5, .7], arrive: [1, 1.45], pack: [3.45, 3.8], scale: .7, base: .79 },
+  { name: 'Flask', slot: [-1.8, -.35, .2], from: [0, 0, .2], arrive: [opening.match, 1.3], pack: [3.6, 3.95], scale: 1.6, base: 0 },
   { name: 'Beaker', slot: [-.95, .15, 0], from: [-5, 6, 0], arrive: [1.3, 1.75], pack: [3.75, 4.1], scale: 1.6, base: 0 },
   { name: 'Balance', slot: [.95, .2, 0], from: [5, 6, 0], arrive: [1.7, 2.15], pack: [3.9, 4.2], scale: 1.6, base: 0 },
   { name: 'Cylinder', slot: [1.8, -.35, .2], from: [9, -1, 2], arrive: [2.1, 2.55], pack: [4, 4.3], scale: 1.6, base: 0 },
 ];
+// Hauteur de la fiole générée (labware-v2), origine à sa base.
+const flaskHeight = .665;
 const crateAt = { y: -.9, z: .3, scale: .9 } as const;
 const containerZ = crateAt.z - 5;
+
+// Point du plan de profondeur `z` qui s'affiche en (sx, sy), en pixels de l'écran.
+function onPlane(camera: Camera, size: { width: number; height: number }, sx: number, sy: number, z: number, out: Vector3, direction: Vector3) {
+  out.set(sx / size.width * 2 - 1, 1 - sy / size.height * 2, .5).unproject(camera);
+  direction.copy(out).sub(camera.position);
+  return out.copy(camera.position).addScaledVector(direction, (z - camera.position.z) / direction.z);
+}
 
 function shade(scene: Object3D) {
   scene.traverse((object) => {
@@ -126,6 +135,7 @@ function Workshop() {
   const crate = useRef<Group>(null);
   const container = useRef<Group>(null);
   const spreader = useRef<Group>(null);
+  const probe = useMemo(() => ({ foot: new Vector3(), head: new Vector3(), direction: new Vector3() }), []);
 
   useEffect(() => {
     parts.current = {
@@ -136,7 +146,7 @@ function Workshop() {
     };
   }, [items, assets]);
 
-  useFrame(() => {
+  useFrame(({ camera, size }) => {
     if (!crate.current || !container.current || !spreader.current) return;
     const x = at(useFilm.getState().progress);
     const { items: objects, lid, left, right } = parts.current;
@@ -144,15 +154,26 @@ function Workshop() {
     const crateY = cy + mix(crateAt.y - 4, crateAt.y, seg(x, 3, 3.4)) + .12 * seg(x, 5.15, 5.25);
     const crateZ = mix(crateAt.z, containerZ + .3, seg(x, 5.25, 5.7));
 
+    // Raccord : la base et la hauteur de l'erlenmeyer filmé, ramenées dans le plan de la fiole 3D.
+    camera.updateMatrixWorld();
+    const frame = openingFrame(size.width, size.height, x, useFilm.getState().controls);
+    const sx = frame.left + flask.u * frame.w, sy = frame.top + flask.base * frame.h;
+    const matchZ = gathered[1].slot[2];
+    const foot = onPlane(camera, size, sx, sy, matchZ, probe.foot, probe.direction);
+    const head = onPlane(camera, size, sx, sy - flask.height * frame.h, matchZ, probe.head, probe.direction);
+
     objects.forEach((object, i) => {
       const item = gathered[i];
-      const next = gathered[i + 1]?.arrive[1] ?? 3.2;
+      const matched = item.name === 'Flask';
+      // Objet suivant dans l'ordre d'arrivée, qui prend le relais de la mise en avant.
+      const next = Math.min(3.2, ...gathered.map((other) => other.arrive[1]).filter((end) => end > item.arrive[1]));
       const arrive = seg(x, item.arrive[0], item.arrive[1]);
       const feature = seg(x, item.arrive[1] - .15, item.arrive[1]) * (1 - seg(x, next - .15, next));
       const pack = seg(x, item.pack[0], item.pack[1]);
+      const from: Vec = matched ? [foot.x - cx, foot.y - cy - item.base, matchZ] : item.from;
       // Arrivée en tournoyant, puis mise en avant tant que l'objet suivant n'est pas arrivé.
-      let px = mix(item.from[0], item.slot[0], arrive), py = mix(item.from[1], item.slot[1], arrive) + item.base, pz = mix(item.from[2], item.slot[2], arrive) + .45 * feature;
-      let scale = (i === 0 ? mix(.82, item.scale, arrive) : item.scale) * (1 + .14 * feature);
+      let px = mix(from[0], item.slot[0], arrive), py = mix(from[1], item.slot[1], arrive) + item.base, pz = mix(from[2], item.slot[2], arrive) + .45 * feature;
+      let scale = (matched ? mix((head.y - foot.y) / flaskHeight, item.scale, arrive) : item.scale) * (1 + .14 * feature);
       // Mise en caisse : au-dessus de l'ouverture, puis descente à l'intérieur.
       const above = Math.min(1, pack * 2), inside = Math.max(0, pack * 2 - 1);
       px = mix(px, 0, above);
@@ -162,7 +183,7 @@ function Workshop() {
       object.position.set(cx + px, cy + py, pz);
       object.scale.setScalar(scale);
       object.rotation.set(0, (i === 0 ? -.6 : (1 - arrive) * 5) + x * .35 - pack * 1.2, 0);
-      object.visible = (i === 0 || x > item.arrive[0] - .05) && pack < .97;
+      object.visible = x >= item.arrive[0] && pack < .97;
     });
 
     crate.current.visible = x > 2.95 && x < 6.3;

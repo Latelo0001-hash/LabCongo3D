@@ -299,10 +299,11 @@ function lathe(g,name,points,mat,segments=48) {
 function labware() {
   // Matériel collecté avec le microscope ; chaque objet a sa base à l'origine de son groupe.
   const g=group(null,'Laboratory equipment');
+  // Erlenmeyer haut et étroit, aux proportions de celui filmé à l'ouverture du film.
   const flask=group(g,'Flask');
-  lathe(flask,'Flask glass',[[0,0],[.25,0],[.27,.02],[.27,.045],[.09,.42],[.075,.46],[.075,.62],[.092,.64],[.092,.665],[.07,.665]],'glass');
-  lathe(flask,'Flask solution',[[0,.012],[.245,.012],[.25,.03],[.17,.2],[0,.2]],'liquidBlue');
-  for(let i=0;i<3;i++) box(flask,'Flask graduation',[.07-i*.012,.006,.004],'paper',[0,.08+i*.06,.255-i*.035],0,[-.35,0,0]);
+  lathe(flask,'Flask glass',[[0,0],[.15,0],[.165,.02],[.165,.045],[.07,.44],[.06,.47],[.06,.62],[.074,.64],[.074,.665],[.056,.665]],'glass');
+  lathe(flask,'Flask solution',[[0,.012],[.15,.012],[.155,.03],[.12,.18],[0,.18]],'liquidBlue');
+  for(let i=0;i<3;i++) box(flask,'Flask graduation',[.05-i*.01,.006,.004],'paper',[0,.08+i*.06,.158-i*.014],0,[-.24,0,0]);
   const beaker=group(g,'Beaker');
   lathe(beaker,'Beaker glass',[[0,0],[.2,0],[.215,.015],[.215,.5],[.235,.525],[.215,.525]],'glass');
   lathe(beaker,'Beaker solution',[[0,.012],[.205,.012],[.205,.22],[0,.22]],'liquidAmber');
