@@ -7,6 +7,7 @@ import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { scrollImmediately } from '../../lib/lenis';
 import { at, backdrop, cards, chapterAt, chapters, clamp, equipment, equipmentAt, milestones, mix, opening, openingFrame, openingTime, screens, seg, steps, stripWidth, deckLane } from './filmTimeline';
 import { useFilm, useFilmScroll } from './useFilm';
+import { scramble } from './scramble';
 import './film.css';
 
 const FilmCanvas = lazy(() => import('./FilmCanvas'));
@@ -29,20 +30,6 @@ const credits = <>
   Images d’illustration : elles ne montrent pas des actions de LabCongo · Récolte : séquence générée · Navire : vidéos de bellergy (Pixabay) et Alexander Bobrov (Pexels) · Camion : « <a href="https://sketchfab.com/3d-models/scania-truck-59889032d0ad457c81d7e058c79eedf8" target="_blank" rel="noreferrer">Scania truck</a> » de PAndras, <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank" rel="noreferrer">CC BY 4.0</a>, allégé et sans logo · Carte : geoBoundaries, © OpenStreetMap (ODbL)
 </>;
 
-// Les lettres se décodent avant de se fixer, comme dans la référence.
-function scramble(element: HTMLElement, text: string) {
-  const glyphs = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  const start = performance.now();
-  let frame = 0;
-  const step = (now: number) => {
-    const t = Math.min(1, (now - start) / 700);
-    const settled = Math.floor(t * text.length);
-    element.textContent = [...text].map((char, i) => i < settled || char === ' ' ? char : glyphs[Math.floor(Math.random() * glyphs.length)]).join('');
-    if (t < 1) frame = requestAnimationFrame(step);
-  };
-  frame = requestAnimationFrame(step);
-  return () => { cancelAnimationFrame(frame); element.textContent = text; };
-}
 
 function StaticFilm({ onAnimate }: { onAnimate?: () => void }) {
   const images: Record<string, [string, string]> = {
