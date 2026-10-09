@@ -6,7 +6,7 @@ import type { Camera, Object3D, PerspectiveCamera } from 'three';
 import { useRoomEnvironment } from './useRoomEnvironment';
 import { useSceneAssets } from './sceneAssets';
 import { useFilm } from './useFilm';
-import { at, flask, fov, framing, mix, opening, openingFrame, road, roadLength, roadPoint, seg, travel, workshop } from './filmTimeline';
+import { at, flask, fov, framing, laneOffset, mix, opening, openingFrame, road, roadLength, roadPoint, seg, travel, workshop } from './filmTimeline';
 
 const files = {
   truck: '/models/immersive/scania-truck.glb',
@@ -300,7 +300,8 @@ function CameraRig() {
     const studio: Shot = { x: wide ? workshop.x : workshop.arcX, y: workshop.arcY + mix(wide ? .6 : 0, .1, seg(x, 3, 3.5)), z: 0, distance: frame.studio, elevation: mix(.06, .2, seg(x, 3, 3.6)), azimuth: 0 };
     const loading: Shot = { x: workshop.arcX, y: 1.4, z: containerZ / 2, distance: frame.studio * 1.05, elevation: .24, azimuth: .55 };
     const side: Shot = { x: king.x - shift, y: 2, z: king.z, distance: frame.side, elevation: .04, azimuth: 0 };
-    const top: Shot = { x: king.x, y: 0, z: king.z, distance: frame.top, elevation: Math.PI / 2, azimuth: 0 };
+    // Vue du ciel, la route se place dans le couloir du navire filmé (voir deckLane).
+    const top: Shot = { x: king.x + laneOffset(aspect), y: 0, z: king.z, distance: frame.top, elevation: Math.PI / 2, azimuth: 0 };
     const shot = blend(blend(blend(studio, loading, seg(x, 4.6, 5.2)), side, seg(x, 6.45, 7)), top, seg(x, 9.2, 10.8));
     const { distance, elevation, azimuth } = shot;
     target.set(shot.x, shot.y, shot.z);

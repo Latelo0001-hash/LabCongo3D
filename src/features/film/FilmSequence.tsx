@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getProvinceShapes } from '../../services/provinces.api';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { scrollImmediately } from '../../lib/lenis';
-import { at, backdrop, cards, chapterAt, chapters, clamp, equipment, equipmentAt, milestones, mix, opening, openingFrame, openingTime, screens, seg, steps, stripWidth } from './filmTimeline';
+import { at, backdrop, cards, chapterAt, chapters, clamp, equipment, equipmentAt, milestones, mix, opening, openingFrame, openingTime, screens, seg, steps, stripWidth, deckLane } from './filmTimeline';
 import { useFilm, useFilmScroll } from './useFilm';
 import './film.css';
 
@@ -26,7 +26,7 @@ const ghosts = [
   { word: 'Acheminer', from: 6, to: 9.8, tone: 'dark' },
 ] as const;
 const credits = <>
-  Images d’illustration : elles ne montrent pas des actions de LabCongo · Récolte : séquence générée · Navire : vidéos de K et Alexander Bobrov (Pexels) · Camion : « <a href="https://sketchfab.com/3d-models/scania-truck-59889032d0ad457c81d7e058c79eedf8" target="_blank" rel="noreferrer">Scania truck</a> » de PAndras, <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank" rel="noreferrer">CC BY 4.0</a>, allégé et sans logo · Carte : geoBoundaries, © OpenStreetMap (ODbL)
+  Images d’illustration : elles ne montrent pas des actions de LabCongo · Récolte : séquence générée · Navire : vidéos de Ярослав Гарник et Alexander Bobrov (Pexels) · Camion : « <a href="https://sketchfab.com/3d-models/scania-truck-59889032d0ad457c81d7e058c79eedf8" target="_blank" rel="noreferrer">Scania truck</a> » de PAndras, <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank" rel="noreferrer">CC BY 4.0</a>, allégé et sans logo · Carte : geoBoundaries, © OpenStreetMap (ODbL)
 </>;
 
 // Les lettres se décodent avant de se fixer, comme dans la référence.
@@ -155,9 +155,9 @@ export default function FilmSequence() {
       element.querySelectorAll<HTMLElement>('.film-steps li').forEach((item, i) => item.classList.toggle('is-active', i <= Math.floor(seg(x, 3.3, 4.5) * 3.999)));
       set('--band-shift', `${mix(0, -55, seg(x, 6.8, 9.4))}%`);
       set('--band-opacity', seg(x, 6.6, 7.2) * (1 - seg(x, 9, 9.6)));
-      // Vue du ciel, la route s'ouvre sur le pont du navire : d'abord dans le couloir, puis plein écran.
-      const side = mix(50 - stripWidth(aspect) * 50, 0, seg(x, 11.3, 12));
-      set('--reveal-clip', `inset(${mix(100, 0, seg(x, 10.8, 11.3))}% ${side}% 0 ${side}%)`);
+      // Vue du ciel, la route s'ouvre sur le pont du navire : d'abord dans son couloir, puis plein écran.
+      const open = seg(x, 11.3, 12), half = stripWidth(aspect) * 50;
+      set('--reveal-clip', `inset(${mix(100, 0, seg(x, 10.8, 11.3))}% ${mix(100 - deckLane * 100 - half, 0, open)}% 0 ${mix(deckLane * 100 - half, 0, open)}%)`);
       set('--sea-opacity', seg(x, 13, 13.6));
       set('--sea-scale', mix(1.18, 1, seg(x, 13, 14.8)));
       set('--shade-opacity', seg(x, 13.2, 13.8) * .3 + seg(x, 14.5, 15.1) * .45);

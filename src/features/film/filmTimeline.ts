@@ -97,6 +97,12 @@ export function stripWidth(aspect: number) {
   return road.width / (framing(aspect).top * spread * aspect);
 }
 
+// Dans le plan du pont, le navire est centré à 29 % de la largeur : la route vue du ciel s'aligne sur ce couloir.
+export const deckLane = .29;
+export function laneOffset(aspect: number) {
+  return (.5 - deckLane) * framing(aspect).top * spread * aspect;
+}
+
 // Fond de scène : atelier sombre, puis le jour de la logistique.
 const dark = [7, 20, 48], light = [233, 232, 228];
 export const backdrop = (x: number) => dark.map((value, i) => Math.round(mix(value, light[i], seg(x, 4.6, 5)))).join(', ');

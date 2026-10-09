@@ -108,3 +108,6 @@
   .film-text { font-size: 12px; line-height: 1.5; margin-top: 14px; }
   .film-equipment, .film-steps { display: none; }
 }
+
+/* Le navire du plan du pont est à 29 % de la largeur : il reste dans son couloir sur les écrans en hauteur. */
+.film-deck video { object-position: 29% 50%; }
