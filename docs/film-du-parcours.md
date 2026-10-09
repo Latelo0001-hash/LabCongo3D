@@ -4,7 +4,7 @@ Demande : présenter la suite du voyage comme dans la vidéo de référence part
 
 ## Séquence actuelle
 
-Le film **ouvre l’accueil** dans `Home.tsx` et remplace l’ancien bloc `ImmersiveJourney`, retiré du code le 8 octobre 2026. Il est suivi de `JourneyAccess`, des contenus « Le projet en détail » et du CTA. Un progrès unique 0 → 1 pilote caméra, objets, textes et vidéos ; `filmTimeline.ts` l’exprime en **13,55 écrans de défilement** (route resserrée le 9 octobre 2026 : 1,4 écran au lieu de 3,65, dont 0,6 après le virage). La piste mesure 14,55 hauteurs d’écran, dont une occupée par la scène fixe.
+Le film **ouvre l’accueil** dans `Home.tsx` et remplace l’ancien bloc `ImmersiveJourney`, retiré du code le 8 octobre 2026. Il est suivi de `JourneyAccess`, des contenus « Le projet en détail » et du CTA. Un progrès unique 0 → 1 pilote caméra, objets, textes et vidéos ; `filmTimeline.ts` l’exprime en **12,92 écrans de défilement** (route resserrée le 9 octobre 2026 : 0,6 écran de profil, 0,8 pour le virage et 0,6 après, au lieu de 3,65 en tout). La piste mesure 13,92 hauteurs d’écran, dont une occupée par la scène fixe.
 
 | Chapitre | Début, en écrans | Contenu et raccord |
 | --- | --- | --- |
@@ -13,9 +13,9 @@ Le film **ouvre l’accueil** dans `Home.tsx` et remplace l’ancien bloc `Immer
 | Assemblage | 3,2 | Vérification, descente des objets dans la caisse, fermeture du couvercle |
 | Conteneur | 4,9 | Entrée de la caisse, fermeture des portes, levage du conteneur |
 | Route | 6,9 | Chargement sur la remorque, départ du camion, virage et montée de caméra |
-| Navire | 9,55 | Vue aérienne : la route s’ouvre sur la vidéo du pont du navire |
-| Traversée | 11,15 | Vidéo du porte-conteneurs en mer |
-| Arrivée | 12,75 | Carte de la RDC et tracé schématique jusqu’à l’embouchure |
+| Navire | 8,92 | Vue aérienne : la route s’ouvre sur la vidéo du pont du navire |
+| Traversée | 10,52 | Vidéo du porte-conteneurs en mer |
+| Arrivée | 12,12 | Carte de la RDC et tracé schématique jusqu’à l’embouchure |
 
 Les vidéos suivent le défilement dans les deux sens. La séquence de la récolte se charge à l’approche du film ; les deux vidéos maritimes et la carte se chargent après les modèles. Le film se trouvant en tête de page, l’approche correspond désormais à l’ouverture de l’accueil.
 

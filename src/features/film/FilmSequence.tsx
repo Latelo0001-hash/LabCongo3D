@@ -23,7 +23,7 @@ const route = 'M-300 -180C-260 60-60 360 76 374';
 const ghosts = [
   { word: 'Collecter', from: 1, to: 3, tone: 'light' },
   { word: 'Préparer', from: 3, to: 4.6, tone: 'light' },
-  { word: 'Acheminer', from: 6, to: 8.6, tone: 'dark' },
+  { word: 'Acheminer', from: 6, to: 7.97, tone: 'dark' },
 ] as const;
 const credits = <>
   Images d’illustration : elles ne montrent pas des actions de LabCongo · Récolte : séquence générée · Navire : vidéos de bellergy (Pixabay) et Alexander Bobrov (Pexels) · Camion : « <a href="https://sketchfab.com/3d-models/scania-truck-59889032d0ad457c81d7e058c79eedf8" target="_blank" rel="noreferrer">Scania truck</a> » de PAndras, <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank" rel="noreferrer">CC BY 4.0</a>, allégé et sans logo · Carte : geoBoundaries, © OpenStreetMap (ODbL)
@@ -143,7 +143,7 @@ export default function FilmSequence() {
         const frame = openingFrame(element.clientWidth, element.clientHeight, x, useFilm.getState().controls);
         Object.assign(openingVideo.current.style, { width: `${frame.w}px`, height: `${frame.h}px`, left: `${frame.left}px`, top: `${frame.top}px` });
       }
-      set('--canvas-opacity', 1 - seg(x, 9.5, 9.85));
+      set('--canvas-opacity', 1 - seg(x, 8.87, 9.22));
       element.querySelectorAll<HTMLElement>('.film-ghost').forEach((ghost, i) => {
         const { from, to } = ghosts[i];
         ghost.style.opacity = String(seg(x, from, from + .4) * (1 - seg(x, to - .4, to)));
@@ -153,21 +153,21 @@ export default function FilmSequence() {
       element.querySelectorAll<HTMLElement>('.film-equipment li').forEach((item, i) => item.classList.toggle('is-active', i === equipmentAt(x)));
       set('--steps-opacity', seg(x, 3.2, 3.5) * (1 - seg(x, 4.4, 4.65)));
       element.querySelectorAll<HTMLElement>('.film-steps li').forEach((item, i) => item.classList.toggle('is-active', i <= Math.floor(seg(x, 3.3, 4.5) * 3.999)));
-      set('--band-shift', `${mix(0, -55, seg(x, 6.8, 8.38))}%`);
-      set('--band-opacity', seg(x, 6.6, 7.18) * (1 - seg(x, 8.16, 8.49)));
+      set('--band-shift', `${mix(0, -55, seg(x, 6.8, 7.75))}%`);
+      set('--band-opacity', seg(x, 6.6, 7.16) * (1 - seg(x, 7.64, 7.86)));
       // Vue du ciel, la route s'ouvre sur le pont du navire : d'abord dans son couloir, puis plein écran.
-      const open = seg(x, 9.4, 9.75), half = stripWidth(aspect) * 50;
-      set('--reveal-clip', `inset(${mix(100, 0, seg(x, 9.15, 9.4))}% ${mix(100 - deckLane * 100 - half, 0, open)}% 0 ${mix(deckLane * 100 - half, 0, open)}%)`);
-      set('--sea-opacity', seg(x, 10.75, 11.35));
-      set('--sea-scale', mix(1.18, 1, seg(x, 10.75, 12.55)));
-      set('--shade-opacity', seg(x, 10.95, 11.55) * .3 + seg(x, 12.25, 12.85) * .45);
-      set('--tint-opacity', seg(x, 9.4, 9.65) * .42 - seg(x, 10.95, 11.55) * .27 + seg(x, 12.25, 12.85) * .4);
-      set('--map-opacity', seg(x, 12.25, 12.75));
-      set('--map-scale', mix(.62, 1, seg(x, 12.25, 13.55)));
-      set('--route-draw', 1 - seg(x, 12.35, 13.15));
+      const open = seg(x, 8.77, 9.12), half = stripWidth(aspect) * 50;
+      set('--reveal-clip', `inset(${mix(100, 0, seg(x, 8.52, 8.77))}% ${mix(100 - deckLane * 100 - half, 0, open)}% 0 ${mix(deckLane * 100 - half, 0, open)}%)`);
+      set('--sea-opacity', seg(x, 10.12, 10.72));
+      set('--sea-scale', mix(1.18, 1, seg(x, 10.12, 11.92)));
+      set('--shade-opacity', seg(x, 10.32, 10.92) * .3 + seg(x, 11.62, 12.22) * .45);
+      set('--tint-opacity', seg(x, 8.77, 9.02) * .42 - seg(x, 10.32, 10.92) * .27 + seg(x, 11.62, 12.22) * .4);
+      set('--map-opacity', seg(x, 11.62, 12.12));
+      set('--map-scale', mix(.62, 1, seg(x, 11.62, 12.92)));
+      set('--route-draw', 1 - seg(x, 11.72, 12.52));
       targets[0] = openingTime(x);
-      targets[1] = 13.5 * seg(x, 9.15, 11.15);
-      targets[2] = 19.5 * seg(x, 10.75, 12.85);
+      targets[1] = 13.5 * seg(x, 8.52, 10.52);
+      targets[2] = 19.5 * seg(x, 10.12, 12.22);
       seek();
       element.querySelectorAll<HTMLElement>('.film-card').forEach((card, i) => {
         const { id, from, to, title } = cards[i];

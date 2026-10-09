@@ -3,7 +3,7 @@ export const mix = (from: number, to: number, t: number) => from + (to - from) *
 const ease = (t: number) => t * t * (3 - 2 * t);
 
 // Le film se mesure en écrans de défilement : le progrès 0 → 1 couvre `screens` écrans.
-export const screens = 13.55;
+export const screens = 12.92;
 export const at = (p: number) => p * screens;
 // Avancement adouci de 0 à 1 entre deux repères, en écrans.
 export const seg = (x: number, from: number, to: number) => ease(clamp((x - from) / (to - from)));
@@ -14,9 +14,9 @@ export const chapters = [
   { label: 'Assemblage', start: 3.2 },
   { label: 'Conteneur', start: 4.9 },
   { label: 'Route', start: 6.9 },
-  { label: 'Navire', start: 9.55 },
-  { label: 'Traversée', start: 11.15 },
-  { label: 'Arrivée', start: 12.75 },
+  { label: 'Navire', start: 8.92 },
+  { label: 'Traversée', start: 10.52 },
+  { label: 'Arrivée', start: 12.12 },
 ] as const;
 export const chapterAt = (x: number) => chapters.reduce((current, chapter, i) => x >= chapter.start - .05 ? i : current, 0);
 
@@ -25,10 +25,10 @@ export const cards = [
   { id: 'materiel', from: 1.15, to: 2.95, place: 'left', tone: 'light', kicker: '02 / La récolte · Le matériel', title: 'Du matériel encore utile peut continuer à transmettre le savoir.', text: 'Microscopes, verrerie, balances, instruments de mesure : chaque équipement fonctionnel est repéré, puis rassemblé.' },
   { id: 'assemblage', from: 3.15, to: 4.55, place: 'left', tone: 'light', kicker: '03 / L’assemblage · Le soin', title: 'Protéger ce qui va transmettre.', text: 'Chaque instrument est vérifié, protégé, puis rejoint sa caisse.' },
   { id: 'conteneur', from: 4.85, to: 6.1, place: 'top-left', tone: 'dark', kicker: '04 / Le chargement · Le départ', title: 'Collecter en Europe. Préparer pour une nouvelle destination.', text: '' },
-  { id: 'route', from: 6.9, to: 8.11, place: 'top-left', tone: 'dark', kicker: '05 / La route · Le transfert', title: 'Prendre la route du port.', text: 'Le conteneur rejoint sa remorque. Un camion l’achemine jusqu’au port d’embarquement.' },
-  { id: 'navire', from: 9.5, to: 10.85, place: 'center', tone: 'light', kicker: '06 / La traversée · Le navire', title: 'Acheminer là où le matériel peut faire la différence.', text: '' },
-  { id: 'ocean', from: 11.05, to: 12.35, place: 'bottom-left', tone: 'light', kicker: '07 / Europe → Afrique → RDC', title: 'Traverser pour transmettre.', text: 'Le conteneur embarque pour un long voyage, jusqu’à la République démocratique du Congo.' },
-  { id: 'arrivee', from: 12.55, to: 14.65, place: 'left', tone: 'light', kicker: '08 / L’arrivée · La RDC', title: 'Une nouvelle étape commence.', text: 'Le matériel arrive en RDC. Il peut désormais rejoindre les écoles.' },
+  { id: 'route', from: 6.9, to: 7.8, place: 'top-left', tone: 'dark', kicker: '05 / La route · Le transfert', title: 'Prendre la route du port.', text: 'Le conteneur rejoint sa remorque. Un camion l’achemine jusqu’au port d’embarquement.' },
+  { id: 'navire', from: 8.87, to: 10.22, place: 'center', tone: 'light', kicker: '06 / La traversée · Le navire', title: 'Acheminer là où le matériel peut faire la différence.', text: '' },
+  { id: 'ocean', from: 10.42, to: 11.72, place: 'bottom-left', tone: 'light', kicker: '07 / Europe → Afrique → RDC', title: 'Traverser pour transmettre.', text: 'Le conteneur embarque pour un long voyage, jusqu’à la République démocratique du Congo.' },
+  { id: 'arrivee', from: 11.92, to: 14.02, place: 'left', tone: 'light', kicker: '08 / L’arrivée · La RDC', title: 'Une nouvelle étape commence.', text: 'Le matériel arrive en RDC. Il peut désormais rejoindre les écoles.' },
 ] as const;
 
 // Récolte : un plan de 1,9 s (l'équipe et le personnel d'un laboratoire autour d'un chariot), 1920 × 1080, sous le premier titre.
@@ -79,7 +79,7 @@ export function roadPoint(s: number) {
 }
 
 // Distance parcourue par l'attelage le long de la route, en mètres.
-export const travel = (x: number) => 25 + 48 * seg(x, 7.15, 8.38) + 47 * seg(x, 8.27, 9.15) + 12 * seg(x, 9.15, 9.75);
+export const travel = (x: number) => 25 + 48 * seg(x, 7.15, 7.75) + 47 * seg(x, 7.7, 8.52) + 12 * seg(x, 8.52, 9.12);
 
 // Cadrages, élargis sur les écrans étroits : atelier, vue de profil puis vue du ciel.
 export const fov = 20;
