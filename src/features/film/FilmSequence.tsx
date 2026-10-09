@@ -143,7 +143,7 @@ export default function FilmSequence() {
         const frame = openingFrame(element.clientWidth, element.clientHeight, x, useFilm.getState().controls);
         Object.assign(openingVideo.current.style, { width: `${frame.w}px`, height: `${frame.h}px`, left: `${frame.left}px`, top: `${frame.top}px` });
       }
-      set('--canvas-opacity', 1 - seg(x, 9.85, 10.45));
+      set('--canvas-opacity', 1 - seg(x, 9.5, 9.85));
       element.querySelectorAll<HTMLElement>('.film-ghost').forEach((ghost, i) => {
         const { from, to } = ghosts[i];
         ghost.style.opacity = String(seg(x, from, from + .4) * (1 - seg(x, to - .4, to)));
@@ -156,18 +156,18 @@ export default function FilmSequence() {
       set('--band-shift', `${mix(0, -55, seg(x, 6.8, 8.38))}%`);
       set('--band-opacity', seg(x, 6.6, 7.18) * (1 - seg(x, 8.16, 8.49)));
       // Vue du ciel, la route s'ouvre sur le pont du navire : d'abord dans son couloir, puis plein écran.
-      const open = seg(x, 9.65, 10.35), half = stripWidth(aspect) * 50;
-      set('--reveal-clip', `inset(${mix(100, 0, seg(x, 9.15, 9.65))}% ${mix(100 - deckLane * 100 - half, 0, open)}% 0 ${mix(deckLane * 100 - half, 0, open)}%)`);
-      set('--sea-opacity', seg(x, 11.35, 11.95));
-      set('--sea-scale', mix(1.18, 1, seg(x, 11.35, 13.15)));
-      set('--shade-opacity', seg(x, 11.55, 12.15) * .3 + seg(x, 12.85, 13.45) * .45);
-      set('--tint-opacity', seg(x, 9.65, 10.15) * .42 - seg(x, 11.55, 12.15) * .27 + seg(x, 12.85, 13.45) * .4);
-      set('--map-opacity', seg(x, 12.85, 13.35));
-      set('--map-scale', mix(.62, 1, seg(x, 12.85, 14.15)));
-      set('--route-draw', 1 - seg(x, 12.95, 13.75));
+      const open = seg(x, 9.4, 9.75), half = stripWidth(aspect) * 50;
+      set('--reveal-clip', `inset(${mix(100, 0, seg(x, 9.15, 9.4))}% ${mix(100 - deckLane * 100 - half, 0, open)}% 0 ${mix(deckLane * 100 - half, 0, open)}%)`);
+      set('--sea-opacity', seg(x, 10.75, 11.35));
+      set('--sea-scale', mix(1.18, 1, seg(x, 10.75, 12.55)));
+      set('--shade-opacity', seg(x, 10.95, 11.55) * .3 + seg(x, 12.25, 12.85) * .45);
+      set('--tint-opacity', seg(x, 9.4, 9.65) * .42 - seg(x, 10.95, 11.55) * .27 + seg(x, 12.25, 12.85) * .4);
+      set('--map-opacity', seg(x, 12.25, 12.75));
+      set('--map-scale', mix(.62, 1, seg(x, 12.25, 13.55)));
+      set('--route-draw', 1 - seg(x, 12.35, 13.15));
       targets[0] = openingTime(x);
-      targets[1] = 13.5 * seg(x, 9.15, 11.75);
-      targets[2] = 19.5 * seg(x, 11.35, 13.45);
+      targets[1] = 13.5 * seg(x, 9.15, 11.15);
+      targets[2] = 19.5 * seg(x, 10.75, 12.85);
       seek();
       element.querySelectorAll<HTMLElement>('.film-card').forEach((card, i) => {
         const { id, from, to, title } = cards[i];
