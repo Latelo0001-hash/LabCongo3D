@@ -26,7 +26,7 @@ const ghosts = [
   { word: 'Acheminer', from: 6, to: 9.8, tone: 'dark' },
 ] as const;
 const credits = <>
-  Images d’illustration : elles ne montrent pas des actions de LabCongo · Récolte : séquence générée · Navire : vidéos de Ярослав Гарник et Alexander Bobrov (Pexels) · Camion : « <a href="https://sketchfab.com/3d-models/scania-truck-59889032d0ad457c81d7e058c79eedf8" target="_blank" rel="noreferrer">Scania truck</a> » de PAndras, <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank" rel="noreferrer">CC BY 4.0</a>, allégé et sans logo · Carte : geoBoundaries, © OpenStreetMap (ODbL)
+  Images d’illustration : elles ne montrent pas des actions de LabCongo · Récolte : séquence générée · Navire : vidéos de bellergy (Pixabay) et Alexander Bobrov (Pexels) · Camion : « <a href="https://sketchfab.com/3d-models/scania-truck-59889032d0ad457c81d7e058c79eedf8" target="_blank" rel="noreferrer">Scania truck</a> » de PAndras, <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank" rel="noreferrer">CC BY 4.0</a>, allégé et sans logo · Carte : geoBoundaries, © OpenStreetMap (ODbL)
 </>;
 
 // Les lettres se décodent avant de se fixer, comme dans la référence.

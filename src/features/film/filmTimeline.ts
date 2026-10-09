@@ -97,8 +97,8 @@ export function stripWidth(aspect: number) {
   return road.width / (framing(aspect).top * spread * aspect);
 }
 
-// Dans le plan du pont, le navire est centré à 29 % de la largeur : la route vue du ciel s'aligne sur ce couloir.
-export const deckLane = .29;
+// Dans le plan du pont, le navire est centré à 48,5 % de la largeur : la route vue du ciel s'aligne sur ce couloir.
+export const deckLane = .485;
 export function laneOffset(aspect: number) {
   return (.5 - deckLane) * framing(aspect).top * spread * aspect;
 }
