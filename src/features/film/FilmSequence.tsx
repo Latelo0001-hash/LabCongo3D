@@ -72,6 +72,8 @@ export default function FilmSequence() {
   const sea = useRef<HTMLVideoElement>(null);
   const reduced = useMediaQuery('(prefers-reduced-motion: reduce)');
   const shortScreen = useMediaQuery('(max-height: 500px) and (max-width: 950px)');
+  // Les navires existent en 1080p pour les grands écrans et en 900p, plus légers, pour les téléphones.
+  const shipSize = useMediaQuery('(max-width: 999px)') ? '-900' : '';
   const [supported] = useState(() => {
     try {
       const context = document.createElement('canvas').getContext('webgl2');
@@ -236,10 +238,10 @@ export default function FilmSequence() {
       </ol>
       {/* Les vidéos du navire ne servent qu'à mi-parcours : elles se chargent une fois la scène prête. */}
       <div className="film-video film-deck" aria-hidden="true">
-        {ready && <video ref={deck} src={`${media.deck}.mp4`} poster={`${media.deck}.jpg`} muted playsInline preload="auto" />}
+        {ready && <video ref={deck} src={`${media.deck}${shipSize}.mp4`} poster={`${media.deck}.jpg`} muted playsInline preload="auto" />}
       </div>
       <div className="film-video film-sea" aria-hidden="true">
-        {ready && <video ref={sea} src={`${media.sea}.mp4`} poster={`${media.sea}.jpg`} muted playsInline preload="auto" />}
+        {ready && <video ref={sea} src={`${media.sea}${shipSize}.mp4`} poster={`${media.sea}.jpg`} muted playsInline preload="auto" />}
       </div>
       <div className="film-tint" aria-hidden="true" />
       <div className="film-shade" aria-hidden="true" />
