@@ -257,8 +257,8 @@ function Convoy() {
     // Le conteneur hissé dans l'atelier redescend sur la remorque quand la caméra arrive, puis le palonnier remonte.
     const drop = (1 - seg(x, 6.75, 7.05)) * 12;
     load.current.position.set(-2.2, 1.25 + drop, 0);
-    spreader.current.position.set(-2.2, 4.11 + drop + seg(x, 7.05, 7.5) * 16, 0);
-    spreader.current.visible = x < 7.6;
+    spreader.current.position.set(-2.2, 4.11 + drop + seg(x, 7.05, 7.34) * 16, 0);
+    spreader.current.visible = x < 7.4;
   });
 
   return <>
@@ -296,13 +296,13 @@ function CameraRig() {
     const frame = framing(aspect);
     const wide = aspect > 1;
     const king = roadPoint(travel(x));
-    const shift = (wide ? 4 + 3 * seg(x, 7.2, 8.8) : 0) * (1 - seg(x, 9, 10.4));
+    const shift = (wide ? 4 + 3 * seg(x, 7.18, 8.05) : 0) * (1 - seg(x, 8.16, 8.93));
     const studio: Shot = { x: wide ? workshop.x : workshop.arcX, y: workshop.arcY + mix(wide ? .6 : 0, .1, seg(x, 3, 3.5)), z: 0, distance: frame.studio, elevation: mix(.06, .2, seg(x, 3, 3.6)), azimuth: 0 };
     const loading: Shot = { x: workshop.arcX, y: 1.4, z: containerZ / 2, distance: frame.studio * 1.05, elevation: .24, azimuth: .55 };
     const side: Shot = { x: king.x - shift, y: 2, z: king.z, distance: frame.side, elevation: .04, azimuth: 0 };
     // Vue du ciel, la route se place dans le couloir du navire filmé (voir deckLane).
     const top: Shot = { x: king.x + laneOffset(aspect), y: 0, z: king.z, distance: frame.top, elevation: Math.PI / 2, azimuth: 0 };
-    const shot = blend(blend(blend(studio, loading, seg(x, 4.6, 5.2)), side, seg(x, 6.45, 7)), top, seg(x, 9.2, 10.8));
+    const shot = blend(blend(blend(studio, loading, seg(x, 4.6, 5.2)), side, seg(x, 6.45, 7)), top, seg(x, 8.27, 9.15));
     const { distance, elevation, azimuth } = shot;
     target.set(shot.x, shot.y, shot.z);
     camera.position.set(
