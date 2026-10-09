@@ -3,6 +3,7 @@ import FilmSequence from "../../features/film/FilmSequence";
 import JourneyAccess from "../../features/film/JourneyAccess";
 import HomeDetails from "./HomeDetails";
 import IntroSection from "./sections/IntroSection";
+import SchoolVideoSection from "./sections/SchoolVideoSection";
 import ProblemSection from "./sections/ProblemSection";
 import MissionSection from "./sections/MissionSection";
 import ProcessSection from "./sections/ProcessSection";
@@ -21,6 +22,7 @@ export default function Home() {
     <FilmSequence />
     <div className="home-content">
       <JourneyAccess />
+      <SchoolVideoSection />
       {/* L'essentiel de la présentation de LabCongo, toujours visible. */}
       <IntroSection />
       <ProblemSection />
