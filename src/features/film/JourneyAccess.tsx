@@ -8,6 +8,7 @@ const sections = [
   ['03', 'La réponse : LabCongo', '#mission'],
   ['04', 'Notre approche', '#approche'],
   ['05', 'Les résultats attendus', '#impact'],
+  ['06', 'Ancrer le projet en RDC', '#carte-rdc'],
 ];
 
 export default function JourneyAccess() {

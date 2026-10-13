@@ -19,15 +19,18 @@ export default function Header({ immersive = false }: { immersive?: boolean }) {
         </Link>
         <Navigation />
         <Link className="header-cta" to="/faire-un-don">
-          Soutenir le projet <ArrowUpRight size={16} />
+          Soutenir le projet <ArrowUpRight size={16} aria-hidden="true" />
         </Link>
         <button
+          type="button"
           className="menu-toggle"
           aria-label="Ouvrir le menu"
+          aria-haspopup="dialog"
+          aria-controls="mobile-navigation"
           aria-expanded={open}
           onClick={() => setOpen(true)}
         >
-          <Menu />
+          <Menu aria-hidden="true" />
         </button>
       </header>
       <MobileMenu />

@@ -88,7 +88,7 @@
 .home-content .journey-access-links a { padding: 18px 0; font-size: 1rem; line-height: 1.5; color: #fff; border-color: #ffffff26; }
 .home-content .journey-access-links a svg { color: var(--brand-yellow); }
 .home-content .journey-access-links a:hover { color: var(--brand-yellow); }
-.home-content .home-section-nav { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; margin-top: 60px; border-top: 1px solid #ffffff38; }
+.home-content .home-section-nav { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0; margin-top: 60px; border-top: 1px solid #ffffff38; }
 .home-content .home-section-nav a { display: flex; align-items: center; gap: 12px; min-width: 0; min-height: 88px; padding: 20px 18px; font-size: 1rem; line-height: 1.4; border-right: 1px solid #ffffff24; }
 .home-content .home-section-nav a:first-child { padding-left: 0; }
 .home-content .home-section-nav a:last-child { border-right: 0; }

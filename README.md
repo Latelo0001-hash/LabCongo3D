@@ -4,7 +4,7 @@ Projet React indépendant du site PHP historique. L’accueil présente un film 
 
 ## Pack visuel de la nouvelle expérience
 
-L’image maître et les trois personnages sont validés. Six nouvelles références fixes couvrent le laboratoire, le matériel, la mise en caisse et le conteneur : voir la [galerie de revue](docs/media-pack/revue.html) et le [pack média en préparation](docs/media-pack/README.md), avec l’inventaire des 21 médias. Les cinq copies WebP de l’ancien accueil à cinq scènes restent dans `public/media/experience/web/`, mais aucun code ne les affiche plus : le composant `ImmersiveJourney` a été retiré le 8 octobre 2026. L’accueil actuel utilise trois vidéos d’illustration locales (séquence générée de la récolte, pont du navire, navire en mer), un camion importé et les objets de continuité. Le pack d’images générées constitue une référence antérieure ; il ne décrit plus à lui seul l’accueil.
+L’image maître et les trois personnages sont validés. Six nouvelles références fixes couvrent le laboratoire, le matériel, la mise en caisse et le conteneur : voir la [galerie de revue](docs/media-pack/revue.html) et le [pack média en préparation](docs/media-pack/README.md), avec l’inventaire des 21 médias. Les cinq copies WebP de l’ancien accueil à cinq scènes restent dans `public/media/experience/web/`, mais aucun code ne les affiche plus : le composant `ImmersiveJourney` a été retiré le 8 octobre 2026. L’accueil actuel utilise trois vidéos d’illustration locales (expérience de chimie d’un enfant, pont du navire, navire en mer), un camion importé et les objets de continuité. Le pack d’images générées constitue une référence antérieure ; il ne décrit plus à lui seul l’accueil.
 
 ## Lancer
 
@@ -26,6 +26,7 @@ npm run preview
 ## Architecture
 
 - `src/app` : providers et routes avec chargement différé.
+- `index.html` et `src/lib/splash.ts` : écran de chargement avec l’icône LabCongo, affiché avant le JavaScript (icône intégrée à la page), puis retiré en fondu quand la première page est prête. `Loader` reprend le même écran pour le chargement d’une page.
 - `src/features/film` : accueil actuel, huit chapitres, une scène R3F persistante, vidéos pilotées au défilement, navigation et lecture simple. Le dossier regroupe aussi les matériaux, l’environnement lumineux et les fonctions d’interpolation repris de l’ancien accueil à cinq scènes, dont le code a été retiré le 8 octobre 2026 (historique git, commit `64cbf4a`).
 - `src/pages/Home/sections` : cinq sections de présentation visibles après le film ; sections 06 à 15 chargées à l’ouverture de « Le projet en détail », puis appel à participer. Un sommaire rejoint les cinq sections principales. La mise en page et la palette sont décrites dans [la présentation des sections](docs/presentation-sections.md) ; les styles sont limités à `.home-content` dans `src/styles/home-editorial.css`. Les zones sans données validées présentent un état explicatif.
 - `src/pages` : toutes les routes demandées, avec annuaire et fiches d’écoles, catalogue et fiches d’équipements. Les pages du projet, de mission, de démarche, d’impact, des partenaires, des dons et du contact sont développées, ainsi que les listes et fiches de projets et actualités. `/realisations` redirige vers les projets réalisés.

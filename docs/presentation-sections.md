@@ -6,13 +6,14 @@ La passe concerne le contenu de l’accueil après le film, y compris les sectio
 
 | Bloc | Présentation | Couleurs |
 | --- | --- | --- |
-| Accès au projet | Introduction courte, liens utiles et sommaire des cinq sections | Marine et bleu LabCongo, accent jaune |
+| Accès au projet | Introduction courte, liens utiles et sommaire des six sections | Marine et bleu LabCongo, accent jaune |
 | 01 — Constat | Citation en deux colonnes avec contexte | Blanc, bleu profond, repère rouge |
 | 02 — Le constat et l’enjeu | Trois constats puis chiffres de contexte regroupés | Bleu très clair ; chiffres sur bleu profond |
 | 03 — La réponse : LabCongo | Grande photographie et texte, appel à découvrir la mission | Bleu LabCongo nuancé, texte blanc, bouton jaune |
 | 04 — Approche | Trois étapes illustrées puis les cinq phases | Blanc et bleu clair, numéros rouges |
 | 05 — Résultats attendus | Quatre familles d’objectifs en grille lisible | Marine, nuances bleues, repères jaunes |
-| 06 à 15 — Détails | Titres, espacements, panneaux, carte et listes harmonisés | Alternance de blanc et bleu clair ; voyage bleu profond |
+| 06 — Carte des provinces | Carte interactive de la RDC et fiche de la province choisie, visible sans ouvrir le volet | Blanc, panneaux bleu clair |
+| 07 à 15 — Détails | Titres, espacements, panneaux, carte et listes harmonisés | Alternance de blanc et bleu clair ; voyage bleu profond |
 | 16 — Participation | Appel final et trois actions hiérarchisées | Dégradé bleu, action principale jaune |
 
 ## Règles

@@ -1,6 +1,5 @@
 import CollectionSection from "./sections/CollectionSection";
 import JourneySection from "./sections/JourneySection";
-import MapSection from "./sections/MapSection";
 import SchoolsSection from "./sections/SchoolsSection";
 import BeforeAfterSection from "./sections/BeforeAfterSection";
 import EquipmentSection from "./sections/EquipmentSection";
@@ -15,7 +14,6 @@ export default function DetailedHome() {
   return <>
       <CollectionSection />
       <JourneySection />
-      <MapSection />
       <SchoolsSection />
       <BeforeAfterSection />
       <EquipmentSection />

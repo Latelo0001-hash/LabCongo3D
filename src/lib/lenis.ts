@@ -20,3 +20,11 @@ export function scrollImmediately(top: number) {
     window.scrollTo({ top, behavior: 'instant' });
   }
 }
+
+// Retour en haut de page : un bref défilement animé, ou immédiat si les mouvements sont réduits.
+export function scrollToTop() {
+  if (current) current.scrollTo(0, { duration: .8, force: true });
+  else scrollImmediately(0);
+  // Le clavier reprend au début du contenu.
+  document.getElementById('main')?.focus({ preventScroll: true });
+}

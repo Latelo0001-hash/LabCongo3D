@@ -8,6 +8,7 @@ import ProblemSection from "./sections/ProblemSection";
 import MissionSection from "./sections/MissionSection";
 import ProcessSection from "./sections/ProcessSection";
 import ImpactSection from "./sections/ImpactSection";
+import MapSection from "./sections/MapSection";
 import CTASection from "./sections/CTASection";
 import "../../styles/home-editorial.css";
 export default function Home() {
@@ -29,6 +30,7 @@ export default function Home() {
       <MissionSection />
       <ProcessSection />
       <ImpactSection />
+      <MapSection />
       <HomeDetails />
       <CTASection />
     </div>

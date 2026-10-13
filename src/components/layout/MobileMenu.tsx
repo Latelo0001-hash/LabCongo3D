@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { X } from "lucide-react";
 import { navigation } from "../../data/navigation";
 import { useNavigation } from "../../features/navigation";
@@ -15,16 +15,31 @@ export default function MobileMenu() {
     if (open) el?.showModal();
     else el?.close();
   }, [open]);
+  useEffect(() => {
+    if (!open) return;
+    const compactHeader = window.matchMedia("(max-width: 1050px)");
+    const closeOnDesktop = () => {
+      if (!compactHeader.matches) setOpen(false);
+    };
+    closeOnDesktop();
+    compactHeader.addEventListener("change", closeOnDesktop);
+    return () => compactHeader.removeEventListener("change", closeOnDesktop);
+  }, [open, setOpen]);
   return (
     <dialog
       ref={dialog}
+      id="mobile-navigation"
       className="mobile-menu"
       aria-label="Menu principal"
       data-lenis-prevent
       onCancel={() => setOpen(false)}
+      onClose={(event) => {
+        // Un événement close peut arriver après une réouverture rapide.
+        if (!event.currentTarget.open) setOpen(false);
+      }}
     >
-      <button onClick={() => setOpen(false)} aria-label="Fermer le menu">
-        <X />
+      <button type="button" onClick={() => setOpen(false)} aria-label="Fermer le menu">
+        <X aria-hidden="true" />
       </button>
       <nav aria-label="Navigation mobile">
         {[
@@ -37,9 +52,9 @@ export default function MobileMenu() {
           { label: "Soutenir le projet", to: "/faire-un-don" },
           { label: "Contact", to: "/contact" },
         ].map((item) => (
-          <Link key={item.to} to={item.to} onClick={() => setOpen(false)}>
+          <NavLink key={item.to} to={item.to} onClick={() => setOpen(false)}>
             {item.label}
-          </Link>
+          </NavLink>
         ))}
       </nav>
     </dialog>

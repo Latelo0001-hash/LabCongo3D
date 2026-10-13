@@ -2,6 +2,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import ScrollToTop from "../common/ScrollToTop";
+import BackToTop from "../common/BackToTop";
 import ScrollProgress from "../animations/ScrollProgress";
 export default function PageLayout() {
   const immersive = useLocation().pathname === "/";
@@ -13,6 +14,7 @@ export default function PageLayout() {
       <Header immersive={immersive} />
       <main id="main" tabIndex={-1}><Outlet /></main>
       <Footer />
+      <BackToTop />
     </>
   );
 }

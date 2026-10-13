@@ -3,6 +3,7 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import type { ReactNode } from "react";
 import PageLayout from "../components/layout/PageLayout";
 import Loader from "../components/common/Loader";
+import PageReady from "../components/common/PageReady";
 const Experience = lazy(() => import("../pages/Experience/Experience"));
 const Home = lazy(() => import("../pages/Home/Home"));
 const NotFound = lazy(() => import("../pages/NotFound/NotFound"));
@@ -24,7 +25,10 @@ const News = lazy(() => import("../pages/News/News"));
 const Article = lazy(() => import("../pages/News/Article"));
 const Contact = lazy(() => import("../pages/Contact/Contact"));
 const deferred = (node: ReactNode) => (
-  <Suspense fallback={<Loader />}>{node}</Suspense>
+  <Suspense fallback={<Loader />}>
+    {node}
+    <PageReady />
+  </Suspense>
 );
 export const router = createBrowserRouter([
   {

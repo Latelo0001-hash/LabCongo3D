@@ -34,14 +34,89 @@
   text-decoration: underline;
   text-underline-offset: 5px;
 }
+/* Bouton flottant de retour en haut de page ; le pied de page lui laisse sa place à droite. */
+.back-to-top {
+  position: fixed;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border: 1px solid #ffffff59;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--brand-yellow);
+  box-shadow: 0 10px 30px #031b4e40;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.25s, transform 0.25s, visibility 0.25s, background 0.2s;
+}
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+.back-to-top svg {
+  transition: transform 0.2s;
+}
+.back-to-top:hover {
+  background: var(--brand-blue);
+}
+.back-to-top:hover svg {
+  transform: translateY(-3px);
+}
+.back-to-top:focus-visible {
+  outline: 3px solid var(--brand-yellow);
+  outline-offset: 3px;
+}
+@media (min-width: 761px) {
+  .site-footer .footer-bottom {
+    padding-right: 76px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top,
+  .back-to-top svg {
+    transition: none;
+  }
+}
 .mobile-menu {
   max-height: 88dvh;
   overflow-y: auto;
 }
-.mobile-menu nav {
-  gap: 12px;
-}
 .mobile-menu nav a {
-  display: block;
-  padding: 7px 0;
+  display: flex;
+  align-items: center;
+  min-height: 54px;
+  padding: 12px 0;
+  font-size: 1.375rem;
+  font-weight: 500;
+  line-height: 1.4;
+  border-bottom: 1px solid var(--line);
+  transition: color .18s ease, border-color .18s ease;
+}
+.mobile-menu nav a:is(:hover, :focus-visible, .active) {
+  color: var(--brand-blue);
+  border-bottom-color: var(--brand-blue);
+}
+.mobile-menu nav a.active {
+  font-weight: 600;
+}
+.mobile-menu :is(a, button):focus-visible {
+  outline: 2px solid var(--brand-blue);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-header .desktop-nav a,
+  .site-header .header-cta svg,
+  .mobile-menu nav a {
+    transition: none;
+  }
+  .site-header .header-cta:is(:hover, :focus-visible) svg {
+    transform: none;
+  }
 }

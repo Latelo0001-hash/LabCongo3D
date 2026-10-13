@@ -4,7 +4,7 @@ Source : `LabCongo Presentation fin .pptx`, fournie par l’association (10 diap
 
 ## Où se trouve chaque partie
 
-Sur l’accueil, les sections 01 à 05 s’affichent directement sous le film, avant le bloc replié « Le projet en détail ». Ce bloc garde la collecte, le voyage du matériel, la carte, les écoles et le suivi (sections 06 à 15).
+Sur l’accueil, les sections 01 à 05 et la carte des provinces (06) s’affichent directement sous le film, avant le bloc replié « Le projet en détail ». Ce bloc garde la collecte, le voyage du matériel, les écoles et le suivi (sections 07 à 15).
 
 | Diapositive | Contenu | Emplacement sur le site |
 | --- | --- | --- |
