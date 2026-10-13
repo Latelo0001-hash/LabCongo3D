@@ -1,20 +1,25 @@
 .film { position: relative; background: rgb(7, 20, 48); }
 .film-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; isolation: isolate; background: rgb(7, 20, 48); color: white; }
 .film-progress { position: absolute; z-index: 9; top: 0; left: 0; width: 100%; height: 3px; background: var(--brand-yellow); transform: scaleX(var(--film-progress, 0)); transform-origin: left; }
-.film-opening { z-index: -1; opacity: var(--opening-opacity, .55); }
+.film-opening { z-index: -1; opacity: var(--opening-opacity, 1); mask-image: var(--opening-wipe, none); }
 /* Taille et position calculées par FilmSequence (`openingFrame`), partagées avec la scène 3D. */
 .film-opening video { position: absolute; max-width: none; }
 /* Masque aux couleurs du thème : marine côté texte et en bas seulement, pour garder le reste de l'image net. Il s'allège pour le raccord. */
-.film-opening::after { content: ''; position: absolute; inset: 0; opacity: var(--opening-mask, 1); background: linear-gradient(90deg, #031b4ee6 0%, #031b4e99 28%, #031b4e26 50%, #031b4e00 66%), linear-gradient(0deg, #031b4ecc 0%, #031b4e00 32%); }
+.film-opening::after { content: ''; position: absolute; inset: 0; opacity: var(--opening-mask, 1); background: linear-gradient(90deg, #031b4ef2 0%, #031b4eb3 28%, #031b4e40 48%, #031b4e00 68%), linear-gradient(0deg, #031b4ecc 0%, #031b4e00 32%); }
 .film-ghost { position: absolute; z-index: 0; top: 17%; left: 0; margin: 0; font: 800 clamp(140px, 22vw, 380px)/.9 var(--font-body); letter-spacing: -.06em; text-transform: uppercase; white-space: nowrap; color: transparent; opacity: 0; pointer-events: none; }
 .film-ghost.is-light { -webkit-text-stroke: 1.5px #ffffff26; }
 .film-ghost.is-dark { -webkit-text-stroke: 1.5px #0000001f; }
-.film-canvas { position: absolute; inset: 0; z-index: 1; opacity: var(--canvas-opacity, 1); pointer-events: none; }
+.film-canvas { position: absolute; inset: 0; z-index: 1; opacity: var(--canvas-opacity, 1); mask-image: var(--objects-wipe, none); pointer-events: none; }
+
+/* Fumée filmée sur toute la hauteur : un front souple traverse l'écran puis en sort.
+   Les commandes restent au-dessus ; aucune surface blanche ni bord net au raccord. */
+.film-smoke { position: absolute; z-index: 2; top: -10%; left: 0; height: 120%; display: block; max-width: none; opacity: 0; visibility: hidden; pointer-events: none; mix-blend-mode: screen; object-fit: cover; object-position: 60% 50%; filter: brightness(3.2); mask-image: linear-gradient(90deg, transparent, #000 24%, #000 70%, transparent); }
+
 .film-loading { position: absolute; z-index: 2; right: 8%; top: 46%; font-size: 12px; color: #ffffffb3; }
 .film-equipment, .film-steps, .film-band { position: absolute; z-index: 2; margin: 0; padding: 0; list-style: none; white-space: nowrap; font: 600 12px/1.4 var(--font-body); text-transform: uppercase; letter-spacing: .14em; pointer-events: none; }
 .film-equipment span, .film-steps span, .film-band span { margin-right: 14px; color: var(--brand-yellow); }
 .film-equipment { left: 5%; bottom: 19%; display: flex; gap: 34px; opacity: var(--equipment-opacity, 0); }
-.film-card.is-long h1, .film-card.is-long h2 { font-size: clamp(32px, 3.6vw, 62px); }
+.film-card.is-long h2 { font-size: clamp(36px, 3.8vw, 64px); }
 .film-equipment li, .film-steps li { color: #ffffff59; transition: color .3s; }
 .film-equipment li.is-active, .film-steps li.is-active { color: white; }
 .film-steps { left: 5%; bottom: 19%; display: flex; gap: 40px; opacity: var(--steps-opacity, 0); }
@@ -35,18 +40,51 @@
 .film-card { position: absolute; opacity: 0; width: min(560px, 44%); }
 .film-card.is-top-left { top: 13%; left: 5%; }
 .film-card.is-left { top: 22%; left: 5%; width: min(560px, 42%); }
-.film-card.is-bottom-left { bottom: 16%; left: 5%; }
+.film-card.is-bottom-left { bottom: max(16%, 140px); left: 5%; }
 .film-card.is-center { top: 34%; left: 0; right: 0; width: auto; padding-inline: 7%; text-align: center; }
 .film-card.is-light { color: white; text-shadow: 0 2px 24px #020d2499; }
 .film-card.is-dark { color: var(--ink); }
-.film-card h1, .film-card h2 { position: relative; margin: 0; font: 800 clamp(40px, 5.2vw, 88px)/.95 var(--font-body); letter-spacing: -.055em; text-transform: uppercase; text-wrap: balance; color: inherit; }
-.film-kicker { margin: 0 0 20px; font: 600 11px/1.5 var(--font-body); text-transform: uppercase; letter-spacing: .18em; opacity: .8; }
-.film-card.is-light .film-kicker { opacity: .95; }
-.film-kicker::before { content: ''; display: inline-block; width: 20px; height: 2px; margin: 0 12px 3px 0; background: var(--brand-yellow); }
-.film-text { max-width: 40ch; margin: 22px 0 0; font: 400 clamp(14px, 1.15vw, 17px)/1.65 var(--font-body); opacity: .85; }
-.film-link { display: inline-flex; gap: 24px; align-items: center; margin-top: 22px; padding: 10px 0; border-bottom: 1px solid #ffffff88; font-size: 13px; color: white; pointer-events: auto; }
+.film-kicker { margin: 0 0 24px; font: 600 12px/1.5 var(--font-body); text-transform: uppercase; letter-spacing: .14em; }
+.film-kicker::before { content: ''; display: inline-block; width: 32px; height: 2px; margin: 0 12px 3px 0; background: linear-gradient(90deg, var(--brand-yellow) 0 72%, var(--brand-red) 72%); }
+.film-link { display: inline-flex; gap: 24px; align-items: center; margin-top: 22px; padding: 10px 0; border-bottom: 1px solid #ffffff88; font-size: 16px; color: white; pointer-events: auto; }
+/* Une composition plus aérée laisse le visage visible à droite, avec un titre en deux lignes. */
+.film-hero { position: absolute; z-index: 7; top: clamp(150px, 29svh, 340px); left: 5%; width: min(680px, 48%); color: white; text-shadow: 0 2px 24px #020d2499; }
+.film-hero h1, .film-simple-hero h1, .film-card h2, .film-simple-chapter h2 { margin: 0; font: 800 clamp(50px, 5.2vw, 88px)/1.04 var(--font-body); letter-spacing: -.055em; text-transform: none; text-wrap: balance; color: inherit; }
+.film-hero h1 span, .film-simple-hero h1 span { display: block; }
+.film-hero h1 em, .film-simple-hero h1 em, .film-card h2 em, .film-simple-chapter h2 em { display: block; font-style: normal; font-weight: inherit; color: var(--brand-yellow); }
+.film-card.is-dark h2 em { color: var(--brand-blue); }
+.film-hero-text, .film-text { max-width: 36ch; margin: 28px 0 0; font: 400 clamp(18px, 1.5vw, 22px)/1.55 var(--font-body); color: inherit; text-wrap: pretty; }
+.film-hero-text, .film-card.is-light .film-text, .film-simple-chapter .film-text { color: #f3f7ff; }
+.film-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.film-hero-primary, .film-hero-secondary { display: inline-flex; justify-content: center; align-items: center; gap: 16px; min-height: 56px; padding: 16px 24px; border: 1px solid var(--brand-yellow); border-radius: 8px; font: 600 16px/1.3 var(--font-body); text-shadow: none; transition: background .2s, border-color .2s, box-shadow .2s; }
+.film-hero-primary { background: var(--brand-yellow); color: var(--ink); box-shadow: 0 6px 24px #031b4e26; }
+.film-hero-primary:hover { background: #fff786; border-color: #fff786; box-shadow: 0 8px 28px #031b4e40; }
+.film-hero-secondary { border-color: #ffffff8c; background: #031b4e80; color: white; }
+.film-hero-secondary:hover { border-color: white; background: #17396bcc; }
+.film-hero-actions svg { flex-shrink: 0; transition: transform .2s ease; }
+.film-hero-primary:hover svg { transform: translateY(2px); }
+.film-hero-secondary:hover svg { transform: translate(2px, -2px); }
+/* Entrée en scène à l'ouverture : le trait jaune se dessine, puis chaque ligne monte. */
+@keyframes film-rise { from { opacity: 0; transform: translateY(20px); } }
+@keyframes film-line { from { width: 0; } }
+@keyframes film-nudge { 50% { transform: translateY(5px); } }
+.film-hero > * { animation: film-rise .8s cubic-bezier(.2, .7, .2, 1) both; }
+.film-hero > :nth-child(2) { animation-delay: .12s; }
+.film-hero > :nth-child(3) { animation-delay: .24s; }
+.film-hero > :nth-child(4) { animation-delay: .36s; }
+.film-hero .film-kicker::before { animation: film-line .7s .15s both; }
+/* L'entrée en scène attend la fin de l'écran de chargement (src/lib/splash.ts). */
+html:not([data-ready]) .film-hero > *, html:not([data-ready]) .film-hero .film-kicker::before { animation-play-state: paused; }
 .film-footer { position: absolute; z-index: 8; left: 5%; right: 5%; bottom: max(10px, env(safe-area-inset-bottom)); }
-.film-bottom { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 8px 12px; border: 1px solid #ffffff1f; border-radius: 18px; background: #071430e6; }
+.film-bottom { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 8px 12px; border: 1px solid #ffffff1f; border-radius: 18px; background: #071430e6; transition: background .35s, border-color .35s; }
+/* À l'ouverture, la barre laisse la place à l'invitation à défiler ; « Lecture simple » reste accessible. */
+.film-skip, .film-chapters, .film-chapters-toggle, .film-scroll-cue { transition: opacity .35s, visibility .35s; }
+.film-stage[data-intro] .film-bottom { background: transparent; border-color: transparent; }
+.film-stage[data-intro] :is(.film-skip, .film-chapters, .film-chapters-toggle) { opacity: 0; visibility: hidden; }
+.film-scroll-cue { position: absolute; left: 50%; top: 50%; translate: -50% -50%; display: flex; align-items: center; gap: 10px; margin: 0; font: 600 11px/1 var(--font-body); letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; opacity: 0; visibility: hidden; pointer-events: none; }
+.film-scroll-cue svg { color: var(--brand-yellow); animation: film-nudge 1.6s ease-in-out infinite; }
+.film-stage[data-intro] .film-scroll-cue { opacity: 1; visibility: visible; }
+.film-chapters-toggle { display: none; }
 .film-skip { display: flex; gap: 12px; align-items: center; font-size: 11px; color: #ffffffde; }
 .film-chapters { display: flex; gap: 6px; align-items: center; }
 .film-chapters button { display: flex; align-items: center; gap: 10px; min-height: 44px; border: 1px solid #ffffff40; border-radius: 30px; padding: 8px 13px; color: #ffffffb3; background: #020d2459; backdrop-filter: blur(6px); font: 500 11px/1.4 var(--font-body); }
@@ -60,53 +98,97 @@
 .film-credits summary:focus-visible { outline: 2px solid var(--brand-yellow); outline-offset: 3px; }
 .film-credits p { position: absolute; right: 0; bottom: calc(100% + 12px); width: min(440px, 82vw); max-height: 36svh; overflow-y: auto; overscroll-behavior: contain; margin: 0; padding: 18px; background: #071430; border: 1px solid #ffffff40; border-radius: 12px; box-shadow: 0 12px 40px #0005; font-size: 12px; line-height: 1.8; }
 .film-credits a { text-decoration: underline; text-underline-offset: 3px; pointer-events: auto; }
-.film-simple { background: var(--ink); color: white; padding: 130px 5% 55px; }
+.film-simple { background: var(--ink); color: white; padding: 0 5% 55px; }
+/* La même ouverture photographique reste disponible sans animation ni WebGL. */
+.film-simple-hero { position: relative; isolation: isolate; display: flex; align-items: center; min-height: min(900px, 100svh); margin: 0 -5.5556% 70px; padding: 160px 5vw 110px; overflow: hidden; }
+.film-simple-hero-image { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% center; }
+.film-simple-hero::after { content: ''; position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, #031b4ef2 0%, #031b4eb3 28%, #031b4e40 48%, #031b4e00 68%), linear-gradient(0deg, #031b4e 0%, #031b4e00 45%); }
+.film-simple-hero-copy { width: min(680px, 53.333%); text-shadow: 0 2px 24px #020d2499; }
+.film-simple-hero-credit { position: absolute; bottom: 20px; left: 5vw; right: 5vw; margin: 0; color: #d9e3f5; font-size: 11px; line-height: 1.5; }
+.film-simple :is(a, button):focus-visible { outline-color: var(--brand-yellow); }
 .film-simple-tools { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 40px; font-size: 12px; }
 .film-simple-tools button { background: transparent; border: 1px solid #ffffff70; color: white; padding: 12px; border-radius: 30px; }
 .film-simple-chapter { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 6vw; max-width: 1400px; margin: 0 auto 70px; }
 .film-simple-chapter img { width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; }
-.film-simple-chapter h1, .film-simple-chapter h2 { font: 800 clamp(30px, 3.8vw, 62px)/1.02 var(--font-body); letter-spacing: -.04em; text-transform: uppercase; margin: 0 0 22px; color: white; }
-.film-simple-chapter p:not(.film-kicker) { color: #ffffffbf; font-size: 15px; line-height: 1.8; max-width: 46ch; }
+.film-simple-chapter h2 { font-size: clamp(36px, 3.8vw, 64px); }
 .film-simple-note { color: #ffffffa6; font-size: 11px; max-width: 90ch; }
 @media (max-width: 1100px) { .film-skip span { display: none; } }
 @media (max-width: 999px) {
   .film-card, .film-card.is-left, .film-card.is-bottom-left, .film-card.is-top-left { left: 6%; right: 6%; width: auto; }
   .film-card.is-top-left, .film-card.is-left { top: 9%; }
   .film-card:first-child { top: max(9%, 112px); }
-  .film-opening::after { background: linear-gradient(180deg, #031b4ef2 0%, #031b4eb3 34%, #031b4e26 62%, #031b4ecc 100%); }
+  .film-opening::after { background: linear-gradient(180deg, #031b4ecc 0%, #031b4e33 20%, #031b4e00 38%, #031b4e99 58%, #031b4ef5 100%); }
+  .film-hero { top: auto; left: 6%; right: 6%; bottom: 132px; width: min(650px, 88%); }
+  .film-hero h1, .film-simple-hero h1, .film-card h2, .film-card.is-long h2, .film-simple-chapter h2 { font-size: clamp(34px, 9vw, 62px); }
+  .film-kicker { margin-bottom: 18px; font-size: 11px; letter-spacing: .1em; }
+  .film-hero-text, .film-text { margin-top: 18px; font-size: clamp(17px, 2.3vw, 20px); }
+  .film-hero-actions { margin-top: 24px; gap: 10px; }
+  .film-hero-primary, .film-hero-secondary { min-height: 52px; padding: 14px 20px; font-size: 15px; }
+  .film-simple-hero { align-items: flex-end; padding: 240px 6vw 60px; }
+  .film-simple-hero-copy { width: min(650px, 100%); }
+  .film-simple-hero::after { background: linear-gradient(180deg, #031b4e99 0%, #031b4e00 25%, #031b4e99 50%, #031b4e 100%); }
   .film-cards::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, #020d24e6, #020d2499 36%, #020d2400 64%); opacity: var(--mobile-shade-opacity, 1); }
-  .film-card h1, .film-card h2, .film-card.is-long h1, .film-card.is-long h2 { font-size: clamp(28px, 7.2vw, 48px); }
-  .film-text { font-size: 13px; }
   .film-ghost { top: 24%; font-size: 34vw; }
-  .film-equipment, .film-steps { bottom: 200px; left: 6%; right: 6%; font-size: 10px; }
+  .film-equipment, .film-steps { bottom: 130px; left: 6%; right: 6%; font-size: 10px; }
   .film-equipment li { display: none; }
   .film-equipment li.is-active { display: block; color: white; }
   .film-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 18px; }
-  .film-band { gap: 36px; font-size: 10px; bottom: 200px; }
+  .film-band { gap: 36px; font-size: 10px; bottom: 130px; }
   .film-map { inset: 30% 4% 10% 4%; transform-origin: 12% 58%; }
   .film-footer { left: 5%; right: 5%; }
-  .film-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 12px; padding: 8px; }
-  .film-skip { grid-row: 2; min-height: 44px; }
+  /* Une ligne compacte : le chapitre en cours ouvre la liste des huit étapes au-dessus de la barre. */
+  .film-bottom { gap: 8px; padding: 6px 8px; }
+  .film-skip { min-height: 44px; padding-inline: 6px; }
   .film-skip span { display: inline; }
-  .film-mode { grid-row: 2; justify-self: end; min-height: 44px; white-space: nowrap; }
-  .film-chapters { grid-column: 1 / -1; grid-row: 1; display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 4px; }
-  .film-chapters button { justify-content: center; padding: 6px; font-size: 11px; min-width: 0; min-height: 44px; }
-  .film-card.is-bottom-left { bottom: 210px; }
-  .film-chapter-label, .film-chapters button[aria-current] .film-chapter-label { display: none; }
+  .film-mode { min-height: 44px; white-space: nowrap; }
+  .film-chapters-toggle { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 14px; border: 1px solid #ffffff40; border-radius: 30px; background: #020d2459; color: white; font: 500 12px/1.3 var(--font-body); }
+  .film-chapters-toggle span { color: var(--brand-yellow); }
+  .film-chapters-toggle svg { transition: transform .2s; }
+  .film-chapters-toggle[aria-expanded='true'] svg { transform: rotate(180deg); }
+  .film-chapters { display: none; }
+  .film-chapters.is-open { position: absolute; left: 0; right: 0; bottom: calc(100% + 8px); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; padding: 10px; border: 1px solid #ffffff26; border-radius: 16px; background: #071430f5; box-shadow: 0 12px 40px #0005; }
+  .film-chapters.is-open button { justify-content: flex-start; min-width: 0; }
+  .film-chapters.is-open .film-chapter-label { display: inline; }
+  .film-card.is-bottom-left { bottom: 140px; }
   .film-simple-chapter { grid-template-columns: 1fr; gap: 22px; margin-bottom: 55px; }
   .film-simple-tools { align-items: flex-start; flex-direction: column; }
 }
 
-@media (max-width: 479px) {
-  .film-chapters { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .film-equipment, .film-steps, .film-band { bottom: 240px; }
-  .film-card.is-bottom-left { bottom: 250px; }
+@media (max-width: 599px) {
+  .film-hero-actions { display: grid; grid-template-columns: 1fr; }
+  .film-hero-primary, .film-hero-secondary { justify-content: space-between; }
+  .film-hero { bottom: 122px; }
+  .film-kicker::before { width: 24px; margin-right: 8px; }
+  .film-scroll-cue { left: 8px; translate: 0 -50%; font-size: 11px; letter-spacing: .1em; }
+}
+/* Les fenêtres peu hautes gardent la mission et les actions lisibles. */
+@media (min-width: 1000px) and (max-height: 750px) {
+  .film-hero { top: max(124px, 22svh); }
+  .film-hero h1 { font-size: clamp(42px, 4.6vw, 66px); }
+  .film-card.is-left { top: 16%; }
+  .film-card h2 { font-size: clamp(40px, 4.2vw, 60px); }
+  .film-card.is-long h2 { font-size: clamp(34px, 3.4vw, 52px); }
+  .film-hero .film-kicker, .film-card .film-kicker { margin-bottom: 16px; }
+  .film-hero-text, .film-text { margin-top: 20px; font-size: 18px; }
+  .film-hero-actions { margin-top: 22px; }
+}
+@media (max-width: 429px) {
+  .film-skip span { display: none; }
 }
 @media (max-width: 999px) and (max-height: 700px) {
-  .film-card h1, .film-card h2, .film-card.is-long h1, .film-card.is-long h2 { font-size: clamp(23px, 6.2vw, 32px); }
-  .film-kicker { font-size: 9px; margin-bottom: 12px; }
-  .film-text { font-size: 12px; line-height: 1.5; margin-top: 14px; }
+  .film-card.is-left:not(:first-child) { top: 5%; }
+  .film-kicker { font-size: 10px; margin-bottom: 12px; }
   .film-equipment, .film-steps { display: none; }
+  .film-hero { bottom: 116px; }
+  .film-hero h1, .film-card h2, .film-card.is-long h2 { font-size: clamp(28px, 8.6vw, 42px); }
+  .film-hero-text, .film-text { margin-top: 12px; font-size: 16px; line-height: 1.4; }
+  .film-hero-actions { margin-top: 16px; gap: 8px; }
+  .film-hero-primary, .film-hero-secondary { min-height: 46px; padding-block: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .film-hero > *, .film-hero .film-kicker::before, .film-scroll-cue svg { animation: none; }
+  .film-hero-actions svg { transition: none; }
+  .film-hero-actions a:hover svg { transform: none; }
 }
 
 /* Le navire du plan du pont est à 48,5 % de la largeur : il reste dans son couloir sur les écrans en hauteur. */

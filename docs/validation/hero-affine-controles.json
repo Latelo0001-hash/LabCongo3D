@@ -1,0 +1,207 @@
+[
+  {
+    "name": "hero",
+    "size": [
+      1920,
+      1080
+    ],
+    "noOverflow": true,
+    "clearOfHeader": true,
+    "clearOfControls": true,
+    "descriptionVisible": true,
+    "singleTitle": true
+  },
+  {
+    "name": "hero",
+    "size": [
+      1440,
+      900
+    ],
+    "noOverflow": true,
+    "clearOfHeader": true,
+    "clearOfControls": true,
+    "descriptionVisible": true,
+    "singleTitle": true
+  },
+  {
+    "name": "hero",
+    "size": [
+      1024,
+      768
+    ],
+    "noOverflow": true,
+    "clearOfHeader": true,
+    "clearOfControls": true,
+    "descriptionVisible": true,
+    "singleTitle": true
+  },
+  {
+    "name": "hero",
+    "size": [
+      820,
+      1180
+    ],
+    "noOverflow": true,
+    "clearOfHeader": true,
+    "clearOfControls": true,
+    "descriptionVisible": true,
+    "singleTitle": true
+  },
+  {
+    "name": "hero",
+    "size": [
+      390,
+      844
+    ],
+    "noOverflow": true,
+    "clearOfHeader": true,
+    "clearOfControls": true,
+    "descriptionVisible": true,
+    "singleTitle": true
+  },
+  {
+    "name": "hero",
+    "size": [
+      320,
+      568
+    ],
+    "noOverflow": true,
+    "clearOfHeader": true,
+    "clearOfControls": true,
+    "descriptionVisible": true,
+    "singleTitle": true
+  },
+  {
+    "name": "hero",
+    "size": [
+      1440,
+      600
+    ],
+    "noOverflow": true,
+    "clearOfHeader": true,
+    "clearOfControls": true,
+    "descriptionVisible": true,
+    "singleTitle": true
+  },
+  {
+    "name": "opening-transition",
+    "heroHidden": true,
+    "visibleCards": 1
+  },
+  {
+    "name": "chapter",
+    "chapter": 2,
+    "visibleTitle": "Du matériel encore utile peut continuer à transmettre le savoir.",
+    "onlyOneTitle": true
+  },
+  {
+    "name": "chapter",
+    "chapter": 3,
+    "visibleTitle": "Protéger ce qui va transmettre.",
+    "onlyOneTitle": true
+  },
+  {
+    "name": "chapter",
+    "chapter": 4,
+    "visibleTitle": "Collecter en Europe. Préparer pour une nouvelle destination.",
+    "onlyOneTitle": true
+  },
+  {
+    "name": "chapter",
+    "chapter": 5,
+    "visibleTitle": "Prendre la route du port.",
+    "onlyOneTitle": true
+  },
+  {
+    "name": "chapter",
+    "chapter": 6,
+    "visibleTitle": "Acheminer là où le matériel peut faire la différence.",
+    "onlyOneTitle": true
+  },
+  {
+    "name": "chapter",
+    "chapter": 7,
+    "visibleTitle": "Traverser pour transmettre.",
+    "onlyOneTitle": true
+  },
+  {
+    "name": "chapter",
+    "chapter": 8,
+    "visibleTitle": "Une nouvelle étape commence.",
+    "onlyOneTitle": true
+  },
+  {
+    "name": "discover-keyboard",
+    "passed": true
+  },
+  {
+    "name": "support-link",
+    "passed": true
+  },
+  {
+    "name": "simple-reading",
+    "photo": true,
+    "chapters": 8,
+    "canvas": 0
+  },
+  {
+    "name": "return-to-film",
+    "passed": true
+  },
+  {
+    "name": "reduced-motion",
+    "size": [
+      1440,
+      900
+    ],
+    "preference": true,
+    "photo": true,
+    "chapters": 8,
+    "canvas": 0,
+    "video": 0,
+    "noOverflow": true
+  },
+  {
+    "name": "reduced-motion",
+    "size": [
+      390,
+      844
+    ],
+    "preference": true,
+    "photo": true,
+    "chapters": 8,
+    "canvas": 0,
+    "video": 0,
+    "noOverflow": true
+  },
+  {
+    "name": "reduced-motion",
+    "size": [
+      320,
+      568
+    ],
+    "preference": true,
+    "photo": true,
+    "chapters": 8,
+    "canvas": 0,
+    "video": 0,
+    "noOverflow": true
+  },
+  {
+    "name": "reduced-motion",
+    "size": [
+      844,
+      390
+    ],
+    "preference": true,
+    "photo": true,
+    "chapters": 8,
+    "canvas": 0,
+    "video": 0,
+    "noOverflow": true
+  },
+  {
+    "name": "runtime",
+    "exceptions": []
+  }
+]

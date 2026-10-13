@@ -39,7 +39,7 @@ const mats = {
   seal: material('Door seals','#272d2e',.93),
   lamp: material('Rear lamp','#a3141a',.35,.1,{emissive:'#4a0407'}),
   glass: new MeshPhysicalMaterial({name:'Laboratory glass',color:'#dcefee',metalness:0,roughness:.05,clearcoat:1,clearcoatRoughness:.03,transparent:true,opacity:.3,side:DoubleSide,depthWrite:false}),
-  liquidBlue: material('Blue solution','#2f7fd1',.15,0,{transparent:true,opacity:.82}),
+  liquidMilk: material('Milky solution','#e9d3cc',.3,0,{transparent:true,opacity:.74}),
   liquidAmber: material('Amber solution','#d9952f',.15,0,{transparent:true,opacity:.82}),
   liquidGreen: material('Green solution','#3aa26a',.15,0,{transparent:true,opacity:.82}),
   display: material('Balance display','#7dffb0',.3,0,{emissive:'#2fbf6a'}),
@@ -299,11 +299,10 @@ function lathe(g,name,points,mat,segments=48) {
 function labware() {
   // Matériel collecté avec le microscope ; chaque objet a sa base à l'origine de son groupe.
   const g=group(null,'Laboratory equipment');
-  // Erlenmeyer haut et étroit, aux proportions de celui filmé à l'ouverture du film.
-  const flask=group(g,'Flask');
-  lathe(flask,'Flask glass',[[0,0],[.15,0],[.165,.02],[.165,.045],[.07,.44],[.06,.47],[.06,.62],[.074,.64],[.074,.665],[.056,.665]],'glass');
-  lathe(flask,'Flask solution',[[0,.012],[.15,.012],[.155,.03],[.12,.18],[0,.18]],'liquidBlue');
-  for(let i=0;i<3;i++) box(flask,'Flask graduation',[.05-i*.01,.006,.004],'paper',[0,.08+i*.06,.158-i*.014],0,[-.24,0,0]);
+  // Flacon aux proportions de la bouteille filmée à l'ouverture du film : 0,62 de haut jusqu'à la main de l'enfant, col court pour rester sous le gant.
+  const bottle=group(g,'Bottle');
+  lathe(bottle,'Bottle glass',[[0,0],[.12,0],[.13,.01],[.132,.03],[.132,.353],[.124,.385],[.106,.418],[.091,.438],[.086,.446],[.086,.625],[.094,.632],[.094,.655],[.078,.655]],'glass');
+  lathe(bottle,'Bottle solution',[[0,.012],[.126,.012],[.128,.03],[.128,.33],[0,.33]],'liquidMilk');
   const beaker=group(g,'Beaker');
   lathe(beaker,'Beaker glass',[[0,0],[.2,0],[.215,.015],[.215,.5],[.235,.525],[.215,.525]],'glass');
   lathe(beaker,'Beaker solution',[[0,.012],[.205,.012],[.205,.22],[0,.22]],'liquidAmber');
@@ -351,7 +350,7 @@ function batch(root, articulated=[]) {
 const out=new URL('../public/models/immersive/',import.meta.url);await mkdir(out,{recursive:true});
 // Optional model names on the command line regenerate only those files.
 const only=process.argv.slice(2);
-for(const [name,build,joints] of [['microscope-v2',microscope,[]],['crate-v2',crate,['CrateLid']],['container-v2',container,['DoorLeft','DoorRight']],['container-chassis-v2',chassis,['AxleFront','AxleRear']],['labware-v2',labware,['Flask','Beaker','Cylinder','Balance']]]){
+for(const [name,build,joints] of [['microscope-v2',microscope,[]],['crate-v2',crate,['CrateLid']],['container-v2',container,['DoorLeft','DoorRight']],['container-chassis-v2',chassis,['AxleFront','AxleRear']],['labware-v2',labware,['Bottle','Beaker','Cylinder','Balance']]]){
   if(only.length&&!only.includes(name))continue;
   const scene=build();
   batch(scene,joints);scene.updateMatrixWorld(true);

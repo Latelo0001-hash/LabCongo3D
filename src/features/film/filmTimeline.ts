@@ -20,36 +20,67 @@ export const chapters = [
 ] as const;
 export const chapterAt = (x: number) => chapters.reduce((current, chapter, i) => x >= chapter.start - .05 ? i : current, 0);
 
+// Message d'accueil, au-dessus du film : il s'efface à `to`, puis le premier chapitre prend le relais.
+// Jusqu'à `cue`, la barre des chapitres laisse la place à l'invitation à défiler.
+export const hero = { to: .34, cue: .12 } as const;
+
 export const cards = [
-  { id: 'recolte', from: -1, to: .75, place: 'left', tone: 'light', kicker: '01 / Europe · La récolte', title: 'Le savoir mérite un autre horizon.', text: 'Dans les laboratoires d’Europe, du matériel scientifique encore fonctionnel attend une seconde vie.' },
-  { id: 'materiel', from: 1.15, to: 2.95, place: 'left', tone: 'light', kicker: '02 / La récolte · Le matériel', title: 'Du matériel encore utile peut continuer à transmettre le savoir.', text: 'Microscopes, verrerie, balances, instruments de mesure : chaque équipement fonctionnel est repéré, puis rassemblé.' },
-  { id: 'assemblage', from: 3.15, to: 4.55, place: 'left', tone: 'light', kicker: '03 / L’assemblage · Le soin', title: 'Protéger ce qui va transmettre.', text: 'Chaque instrument est vérifié, protégé, puis rejoint sa caisse.' },
-  { id: 'conteneur', from: 4.85, to: 6.1, place: 'top-left', tone: 'dark', kicker: '04 / Le chargement · Le départ', title: 'Collecter en Europe. Préparer pour une nouvelle destination.', text: '' },
-  { id: 'route', from: 6.9, to: 7.8, place: 'top-left', tone: 'dark', kicker: '05 / La route · Le transfert', title: 'Prendre la route du port.', text: 'Le conteneur rejoint sa remorque. Un camion l’achemine jusqu’au port d’embarquement.' },
-  { id: 'navire', from: 8.87, to: 10.22, place: 'center', tone: 'light', kicker: '06 / La traversée · Le navire', title: 'Acheminer là où le matériel peut faire la différence.', text: '' },
-  { id: 'ocean', from: 10.42, to: 11.72, place: 'bottom-left', tone: 'light', kicker: '07 / Europe → Afrique → RDC', title: 'Traverser pour transmettre.', text: 'Le conteneur embarque pour un long voyage, jusqu’à la République démocratique du Congo.' },
-  { id: 'arrivee', from: 11.92, to: 14.02, place: 'left', tone: 'light', kicker: '08 / L’arrivée · La RDC', title: 'Une nouvelle étape commence.', text: 'Le matériel arrive en RDC. Il peut désormais rejoindre les écoles.' },
+  { id: 'recolte', from: .32, to: .8, place: 'left', tone: 'light', kicker: '01 / Europe · La récolte', title: 'Tout commence en Europe.', accent: 'en Europe.', text: 'Dans les laboratoires d’Europe, du matériel scientifique encore fonctionnel attend une seconde vie.' },
+  { id: 'materiel', from: 1.15, to: 2.95, place: 'left', tone: 'light', kicker: '02 / La récolte · Le matériel', title: 'Du matériel encore utile peut continuer à transmettre le savoir.', accent: 'transmettre le savoir.', text: 'Microscopes, verrerie, balances, instruments de mesure : chaque équipement fonctionnel est repéré, puis rassemblé.' },
+  { id: 'assemblage', from: 3.15, to: 4.55, place: 'left', tone: 'light', kicker: '03 / L’assemblage · Le soin', title: 'Protéger ce qui va transmettre.', accent: 'ce qui va transmettre.', text: 'Chaque instrument est vérifié, protégé, puis rejoint sa caisse.' },
+  { id: 'conteneur', from: 4.85, to: 6.1, place: 'top-left', tone: 'dark', kicker: '04 / Le chargement · Le départ', title: 'Collecter en Europe. Préparer pour une nouvelle destination.', accent: 'une nouvelle destination.', text: '' },
+  { id: 'route', from: 6.9, to: 7.8, place: 'top-left', tone: 'dark', kicker: '05 / La route · Le transfert', title: 'Prendre la route du port.', accent: 'du port.', text: 'Le conteneur rejoint sa remorque. Un camion l’achemine jusqu’au port d’embarquement.' },
+  { id: 'navire', from: 8.87, to: 10.22, place: 'center', tone: 'light', kicker: '06 / La traversée · Le navire', title: 'Acheminer là où le matériel peut faire la différence.', accent: 'peut faire la différence.', text: '' },
+  { id: 'ocean', from: 10.42, to: 11.72, place: 'bottom-left', tone: 'light', kicker: '07 / Europe → Afrique → RDC', title: 'Traverser pour transmettre.', accent: 'pour transmettre.', text: 'Le conteneur embarque pour un long voyage, jusqu’à la République démocratique du Congo.' },
+  { id: 'arrivee', from: 11.92, to: 14.02, place: 'left', tone: 'light', kicker: '08 / L’arrivée · La RDC', title: 'Une nouvelle étape commence.', accent: 'commence.', text: 'Le matériel arrive en RDC. Il peut désormais rejoindre les écoles.' },
 ] as const;
 
-// Récolte : un plan de 1,9 s (l'équipe et le personnel d'un laboratoire autour d'un chariot), 1920 × 1080, sous le premier titre.
-// À `match`, la fiole 3D prend la place de l'erlenmeyer posé sur le chariot, puis rejoint la collecte. Repères en écrans.
-export const opening = { reveal: [.55, .7], match: .92, width: 1920, height: 1080, focus: .5 } as const;
-const span = (x: number, from: number, to: number, a: number, b: number) => mix(a, b, clamp((x - from) / (to - from)));
-// Temps de la vidéo, linéaire pour que la fiole reste calée sur l'image.
-export const openingTime = (x: number) => x < opening.match ? span(x, 0, opening.match, 0, 1.85) : span(x, opening.match, 1.1, 1.85, 1.88);
-// Erlenmeyer filmé, immobile de 1 à 1,85 s : axe, base et hauteur visible, en fraction de l'image.
-export const flask = { u: .508, base: .856, height: .162 } as const;
+// Ouverture : deux plans d'un même enfant qui fait une expérience de chimie, montés en une vidéo de 1920 × 1080.
+// Le plan A (0 à 5 s) passe sous le premier titre ; à `cut`, le plan B le montre levant une bouteille.
+// À `match`, le flacon 3D prend la place de la bouteille, puis rejoint la collecte. Repères en écrans.
+export const opening = { cut: .6, reveal: [.55, .7], match: .9, width: 1920, height: 1080 } as const;
+// Un front de fumée traverse l'écran. La vidéo disparaît derrière lui et révèle
+// la 3D. Position et largeur communes aux masques et au calque filmé, dans les deux sens.
+export const openingSmoke = {
+  from: opening.match - .24,
+  to: opening.match + .38,
+  opacity: .72,
+} as const;
+export function openingSmokeAt(x: number, aspect = 16 / 9) {
+  const { from, to, opacity } = openingSmoke;
+  const time = clamp((x - from) / (to - from));
+  // Fraction de largeur : un front plus large sur téléphone pour garder des volutes souples.
+  const width = Math.max(.62, Math.min(.7 / Math.max(.1, aspect), 1.15));
+  const left = mix(-width, 1, time);
+  return {
+    active: x > from && x < to,
+    opacity: opacity * seg(time, 0, .14) * (1 - seg(time, .84, 1)),
+    time, width, left,
+    edge: left + width / 2,
+    feather: width * .28,
+  };
+}
 
-// Cadrage de la vidéo : « cover », décalé sur les écrans étroits pour garder la fiole dans le champ.
-// Sur un écran en hauteur, le plan se resserre ensuite en bandeau au-dessus des commandes (`controls`, en fraction
-// de la hauteur), pour que la fiole reste visible au moment du raccord.
+const span = (x: number, from: number, to: number, a: number, b: number) => mix(a, b, clamp((x - from) / (to - from)));
+// Temps de la vidéo, linéaire par plan, pour que le flacon reste calé sur l'image.
+export const openingTime = (x: number) => x < opening.cut ? span(x, 0, opening.cut, 0, 4.95) : span(x, opening.cut, opening.match + .3, 5, 7);
+// Axe du visage de l'enfant au plan A, à garder dans le champ sur les écrans étroits.
+export const face = { u: .6 } as const;
+// Bouteille au raccord (plan B, 1 s) : axe horizontal, base et hauteur visible, en fraction de l'image.
+export const bottle = { u: .445, base: .86, height: .53 } as const;
+
+// Cadrage de la vidéo : « cover », décalé sur les écrans étroits pour garder dans le champ le visage au plan A,
+// puis la bouteille au plan B ; le changement tombe sur la coupe. Sur un écran en hauteur, la vidéo se resserre
+// ensuite en bandeau au-dessus des commandes (`controls`, en fraction de la hauteur), pour que la bouteille reste
+// visible au moment du raccord.
 export function openingFrame(width: number, height: number, x: number, controls: number) {
   const cover = Math.max(width / opening.width, height / opening.height);
   const portrait = width < height;
   const t = portrait ? seg(x, ...opening.reveal) : 0;
   const scale = mix(cover, width * 1.5 / opening.width, t);
   const w = opening.width * scale, h = opening.height * scale;
-  const left = w > width + 1 ? (width - w) * clamp((width / 2 - opening.focus * w) / (width - w)) : (width - w) / 2;
+  const focus = x < opening.cut ? face.u : bottle.u;
+  const left = w > width + 1 ? (width - w) * clamp((width / 2 - focus * w) / (width - w)) : (width - w) / 2;
   const top = mix((height - h) / 2, controls * height - 8 - h, t);
   return { w, h, left, top };
 }
