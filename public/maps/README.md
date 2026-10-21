@@ -10,6 +10,6 @@ Source simplifiée : https://media.githubusercontent.com/media/wmgeolab/geoBound
 Métadonnées : https://www.geoboundaries.org/api/current/gbOpen/COD/ADM1/
 
 `rdc-provinces-source.geojson` est le fichier source complet téléchargé.
-`rdc-provinces.json` contient les tracés dérivés : projection Mercator, cadrage 720 × 650, coordonnées arrondies à 0,1 unité SVG, doublons successifs retirés. Les anneaux et les parties des multipolygones sont conservés. Les données dérivées sont mises à disposition sous ODbL 1.0.
+`rdc-provinces.json` contient les tracés dérivés : projection Mercator, cadrage 720 × 650, coordonnées arrondies à 0,1 unité SVG, doublons successifs retirés. Les anneaux et les parties des multipolygones sont conservés. Depuis le 14 octobre 2026, les tracés sont allégés par `npm run maps:simplify` (Douglas-Peucker, tolérance 0,3 unité, moins d'un demi-pixel sur la plus grande carte) : 6 385 points au lieu de 39 655, 72 Ko au lieu de 445 Ko. Sur téléphone, la carte du film se dessinait trop lentement pendant son agrandissement. Les données dérivées sont mises à disposition sous ODbL 1.0.
 Les noms français de six provinces sont normalisés dans src/data/provinces.ts.
 Les données cartographiques ne décrivent ni des interventions ni des écoles LabCongo.

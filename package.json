@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "models:generate": "node scripts/generate-models.mjs",
     "models:story": "node scripts/generate-story-models.mjs",
-    "models:immersive": "node scripts/generate-immersive-models.mjs"
+    "models:immersive": "node scripts/generate-immersive-models.mjs",
+    "maps:simplify": "node scripts/simplify-provinces.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.1",
