@@ -3,15 +3,15 @@ import type { RefObject } from 'react';
 import { create } from 'zustand';
 import { clamp } from './filmTimeline';
 
-// `controls` : haut des commandes du film, en fraction de la hauteur de la scène (mesuré par FilmSequence).
-export const useFilm = create<{ progress: number; controls: number; setProgress: (progress: number) => void; setControls: (controls: number) => void }>((set) => ({
+// `exitReady` : le plan de sortie est chargé (voir `exitShot`) ; tant qu'il couvre l'écran, la 3D n'est pas redessinée.
+export const useFilm = create<{ progress: number; exitReady: boolean; setProgress: (progress: number) => void; setExitReady: (ready: boolean) => void }>((set) => ({
   progress: 0,
-  controls: 1,
+  exitReady: false,
   setProgress: (progress) => set((state) => {
     const next = clamp(progress);
     return state.progress === next ? state : { progress: next };
   }),
-  setControls: (controls) => set((state) => state.controls === controls ? state : { controls }),
+  setExitReady: (exitReady) => set((state) => state.exitReady === exitReady ? state : { exitReady }),
 }));
 
 export function useFilmScroll(ref: RefObject<HTMLElement | null>, enabled: boolean) {

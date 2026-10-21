@@ -1,27 +1,27 @@
 .film { position: relative; background: rgb(7, 20, 48); }
 .film-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; isolation: isolate; background: rgb(7, 20, 48); color: white; }
 .film-progress { position: absolute; z-index: 9; top: 0; left: 0; width: 100%; height: 3px; background: var(--brand-yellow); transform: scaleX(var(--film-progress, 0)); transform-origin: left; }
-.film-opening { z-index: -1; opacity: var(--opening-opacity, 1); mask-image: var(--opening-wipe, none); }
-/* Taille et position calculées par FilmSequence (`openingFrame`), partagées avec la scène 3D. */
-.film-opening video { position: absolute; max-width: none; }
+.film-opening { z-index: -1; opacity: var(--opening-opacity, 1); }
+/* Photo du laboratoire : taille et position calculées par FilmSequence (`labFrame`), partagées avec la caméra 3D.
+   Avant le premier calcul, le même « cover » en CSS, calé sur la paillasse. La paillasse vidée se superpose au raccord. */
+.film-lab { position: absolute; inset: 0; }
+.film-lab img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 5% 50%; display: block; }
+.film-lab-empty { opacity: var(--lab-empty, 0); }
 /* Masque aux couleurs du thème : marine côté texte et en bas seulement, pour garder le reste de l'image net. Il s'allège pour le raccord. */
 .film-opening::after { content: ''; position: absolute; inset: 0; opacity: var(--opening-mask, 1); background: linear-gradient(90deg, #031b4ef2 0%, #031b4eb3 28%, #031b4e40 48%, #031b4e00 68%), linear-gradient(0deg, #031b4ecc 0%, #031b4e00 32%); }
 .film-ghost { position: absolute; z-index: 0; top: 17%; left: 0; margin: 0; font: 800 clamp(140px, 22vw, 380px)/.9 var(--font-body); letter-spacing: -.06em; text-transform: uppercase; white-space: nowrap; color: transparent; opacity: 0; pointer-events: none; }
-.film-ghost.is-light { -webkit-text-stroke: 1.5px #ffffff26; }
 .film-ghost.is-dark { -webkit-text-stroke: 1.5px #0000001f; }
-.film-canvas { position: absolute; inset: 0; z-index: 1; opacity: var(--canvas-opacity, 1); mask-image: var(--objects-wipe, none); pointer-events: none; }
-
-/* Fumée filmée sur toute la hauteur : un front souple traverse l'écran puis en sort.
-   Les commandes restent au-dessus ; aucune surface blanche ni bord net au raccord. */
-.film-smoke { position: absolute; z-index: 2; top: -10%; left: 0; height: 120%; display: block; max-width: none; opacity: 0; visibility: hidden; pointer-events: none; mix-blend-mode: screen; object-fit: cover; object-position: 60% 50%; filter: brightness(3.2); mask-image: linear-gradient(90deg, transparent, #000 24%, #000 70%, transparent); }
+.film-canvas { position: absolute; inset: 0; z-index: 1; opacity: var(--canvas-opacity, 1); pointer-events: none; }
+.film-canvas[data-lost], .film-canvas[data-off] { visibility: hidden; }
 
 .film-loading { position: absolute; z-index: 2; right: 8%; top: 46%; font-size: 12px; color: #ffffffb3; }
-.film-equipment, .film-steps, .film-band { position: absolute; z-index: 2; margin: 0; padding: 0; list-style: none; white-space: nowrap; font: 600 12px/1.4 var(--font-body); text-transform: uppercase; letter-spacing: .14em; pointer-events: none; }
-.film-equipment span, .film-steps span, .film-band span { margin-right: 14px; color: var(--brand-yellow); }
-.film-equipment { left: 5%; bottom: 19%; display: flex; gap: 34px; opacity: var(--equipment-opacity, 0); }
+/* Au-dessus des voiles des textes (`.film-scrims`). */
+.film-steps, .film-band { position: absolute; z-index: 8; margin: 0; padding: 0; list-style: none; white-space: nowrap; font: 600 12px/1.4 var(--font-body); text-transform: uppercase; letter-spacing: .14em; pointer-events: none; }
+.film-steps span, .film-band span { margin-right: 14px; color: var(--brand-yellow); }
 .film-card.is-long h2 { font-size: clamp(36px, 3.8vw, 64px); }
-.film-equipment li, .film-steps li { color: #ffffff59; transition: color .3s; }
-.film-equipment li.is-active, .film-steps li.is-active { color: white; }
+/* Les caisses claires de la collecte passent sous les étapes : une ombre portée les garde lisibles. */
+.film-steps li { color: #ffffff73; text-shadow: 0 1px 2px #031b4ecc, 0 0 16px #031b4ee6; transition: color .3s; }
+.film-steps li.is-active { color: white; }
 .film-steps { left: 5%; bottom: 19%; display: flex; gap: 40px; opacity: var(--steps-opacity, 0); }
 .film-band { left: 5%; bottom: 125px; display: flex; gap: 70px; color: #ffffffd9; transform: translateX(var(--band-shift, 0)); opacity: var(--band-opacity, 0); }
 .film-video { position: absolute; inset: 0; pointer-events: none; }
@@ -32,11 +32,26 @@
 .film-tint { position: absolute; inset: 0; z-index: 5; background: #020d24; opacity: var(--tint-opacity, 0); pointer-events: none; }
 .film-shade { position: absolute; inset: 0; z-index: 5; background: linear-gradient(90deg, #020d24 0%, #020d2499 45%, #020d2400 80%); opacity: var(--shade-opacity, 0); pointer-events: none; }
 .film-map { position: absolute; z-index: 6; inset: 6% 6% 6% 38%; opacity: var(--map-opacity, 0); transform: scale(var(--map-scale, .62)); transform-origin: 18% 58%; pointer-events: none; }
-.film-map svg { width: 100%; height: 100%; overflow: visible; }
-.film-provinces path { fill: #ffffff14; stroke: #ffffffb3; stroke-width: 1.2; stroke-linejoin: round; }
+.film-map svg, .film-provinces { position: absolute; inset: 0; width: 100%; height: 100%; }
+.film-map svg { overflow: visible; }
 .film-route { fill: none; stroke: var(--brand-yellow); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: var(--route-draw, 1); }
 .film-arrival { fill: var(--brand-yellow); opacity: calc(1 - var(--route-draw, 1) * 4); }
 .film-cards { position: absolute; inset: 0; z-index: 7; pointer-events: none; }
+/* Voile derrière les textes : très sombre du côté du texte, il assombrit aussi un peu le reste de l'image. */
+.film-scrims { position: absolute; inset: 0; z-index: 7; pointer-events: none; }
+.film-scrim { position: absolute; inset: 0; opacity: 0; visibility: hidden; }
+.film-scrim.is-hero, .film-scrim.is-left { background: linear-gradient(90deg, #020d24d9 0%, #020d24a6 38%, #020d2447 70%, #020d2433 100%); }
+.film-scrim.is-top-left { background: radial-gradient(ellipse 95% 90% at 0% 0%, #020d24e0 0%, #020d24a6 42%, #020d2447 78%, #020d2433 100%); }
+.film-scrim.is-bottom-left { background: radial-gradient(ellipse 95% 90% at 0% 100%, #020d24e0 0%, #020d24a6 42%, #020d2447 78%, #020d2433 100%); }
+.film-scrim.is-center { background: radial-gradient(ellipse 80% 70% at 50% 45%, #020d24c7 0%, #020d248c 50%, #020d2433 100%); }
+.film-scrim.is-band { background: linear-gradient(0deg, #020d24d9 0%, #020d2499 22%, #020d2400 45%); }
+.film-scrim.is-caption { background: radial-gradient(ellipse 72% 62% at 0% 0%, #020d24d9 0%, #020d2499 38%, #020d2400 76%); }
+/* Sous-titres de la mise en caisses : plus discrets que les chapitres, en haut à gauche, au-dessus du matériel en vol. */
+.film-captions { position: absolute; inset: 0; z-index: 7; pointer-events: none; }
+.film-caption { position: absolute; top: 13%; left: 5%; width: min(480px, 38%); color: white; opacity: 0; text-shadow: 0 2px 24px #020d2499; }
+.film-caption h3 { margin: 0; font: 800 clamp(30px, 3vw, 48px)/1.06 var(--font-body); letter-spacing: -.045em; text-wrap: balance; }
+.film-caption .film-kicker { margin-bottom: 18px; }
+.film-caption .film-text { margin-top: 16px; font-size: clamp(16px, 1.2vw, 19px); color: #f3f7ff; }
 .film-card { position: absolute; opacity: 0; width: min(560px, 44%); }
 .film-card.is-top-left { top: 13%; left: 5%; }
 .film-card.is-left { top: 22%; left: 5%; width: min(560px, 42%); }
@@ -49,6 +64,19 @@
 .film-link { display: inline-flex; gap: 24px; align-items: center; margin-top: 22px; padding: 10px 0; border-bottom: 1px solid #ffffff88; font-size: 16px; color: white; pointer-events: auto; }
 /* Une composition plus aérée laisse le visage visible à droite, avec un titre en deux lignes. */
 .film-hero { position: absolute; z-index: 7; top: clamp(150px, 29svh, 340px); left: 5%; width: min(680px, 48%); color: white; text-shadow: 0 2px 24px #020d2499; }
+/* Motifs du message d'accueil : au-dessus et au-dessous du texte, côté masque ; ils glissent pendant que le message s'efface. */
+.film-hero .motif-field, .film-simple-hero-copy .motif-field { --motif-opacity: .3; inset: -150px -40px -170px -40px; overflow: visible; }
+.film-hero .motif { translate: 0 calc(var(--hero-drift, 0) * var(--motif-depth, 1) * -48px); }
+.film-simple-hero-copy { position: relative; }
+.film-hero-motif { position: absolute; inset: 0; pointer-events: none; }
+/* Dans le calque de la vidéo d'ouverture, au-dessus de son dégradé sombre : le motif suit la vidéo et s'efface avec elle. */
+.film-opening .film-hero-motif { z-index: 1; }
+.film-simple-hero .film-hero-motif { z-index: 0; }
+@media (max-width: 999px) {
+  .film-hero .motif-field, .film-simple-hero-copy .motif-field { inset: -16px -8px; }
+  .film-hero .motif.is-wide, .film-simple-hero-copy .motif.is-wide { display: none; }
+  .film-hero .motif.is-narrow, .film-simple-hero-copy .motif.is-narrow { display: block; }
+}
 .film-hero h1, .film-simple-hero h1, .film-card h2, .film-simple-chapter h2 { margin: 0; font: 800 clamp(50px, 5.2vw, 88px)/1.04 var(--font-body); letter-spacing: -.055em; text-transform: none; text-wrap: balance; color: inherit; }
 .film-hero h1 span, .film-simple-hero h1 span { display: block; }
 .film-hero h1 em, .film-simple-hero h1 em, .film-card h2 em, .film-simple-chapter h2 em { display: block; font-style: normal; font-weight: inherit; color: var(--brand-yellow); }
@@ -127,11 +155,13 @@ html:not([data-ready]) .film-hero > *, html:not([data-ready]) .film-hero .film-k
   .film-simple-hero { align-items: flex-end; padding: 240px 6vw 60px; }
   .film-simple-hero-copy { width: min(650px, 100%); }
   .film-simple-hero::after { background: linear-gradient(180deg, #031b4e99 0%, #031b4e00 25%, #031b4e99 50%, #031b4e 100%); }
-  .film-cards::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, #020d24e6, #020d2499 36%, #020d2400 64%); opacity: var(--mobile-shade-opacity, 1); }
+  .film-scrim.is-top-left, .film-scrim.is-left { background: linear-gradient(180deg, #020d24eb 0%, #020d24b3 38%, #020d2447 70%, #020d2433 100%); }
+  .film-scrim.is-hero, .film-scrim.is-bottom-left { background: linear-gradient(0deg, #020d24eb 0%, #020d24b3 38%, #020d2447 70%, #020d2433 100%); }
+  .film-scrim.is-caption { background: linear-gradient(180deg, #020d24eb 0%, #020d24a6 30%, #020d2400 56%); }
+  .film-caption { top: max(9%, 112px); left: 6%; right: 6%; width: auto; }
+  .film-caption h3 { font-size: clamp(28px, 7.6vw, 44px); }
   .film-ghost { top: 24%; font-size: 34vw; }
-  .film-equipment, .film-steps { bottom: 130px; left: 6%; right: 6%; font-size: 10px; }
-  .film-equipment li { display: none; }
-  .film-equipment li.is-active { display: block; color: white; }
+  .film-steps { bottom: 130px; left: 6%; right: 6%; font-size: 10px; }
   .film-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 18px; }
   .film-band { gap: 36px; font-size: 10px; bottom: 130px; }
   .film-map { inset: 30% 4% 10% 4%; transform-origin: 12% 58%; }
@@ -142,7 +172,7 @@ html:not([data-ready]) .film-hero > *, html:not([data-ready]) .film-hero .film-k
   .film-skip span { display: inline; }
   .film-mode { min-height: 44px; white-space: nowrap; }
   .film-chapters-toggle { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 14px; border: 1px solid #ffffff40; border-radius: 30px; background: #020d2459; color: white; font: 500 12px/1.3 var(--font-body); }
-  .film-chapters-toggle span { color: var(--brand-yellow); }
+  .film-chapters-toggle span { color: var(--brand-yellow); white-space: nowrap; }
   .film-chapters-toggle svg { transition: transform .2s; }
   .film-chapters-toggle[aria-expanded='true'] svg { transform: rotate(180deg); }
   .film-chapters { display: none; }
@@ -177,8 +207,10 @@ html:not([data-ready]) .film-hero > *, html:not([data-ready]) .film-hero .film-k
 }
 @media (max-width: 999px) and (max-height: 700px) {
   .film-card.is-left:not(:first-child) { top: 5%; }
+  .film-caption { top: max(5%, 76px); }
+  .film-caption h3 { font-size: clamp(24px, 7vw, 34px); }
   .film-kicker { font-size: 10px; margin-bottom: 12px; }
-  .film-equipment, .film-steps { display: none; }
+  .film-steps { display: none; }
   .film-hero { bottom: 116px; }
   .film-hero h1, .film-card h2, .film-card.is-long h2 { font-size: clamp(28px, 8.6vw, 42px); }
   .film-hero-text, .film-text { margin-top: 12px; font-size: 16px; line-height: 1.4; }
@@ -193,3 +225,11 @@ html:not([data-ready]) .film-hero > *, html:not([data-ready]) .film-hero .film-k
 
 /* Le navire du plan du pont est à 48,5 % de la largeur : il reste dans son couloir sur les écrans en hauteur. */
 .film-deck video { object-position: 48.5% 50%; }
+/* Plans de la traversée filmée, au cadrage de la photo, au-dessus d'elle. */
+.film-lab video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Traversée filmée : seul le plan en cours se voit ; entre deux plans, et au retour sur la photo, un court fondu efface
+   le petit écart entre leurs images « photo ». */
+.film-lab-video { opacity: 0; transition: opacity .35s; }
+.film-lab-video.is-current { opacity: 1; }
+/* Sortie filmée : plein écran, cadrée sur la porte puis le conteneur (`--exit-x`). */
+.film-opening .film-exit { position: absolute; inset: 0; object-position: var(--exit-x, 50%) 50%; opacity: var(--exit-opacity, 0); }

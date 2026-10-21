@@ -4,11 +4,31 @@ import { useGLTF } from '@react-three/drei';
 import { DataTexture, Mesh, MeshStandardMaterial, RepeatWrapping, RGBAFormat, SRGBColorSpace, TextureLoader, Vector2 } from 'three';
 import type { Material, Object3D, Texture } from 'three';
 
-const models = {
-  microscope: '/models/immersive/microscope-v2.glb',
+// Modèles et textures de la scène 3D du film.
+export const sceneFiles = {
+  truck: '/models/immersive/scania-truck.glb',
+  chassis: '/models/immersive/container-chassis-v2.glb',
   container: '/models/immersive/container-v2.glb',
+  bench: '/models/immersive/bench-equipment-v1.glb',
   crate: '/models/immersive/crate-v2.glb',
 } as const;
+const woodTextures = [
+  '/textures/immersive/wood-color.webp',
+  '/textures/immersive/wood-normal.webp',
+  '/textures/immersive/wood-roughness.webp',
+];
+// Groupes de modèles chargés ensemble : le cache des chargements est rangé par groupe exact.
+export const sceneLoads = {
+  bench: [sceneFiles.bench],
+  convoy: [sceneFiles.truck, sceneFiles.chassis, sceneFiles.container],
+  crates: [sceneFiles.crate, sceneFiles.container],
+};
+// Après un échec (mémoire ou réseau, sur téléphone surtout), vide le cache des chargements, groupe par groupe : un nouvel
+// essai de la scène les refait au lieu de retrouver l'erreur.
+export function clearSceneCache() {
+  Object.values(sceneLoads).forEach((group) => useGLTF.clear(group));
+  useLoader.clear(TextureLoader, woodTextures);
+}
 
 // Fine relief for paint, rubber and foam. Deterministic, created once per mounting.
 function microSurface() {
@@ -28,12 +48,8 @@ function microSurface() {
 }
 
 export function useSceneAssets() {
-  const [scopeFile, crateFile, containerFile] = useGLTF([models.microscope, models.crate, models.container], false, true);
-  const woodFiles = useLoader(TextureLoader, [
-    '/textures/immersive/wood-color.webp',
-    '/textures/immersive/wood-normal.webp',
-    '/textures/immersive/wood-roughness.webp',
-  ]);
+  const [crateFile, containerFile] = useGLTF(sceneLoads.crates, false, true);
+  const woodFiles = useLoader(TextureLoader, woodTextures);
   const assets = useMemo(() => {
     const wood = woodFiles.map((source, i) => {
       const texture = source.clone();
@@ -61,13 +77,9 @@ export function useSceneAssets() {
             material.roughnessMap = wood[2];
             material.roughness = .95;
             material.color.set(material.name === 'Plywood face' ? '#ebe0ce' : '#d6c4a5');
-          } else if (['Packing foam', 'Rubber', 'Container enamel', 'Ivory enamel', 'Blue grey casting'].includes(material.name)) {
+          } else if (['Packing foam', 'Rubber', 'Container enamel'].includes(material.name)) {
             material.bumpMap = micro;
             material.bumpScale = material.name === 'Packing foam' ? .014 : material.name === 'Rubber' ? .002 : .00045;
-          }
-          if (material.name === 'Ivory enamel') {
-            material.color.set('#b9b6ab');
-            material.roughness = .38;
           }
           if (material.transparent) material.depthWrite = false;
           materials.set(original, material);
@@ -78,8 +90,8 @@ export function useSceneAssets() {
       });
       return scene;
     }
-    return { microscope: prepare(scopeFile.scene), crate: prepare(crateFile.scene), container: prepare(containerFile.scene), materials, textures: [...wood, micro] as Texture[] };
-  }, [scopeFile.scene, crateFile.scene, containerFile.scene, woodFiles]);
+    return { crate: prepare(crateFile.scene), container: prepare(containerFile.scene), materials, textures: [...wood, micro] as Texture[] };
+  }, [crateFile.scene, containerFile.scene, woodFiles]);
   useEffect(() => () => {
     assets.materials.forEach((material) => material.dispose());
     assets.textures.forEach((texture) => texture.dispose());
