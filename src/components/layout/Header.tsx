@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, Menu } from "lucide-react";
 import Navigation from "./Navigation";
 import MobileMenu from "./MobileMenu";
+import LanguageSelector from "./LanguageSelector";
 import { useNavigation } from "../../features/navigation";
 export default function Header({ immersive = false }: { immersive?: boolean }) {
   const { open, setOpen } = useNavigation();
@@ -18,9 +19,10 @@ export default function Header({ immersive = false }: { immersive?: boolean }) {
           />
         </Link>
         <Navigation />
-        <Link className="header-cta" to="/faire-un-don">
-          Soutenir le projet <ArrowUpRight size={16} aria-hidden="true" />
+        <Link className="header-cta" to="/nous-soutenir">
+          Nous soutenir <ArrowUpRight size={16} aria-hidden="true" />
         </Link>
+        <LanguageSelector />
         <button
           type="button"
           className="menu-toggle"
@@ -30,7 +32,7 @@ export default function Header({ immersive = false }: { immersive?: boolean }) {
           aria-expanded={open}
           onClick={() => setOpen(true)}
         >
-          <Menu aria-hidden="true" />
+          <Menu aria-hidden="true" /><span>Menu</span>
         </button>
       </header>
       <MobileMenu />

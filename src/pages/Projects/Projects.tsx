@@ -1,6 +1,7 @@
 import { Link, useSearchParams } from "react-router-dom";
 import { ClipboardList } from "lucide-react";
 import PageIntro from "../../components/common/PageIntro";
+import SchoolComparisons from "../../components/gallery/SchoolComparisons";
 import EditorialCTA from "../../components/common/EditorialCTA";
 import {
   normalizedText,
@@ -34,12 +35,13 @@ export default function Projects() {
   return (
     <>
       <PageIntro
-        eyebrow="Projets & réalisations"
+        eyebrow="Écoles & réalisations"
         title="Des besoins aux réalisations."
         description="Suivez les actions scolaires de LabCongo, de leur préparation à l’installation documentée du matériel."
       />
       <div className="container editorial-page">
-        <div className="publication-filters">
+        <nav className="content-subnav" aria-label="Écoles et réalisations"><Link to="/ecoles">Les établissements</Link><a href="#interventions">Les interventions</a><a href="#avant-apres">Avant / Après</a></nav>
+        <div id="interventions" className="publication-filters">
           <div className="form-field">
             <label htmlFor="project-search">
               Rechercher un projet ou un lieu
@@ -150,6 +152,7 @@ export default function Projects() {
             </div>
           </dl>
         </section>
+        <SchoolComparisons />
         <EditorialCTA
           title="Une école, un besoin, une première rencontre."
           to="/contact?objet=ecole"

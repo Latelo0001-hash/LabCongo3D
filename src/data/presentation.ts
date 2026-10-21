@@ -1,6 +1,6 @@
 import type { NarrativePhoto } from "../features/experience/photos";
 
-// Contenu repris de la présentation de LabCongo (« LabCongo Presentation fin .pptx »), fournie par l'association.
+// Contenu repris de la présentation de LabCongo (« LabCongo Presentation fin .pptx »), fournie par l'équipe.
 // Les chiffres de l'enjeu décrivent le contexte de la RDC, avec leurs sources : ce ne sont pas des résultats de LabCongo.
 
 export const quote = {
@@ -39,10 +39,10 @@ export const stakes = {
 };
 
 export const response = {
-  title: "Une ASBL au service de la formation scientifique et technique des jeunes",
+  title: "Une initiative au service de la formation scientifique et technique des jeunes",
   lead: "LabCongo met à la disposition des élèves un environnement pratique et moderne pour apprendre en manipulant, en expérimentant et en développant les compétences dont la RDC a besoin.",
   pillars: [
-    { title: "Un ancrage en RDC", text: "LabCongo est une ASBL créée à Kinshasa, dédiée à l’éducation scientifique et technique des jeunes congolais." },
+    { title: "Un ancrage en RDC", text: "LabCongo développe depuis Kinshasa une initiative dédiée à l’éducation scientifique et technique des jeunes Congolais." },
     { title: "Une réponse concrète", text: "Créer ou réhabiliter des laboratoires scolaires et accompagner leur utilisation à travers des équipements, des formations et un suivi." },
     { title: "Notre mission", text: "Susciter l’intérêt des jeunes pour les sciences de base et les préparer aux métiers des secteurs stratégiques de la RDC." },
   ],

@@ -22,17 +22,17 @@ export default function MapSection() {
       <FadeIn>
         <div className="map-heading">
           <div>
-            <p className="eyebrow">06 — Ancrer le projet en RDC</p>
+            <p className="eyebrow">Les territoires · Les écoles en RDC</p>
             <h2 id="map-title">
-              Au plus près des écoles.
+              Chaque école a son contexte.
               <br />
-              <em>À l’écoute des territoires.</em>
+              <em>Chaque besoin mérite d’être compris.</em>
             </h2>
           </div>
           <p>
-            Explorez les provinces de la République démocratique du Congo. Les
-            informations sur les écoles et les projets viendront enrichir cette
-            carte au fil de leur validation.
+            Explorez les provinces de la RDC pour situer les territoires du projet.
+            Les fiches d’écoles et les informations sur les interventions seront
+            ajoutées à mesure de leur validation.
           </p>
         </div>
       </FadeIn>

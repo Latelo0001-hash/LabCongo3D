@@ -13,7 +13,7 @@ export default function EquipmentSection() {
         <FadeIn>
           <div className="media-section-heading">
             <div>
-              <p className="eyebrow">11 — Les outils de l’apprentissage</p>
+              <p className="eyebrow">Choisir · Les équipements</p>
               <h2 id="equipment-home-title">
                 Observer. Expérimenter.
                 <br />
@@ -21,9 +21,9 @@ export default function EquipmentSection() {
               </h2>
             </div>
             <p>
-              Des familles de matériel pour accompagner la pratique des
-              sciences. Chaque proposition est à mettre en regard des besoins de
-              l’école.
+              Microscopie, verrerie, mesure : chaque famille de matériel
+              correspond à des usages pédagogiques. Le choix dépend du programme,
+              de l’âge des élèves et des conditions d’accueil dans l’école.
             </p>
           </div>
         </FadeIn>

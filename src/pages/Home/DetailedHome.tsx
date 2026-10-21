@@ -13,10 +13,10 @@ export default function DetailedHome() {
   useEffect(() => { const frame = requestAnimationFrame(() => ScrollTrigger.refresh()); return () => cancelAnimationFrame(frame); }, []);
   return <>
       <CollectionSection />
+      <EquipmentSection />
       <JourneySection />
       <SchoolsSection />
       <BeforeAfterSection />
-      <EquipmentSection />
       <PreviousExperienceSection />
       <PartnersSection />
       <TestimonialsSection />

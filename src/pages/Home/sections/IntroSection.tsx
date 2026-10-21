@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import FadeIn from "../../../components/animations/FadeIn";
 import { quote } from "../../../data/presentation";
+import { MotifField } from "../../../components/motifs/LabMotifs";
 export default function IntroSection() {
   return (
-    <section id="presentation" className="intro container" aria-labelledby="intro-title">
+    <section id="presentation" className="intro container has-motifs" aria-labelledby="intro-title">
+      <MotifField texture="dots" bleed />
       <FadeIn>
         <div className="intro-layout">
           <div className="intro-context">

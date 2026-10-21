@@ -15,16 +15,6 @@ export default function MobileMenu() {
     if (open) el?.showModal();
     else el?.close();
   }, [open]);
-  useEffect(() => {
-    if (!open) return;
-    const compactHeader = window.matchMedia("(max-width: 1050px)");
-    const closeOnDesktop = () => {
-      if (!compactHeader.matches) setOpen(false);
-    };
-    closeOnDesktop();
-    compactHeader.addEventListener("change", closeOnDesktop);
-    return () => compactHeader.removeEventListener("change", closeOnDesktop);
-  }, [open, setOpen]);
   return (
     <dialog
       ref={dialog}
@@ -38,23 +28,15 @@ export default function MobileMenu() {
         if (!event.currentTarget.open) setOpen(false);
       }}
     >
-      <button type="button" onClick={() => setOpen(false)} aria-label="Fermer le menu">
-        <X aria-hidden="true" />
-      </button>
-      <nav aria-label="Navigation mobile">
-        {[
-          ...navigation,
-          { label: "L’expérience 3D", to: "/experience" },
-          { label: "Projets & réalisations", to: "/projets" },
-          { label: "Équipements", to: "/equipements" },
-          { label: "Actualités", to: "/actualites" },
-          { label: "Partenaires", to: "/partenaires" },
-          { label: "Soutenir le projet", to: "/faire-un-don" },
-          { label: "Contact", to: "/contact" },
-        ].map((item) => (
-          <NavLink key={item.to} to={item.to} onClick={() => setOpen(false)}>
-            {item.label}
-          </NavLink>
+      <div className="menu-header">
+        <h2>Menu</h2>
+        <button type="button" onClick={() => setOpen(false)} aria-label="Fermer le menu" autoFocus>
+          <X aria-hidden="true" />
+        </button>
+      </div>
+      <nav aria-label="Toutes les rubriques">
+        {navigation.map((item) => (
+          <NavLink key={item.to} to={item.to} onClick={() => setOpen(false)}>{item.label}</NavLink>
         ))}
       </nav>
     </dialog>

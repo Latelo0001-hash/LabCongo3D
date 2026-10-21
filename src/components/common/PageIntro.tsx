@@ -6,11 +6,13 @@ export default function PageIntro({
   eyebrow,
   description,
   children,
+  sections = [],
 }: {
   title: string;
   eyebrow: string;
   description: string;
   children?: ReactNode;
+  sections?: { id: string; label: string }[];
 }) {
   return (
     <header className="page-intro container">
@@ -27,6 +29,9 @@ export default function PageIntro({
       <h1>{title}</h1>
       <p className="page-intro-description">{description}</p>
       {children}
+      {sections.length > 0 && <nav className="content-subnav page-section-nav" aria-label={`Dans cette page : ${eyebrow}`}>
+        {sections.map(({ id, label }) => <Link key={id} to={`#${id}`}>{label}</Link>)}
+      </nav>}
     </header>
   );
 }

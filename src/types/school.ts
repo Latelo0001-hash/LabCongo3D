@@ -13,4 +13,15 @@ export interface School {
   equipment: string[];
   image?: { src: string; alt: string };
   studentsCount?: number;
+  educationLevels?: string[];
+  initialSituation?: string;
+  intervention?: {
+    works?: string[];
+    training?: string[];
+    date?: string;
+    beneficiariesCount?: number;
+    teachersCount?: number;
+    installedEquipmentCount?: number;
+    practicalSessionsCount?: number;
+  };
 }

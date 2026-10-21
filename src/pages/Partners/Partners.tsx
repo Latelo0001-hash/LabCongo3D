@@ -2,17 +2,19 @@ import PageIntro from "../../components/common/PageIntro";
 import PartnerList from "../../components/common/PartnerList";
 import PartnershipForm from "../../components/forms/PartnershipForm";
 import { partnerRoles } from "../../data/impact";
+import { partnerActors } from "../../data/editorialContent";
 export default function Partners() {
   return (
     <>
       <PageIntro
-        eyebrow="Nos partenaires"
-        title="Faire équipe autour de la science."
-        description="Établissements, laboratoires, entreprises, acteurs logistiques et diaspora : construisons des contributions utiles aux écoles."
-      />
+        eyebrow="Partenaires"
+        title="Construire LabCongo ensemble."
+        description="Créer des laboratoires durables nécessite plus que du matériel. LabCongo veut réunir autour des établissements des partenaires éducatifs, techniques et logistiques, ainsi que des donateurs."
+        sections={[{id: "partenaires", label: "Les acteurs et leurs rôles"}, {id: "devenir-partenaire", label: "Devenir partenaire"}]} />
       <div className="container editorial-page">
-        <section>
+        <section id="partenaires">
           <h2>Des rôles complémentaires.</h2>
+          <ul className="content-tags">{partnerActors.map((actor) => <li key={actor}>{actor}</li>)}</ul>
           <div className="editorial-columns">
             {partnerRoles.map((item) => (
               <article key={item.title}>

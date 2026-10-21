@@ -35,15 +35,15 @@ export default function SchoolsSection() {
         <FadeIn>
           <div className="schools-heading">
             <div>
-              <p className="eyebrow">09 — Les écoles au cœur du projet</p>
+              <p className="eyebrow">Écoles & réalisations</p>
               <h2 id="schools-home-title">
-                Une école, des besoins.
+                Voir la transformation,
                 <br />
-                <em>Des réponses à construire.</em>
+                <em>école par école.</em>
               </h2>
             </div>
             <Link to="/ecoles" className="school-directory-link">
-              Explorer les écoles <ArrowUpRight size={18} aria-hidden="true" />
+              Écoles et avant/après <ArrowUpRight size={18} aria-hidden="true" />
             </Link>
           </div>
         </FadeIn>

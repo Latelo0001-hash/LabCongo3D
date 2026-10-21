@@ -3,6 +3,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { provinces } from "../../data/provinces";
 import SchoolCard from "../../features/schools/components/SchoolCard";
 import SchoolEmptyState from "../../features/schools/components/SchoolEmptyState";
+import SchoolComparisons from "../../components/gallery/SchoolComparisons";
 import SchoolFilters from "../../features/schools/components/SchoolFilters";
 import {
   getPublishedSchools,
@@ -43,7 +44,7 @@ export default function Schools() {
       aria-labelledby="school-directory-title"
     >
       <Helmet>
-        <title>Les écoles — LabCongo</title>
+        <title>Écoles & réalisations — LabCongo</title>
         <meta
           name="description"
           content="Découvrez les écoles du projet LabCongo en RDC, leurs besoins scientifiques et l’avancement de leur équipement."
@@ -52,23 +53,29 @@ export default function Schools() {
       <nav aria-label="Fil d’Ariane" className="school-breadcrumb">
         <Link to="/">Accueil</Link>
         <span aria-hidden="true">/</span>
-        <span aria-current="page">Les écoles</span>
+        <span aria-current="page">Écoles & réalisations</span>
       </nav>
       <header className="school-directory-heading">
-        <p className="eyebrow">LabCongo dans les écoles</p>
+        <p className="eyebrow">Écoles & réalisations</p>
         <h1 id="school-directory-title">
-          L’apprentissage commence
+          Voir la transformation,
           <br />
-          <em>sur le terrain.</em>
+          <em>école par école.</em>
         </h1>
         <p>
-          Retrouvez les établissements présentés par LabCongo, leurs besoins et
-          les étapes de leur équipement.
+          Chaque fiche présente le contexte de l’établissement, les besoins
+          identifiés, l’intervention et les résultats documentés. Les informations
+          sont publiées après validation avec l’école.
         </p>
         <Link to="/#carte-rdc" className="text-link">
           Explorer la carte des provinces ↗
         </Link>
       </header>
+      <nav className="content-subnav" aria-label="Écoles et réalisations">
+        <a href="#school-results">Les établissements</a>
+        <Link to="/projets">Les interventions</Link>
+        <a href="#avant-apres">Avant / Après</a>
+      </nav>
       <SchoolFilters
         search={search}
         province={province}
@@ -100,6 +107,7 @@ export default function Schools() {
           />
         )}
       </div>
+      <SchoolComparisons />
       <aside className="school-directory-note">
         <p>
           <strong>Vous représentez une école en RDC ?</strong>
@@ -107,7 +115,7 @@ export default function Schools() {
           Présentez votre établissement et les besoins de vos enseignants pour
           ouvrir le dialogue.
         </p>
-        <Link to="/contact">Parlons de votre école ↗</Link>
+        <Link to="/contact?objet=ecole">Proposer un établissement ↗</Link>
       </aside>
     </section>
   );

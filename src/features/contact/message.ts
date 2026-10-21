@@ -2,9 +2,12 @@ import { z } from "zod";
 import { site } from "../../config/site";
 export const subjects = {
   materiel: "Proposer du matériel",
-  ecole: "Présenter une école",
-  partenariat: "Devenir partenaire",
-  soutien: "Soutenir le projet",
+  partenariat: "Proposer un partenariat",
+  soutien: "Soutenir une école",
+  expertise: "Proposer une expertise",
+  ecole: "Proposer un établissement",
+  information: "Demande d’information",
+  presse: "Presse ou communication",
   temoignage: "Partager une expérience",
   autre: "Une autre demande",
 } as const;
@@ -18,6 +21,9 @@ export const messageSchema = z
       "ecole",
       "partenariat",
       "soutien",
+      "expertise",
+      "information",
+      "presse",
       "temoignage",
       "autre",
     ]),
@@ -29,6 +35,8 @@ export const messageSchema = z
     email: z.email("Indiquez une adresse e-mail valide.").max(200),
     organisation: z.string().trim().max(160, "160 caractères maximum."),
     location: z.string().trim().max(160, "160 caractères maximum."),
+    country: z.string().trim().max(100, "100 caractères maximum."),
+    phone: z.string().trim().max(40, "40 caractères maximum."),
     equipment: z.string().trim().max(200, "200 caractères maximum."),
     quantity: z.string().trim().max(80, "80 caractères maximum."),
     condition: z.string().trim().max(200, "200 caractères maximum."),
@@ -79,6 +87,8 @@ export function composeMessage(data: MessageInput) {
     lines.push(
       `${data.subject === "ecole" ? "École" : "Organisation"} : ${data.organisation}`,
     );
+  if (data.country) lines.push(`Pays : ${data.country}`);
+  if (data.phone) lines.push(`Téléphone : ${data.phone}`);
   if (data.location) lines.push(`Localisation : ${data.location}`);
   if (data.subject === "materiel")
     lines.push(

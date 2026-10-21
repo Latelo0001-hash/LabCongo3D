@@ -12,7 +12,7 @@ export default function TestimonialsSection() {
     >
       <FadeIn>
         <div className="section-heading">
-          <p className="eyebrow">14 — Les voix du terrain</p>
+          <p className="eyebrow">Écouter · Les voix du terrain</p>
           <h2 id="testimonials-title">
             Écouter celles et ceux
             <br />
@@ -38,7 +38,7 @@ export default function TestimonialsSection() {
         <div className="testimonial-invitation">
           <MessageCircle size={40} strokeWidth={1} aria-hidden="true" />
           <div>
-            <h3>Les expériences se racontent avec leurs acteurs.</h3>
+            <h3>Votre expérience peut faire avancer le projet.</h3>
             <p>
               Les témoignages seront publiés avec l’accord des personnes
               concernées. Vous enseignez, vous accompagnez une école ou vous

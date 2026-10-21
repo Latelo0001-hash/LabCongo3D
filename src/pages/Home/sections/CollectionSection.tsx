@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 import FadeIn from "../../../components/animations/FadeIn";
 import Button from "../../../components/common/Button";
-import { PhotoImage } from "../../../components/common/Photo";
+import { PhotoCredit, PhotoImage } from "../../../components/common/Photo";
 import { narrativePhotos } from "../../../features/experience/photos";
 
 const equipment = [
@@ -35,7 +35,7 @@ export default function CollectionSection() {
         <FadeIn>
           <div className="collection-heading">
             <div>
-              <p className="eyebrow">07 — La collecte en Europe</p>
+              <p className="eyebrow">Contribuer · La collecte en Europe</p>
               <h2 id="collection-title">
                 Vos outils ont encore
                 <br />
@@ -43,9 +43,9 @@ export default function CollectionSection() {
               </h2>
             </div>
             <p>
-              Un équipement disponible dans un laboratoire peut ouvrir de
-              nouvelles possibilités dans une école. Le point de départ : faire
-              correspondre ce matériel à un besoin réel.
+              Établissements, laboratoires, entreprises ou particuliers : vous
+              pouvez proposer du matériel scientifique disponible. Son utilité
+              pour les écoles sera étudiée avant d’organiser la collecte.
             </p>
           </div>
         </FadeIn>
@@ -53,10 +53,7 @@ export default function CollectionSection() {
           <figure className="collection-figure">
             <PhotoImage photo={narrativePhotos.instruments} />
             <figcaption>
-              <span className="eyebrow">Photographie d’illustration</span>
-              <span>
-                Établissements, laboratoires, entreprises et particuliers.
-              </span>
+              <PhotoCredit photo={narrativePhotos.instruments} />
             </figcaption>
           </figure>
           <FadeIn>
@@ -74,9 +71,9 @@ export default function CollectionSection() {
                 ))}
               </ul>
               <p className="collection-guidance">
-                Pour proposer un don, préparez une description du matériel, son
-                état, sa localisation et quelques photos. Son adéquation aux
-                besoins des écoles sera à examiner avant la collecte.
+                Décrivez le matériel, son état et sa localisation, puis joignez
+                quelques photos. Ces éléments permettront d’examiner la proposition
+                au regard des besoins pédagogiques.
               </p>
               <Button to="/faire-un-don">
                 Proposer du matériel{" "}

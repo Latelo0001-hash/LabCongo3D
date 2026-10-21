@@ -1,37 +1,10 @@
 import { Link } from "react-router-dom";
+import { MotifField } from "../../../components/motifs/LabMotifs";
 import FadeIn from "../../../components/animations/FadeIn";
+import { supportOptions } from "../../../data/editorialContent";
 export default function CTASection() {
-  return (
-    <section
-      id="agir"
-      className="final-cta section-space"
-      aria-labelledby="cta-title"
-    >
-      <div className="container">
-        <FadeIn>
-          <p className="eyebrow">16 — Le prochain geste</p>
-          <h2 id="cta-title">
-            Et si votre matériel
-            <br />
-            devenait <em>leur déclic ?</em>
-          </h2>
-          <p>
-            Un instrument disponible. Une compétence à partager. Une école à
-            accompagner. Ensemble, donnons une place à la pratique des sciences.
-          </p>
-          <div className="cta-actions">
-            <Link className="button" to="/faire-un-don">
-              Donner du matériel ↗
-            </Link>
-            <Link className="button button-secondary" to="/partenaires">
-              Devenir partenaire ↗
-            </Link>
-            <Link className="cta-text-link" to="/contact?objet=soutien">
-              Soutenir le projet ↗
-            </Link>
-          </div>
-        </FadeIn>
-      </div>
-    </section>
-  );
+  return <section id="agir" className="final-cta section-space has-motifs" aria-labelledby="cta-title"><MotifField set="cta" texture="lattice" route /><div className="container">
+    <FadeIn><p className="eyebrow">Nous soutenir</p><h2 id="cta-title">Plusieurs façons <em>de contribuer.</em></h2></FadeIn>
+    <div className="home-support-options">{supportOptions.map((option) => <article key={option.title}><h3>{option.title}</h3><p>{option.text}</p><Link className="button button-secondary" to={option.to}>{option.label} ↗</Link></article>)}</div>
+  </div></section>;
 }

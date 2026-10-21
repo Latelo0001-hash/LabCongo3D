@@ -18,7 +18,7 @@ export default function News() {
       <PageIntro
         eyebrow="Actualités"
         title="Le projet, au fil des actions."
-        description="Collectes, préparation du matériel, rencontres et nouvelles des écoles : retrouvez ici les informations publiées par LabCongo."
+        description="Terrain, écoles, partenariats, collectes, équipements, formations et événements : retrouvez les informations publiées par LabCongo au fil du projet."
       />
       <div className="container editorial-page">
         <fieldset className="equipment-filters">
@@ -26,7 +26,7 @@ export default function News() {
           <div>
             {[
               ["", "Toutes les actualités"],
-              ...Object.entries(articleCategories),
+              ...Object.entries(articleCategories).filter(([key]) => key !== "projet" || all.some((item) => item.category === "projet")),
             ].map(([value, label]) => (
               <button
                 key={value}
@@ -91,11 +91,10 @@ export default function News() {
                   : "Les prochaines nouvelles seront partagées ici."}
               </h2>
               <p>
-                En attendant, découvrez la mission et les étapes du parcours du
-                matériel.
+                En attendant, découvrez notre approche et le projet pilote.
               </p>
-              <Link className="text-link" to="/notre-demarche">
-                Comprendre la démarche ↗
+              <Link className="text-link" to="/projet-pilote">
+                Découvrir le projet pilote ↗
               </Link>
             </div>
           )}

@@ -7,6 +7,8 @@ import {
 } from "../../features/schools/services/catalog";
 import ComparisonGallery from "../../components/gallery/ComparisonGallery";
 import { getPublishedComparisons } from "../../services/comparisons";
+import { displayDate } from "../../services/editorial";
+import { beforeAfterMessage } from "../../data/editorialContent";
 import SchoolStatus from "../../features/schools/components/SchoolStatus";
 export default function SchoolDetails() {
   const { slug } = useParams();
@@ -62,11 +64,13 @@ export default function SchoolDetails() {
           height="720"
         />
       )}
+      {school.educationLevels?.length ? <p className="school-levels"><strong>Niveaux d’enseignement :</strong> {school.educationLevels.join(" · ")}</p> : null}
       <div className="school-detail-grid">
         <section aria-labelledby="school-about-title">
           <p className="eyebrow">L’établissement</p>
           <h2 id="school-about-title">Apprendre et expérimenter</h2>
           <p className="school-description">{school.description}</p>
+          {school.initialSituation && <><h3>Situation initiale</h3><p className="school-description">{school.initialSituation}</p></>}
           {school.studentsCount !== undefined && school.studentsCount > 0 && (
             <p className="school-students">
               <strong>{school.studentsCount.toLocaleString("fr-FR")}</strong>{" "}
@@ -100,6 +104,20 @@ export default function SchoolDetails() {
           </Link>
         </aside>
       </div>
+      {school.intervention && <section className="school-intervention editorial-page" aria-labelledby="school-intervention-title">
+        <p className="eyebrow">L’intervention LabCongo</p><h2 id="school-intervention-title">Aménager, équiper et accompagner.</h2>
+        <div className="diagnosis-grid">
+          {school.intervention.works?.length ? <article><h3>Travaux et aménagements</h3><ul>{school.intervention.works.map((item) => <li key={item}>{item}</li>)}</ul></article> : null}
+          {school.intervention.training?.length ? <article><h3>Formation et accompagnement</h3><ul>{school.intervention.training.map((item) => <li key={item}>{item}</li>)}</ul></article> : null}
+        </div>
+        <dl className="school-result-facts">
+          {school.intervention.date && Number.isFinite(Date.parse(school.intervention.date)) && <div><dt>Date de l’intervention</dt><dd>{displayDate(school.intervention.date)}</dd></div>}
+          {school.intervention.beneficiariesCount !== undefined && <div><dt>Élèves bénéficiaires</dt><dd>{school.intervention.beneficiariesCount.toLocaleString("fr-FR")}</dd></div>}
+          {school.intervention.teachersCount !== undefined && <div><dt>Enseignants accompagnés</dt><dd>{school.intervention.teachersCount.toLocaleString("fr-FR")}</dd></div>}
+          {school.intervention.installedEquipmentCount !== undefined && <div><dt>Équipements installés</dt><dd>{school.intervention.installedEquipmentCount.toLocaleString("fr-FR")}</dd></div>}
+          {school.intervention.practicalSessionsCount !== undefined && <div><dt>Travaux pratiques organisés</dt><dd>{school.intervention.practicalSessionsCount.toLocaleString("fr-FR")}</dd></div>}
+        </dl>
+      </section>}
       {comparisons.length > 0 && (
         <section
           className="school-comparisons"
@@ -107,6 +125,7 @@ export default function SchoolDetails() {
         >
           <p className="eyebrow">Le suivi en images</p>
           <h2 id="school-comparison-title">Avant et après l’installation</h2>
+          <p>{beforeAfterMessage}</p>
           <ComparisonGallery comparisons={comparisons} />
         </section>
       )}
