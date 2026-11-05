@@ -15,7 +15,8 @@ export default function SchoolVideoSection() {
   const stage = useRef<HTMLDivElement>(null);
   const video = useRef<HTMLVideoElement>(null);
   const reduced = useMediaQuery("(prefers-reduced-motion: reduce)");
-  const shortScreen = useMediaQuery("(max-height: 500px) and (max-width: 950px)");
+  // Décidé au chargement, comme pour le film : un écran qui passe sous 500 px de haut en cours de route ne change pas de version.
+  const [shortScreen] = useState(() => matchMedia("(max-height: 500px) and (max-width: 950px)").matches);
   const live = !reduced && !shortScreen;
   // Comme pour le film, une version 900p plus légère pour les téléphones.
   const videoSize = useMediaQuery("(max-width: 999px)") ? "-900" : "";

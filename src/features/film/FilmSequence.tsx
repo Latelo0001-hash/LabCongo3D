@@ -121,7 +121,11 @@ export default function FilmSequence() {
   const sea = useRef<HTMLVideoElement>(null);
   const exitVideo = useRef<HTMLVideoElement>(null);
   const reduced = useMediaQuery('(prefers-reduced-motion: reduce)');
-  const shortScreen = useMediaQuery('(max-height: 500px) and (max-width: 950px)');
+  // Le mode se décide au chargement, puis seul le bouton le change : un écran qui passait sous 500 px de haut en cours de
+  // route (rotation, barres ou outils du navigateur) remplaçait le film par la lecture simple et la page sautait
+  // (« cassure » en fin de parcours sur téléphone, remarque de l'utilisateur du 21 octobre 2026). Un écran trop bas au
+  // chargement ouvre la lecture simple, d'où le bouton reste disponible.
+  const [shortScreen] = useState(() => matchMedia('(max-height: 500px) and (max-width: 950px)').matches);
   // Les vidéos existent en 1080p pour les grands écrans et en 900p, plus légères, pour les téléphones.
   const narrow = useMediaQuery('(max-width: 999px)');
   const videoSize = narrow ? '-900' : '';
@@ -135,7 +139,7 @@ export default function FilmSequence() {
       return available;
     } catch { return false; }
   });
-  const [simple, setSimple] = useState(false);
+  const [simple, setSimple] = useState(shortScreen);
   const [near, setNear] = useState(false);
   const [ready, setReady] = useState(false);
   // Échecs de la scène 3D (mémoire ou réseau, sur téléphone surtout) : le film continue sans elle et la retente.
@@ -164,10 +168,33 @@ export default function FilmSequence() {
   }, [broken, failures]);
   // Les vidéos du navire et la carte attendent la scène 3D, sauf si elle a échoué.
   const mediaReady = ready || failures > 0;
-  const possible = supported && !reduced && !shortScreen;
+  const possible = supported && !reduced;
   const live = possible && !simple;
   const active = useFilm((state) => chapterAt(at(state.progress)));
   useFilmScroll(track, live);
+
+  // Quand la hauteur de l'écran change en cours de lecture (rotation, fenêtre, outils du navigateur), le film change de
+  // longueur : le lecteur est replacé au même endroit du récit au lieu de sauter plus loin.
+  useEffect(() => {
+    const element = track.current;
+    if (!live || !element) return;
+    let height = element.offsetHeight;
+    let progress = useFilm.getState().progress;
+    const unsubscribe = useFilm.subscribe((state) => { if (element.offsetHeight === height) progress = state.progress; });
+    const observer = new ResizeObserver(() => {
+      const next = element.offsetHeight;
+      if (next === height) return;
+      height = next;
+      if (progress <= 0 || progress >= 1) return;
+      const stageHeight = stage.current?.offsetHeight ?? window.innerHeight;
+      scrollImmediately(window.scrollY + element.getBoundingClientRect().top + progress * (next - stageHeight));
+    });
+    observer.observe(element);
+    return () => {
+      observer.disconnect();
+      unsubscribe();
+    };
+  }, [live]);
 
   // Modèles, vidéos et carte ne se téléchargent qu'à l'approche de la séquence.
   useEffect(() => {
@@ -309,7 +336,14 @@ export default function FilmSequence() {
       const open = seg(x, 6.42, 6.77), half = stripWidth(aspect) * 50;
       set('--reveal-clip', `inset(${mix(100, 0, seg(x, 6.17, 6.42))}% ${mix(100 - deckLane * 100 - half, 0, open)}% 0 ${mix(deckLane * 100 - half, 0, open)}%)`);
       // Le fondu vers la mer attend que la proue soit entrée dans l'image.
-      set('--sea-opacity', seg(x, 7.22, 7.67));
+      // Du port à la mer, deux plans d'angles et de navires différents. Superposés en fondu, ils faisaient cassure ; un passage
+      // par le bleu nuit laissait le texte seul à l'écran, sans vidéo (remarques de l'utilisateur, 22 octobre 2026). La mer
+      // s'ouvre donc depuis une fente verticale au centre, comme la route s'ouvre sur le navire, pendant que la caméra
+      // avance encore sur le port : il y a toujours une image, sans surimpression.
+      const sea = seg(x, 7.2, 7.62);
+      set('--deck-scale', mix(1, 1.12, seg(x, 7.05, 7.62)));
+      set('--sea-opacity', x > 7.2 ? 1 : 0);
+      set('--sea-clip', `inset(0 ${mix(50, 0, sea).toFixed(2)}% 0 ${mix(50, 0, sea).toFixed(2)}%)`);
       set('--sea-scale', mix(1.18, 1, seg(x, 7.07, 8.87)));
       set('--shade-opacity', seg(x, 7.27, 7.87) * .3 + seg(x, 8.57, 9.17) * .45);
       set('--tint-opacity', seg(x, 6.42, 6.67) * .42 - seg(x, 7.27, 7.87) * .27 + seg(x, 8.57, 9.17) * .4);

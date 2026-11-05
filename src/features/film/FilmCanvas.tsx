@@ -1,12 +1,13 @@
 import { Suspense, useEffect, useMemo, useRef } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
-import { AlwaysStencilFunc, Box3, BoxGeometry, BufferGeometry, CustomBlending, ShaderChunk, DirectionalLight, DoubleSide, DstAlphaFactor, EqualStencilFunc, ExtrudeGeometry, Group, InstancedMesh, Matrix4, Mesh, MeshStandardMaterial, OneFactor, OneMinusSrcAlphaFactor, Quaternion, ReplaceStencilOp, Shape, Vector3, ZeroFactor } from 'three';
+import { AlwaysStencilFunc, Box3, BoxGeometry, BufferGeometry, CustomBlending, DirectionalLight, DoubleSide, DstAlphaFactor, EqualStencilFunc, ExtrudeGeometry, Group, InstancedMesh, Matrix4, Mesh, MeshStandardMaterial, OneFactor, OneMinusSrcAlphaFactor, Quaternion, ReplaceStencilOp, Shape, Vector3, ZeroFactor } from 'three';
 import type { MeshPhysicalMaterial, Object3D, PerspectiveCamera, ShaderMaterial, ShadowMaterial } from 'three';
 import { useRoomEnvironment } from './useRoomEnvironment';
 import { sceneLoads, useSceneAssets } from './sceneAssets';
+import { crateBody, fadeReflection, photoCamera, prepareBenchMaterials } from './photoScene';
 import { useFilm } from './useFilm';
-import { at, clamp, collect, exitCovers, fov, framing, lab, labFocal, labFrame, labPitch, laneOffset, mix, openingMask, road, roadLength, roadPoint, sceneShown, seg, travel, yard } from './filmTimeline';
+import { at, clamp, collect, exitCovers, fov, framing, lab, labFrame, labPitch, laneOffset, mix, openingMask, road, roadLength, roadPoint, sceneShown, seg, travel, yard } from './filmTimeline';
 
 const up = new Vector3(0, 1, 0);
 
@@ -19,20 +20,10 @@ const truckModel = { scale: .18, wheelRadius: .536, forward: new Vector3(-17.96,
 const labOrigin = new Vector3(yard.x - .2, 0, 2.3);
 const containerZ = -4.7;
 
-// Point d'un plan horizontal de hauteur `y` (en mètres) vu au pixel (u, v) de la photo, dans le repère du laboratoire.
-function onLab(u: number, v: number, y: number) {
-  const dx = (u - lab.width / 2) / labFocal, dy = -(v - lab.height / 2) / labFocal;
-  const c = Math.cos(labPitch), s = Math.sin(labPitch);
-  const direction = new Vector3(dx, dy * c - s, -dy * s - c);
-  const depth = (y - lab.eye) / direction.y;
-  return { point: new Vector3(direction.x * depth, y, direction.z * depth).add(labOrigin) };
-}
-// Ligne de la photo où se voit un point du laboratoire : l'inverse de `onLab`.
-function labRow(point: Vector3) {
-  const c = Math.cos(labPitch), s = Math.sin(labPitch);
-  const y = point.y - lab.eye, z = point.z - labOrigin.z;
-  return lab.height / 2 - labFocal * (y * c - z * s) / (-y * s - z * c);
-}
+// Calage sur la photo du laboratoire (voir photoScene.ts) : point d'un plan horizontal vu en un pixel, matériel et caisses
+// mis à la taille relevée sur la photo.
+const { onPhoto: onLab, fitOnPhoto: fitOnLab, crateOnPhoto: crateOnLab } = photoCamera({ ...lab, origin: labOrigin });
+const benchReflection = fadeReflection(lab.bench);
 
 // Tables de la photo : fenêtre de départ de leur matériel (en écrans), durée d'un envol, plateau sur la photo vidée
 // (pixels) qui reçoit les ombres et les reflets. Sur les tables lointaines, objets, ombres et reflets ne font que
@@ -102,52 +93,10 @@ const crateSpots = [
   { u: 990, v: 872, h: 272, yaw: -.05, lid: 1 },
   { u: 1255, v: 712, h: 197, yaw: -.35, lid: 1 },
 ] as const;
-// Caisse du modèle : du dessous des patins au bord supérieur, et du centre au fond intérieur, en unités du modèle.
-const crateBody = { height: 1.79, depth: 1.84, floor: -.85, rim: .73, base: 1.06 } as const;
 // Caisses alignées devant le conteneur, puis rangées du fond vers la porte.
 const lineup = (k: number) => new Vector3(yard.x + (k - 1) * 1.7, 0, -.4);
 const stowed = (k: number) => new Vector3(yard.x, 0, containerZ - 1.35 + k * 1.35);
 const crateLoaded = .7;
-
-// Objet posé sur la paillasse : le pixel relevé est le bas de sa silhouette, soit le milieu de l'arête avant de sa base,
-// et la hauteur relevée va de là au point le plus haut à l'écran, profondeur comprise (vue d'en haut, des lunettes couchées
-// paraissent plus hautes qu'elles ne le sont). On cherche l'échelle qui donne cette hauteur, d'après les sommets du modèle,
-// puis l'origine du modèle.
-function fitOnLab(object: Object3D, u: number, v: number, pixels: number) {
-  const box = new Box3().setFromObject(object);
-  const { point } = onLab(u, v, lab.bench);
-  const middle = (box.min.x + box.max.x) / 2;
-  const vertices: Vector3[] = [];
-  object.traverse((part) => {
-    if (!(part instanceof Mesh)) return;
-    const position = (part.geometry as BufferGeometry).attributes.position;
-    for (let i = 0; i < position.count; i += 3) vertices.push(new Vector3().fromBufferAttribute(position, i).applyMatrix4(part.matrixWorld));
-  });
-  const corner = new Vector3();
-  const top = (scale: number) => vertices.reduce((row, vertex) =>
-    Math.min(row, labRow(corner.set(vertex.x - middle, vertex.y, vertex.z - box.max.z).multiplyScalar(scale).add(point))), Infinity);
-  let low = .01, high = 20;
-  for (let i = 0; i < 40; i += 1) {
-    const scale = (low + high) / 2;
-    if (top(scale) < v - pixels) high = scale; else low = scale;
-  }
-  return { start: point.clone().sub(new Vector3(middle, 0, box.max.z).multiplyScalar(low)), scale: low };
-}
-
-// Caisse posée au sol, vue d'en haut : à l'écran, elle s'étend de l'arête avant de sa base à l'arête arrière de son dessus.
-// On cherche la hauteur qui donne cette étendue, puis on recule la caisse de sa demi-profondeur, dans l'axe du regard.
-function crateOnLab(u: number, v: number, pixels: number) {
-  const { point } = onLab(u, v, 0);
-  const back = point.clone().sub(labOrigin).setY(0).normalize();
-  const top = new Vector3();
-  let low = .1, high = 2;
-  for (let i = 0; i < 30; i += 1) {
-    const height = (low + high) / 2;
-    top.copy(point).addScaledVector(back, height * crateBody.depth / crateBody.height).setY(height);
-    if (labRow(top) < v - pixels) high = height; else low = height;
-  }
-  return { point, back, height: low };
-}
 
 function shade(scene: Object3D) {
   scene.traverse((object) => {
@@ -232,31 +181,6 @@ function Spreader({ length, width, cable }: { length: number; width: number; cab
   </>;
 }
 
-// Sur un objet fin (tube, bécher), three.js ajoute à la rugosité celle due à la courbure à l'écran : l'image vue au
-// travers du verre se floute et la couleur des solutions se dilue. La transmission garde ici la rugosité du verre.
-// Devant la photo, le verre n'ajouterait que ses reflets : sur un fond clair (mur, meubles), la partie vide d'un flacon
-// soulevé disparaissait. Il garde un corps léger, plus dense sur les bords vus en biais, comme l'épaisseur du verre :
-// un contour un peu plus sombre que le fond clair, un peu plus clair que le fond sombre.
-function sharpTransmission(shader: { fragmentShader: string }) {
-  shader.fragmentShader = shader.fragmentShader
-    .replace('#include <transmission_fragment>', ShaderChunk.transmission_fragment.replace('n, v, material.roughness,', 'n, v, roughnessFactor,'))
-    .replace('#include <opaque_fragment>', `#include <opaque_fragment>
-      float glassEdge = pow(1.0 - abs(dot(normalize(normal), normalize(vViewPosition))), 2.0);
-      float glassBody = (0.06 + 0.5 * glassEdge) * (1.0 - gl_FragColor.a);
-      gl_FragColor.rgb += vec3(0.6, 0.68, 0.72) * glassBody * 0.35;
-      gl_FragColor.a += glassBody;`);
-}
-
-// Reflet dans le vernis : il s'estompe en s'éloignant du point de contact, sur 15 cm sous le plan de la paillasse.
-function fadeReflection(shader: { vertexShader: string; fragmentShader: string }) {
-  shader.vertexShader = shader.vertexShader
-    .replace('void main() {', 'varying float vDrop;\nvoid main() {')
-    .replace('#include <project_vertex>', '#include <project_vertex>\nvDrop = (modelMatrix * vec4(transformed, 1.0)).y;');
-  shader.fragmentShader = shader.fragmentShader
-    .replace('void main() {', 'varying float vDrop;\nvoid main() {')
-    .replace('#include <opaque_fragment>', `#include <opaque_fragment>\ngl_FragColor.a *= clamp(1.0 - (${lab.bench.toFixed(3)} - vDrop) / 0.15, 0.0, 1.0);`);
-}
-
 // Collecte puis chargement : le matériel 3D prend la place de celui de la photo et s'envole dans les caisses posées
 // dans l'allée, dont les couvercles se ferment ; les caisses rejoignent ensuite la cour, entrent dans le conteneur,
 // qui se ferme puis est hissé hors champ.
@@ -264,26 +188,7 @@ function Collection() {
   const assets = useSceneAssets();
   const benchFile = useGLTF(sceneLoads.bench[0], false, true);
   const items = useMemo(() => {
-    const root = benchFile.scene.clone(true);
-    root.traverse((object) => {
-      if (!(object instanceof Mesh)) return;
-      const material = object.material as MeshPhysicalMaterial;
-      // Le verre transmet la lumière : la photo reste visible au travers, il ne porte pas d'ombre. Ses reflets restent
-      // mesurés, pour ne pas blanchir les solutions ; celles-ci ne reflètent presque rien.
-      const clear = material.transmission > 0;
-      material.envMapIntensity = clear ? .22 : material.vertexColors ? .25 : .9;
-      // Le tone mapping délave les couleurs vives et fortement éclairées : solutions et verre (qui les laisse voir) y
-      // échappent, pour garder les couleurs franches de la photo.
-      if (clear || material.vertexColors) material.toneMapped = false;
-      if (clear) {
-        material.onBeforeCompile = sharpTransmission;
-        material.customProgramCacheKey = () => 'sharp-transmission-body';
-        // Le verre n'écrit pas la profondeur : l'eau translucide du flacon, dessinée après lui, reste visible au travers.
-        material.depthWrite = false;
-      }
-      object.castShadow = !clear && !material.transparent;
-      object.receiveShadow = !clear && !material.transparent;
-    });
+    const root = prepareBenchMaterials(benchFile.scene.clone(true));
     const used = [0, 0, 0];
     return benchItems.map((item) => {
       // Chaque objet est une copie de son modèle (géométries et matériaux partagés).
@@ -310,7 +215,7 @@ function Collection() {
         if (source.transmission > 0) { part.visible = false; return; }
         const tint = source.clone();
         Object.assign(tint, { transparent: true, depthWrite: false, stencilWrite: true, stencilRef: 1, stencilFunc: EqualStencilFunc, stencilWriteMask: 0 });
-        tint.onBeforeCompile = fadeReflection;
+        tint.onBeforeCompile = benchReflection;
         tint.customProgramCacheKey = () => 'bench-reflection';
         Object.assign(part, { material: tint, castShadow: false, receiveShadow: false, renderOrder: 2 });
         tints.push(tint);
