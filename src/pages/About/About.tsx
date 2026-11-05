@@ -12,7 +12,7 @@ export default function About() {
         <div><p className="eyebrow">Le constat</p><h2>{context.title}.</h2></div>
         <div>{context.paragraphs.map((text) => <p key={text}>{text}</p>)}<ul className="editorial-list">{context.findings.map((item) => <li key={item.title}>{item.title}</li>)}</ul></div>
       </section>
-      <section id="enjeu-national" className="editorial-split editorial-band">
+      <section id="enjeu-national" className="editorial-split editorial-band color-stage has-section-background background-mining">
         <div><p className="eyebrow">L’enjeu national</p><h2>{nationalChallenge.title}.</h2></div>
         <div><p>{nationalChallenge.lead}</p><p><strong>{nationalChallenge.action}</strong></p><p>{nationalChallenge.text}</p><ul className="content-tags">{strategicFields.map((field) => <li key={field}>{field}</li>)}</ul><p>{nationalChallenge.conclusion}</p></div>
       </section>

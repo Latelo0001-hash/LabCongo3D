@@ -208,7 +208,7 @@
 .home-content .collection-section { background: #fff; border: 0; }
 .home-content .collection-copy { padding: 28px; background: var(--home-blue-pale); border-top: 3px solid var(--brand-blue); }
 .home-content .collection-figure img { aspect-ratio: 4/3; }
-.home-content .journey-section { background: linear-gradient(120deg, var(--home-blue-deep), var(--ink)); padding-block: var(--home-space); }
+.home-content .journey-section { background: linear-gradient(120deg, #04152f, #031b4e); padding-block: var(--home-space); }
 .home-content .journey-section .eyebrow { color: #c8def6; }
 .home-content .journey-section .eyebrow::before { background: var(--brand-yellow); }
 .home-content .journey-section :focus-visible { outline-color: var(--brand-yellow); }
@@ -431,4 +431,148 @@
   .home-content .process-image { border-radius: 19px 19px 0 0; }
   .home-content .home-outcomes h3 { min-height: 0; }
   .home-content .home-news .publication-note { padding: 24px; }
+}
+
+/* Nuances sur quelques surfaces après le hero, sans modifier le film. */
+.home-content .problem-section,
+.home-content .pilot-section,
+.home-content .partners-section { background: var(--gradient-blue-soft); }
+.home-content .challenge,
+.home-content .pilot-overview > li,
+.home-content .learning-path > li,
+.home-content .partners-section .editorial-columns article { background: var(--gradient-card); }
+.home-content .home-outcomes article:nth-child(even),
+.home-content .experience-chain { background: var(--gradient-blue-soft); }
+.home-content .journey-access,
+.home-content .final-cta { background: var(--gradient-navy); }
+.home-content .home-support-options article { background: linear-gradient(145deg, #ffffff12, #ffffff04); }
+.home-content .button:not(.button-secondary) { background: var(--gradient-blue); }
+.home-content .button:not(.button-secondary):hover { background: var(--gradient-navy); }
+.home-content .final-cta .button:not(.button-secondary),
+.home-content .mission-copy .button,
+.home-content .journey-support { background: linear-gradient(120deg, #fff57a, #fff200); }
+.home-content .final-cta .button:not(.button-secondary):hover,
+.home-content .mission-copy .button:hover,
+.home-content .journey-support:hover { background: #fff; }
+
+/* Rythme clair / bleu nuit : la couleur souligne les temps forts du récit. */
+.home-content .problem-section,
+.home-content .pilot-section,
+.home-content .partners-section { background: #eef2f6; }
+.home-content .challenge,
+.home-content .pilot-overview > li,
+.home-content .learning-path > li,
+.home-content .partners-section .editorial-columns article { background: #fff; box-shadow: none; }
+.home-content .journey-access,
+.home-content .final-cta { background: var(--gradient-spotlight); }
+.home-content .impact-section { background: var(--section-night); color: #fff; }
+.home-content .impact-section .media-section-heading h2 { color: #fff; }
+.home-content .impact-section .media-section-heading h2 em { color: var(--brand-yellow); }
+.home-content .impact-section .media-section-heading > p { color: #cadbec; }
+.home-content .impact-section .eyebrow { color: var(--brand-yellow); }
+.home-content .impact-section .eyebrow::before { background: var(--brand-yellow); }
+.home-content .impact-section .home-outcomes article { background: var(--section-night-card); border-color: #2a4865; box-shadow: none; }
+.home-content .impact-section .home-outcomes h3 { color: #fff; }
+.home-content .impact-section .home-outcomes p,
+.home-content .impact-section .home-impact-followup p { color: #cadbec; }
+.home-content .impact-section .home-outcomes .home-outcome-label { color: var(--brand-yellow); }
+.home-content .impact-section .home-impact-followup { border-color: #2a4865; }
+.home-content .impact-section .home-impact-followup strong { color: #fff; }
+.home-content .impact-section .text-link { color: var(--brand-yellow); border-color: #7b9bc4; }
+.home-content .impact-section :focus-visible { outline-color: var(--brand-yellow); }
+.home-content .pilot-overview li > span { color: var(--brand-blue); background: #eaf3fc; }
+.home-content .final-cta .eyebrow { color: var(--brand-yellow); }
+.home-content .final-cta h2 em { color: #fff200; }
+.home-content .final-cta .home-support-options article { background: #061b3299; border-color: #ffffff30; }
+@supports (background-clip: text) {
+  .home-content .final-cta h2 em {
+    background: linear-gradient(100deg, #fffbd1 0%, #fff200 100%);
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* Parcours : fond plus profond et cartes lisibles devant le motif scientifique. */
+.home-content .journey-section .learning-path > li { background: #0c284de6; border-color: #315172; }
+.home-content .journey-section .journey-heading h2 { color: #fff; }
+.home-content .journey-section .journey-heading h2 em { color: var(--brand-yellow); }
+.home-content .journey-section .journey-heading > p:last-child { color: #d0e1f6; }
+.home-content .journey-section > .motif-field { opacity: .65; }
+
+/* Territoires : un espace d’exploration avec carte et fiche de province. */
+.home-content .map-heading h2 { font-size: clamp(2.125rem, 3.8vw, 3.5rem); }
+.home-content .map-heading > p { font-size: 1.125rem; line-height: 1.8; }
+.home-content .map-toolbar { align-items: center; gap: 20px; padding: 24px 28px; border: 1px solid #d5e2f1; border-radius: 20px; background: linear-gradient(120deg, #fff, #edf4fc); box-shadow: 0 8px 28px #031b4e06; }
+.home-content .province-select { flex: 1 1 280px; max-width: 400px; min-width: 0; }
+.home-content .province-select label { font-size: .75rem; font-weight: 700; color: var(--ink); }
+.home-content .province-select select { min-height: 50px; border-radius: 10px; border-color: #abc2dc; font: 600 1rem/1.5 var(--font-body); padding-inline: 16px; box-shadow: 0 2px 5px #031b4e05; }
+.home-content .map-reset { align-self: end; min-height: 50px; border-radius: 10px; border-color: #c1d3e8; background: #fff; font-size: .8125rem; font-weight: 600; }
+.home-content .map-province-count { display: flex; align-items: center; gap: 12px; padding-left: 24px; border-left: 1px solid #c1d3e8; color: var(--muted); }
+.home-content .map-province-count strong { color: var(--brand-blue); font: 400 2.75rem/1 var(--font-editorial); }
+.home-content .map-province-count span { font-size: .75rem; line-height: 1.5; }
+.home-content .map-instructions { font-size: .75rem; padding-inline: 4px; margin: 16px 0 24px; }
+.home-content .map-grid { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.home-content .map-surface { border: 1px solid #d5e2f1; border-radius: 24px; overflow: hidden; background: radial-gradient(ellipse at 50% 45%, #fff, #edf4fc); box-shadow: 0 16px 40px #031b4e08; }
+.home-content .map-surface-heading { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding: 20px 24px; border-bottom: 1px solid #d5e2f1; background: #ffffffb3; }
+.home-content .map-surface-heading > span:first-child { display: inline-flex; align-items: center; gap: 8px; font-size: .75rem; font-weight: 700; color: var(--ink); }
+.home-content .map-surface-heading svg { color: var(--brand-blue); flex-shrink: 0; }
+.home-content .map-view-label { padding: 7px 10px; border-radius: 7px; color: var(--brand-blue); background: #e8f1fc; font-size: .6875rem; font-weight: 700; }
+.home-content .congo-map { margin: 12px; }
+.home-content .province-shape { fill: #afc9e8; stroke: #fff; stroke-width: 1.5; }
+.home-content .province-shape:hover { fill: #75a7db; }
+.home-content .province-shape[aria-pressed="true"] { fill: var(--brand-blue); stroke: var(--ink); stroke-width: 2; }
+.home-content .province-shape:focus-visible { stroke: var(--brand-red); stroke-width: 3; }
+.home-content .map-legend { padding: 18px 24px; background: #ffffffc9; border-color: #d5e2f1; font-size: .75rem; gap: 12px 24px; }
+.home-content .map-legend i { width: 14px; height: 14px; border-radius: 4px; background: #afc9e8; }
+.home-content .map-legend i.selected { background: var(--brand-blue); }
+.home-content .province-details { padding: 28px; background: #fff; border: 1px solid #d5e2f1; border-top: 3px solid var(--brand-blue); border-radius: 20px; box-shadow: 0 16px 40px #031b4e08; }
+.home-content .province-detail-top { gap: 10px; }
+.home-content .province-detail-top > svg { box-sizing: content-box; padding: 10px; background: #eaf3fc; border-radius: 12px; }
+.home-content .province-detail-top .eyebrow { margin: 0; font-size: .625rem; letter-spacing: .1em; }
+.home-content .province-detail-top .eyebrow::before { display: none; }
+.home-content .province-heading { margin: 24px 0; min-height: 0; }
+.home-content .province-heading h3 { font: 400 clamp(1.75rem, 2.6vw, 2.3rem)/1.15 var(--font-editorial); color: var(--ink); margin-bottom: 12px; }
+.home-content .province-heading p { font-size: .8125rem; line-height: 1.75; }
+.home-content .province-school-state { padding: 24px; background: #f0f5fc; border: 1px solid #dce7f4; border-radius: 14px; }
+.home-content .province-school-state h4 { font-size: 1.125rem; font-weight: 700; margin: 14px 0 12px; }
+.home-content .province-school-state p { font-size: .9375rem; line-height: 1.8; }
+.home-content .province-data-status { padding: 8px 10px; background: #fff; border: 1px solid #d5e2f1; border-radius: 7px; font-size: .6875rem; line-height: 1.65; }
+.home-content .province-directory-link { display: inline-flex; padding-block: 12px 0; font-size: .8125rem; font-weight: 700; line-height: 1.7; color: var(--brand-blue); }
+.home-content .province-contact { justify-content: center; padding: 13px 16px; border-radius: 10px; background: var(--gradient-blue); color: #fff; font-size: .875rem; font-weight: 700; margin: 24px 0 14px; }
+.home-content .province-contact:hover { background: var(--ink); }
+.home-content .province-contact svg { flex-shrink: 0; }
+.home-content .province-context { font-size: .8125rem; line-height: 1.8; margin-bottom: 0; }
+.home-content .province-school-links { padding-left: 18px; font-size: .875rem; line-height: 1.8; }
+.home-content .province-school-links a { color: var(--brand-blue); text-decoration: underline; text-underline-offset: 4px; }
+.home-content .map-attribution { margin-top: 24px; padding-top: 18px; border-top: 1px solid #d5e2f1; font-size: .6875rem; line-height: 1.8; }
+@media (max-width: 1050px) {
+  .home-content .map-grid { grid-template-columns: 1fr; }
+  .home-content .map-surface .congo-map { max-width: 680px; margin-inline: auto; }
+  .home-content .province-select { max-width: none; }
+}
+@media (max-width: 760px) {
+  .home-content .map-toolbar { padding: 20px; gap: 16px; }
+  .home-content .province-select { flex-basis: 100%; }
+  .home-content .map-reset { flex: 1; padding-inline: 12px; font-size: .75rem; }
+  .home-content .map-province-count { gap: 8px; padding-left: 16px; margin-left: 0; }
+  .home-content .map-province-count strong { font-size: 2rem; }
+  .home-content .map-province-count span { font-size: .625rem; }
+  .home-content .map-surface { border-radius: 18px; }
+  .home-content .map-surface-heading, .home-content .map-legend { padding: 16px; }
+  .home-content .province-details { padding: 22px; }
+  .home-content .province-school-state { padding: 20px; }
+}
+
+/* Un seul espace pour les contributions individuelles et les partenariats. */
+.home-content .final-cta .participation-lead { max-width: 64ch; font-size: var(--home-lead); line-height: 1.7; color: #d2e1f4; margin: 0 0 40px; }
+.home-content .home-partnerships { display: flex; align-items: center; justify-content: space-between; gap: 32px; margin-top: 32px; padding: 30px 32px; border: 1px solid #ffffff40; border-radius: 20px; background: #031b4ee6; scroll-margin-top: 24px; }
+.home-content .home-partnerships > div { max-width: 66ch; }
+.home-content .home-partnerships h3 { font: 400 1.75rem/1.25 var(--font-editorial); color: #fff; margin: 0 0 14px; }
+.home-content .home-partnerships p { margin: 0; font-size: 1rem; line-height: 1.8; color: #d2e1f4; }
+.home-content .home-partnerships .button { flex-shrink: 0; }
+.home-content .final-cta .partner-grid > article { background: #fff; border-radius: 16px; padding: 24px; color: var(--ink); }
+.home-content .final-cta .partner-grid p { color: var(--muted); }
+.home-content .final-cta .partner-grid .text-link { color: var(--brand-blue); }
+@media (max-width: 760px) {
+  .home-content .home-partnerships { flex-direction: column; align-items: start; gap: 22px; padding: 24px; }
 }

@@ -29,3 +29,34 @@ Le bandeau présente directement les rubriques sur ordinateur (huit liens et le 
 Contrôle du bandeau sur les pages publiques et le hero à 1 440, 1 280, 1 180, 820, 390 et 320 px : liens directs, absence de débordement et de chevauchement, fermeture au changement de page, Échap et restitution du focus. Aucun fichier du film modifié.
 
 Le bandeau comprend aussi le sélecteur Fr / En, visible sur ordinateur et mobile. Fr indique la langue actuelle ; En est désactivé et annoncé « bientôt disponible » tant que les pages anglaises ne sont pas traduites. Aucun changement de langue fictif ni service de traduction tiers n’est ajouté. L’espace du bandeau a été revérifié aux six largeurs ci-dessus ; ESLint et compilation réussis.
+
+## Couleurs et contraste — 22 octobre 2026
+
+La référence Smartcat est reprise dans la répartition des couleurs : grandes surfaces claires, blocs bleu nuit et dégradés bleus lumineux concentrés sur les appels à participer. La palette reste celle de LabCongo ; le hero, le bouton vert et le fond cartographique du footer sont préservés.
+
+- Accueil : impact en bleu nuit, cartes sombres et repères jaunes. Présentation et appel final avec une lumière bleue plus affirmée. Constat, pilote et partenaires sur des surfaces claires sobres.
+- Pages : enjeu national dans À propos, diagnostic du Projet pilote et effets attendus dans Impact en blocs sombres. Appels à contribution avec un dégradé bleu lumineux. Les cartes ordinaires redeviennent blanches pour réserver les effets aux moments clés.
+- Jaune du logo sur fond sombre et bleu de la marque sur fond clair ; les objectifs restent présentés sans chiffres inventés.
+- Chrome : six vues à 1 440 et 390 px, soit douze contrôles sans débordement horizontal. Captures examinées, bouton de soutien toujours vert. Contrastes des nouveaux textes et repères calculés ; ESLint, compilation et contrôle des espaces Git réussis.
+
+Captures et script temporaires dans `/tmp/labcongo-color-*`. Ces contrôles utilisent le mode de mouvements réduits et ne remplacent pas une revue complète des animations du film.
+
+La palette reste limitée au bleu, au rouge et au jaune du logo, avec leurs nuances claires et foncées. Les accents turquoise et les cartes vert pâle ont été retirés. Le vert est réservé au bouton « Nous soutenir », conformément au choix explicite de l’utilisateur.
+
+## Fonds illustrés fournis
+
+Les cinq images ajoutées sont réparties sur l’impact, l’enjeu national, le pilote, l’appel à contribuer, les résultats et les voix du terrain. Voir l’inventaire dans `public/images/backgrounds/README.md`. Des voiles clairs ou bleu nuit maintiennent les contrastes ; les motifs de l’appel final sont retirés pour laisser la place à l’image des élèves.
+
+La section Témoignages est désormais visible sur l’accueil, après les partenaires. `#temoignages` rejoint cette section. Aucune citation n’est ajoutée : les données restent vides et l’invitation à partager une expérience est affichée.
+
+ESLint et compilation réussis. Chrome : six sections à 1 440 et 390 px, sans débordement ; les fonds utilisent bien les variantes 1 600 et 768 px respectivement. Captures examinées sur ordinateur et mobile. Outils temporaires : `/tmp/labcongo-background-review.*`. Le hero et les nouveaux médias du film scolaire n’ont pas été modifiés pendant cette intégration.
+
+## Section Territoires
+
+La carte et la fiche de province sont présentées dans deux blocs clairs, avec une barre de sélection, un repère « 26 provinces » et l’intitulé de la vue en cours. Les actions vers les écoles et la présentation d’un établissement sont distinguées ; cette dernière présélectionne le motif école dans Contact. Les couleurs restent bleues, avec le focus clavier rouge.
+
+Contrôles Chrome à 1 440, 820, 390 et 320 px : 26 provinces affichées, sélection au clavier, synchronisation de la liste et du panneau, réinitialisation et sélection par liste réussies. Aucun débordement horizontal ; champ de sélection à 16 px. Captures ordinateur et mobile examinées. ESLint, compilation et `git diff --check` réussis. Outils temporaires : `/tmp/labcongo-map-review.*`.
+
+## Participation et soutien
+
+Sur l’accueil, la présentation des partenaires et l’appel au soutien sont réunis dans le bloc final « Participer · Nous soutenir ». Il conserve les trois façons de contribuer et ajoute un accès « Devenir partenaire ». Les partenaires confirmés s’affichent dans ce même bloc lorsqu’ils sont disponibles. L’ancre `#partenaires` est conservée à cet endroit. Les pages Partenaires et Nous soutenir restent accessibles séparément depuis le menu.

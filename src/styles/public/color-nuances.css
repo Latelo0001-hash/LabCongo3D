@@ -1,0 +1,89 @@
+/* Contraste entre surfaces sobres et temps forts colorés. Le hero reste indépendant. */
+.public-content .editorial-band,
+.public-content .content-emphasis,
+.public-content .content-subnav,
+.public-content .school-filters,
+.public-content .contact-note,
+.public-content .equipment-donation-note {
+  background: var(--gradient-blue-soft);
+}
+.public-content .diagnosis-grid > article,
+.public-content .learning-path > li,
+.public-content .editorial-columns > article,
+.public-content .indicator-grid > article,
+.public-content .editorial-navigation > a {
+  background: var(--gradient-card);
+}
+.public-content .pilot-phases > li:first-child,
+.public-content .impact-levels > article:nth-child(2),
+.public-content .impact-levels > article:nth-child(3),
+.public-content .publication-empty,
+.public-content .school-directory .school-empty,
+.public-content .comparison-pending {
+  background: var(--gradient-blue-soft);
+}
+.public-content .support-options > article:first-child,
+.public-content .editorial-cta {
+  background: var(--gradient-navy);
+}
+.public-content .support-options > article:nth-child(3) {
+  background: linear-gradient(145deg, #fff 30%, #edf4fb 100%);
+}
+.public-content .support-options > article:nth-child(3) > svg {
+  color: var(--brand-blue);
+  background: #e4eefb;
+}
+.public-content .message-form-wrapper {
+  background: linear-gradient(155deg, #fff 70%, #f1f6fc 100%);
+}
+.public-content .button:not(.button-secondary),
+.public-content .equipment-filters button[aria-pressed="true"] {
+  background: var(--gradient-blue);
+}
+.public-content .button:not(.button-secondary):hover {
+  background: var(--gradient-navy);
+}
+/* Garder le contraste de l’appel à contribution sur son fond sombre. */
+.public-content .editorial-cta .button:not(.button-secondary) {
+  background: linear-gradient(120deg, #fff57a 0%, #fff200 100%);
+}
+.public-content .editorial-cta .button:not(.button-secondary):hover {
+  background: #fff;
+}
+.site-header .header-cta {
+  background: var(--gradient-green);
+  box-shadow: 0 5px 14px #10643718;
+}
+.site-header .header-cta:is(:hover, :focus-visible) {
+  background: linear-gradient(120deg, #126c3d 0%, #0b522d 100%);
+}
+
+/* Grands blocs foncés : contexte national, diagnostic et effets attendus. */
+.public-content .color-stage {
+  padding: clamp(26px, 4vw, 52px);
+  border: 1px solid #193a5d;
+  border-radius: 24px;
+  background: var(--section-night);
+  color: #fff;
+}
+.public-content .color-stage :is(h2, h3, strong) { color: #fff; }
+.public-content .color-stage :is(p, li) { color: #cadbec; }
+.public-content .color-stage .eyebrow { color: var(--brand-yellow); }
+.public-content .color-stage .eyebrow::before { background: var(--brand-yellow); }
+.public-content .color-stage .content-tags li { background: #102c49; color: #d7e8ff; border-color: #2c4d69; }
+.public-content .color-stage .diagnosis-grid > article,
+.public-content .color-stage .impact-levels > article { background: var(--section-night-card); border-color: #2a4865; box-shadow: none; }
+.public-content .color-stage .diagnosis-grid .editorial-number { color: var(--brand-yellow); background: #173d68; }
+.public-content .color-stage .editorial-list li::before { background: var(--brand-yellow); }
+.public-content .color-stage .text-link { color: var(--brand-yellow); }
+.public-content .editorial-cta { background: var(--gradient-spotlight); }
+.public-content .editorial-cta .eyebrow { color: var(--brand-yellow); }
+.public-content .editorial-cta .eyebrow::before { background: var(--brand-yellow); }
+.public-content .indicator-grid .indicator-value { color: var(--brand-blue); }
+.public-content .indicator-grid .indicator-status { color: var(--brand-blue); }
+.public-content .content-subnav { background: #eaf0f5; }
+.public-content .publication-empty,
+.public-content .school-directory .school-empty { background: #eef2f6; }
+@media (max-width: 760px) {
+  .public-content .color-stage { border-radius: 18px; padding: 28px 22px; }
+}

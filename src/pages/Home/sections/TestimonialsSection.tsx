@@ -7,9 +7,10 @@ export default function TestimonialsSection() {
   return (
     <section
       id="temoignages"
-      className="testimonials-section container section-space"
+      className="testimonials-section section-space has-section-background background-voices"
       aria-labelledby="testimonials-title"
     >
+      <div className="container">
       <FadeIn>
         <div className="section-heading">
           <p className="eyebrow">Écouter · Les voix du terrain</p>
@@ -50,6 +51,7 @@ export default function TestimonialsSection() {
           </div>
         </div>
       )}
+      </div>
     </section>
   );
 }

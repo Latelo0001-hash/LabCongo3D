@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { RotateCcw } from "lucide-react";
+import { MapPin, RotateCcw } from "lucide-react";
 import FadeIn from "../../../components/animations/FadeIn";
 import CongoMap from "../../../components/maps/CongoMap";
 import ProvinceDetails from "../../../components/maps/ProvinceDetails";
@@ -60,7 +60,7 @@ export default function MapSection() {
         >
           <RotateCcw size={16} aria-hidden="true" /> Vue d’ensemble
         </button>
-        <span className="map-province-count">26 provinces à explorer</span>
+        <div className="map-province-count"><strong>26</strong><span>provinces<br />à explorer</span></div>
       </div>
       <p id="map-instructions" className="map-instructions">
         Cliquez sur une province ou utilisez la liste. Au clavier : Tab pour
@@ -68,6 +68,7 @@ export default function MapSection() {
       </p>
       <div className="map-grid">
         <div className="map-surface">
+          <div className="map-surface-heading"><span><MapPin size={17} aria-hidden="true" /> République démocratique du Congo</span><span className="map-view-label">{selectedProvince?.name ?? "Vue d’ensemble"}</span></div>
           <CongoMap selectedCode={selectedCode} onSelect={setSelectedCode} />
           <div className="map-legend">
             <span>

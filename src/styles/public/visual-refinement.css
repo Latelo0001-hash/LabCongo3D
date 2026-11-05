@@ -26,14 +26,16 @@
 .public-content { background: #f8fafc; }
 .site-header:not(.home-header), .site-footer, .mobile-menu { font-family: "Manrope", Arial, sans-serif; }
 .site-header:not(.home-header) .desktop-nav { font-size: .9375rem; font-weight: 700; }
-.site-header:not(.home-header) .header-cta { border-radius: 10px; background: var(--brand-blue); border-color: var(--brand-blue); color: #fff; font-size: .875rem; }
+.site-header:not(.home-header) .header-cta { border-radius: 10px; font-size: .875rem; }
 .site-header:not(.home-header) .menu-toggle { border-radius: 12px; background: #eaf1fa; }
 .mobile-menu { border-radius: 20px; box-shadow: 0 24px 80px #031b4e40; }
 .mobile-menu nav a { font-size: 1.125rem; font-weight: 600; }
 .site-footer .footer-grid :is(p, a:not(.brand)) { font-size: .875rem; line-height: 1.85; }
 .site-footer .footer-grid .eyebrow { font-size: .6875rem; font-weight: 800; color: #b7cde8; letter-spacing: .15em; }
 .site-footer .footer-bottom { font-size: .75rem; line-height: 1.8; }
-.site-footer .footer-grid nav a { min-height: 36px; }
+.site-footer .footer-grid nav a { min-height: 32px; }
+.site-footer .footer-grid .eyebrow { margin: 0 0 8px; }
+.site-footer .footer-grid > div > p { margin-block: 10px 6px; }
 .public-content > .container { width: min(1240px, 90%); }
 .public-content :is(h1, h2) { font-family: var(--font-editorial); letter-spacing: -.028em; font-weight: 400; }
 .public-content h1 { font-size: clamp(2.5rem, 5.2vw, 4.75rem); line-height: 1.1; }
@@ -180,4 +182,27 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .public-content :is(.content-subnav a, .editorial-navigation a, .form-field input, .form-field select, .form-field textarea) { transition: none; }
+}
+
+/* Pied de page compact sur téléphone ; la carte conserve ses proportions. */
+@media (max-width: 760px) {
+  .site-footer .footer-grid { gap: 12px 18px; }
+  .site-footer .footer-grid .brand-logo { width: 112px; }
+  .site-footer .footer-grid > div > p { margin-block: 10px 6px; max-width: 36ch; font-size: .8125rem; line-height: 1.65; }
+  .site-footer .footer-grid > div > a:not(.brand) { font-size: .8125rem; }
+  .site-footer .footer-grid .eyebrow { margin: 0 0 6px; font-size: .625rem; }
+  .site-footer .footer-grid nav a { font-size: .8125rem; min-height: 32px; line-height: 1.6; display: flex; align-items: center; }
+  .site-footer .footer-grid > nav:last-child { grid-column: 1 / -1; display: flex; align-items: center; flex-wrap: wrap; gap: 4px 18px; }
+  .site-footer .footer-grid > nav:last-child .eyebrow { margin: 0; }
+  .site-footer .footer-bottom { margin-top: 16px; padding-top: 12px; gap: 4px; font-size: .6875rem; }
+  .site-footer .footer-bottom p { margin: 0; }
+  .site-footer .footer-information { gap: 6px 16px; }
+}
+
+/* Les contenus regroupés conservent le rythme des pages éditoriales. */
+.public-content .editorial-page > .editorial-group { margin-top: 64px; }
+.public-content .editorial-group > section + section { margin-top: 64px; }
+@media (max-width: 760px) {
+  .public-content .editorial-page > .editorial-group,
+  .public-content .editorial-group > section + section { margin-top: 40px; }
 }

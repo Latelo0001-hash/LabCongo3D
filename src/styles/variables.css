@@ -10,4 +10,12 @@
   --line: #d5deec;
   --font-body: Arial, Helvetica, sans-serif;
   --font-editorial: Georgia, "Times New Roman", serif;
+  --gradient-blue-soft: linear-gradient(125deg, #edf4fb 0%, #f7faff 60%, #e8f0fb 100%);
+  --gradient-card: #fff;
+  --gradient-navy: linear-gradient(120deg, #031b4e 0%, #073b78 65%, #07549c 100%);
+  --gradient-blue: linear-gradient(120deg, #0054a6 0%, #073b78 100%);
+  --gradient-green: linear-gradient(120deg, #168047 0%, #106437 100%);
+  --section-night: #071d37;
+  --section-night-card: #102c49;
+  --gradient-spotlight: radial-gradient(ellipse at 90% 110%, #0077bd 0%, transparent 60%), linear-gradient(135deg, #05162e 10%, #063a76 100%);
 }

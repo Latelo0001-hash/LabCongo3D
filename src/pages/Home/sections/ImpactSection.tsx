@@ -3,7 +3,7 @@ import FadeIn from "../../../components/animations/FadeIn";
 import { homeOutcomes } from "../../../data/homeEditorial";
 export default function ImpactSection() {
   return (
-    <section id="impact" className="impact-section section-space" aria-labelledby="impact-title">
+    <section id="impact" className="impact-section section-space has-section-background background-mining" aria-labelledby="impact-title">
       <div className="container">
         <FadeIn>
           <div className="media-section-heading">
@@ -22,7 +22,7 @@ export default function ImpactSection() {
         </div>
         <div className="home-impact-followup">
           <p><strong>Des objectifs à suivre.</strong> Les résultats seront publiés au fil des interventions documentées, avec leurs sources et leur période de référence.</p>
-          <Link className="text-link" to="/impact">Comprendre le suivi de l’impact ↗</Link>
+          <Link className="text-link" to="/projet-pilote#impact">Comprendre le suivi de l’impact ↗</Link>
         </div>
       </div>
     </section>
