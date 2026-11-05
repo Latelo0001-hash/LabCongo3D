@@ -2,7 +2,7 @@ import { Navigate, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import FilmSequence from "../../features/film/FilmSequence";
 import JourneyAccess from "../../features/film/JourneyAccess";
-import SchoolVideoSection from "./sections/SchoolVideoSection";
+import SchoolFilm from "../../features/film/SchoolFilm";
 import ProblemSection from "./sections/ProblemSection";
 import NationalChallengeSection from "./sections/NationalChallengeSection";
 import ProcessSection from "./sections/ProcessSection";
@@ -12,7 +12,7 @@ import SchoolsSection from "./sections/SchoolsSection";
 import PreviousExperienceSection from "./sections/PreviousExperienceSection";
 import ImpactSection from "./sections/ImpactSection";
 import MapSection from "./sections/MapSection";
-import PartnersSection from "./sections/PartnersSection";
+import TestimonialsSection from "./sections/TestimonialsSection";
 import NewsSection from "./sections/NewsSection";
 import CTASection from "./sections/CTASection";
 import { MotifField } from "../../components/motifs/LabMotifs";
@@ -21,7 +21,7 @@ export default function Home() {
   const { hash } = useLocation();
   const relocated: Record<string, string> = {
     "#avant-apres": "/ecoles#avant-apres", "#collecte": "/nous-soutenir#proposer",
-    "#equipements": "/equipements", "#chiffres": "/impact#suivi", "#temoignages": "/contact?objet=temoignage",
+    "#equipements": "/equipements", "#chiffres": "/projet-pilote#suivi",
   };
   if (relocated[hash]) return <Navigate to={relocated[hash]} replace />;
   return <>
@@ -34,7 +34,7 @@ export default function Home() {
       <ProcessSection />
       <PilotSection />
       <JourneySection />
-      <SchoolVideoSection />
+      <SchoolFilm />
       <SchoolsSection />
       <PreviousExperienceSection />
       <div className="home-still">
@@ -42,7 +42,7 @@ export default function Home() {
         <ImpactSection />
         <MapSection />
       </div>
-      <PartnersSection />
+      <TestimonialsSection />
       <NewsSection />
       <CTASection />
     </div>
