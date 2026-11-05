@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { navigation } from "../../data/navigation";
 
-// Suit le récit institutionnel uniquement sur les neuf pages principales.
+// Suit le récit institutionnel uniquement sur les pages principales.
 export default function EditorialNavigation() {
   const { pathname } = useLocation();
   const index = navigation.findIndex((item) => item.to === pathname.replace(/\/$/, ""));

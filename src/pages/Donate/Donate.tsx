@@ -1,3 +1,4 @@
+import PartnershipContent from "./sections/PartnershipContent";
 import { Link } from "react-router-dom";
 import PageIntro from "../../components/common/PageIntro";
 import DonationForm from "../../components/forms/DonationForm";
@@ -11,7 +12,7 @@ export default function Donate() {
         eyebrow="Nous soutenir"
         title="Plusieurs façons de contribuer."
         description="Donner du matériel, soutenir un établissement ou partager une expertise : chaque contribution peut aider à créer des conditions durables pour apprendre et expérimenter."
-        sections={[{id: "contribuer", label: "Les façons de contribuer"}, {id: "preparer", label: "Préparer un don"}, {id: "proposer", label: "Proposer un équipement"}]} />
+        sections={[{id: "contribuer", label: "Les façons de contribuer"}, {id: "preparer", label: "Préparer un don"}, {id: "proposer", label: "Proposer un équipement"}, {id: "partenaires", label: "Les partenariats"}, {id: "devenir-partenaire", label: "Devenir partenaire"}]} />
       <div className="container editorial-page">
         <section id="contribuer" aria-label="Les façons de contribuer" className="editorial-columns support-options">
           {supportOptions.map((item, index) => { const Icon = icons[index]; return (
@@ -59,6 +60,7 @@ export default function Donate() {
           </div>
           <DonationForm />
         </section>
+        <PartnershipContent />
       </div>
     </>
   );

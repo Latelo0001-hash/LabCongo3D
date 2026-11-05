@@ -13,16 +13,12 @@ const Information = lazy(() => import("../pages/Information/Information"));
 const Process = lazy(() => import("../pages/Process/Process"));
 const Schools = lazy(() => import("../pages/Schools/Schools"));
 const SchoolDetails = lazy(() => import("../pages/Schools/SchoolDetails"));
-const Projects = lazy(() => import("../pages/Projects/Projects"));
 const ProjectDetails = lazy(() => import("../pages/Projects/ProjectDetails"));
 const Equipment = lazy(() => import("../pages/Equipment/Equipment"));
 const EquipmentDetails = lazy(
   () => import("../pages/Equipment/EquipmentDetails"),
 );
-const Impact = lazy(() => import("../pages/Impact/Impact"));
-const Partners = lazy(() => import("../pages/Partners/Partners"));
 const Donate = lazy(() => import("../pages/Donate/Donate"));
-const News = lazy(() => import("../pages/News/News"));
 const Article = lazy(() => import("../pages/News/Article"));
 const Contact = lazy(() => import("../pages/Contact/Contact"));
 const deferred = (node: ReactNode) => (
@@ -42,6 +38,11 @@ function LegacySupport() {
   const { hash, search } = useLocation();
   return <Navigate to={`/nous-soutenir${search}${hash}`} replace />;
 }
+function RelocatedPage({ to, anchor }: { to: string; anchor: string }) {
+  const { hash, search } = useLocation();
+  const destinationHash = to === "/" ? anchor : to === "/ecoles" && hash !== "#avant-apres" ? anchor : hash || anchor;
+  return <Navigate to={`${to}${search}${destinationHash}`} replace />;
+}
 export const router = createBrowserRouter([
   {
     element: <PageLayout />,
@@ -55,21 +56,21 @@ export const router = createBrowserRouter([
       { path: "projet-pilote", element: deferred(<Pilot />) },
       { path: "ecoles", element: deferred(<Schools />) },
       { path: "ecoles/:slug", element: deferred(<SchoolDetails />) },
-      { path: "projets", element: deferred(<Projects />) },
+      { path: "projets", element: <RelocatedPage to="/ecoles" anchor="#school-results" /> },
       {
         path: "realisations",
-        element: <Navigate to="/projets?statut=completed" replace />,
+        element: <Navigate to="/ecoles?statut=equipped#avant-apres" replace />,
       },
       { path: "projets/:slug", element: deferred(<ProjectDetails />) },
       { path: "equipements", element: deferred(<Equipment />) },
       { path: "equipements/:slug", element: deferred(<EquipmentDetails />) },
-      { path: "impact", element: deferred(<Impact />) },
-      { path: "partenaires", element: deferred(<Partners />) },
+      { path: "impact", element: <RelocatedPage to="/projet-pilote" anchor="#impact" /> },
+      { path: "partenaires", element: <RelocatedPage to="/nous-soutenir" anchor="#partenaires" /> },
       { path: "faire-un-don", element: <LegacySupport /> },
       { path: "nous-soutenir", element: deferred(<Donate />) },
       { path: "confidentialite", element: deferred(<Information privacy />) },
       { path: "mentions-legales", element: deferred(<Information />) },
-      { path: "actualites", element: deferred(<News />) },
+      { path: "actualites", element: <RelocatedPage to="/" anchor="#actualites" /> },
       { path: "actualites/:slug", element: deferred(<Article />) },
       { path: "contact", element: deferred(<Contact />) },
       { path: "*", element: deferred(<NotFound />) },

@@ -12,17 +12,14 @@ Le hero existant est conservé à la demande explicite de l’utilisateur. La su
 | --- | --- | --- |
 | À propos | `/a-propos` | Constat, enjeu national, association, mission, équipe et expérience antérieure. |
 | Notre approche | `/notre-approche` | Trois piliers et parcours en neuf étapes. |
-| Projet pilote | `/projet-pilote` | Cinq phases, six axes du diagnostic et suivi des résultats. |
-| Écoles & réalisations | `/ecoles` | Établissements, accès aux projets et comparaisons avant/après. |
-| Impact | `/impact` | Quatre niveaux d’impact attendu et méthode de mesure. |
-| Partenaires | `/partenaires` | Acteurs recherchés et proposition de partenariat. |
-| Actualités | `/actualites` | Terrain, écoles, partenariats, collectes, équipements, formations, événements. |
-| Nous soutenir | `/nous-soutenir` | Donner du matériel, soutenir un établissement, partager une expertise. |
+| Projet pilote | `/projet-pilote` | Cinq phases, six axes du diagnostic, impact attendu et indicateurs de suivi. |
+| Écoles & réalisations | `/ecoles` | Établissements, fiches et comparaisons avant/après. |
+| Nous soutenir | `/nous-soutenir` | Donner du matériel, soutenir un établissement, partager une expertise et devenir partenaire. |
 | Contact | `/contact` | Motifs de demande et coordonnées. |
 
-Les neuf destinations sont accessibles directement : huit liens dans le bandeau sur ordinateur et « Nous soutenir » en bouton. Sur tablette et téléphone, le bouton « Menu » ouvre une liste simple des neuf rubriques. Aucun sous-menu ni regroupement dans le bandeau. Les groupes Comprendre, Découvrir et Participer sont réservés au pied de page. La source commune reste `src/data/navigation.ts`.
+Les six rubriques sont accessibles dans le menu, l’accueil par le logo. Les pages principales proposent une navigation précédente/suivante. Les sommaires de Projet pilote et Nous soutenir donnent aussi accès aux contenus regroupés.
 
-Les pages principales proposent une navigation précédente/suivante dans cet ordre. Les pages longues (À propos, Notre approche, Projet pilote, Impact, Partenaires et Nous soutenir) disposent d’un sommaire vers leurs sections. Écoles & réalisations conserve son accès aux établissements, aux interventions et aux comparaisons avant/après ; Actualités conserve ses filtres et Contact son choix de motif.
+La simplification du 22 octobre 2026 est détaillée dans [l’organisation des pages essentielles](organisation-pages.md). Impact est intégré à Projet pilote ; Partenaires à Nous soutenir. La liste Projets est regroupée avec Écoles & réalisations et les actualités restent sur l’accueil. Les pages de détail et le catalogue de matériel restent des accès secondaires.
 
 ## Lecture après le hero
 
@@ -35,7 +32,7 @@ Les pages principales proposent une navigation précédente/suivante dans cet or
 7. Les usages pédagogiques et les écoles.
 8. L’expérience logistique antérieure.
 9. L’impact attendu et la carte des établissements documentés.
-10. Les partenaires, les actualités et les trois façons de contribuer.
+10. Les voix du terrain, les actualités et le bloc unique Participer / Nous soutenir, avec les partenariats.
 
 Les contenus complets sont répartis dans les pages publiques. La comparaison avant/après est placée dans les écoles, les réalisations et leurs fiches ; le projet pilote y renvoie depuis ses résultats.
 

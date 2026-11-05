@@ -23,14 +23,18 @@ npm run build
 npm run preview
 ```
 
+## Pages essentielles
+
+L’arborescence est réduite à l’accueil et six rubriques : À propos, Notre approche, Projet pilote, Écoles & réalisations, Nous soutenir et Contact. L’impact et les indicateurs sont intégrés au projet pilote ; les partenariats et leur formulaire rejoignent Nous soutenir. Les anciennes adresses redirigent vers leurs nouvelles sections. Les pages de matériel, les crédits et les fiches de contenu restent des accès secondaires. Voir [l’organisation des pages](docs/organisation-pages.md).
+
 ## Architecture
 
 - `src/app` : providers et routes avec chargement différé.
 - `index.html` et `src/lib/splash.ts` : écran de chargement avec l’icône LabCongo, affiché avant le JavaScript (icône intégrée à la page), puis retiré en fondu quand la première page est prête. `Loader` reprend le même écran pour le chargement d’une page.
 - `src/features/film` : accueil actuel, huit chapitres, une scène R3F persistante, vidéos pilotées au défilement, navigation et lecture simple. Le dossier regroupe aussi les matériaux, l’environnement lumineux et les fonctions d’interpolation repris de l’ancien accueil à cinq scènes, dont le code a été retiré le 8 octobre 2026 (historique git, commit `64cbf4a`).
 - `src/pages/Home/sections` : récit après le film, du constat et de l’enjeu national à l’approche, au projet pilote, aux écoles et aux façons de contribuer. La répartition des contenus est décrite dans [la structure éditoriale](docs/contenus-structure.md) ; les styles de l’accueil sont limités à `.home-content` dans `src/styles/home-editorial.css`. Les zones sans données validées présentent un état explicatif.
-- `src/data/navigation.ts` : les neuf rubriques institutionnelles dans l’ordre du document de référence. Menu complet, pied de page et navigation précédente/suivante partagent cette liste. `PageIntro` reçoit les sommaires des pages longues. Le hero reste indépendant de cette navigation éditoriale.
-- `src/pages` : toutes les routes demandées, avec annuaire et fiches d’écoles, catalogue et fiches d’équipements. Les pages du projet, de mission, de démarche, d’impact, des partenaires, des dons et du contact sont développées, ainsi que les listes et fiches de projets et actualités. `/realisations` redirige vers les projets réalisés.
+- `src/data/navigation.ts` : les six rubriques principales dans l’ordre de lecture retenu. Menu, sélection du pied de page et navigation précédente/suivante partagent cette liste. `PageIntro` reçoit les sommaires des pages longues. Le hero reste indépendant de cette navigation éditoriale.
+- `src/pages` : pages essentielles et accès secondaires décrits ci-dessus. Les composants `Pilot/sections/ImpactContent` et `Donate/sections/PartnershipContent` préservent les contenus regroupés. `/realisations` rejoint les écoles équipées et leur suivi avant/après.
 - `src/components/animations` et `src/hooks` : GSAP/ScrollTrigger et Lenis, nettoyés au démontage ; réduction des animations respectée.
 - `src/features/experience` : parcours photographique en douze scènes, navigation par défilement ou commandes, mode sans animation et crédits. Les anciens décors humains en blocs restent archivés. Le film de l’accueil utilise six GLB : cinq générés par `npm run models:immersive` et le camion Scania importé. Le script permet une génération ciblée, par exemple `npm run models:immersive -- labware-v2`.
 - `src/services` : frontière API, pas de requête sans `VITE_API_BASE_URL`.

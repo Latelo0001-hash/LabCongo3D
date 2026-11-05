@@ -19,7 +19,7 @@ export default function StatisticsSection() {
           </p>
         </div>
         <ImpactIndicators />
-        <Link className="text-link" to="/impact#suivi">
+        <Link className="text-link" to="/projet-pilote#suivi">
           Notre méthode de suivi ↗
         </Link>
       </div>

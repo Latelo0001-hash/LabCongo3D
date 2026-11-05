@@ -29,7 +29,7 @@ export default function PartnersSection() {
         </FadeIn>
         <ul className="content-tags">{partnerActors.map((actor) => <li key={actor}>{actor}</li>)}</ul>
         <PartnerList />
-        <Link className="text-link" to="/partenaires">
+        <Link className="text-link" to="/nous-soutenir#partenaires">
           Construire un partenariat ↗
         </Link>
       </div>

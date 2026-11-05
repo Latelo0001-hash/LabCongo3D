@@ -73,7 +73,6 @@ export default function Schools() {
       </header>
       <nav className="content-subnav" aria-label="Écoles et réalisations">
         <a href="#school-results">Les établissements</a>
-        <Link to="/projets">Les interventions</Link>
         <a href="#avant-apres">Avant / Après</a>
       </nav>
       <SchoolFilters
