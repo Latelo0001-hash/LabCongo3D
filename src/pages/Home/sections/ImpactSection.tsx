@@ -1,43 +1,29 @@
 import { Link } from "react-router-dom";
 import FadeIn from "../../../components/animations/FadeIn";
-import { impactAxes } from "../../../data/impact";
+import { homeOutcomes } from "../../../data/homeEditorial";
 export default function ImpactSection() {
   return (
-    <section
-      id="impact"
-      className="impact-section section-space"
-      aria-labelledby="impact-title"
-    >
+    <section id="impact" className="impact-section section-space has-section-background background-mining" aria-labelledby="impact-title">
       <div className="container">
         <FadeIn>
           <div className="media-section-heading">
             <div>
-              <p className="eyebrow">11 — L’impact recherché</p>
-              <h2 id="impact-title">
-                Au-delà des instruments,
-                <br />
-                <em>des possibilités.</em>
-              </h2>
+              <p className="eyebrow">Impact · Les effets attendus</p>
+              <h2 id="impact-title">Développer le capital humain <em>scientifique et technique de la RDC.</em></h2>
             </div>
-            <p>
-              Le matériel est un point de départ. Notre ambition : rendre la
-              pratique des sciences plus accessible, utile et durable dans les
-              écoles.
-            </p>
+            <p>LabCongo cherche à produire des effets progressifs, depuis le laboratoire scolaire jusqu’au développement de compétences utiles au pays.</p>
           </div>
         </FadeIn>
-        <div className="editorial-columns">
-          {impactAxes.map((item, i) => (
-            <article key={item.title}>
-              <span className="editorial-number">0{i + 1}</span>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </article>
-          ))}
+        <div className="home-outcomes">
+          {homeOutcomes.map((item) => <article key={item.title}>
+            <p className="home-outcome-label">{item.number} — {item.label}</p>
+            <h3>{item.title}</h3><p>{item.text}</p>
+          </article>)}
         </div>
-        <Link className="text-link" to="/impact">
-          Comprendre notre suivi de l’impact ↗
-        </Link>
+        <div className="home-impact-followup">
+          <p><strong>Des objectifs à suivre.</strong> Les résultats seront publiés au fil des interventions documentées, avec leurs sources et leur période de référence.</p>
+          <Link className="text-link" to="/projet-pilote#impact">Comprendre le suivi de l’impact ↗</Link>
+        </div>
       </div>
     </section>
   );

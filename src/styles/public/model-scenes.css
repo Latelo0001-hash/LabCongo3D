@@ -1,0 +1,119 @@
+/* GLB scenes render only on demand and remain independent from the text. */
+.scene-canvas {
+  height: 100%;
+  width: 100%;
+}
+.model-viewer {
+  position: relative;
+}
+.model-turn {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+  padding: 10px;
+  min-height: 38px;
+  font-size: 10px;
+  color: var(--brand-blue);
+  margin-inline: auto;
+}
+.model-turn:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.hero .instrument-card {
+  width: 245px;
+  height: 318px;
+  left: -48px;
+  bottom: 94px;
+  padding: 18px;
+  background: #edf4fc;
+}
+.hero .instrument-card .laboratory-scene {
+  height: 198px;
+}
+.hero .instrument-card .scene-fallback {
+  height: 100%;
+}
+.hero .instrument-caption {
+  padding-top: 10px;
+  margin-top: 4px;
+  font-size: 9px;
+}
+.hero .instrument-caption span:last-child {
+  font-size: 7px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+.hero .hero-photo {
+  height: 110%;
+  object-position: 58% 40%;
+}
+.hero .hero-visual {
+  height: clamp(530px, 43vw, 670px);
+}
+.hero .hero-copy h1 {
+  font-size: clamp(3rem, 5.4vw, 5.9rem);
+  letter-spacing: -0.055em;
+}
+.hero .hero-copy .eyebrow {
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+.hero .hero-description {
+  line-height: 1.85;
+}
+.large-model {
+  background: #eaf1fa;
+  padding: 25px;
+}
+.large-model .laboratory-scene,
+.equipment-journey-3d .laboratory-scene {
+  height: 370px;
+}
+.large-model .scene-fallback,
+.equipment-journey-3d .scene-fallback {
+  height: 100%;
+}
+.model-illustration-note {
+  color: var(--muted);
+  font-size: 10px !important;
+  text-align: center;
+  line-height: 1.6;
+}
+.equipment-journey-3d {
+  background: #eaf1fa;
+  padding: 28px 45px;
+  border-top: 3px solid var(--brand-yellow);
+}
+.model-stage-selector {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  border-bottom: 1px solid #c1d0e3;
+}
+.model-stage-selector button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 54px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  font-size: 13px;
+  color: var(--muted);
+  padding-inline: 8px;
+}
+.model-stage-selector button[aria-pressed="true"] {
+  color: var(--brand-blue);
+  border-bottom-color: var(--brand-blue);
+}
+.model-stage-selector span {
+  font-size: 9px;
+}
+.model-stage-description {
+  text-align: center;
+  min-height: 2em;
+}

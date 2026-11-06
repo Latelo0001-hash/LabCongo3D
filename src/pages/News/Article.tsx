@@ -13,7 +13,7 @@ export default function Article() {
     return (
       <UnavailableContent
         title="Cet article n’est pas disponible."
-        to="/actualites"
+        to="/#actualites"
         label="Voir les actualités"
       />
     );
@@ -26,7 +26,7 @@ export default function Article() {
       <nav className="school-breadcrumb" aria-label="Fil d’Ariane">
         <Link to="/">Accueil</Link>
         <span>/</span>
-        <Link to="/actualites">Actualités</Link>
+        <Link to="/#actualites">Actualités</Link>
         <span>/</span>
         <span aria-current="page">{article.title}</span>
       </nav>
@@ -63,7 +63,7 @@ export default function Article() {
           </section>
         ))}
       </div>
-      <Link className="text-link" to="/actualites">
+      <Link className="text-link" to="/#actualites">
         ← Toutes les actualités
       </Link>
     </article>

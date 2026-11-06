@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-08",
+  "environment": "Chrome local, serveur Vite, captures avec animations activées",
+  "viewports": [
+    1440,
+    768,
+    390,
+    320
+  ],
+  "checks": [
+    "1440px : sommaire, cinq sections et CTA sans débordement ; ancres présentes et accès aux enjeux",
+    "1440px : contenus détaillés ouverts, carte et sélection d’une province fonctionnelles",
+    "390px : sommaire, cinq sections et CTA sans débordement ; ancres présentes et accès aux enjeux",
+    "390px : contenus détaillés ouverts, carte et sélection d’une province fonctionnelles",
+    "320px : sommaire, cinq sections et CTA sans débordement ; ancres présentes et accès aux enjeux",
+    "Catalogue équipements : styles de l’accueil isolés",
+    "768px : sommaire, cinq sections et CTA sans débordement ; ancres présentes et accès aux enjeux",
+    "768px : contenus détaillés ouverts, carte et sélection d’une province fonctionnelles"
+  ],
+  "errors": []
+}

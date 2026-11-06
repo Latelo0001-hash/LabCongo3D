@@ -10,8 +10,8 @@ export default function Contact() {
     <>
       <PageIntro
         eyebrow="Contact"
-        title="Le projet avance par la rencontre."
-        description="Présenter une école, partager une compétence, proposer du matériel ou poser une question : écrivez à l’équipe LabCongo."
+        title="Parlons de votre contribution au projet."
+        description="Proposer du matériel, un partenariat, une expertise ou un établissement, soutenir une école, demander une information ou contacter l’équipe pour la presse : choisissez l’objet de votre demande."
       />
       <div className="container editorial-page">
         <section className="form-layout">

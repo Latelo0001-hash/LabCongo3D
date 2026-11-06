@@ -1,0 +1,164 @@
+/* Forms use an explicit, reviewable e-mail draft until a submission API is added. */
+.form-layout {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 9%;
+  align-items: start;
+}
+.form-layout > * {
+  min-width: 0;
+}
+.message-form-wrapper {
+  background: #eaf1fa;
+  padding: 38px;
+}
+.message-form .form-intro {
+  margin-top: 0;
+  font-size: 12px;
+  line-height: 1.8;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #c1d0e3;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 22px;
+}
+.form-field label,
+.message-preview label,
+.material-fields legend {
+  font-size: 12px;
+  color: var(--ink);
+  line-height: 1.5;
+  font-weight: 600;
+}
+.form-field input,
+.form-field select,
+.form-field textarea,
+.message-preview textarea {
+  font: 14px/1.5 var(--font-body);
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid #8eabc9;
+  border-radius: 0;
+  min-width: 0;
+  width: 100%;
+  padding: 13px 12px;
+}
+.form-field textarea,
+.message-preview textarea {
+  resize: vertical;
+}
+.form-field input:focus-visible,
+.form-field select:focus-visible,
+.form-field textarea:focus-visible,
+.message-preview textarea:focus-visible {
+  outline: 2px solid var(--brand-blue);
+  outline-offset: 3px;
+}
+.form-field [aria-invalid="true"] {
+  border-color: #b20c20;
+}
+.form-field small {
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.message-form .field-error {
+  color: #a30d1b;
+  margin: 0;
+  font-size: 12px;
+}
+.form-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 22px 0 12px;
+}
+.form-consent input {
+  width: 19px;
+  height: 19px;
+  margin: 2px 0 0;
+  flex-shrink: 0;
+  accent-color: var(--brand-blue);
+}
+.form-consent label {
+  font-size: 12px;
+  line-height: 1.65;
+}
+.message-form .form-error-summary {
+  color: #a30d1b;
+  font-size: 12px;
+}
+.message-form > .button {
+  margin-top: 20px;
+}
+.message-form .form-privacy,
+.message-preview .form-privacy {
+  font-size: 11px;
+  line-height: 1.8;
+  margin: 16px 0 0;
+}
+.material-fields {
+  border: 1px solid #bacce1;
+  margin: 4px 0 24px;
+  padding: 20px;
+  min-width: 0;
+}
+.material-fields > p {
+  font-size: 11px;
+  margin-bottom: 0;
+}
+.material-fields .form-field:last-child {
+  margin-bottom: 0;
+}
+.form-subject {
+  font-weight: 600;
+  color: var(--brand-blue) !important;
+}
+.message-preview {
+  border-top: 3px solid var(--brand-blue);
+  margin-top: 32px;
+  padding-top: 24px;
+}
+.message-preview:focus {
+  outline: 2px solid var(--brand-blue);
+  outline-offset: 10px;
+}
+.message-preview label {
+  display: block;
+  margin-bottom: 10px;
+}
+.message-preview h3 {
+  font: 400 25px/1.25 var(--font-editorial);
+}
+.message-preview a:not(.button) {
+  text-decoration: underline;
+}
+.preview-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+.message-preview [role="status"] {
+  font-size: 12px;
+}
+.contact-email {
+  display: inline-block;
+  font-size: 22px;
+  color: var(--brand-blue);
+  padding-block: 18px;
+  overflow-wrap: anywhere;
+}
+.contact-note {
+  border-top: 1px solid var(--line);
+  margin-top: 35px;
+  padding-top: 20px;
+}

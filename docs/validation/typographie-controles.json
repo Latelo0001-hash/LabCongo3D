@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-08",
+  "scope": "Typographie des sections de l’accueil",
+  "checks": [
+    "1440px : sommaire, cinq sections et CTA sans débordement ; ancres présentes et accès aux enjeux",
+    "1440px : corps de texte minimum 18px vérifié dans neuf types de contenu",
+    "1440px : contenus détaillés ouverts, carte et sélection d’une province fonctionnelles",
+    "768px : sommaire, cinq sections et CTA sans débordement ; ancres présentes et accès aux enjeux",
+    "768px : corps de texte minimum 18px vérifié dans neuf types de contenu",
+    "768px : contenus détaillés ouverts, carte et sélection d’une province fonctionnelles",
+    "390px : sommaire, cinq sections et CTA sans débordement ; ancres présentes et accès aux enjeux",
+    "390px : corps de texte minimum 18px vérifié dans neuf types de contenu",
+    "390px : contenus détaillés ouverts, carte et sélection d’une province fonctionnelles",
+    "320px : sommaire, cinq sections et CTA sans débordement ; ancres présentes et accès aux enjeux",
+    "320px : corps de texte minimum 18px vérifié dans neuf types de contenu",
+    "320px : contenus détaillés ouverts, carte et sélection d’une province fonctionnelles",
+    "Catalogue équipements : styles de l’accueil isolés",
+    "768px : ajustements constats/phases sans débordement ; sommaire accessible en mode mouvements réduits",
+    "768px : écoles, partenaires et avant/après sans débordement ; carte fonctionnelle",
+    "320px : ajustements constats/phases sans débordement ; sommaire accessible en mode mouvements réduits",
+    "320px : écoles, partenaires et avant/après sans débordement ; carte fonctionnelle"
+  ],
+  "errors": [],
+  "build": "npm run build : réussi",
+  "lint": "npm run lint : réussi"
+}

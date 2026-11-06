@@ -1,5 +1,7 @@
 # Objets, matériaux et décors — passe du 7 octobre 2026
 
+> Archive de la version précédente. L’accueil actuel utilise le [film en huit étapes](film-du-parcours.md). Les vérifications ci-dessous portent sur l’ancien accueil à cinq scènes.
+
 Priorité donnée par l’utilisateur : améliorer le réalisme des objets et des décors tout en conservant la scène au défilement validée.
 
 ## Modifications visibles
@@ -27,7 +29,7 @@ La texture du bois vient de [Wood095 d’ambientCG](https://ambientcg.com/a/Wood
 
 `gltfpack` 1.3.0 est ajouté comme dépendance de développement. `npm run models:immersive` produit les trois modèles compressés avec Meshopt. Les options conservent les noms des articulations et des matériaux, ainsi que les UV en virgule flottante : ces coordonnées doivent rester exactes puisque les textures sont affectées dans l’application. Le décodeur est fourni avec le module de scène, sans CDN.
 
-Les matériaux sont affectés dans `src/features/immersive/sceneAssets.ts`, l’éclairage dans `StudioLighting.tsx`, et les gestes dans `JourneyCanvas.tsx`. Le registre `timeline.ts` pointe vers les nouveaux modèles. Les modèles précédents restent disponibles pour les anciens composants.
+Les matériaux et les chemins des trois modèles sont désormais dans `src/features/film/sceneAssets.ts`, repris par le film du parcours. L’éclairage (`StudioLighting.tsx`) et les gestes (`JourneyCanvas.tsx`) de cette version ont été retirés du code le 8 octobre 2026 ; ils restent consultables dans l’historique git, au commit `64cbf4a`. Les modèles précédents restent disponibles pour les anciens composants.
 
 ## Périmètre et limites
 

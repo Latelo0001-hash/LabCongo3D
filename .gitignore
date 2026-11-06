@@ -6,3 +6,8 @@ dist/
 *.local
 .DS_Store
 *.pptx
+
+# Original du camion téléchargé sur Sketchfab : seule la version allégée est publiée
+scania_truck/
+# Configuration locale de Claude Code
+.claude/

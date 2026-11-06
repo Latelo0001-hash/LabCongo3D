@@ -1,0 +1,89 @@
+/* Motifs au trait : au-dessus du fond de la section, sous son contenu (la section isole sa pile d'affichage). */
+.has-motifs { position: relative; isolation: isolate; }
+.motif-field { --motif-opacity: .2; position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; color: #fff; }
+.motif { position: absolute; overflow: visible; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; opacity: var(--motif-opacity); transform: translate(-50%, -50%) rotate(var(--motif-rotate, 0deg)); }
+.motif path, .motif-thread path { vector-effect: non-scaling-stroke; }
+.motif.is-accent { color: var(--brand-yellow); opacity: calc(var(--motif-opacity) * 1.8); }
+/* Sections claires : instruments en bleu, accent rouge. */
+.motif-field:is(.is-problem, .is-impact) { --motif-opacity: .22; color: var(--brand-blue); }
+.motif-field:is(.is-problem, .is-impact) .motif.is-accent { color: var(--brand-red); }
+
+/* Textures de fond, aux couleurs de LabCongo : trame de points (dans l'esprit de rarsm.org) et réseau moléculaire. */
+.motif-field.is-bleed { inset: 0 calc(50% - 50vw); }
+/* Au repos, la texture reste à peine visible : c'est le passage du curseur (CursorGrid, hors de ce calque) qui la révèle. */
+.motif-texture { position: absolute; inset: 0; pointer-events: none; opacity: .45; }
+/* Trame de points : deux grilles décalées, marquées sur les bords et presque effacées au centre, derrière le texte. */
+.motif-texture.is-dots {
+  background:
+    radial-gradient(circle, #0054a633 0 1.35px, #0000 1.9px) 0 0 / 28px 28px,
+    radial-gradient(circle, #031b4e1c 0 .9px, #0000 1.45px) 14px 14px / 28px 28px;
+  mask-image: linear-gradient(90deg, #000, #000c 25%, #0003 43% 57%, #000c 75%, #000);
+  /* Pas de grille révélée au curseur sur cette trame : elle garde une intensité proche de l'origine. */
+  opacity: .85;
+}
+/* Réseau hexagonal, comme une structure moléculaire : traits fins, atomes blancs et jaunes à certains nœuds (tuile de 84 × 48). */
+.motif-texture { --lattice: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='48'%3E%3Cpath d='M0 24h14L28 0h28l14 24h14M14 24l14 24h28l14-24' fill='none' stroke='%23fff' stroke-opacity='.12'/%3E%3Ccircle cx='14' cy='24' r='1.8' fill='%23fff' fill-opacity='.3'/%3E%3Ccircle cx='70' cy='24' r='1.8' fill='%23fff200' fill-opacity='.35'/%3E%3C/svg%3E"); }
+/* Sections bleues : réseau moléculaire sur les côtés, rayons fins partis de deux coins, halos ; rien derrière le texte. */
+.motif-texture.is-lattice {
+  background:
+    conic-gradient(from 128deg at 4% 18%, #0000 0 13%, #ffffff17 13.2% 13.55%, #0000 13.8% 28%, #ffffff0b 28.2% 28.5%, #0000 28.8%),
+    conic-gradient(from 305deg at 96% 78%, #0000 0 16%, #afd6ff1a 16.2% 16.55%, #0000 16.8% 34%, #ffffff0d 34.2% 34.5%, #0000 34.8%),
+    var(--lattice) 0 0 / 84px 48px,
+    radial-gradient(at 12% 8%, #6080dc33, #0000 38%),
+    radial-gradient(at 88% 92%, #fff20012, #0000 40%);
+  mask-image: linear-gradient(90deg, #000, #0009 25%, #0000 45% 55%, #0009 75%, #000);
+}
+/* Message d'accueil : réseau moléculaire sur tout l'écran, quelques points scintillants aux couleurs du drapeau, halo jaune. */
+.motif-texture.is-hero {
+  background:
+    radial-gradient(circle at 5% 7%, #fff200b8 0 1.5px, #0000 2.5px),
+    radial-gradient(circle at 93% 15%, #ffffff80 0 1px, #0000 2px),
+    radial-gradient(circle at 86% 88%, #e21a2280 0 1.5px, #0000 2.5px),
+    radial-gradient(circle at 30% 97%, #ffffff66 0 1px, #0000 2px),
+    radial-gradient(circle at 62% 3%, #fff2008c 0 1px, #0000 2px),
+    var(--lattice) 0 0 / 84px 48px,
+    radial-gradient(circle at 8% 10%, #fff2001f, #0000 30%);
+  /* Tout l'écran, un peu plus léger derrière le message (à gauche sur ordinateur, en bas sur téléphone). */
+  mask-image: radial-gradient(ellipse 42% 38% at 27% 52%, #0006, #000);
+}
+@media (max-width: 999px) {
+  .motif-texture.is-hero { mask-image: radial-gradient(ellipse 62% 24% at 50% 74%, #0006, #000); }
+}
+
+/* Grille révélée au curseur (CursorGrid), au-dessus de la texture, sous les instruments. */
+.motif-cursor { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* Fil du voyage : la route jaune en pointillés du film, jusqu'à un point d'arrivée. */
+.motif-thread { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.motif-thread path { fill: none; stroke: var(--brand-yellow); stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 0 10; opacity: .6; }
+.motif-stop { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: var(--brand-yellow); box-shadow: 0 0 0 7px #fff2002e; transform: translate(-50%, -50%); }
+
+.motif.is-narrow { display: none; }
+@media (max-width: 760px) {
+  .motif.is-wide { display: none; }
+  .motif.is-narrow { display: block; }
+  .motif-field { --motif-opacity: .16; }
+  /* Sur téléphone, le fil traverserait le texte : seuls les instruments restent. */
+  .motif-thread, .motif-stop { display: none; }
+}
+
+/* Au défilement, les motifs glissent à des vitesses différentes et le fil se trace, là où le navigateur le permet. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .motif-field.is-drifting .motif { animation: motif-drift linear both; animation-timeline: view(); }
+    .motif-thread { animation: motif-draw linear both; animation-timeline: view(); animation-range: entry 20% cover 55%; }
+    .motif-stop { animation: motif-arrive linear both; animation-timeline: view(); animation-range: entry 20% cover 60%; }
+  }
+}
+@keyframes motif-drift {
+  from { translate: 0 calc(var(--motif-depth, 1) * 32px); }
+  to { translate: 0 calc(var(--motif-depth, 1) * -32px); }
+}
+@keyframes motif-draw {
+  from { clip-path: inset(100% 0 0 0); }
+  to { clip-path: inset(0); }
+}
+@keyframes motif-arrive {
+  0%, 85% { opacity: 0; scale: .4; }
+  to { opacity: 1; scale: 1; }
+}

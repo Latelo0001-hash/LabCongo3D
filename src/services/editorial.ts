@@ -6,9 +6,14 @@ export const projectStatuses = {
   completed: "Réalisé",
 } as const;
 export const articleCategories = {
+  terrain: "Terrain",
+  ecoles: "Écoles",
+  partenariats: "Partenariats",
+  collecte: "Collectes",
+  equipements: "Équipements",
+  formations: "Formations",
+  evenements: "Événements",
   projet: "Vie du projet",
-  collecte: "Collecte",
-  terrain: "Sur le terrain",
 } as const;
 export function normalizedText(value: string) {
   return value

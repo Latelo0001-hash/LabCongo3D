@@ -3,7 +3,7 @@ export interface Article {
   slug: string;
   title: string;
   summary: string;
-  category: "projet" | "collecte" | "terrain";
+  category: "projet" | "collecte" | "terrain" | "ecoles" | "partenariats" | "equipements" | "formations" | "evenements";
   publicationStatus: "draft" | "published";
   publishedAt: string;
   image?: { src: string; alt: string; credit?: string };

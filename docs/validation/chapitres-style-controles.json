@@ -1,0 +1,1238 @@
+[
+  {
+    "size": [
+      1440,
+      900
+    ],
+    "chapter": 1,
+    "title": "Tout commence en Europe.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "21.6px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 198,
+      "bottom": 524.125,
+      "footer": 788
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      1440,
+      900
+    ],
+    "chapter": 2,
+    "title": "Du matériel encore utile peut continuer à transmettre le savoir.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "21.6px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 198,
+      "bottom": 539.125,
+      "footer": 788
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      1440,
+      900
+    ],
+    "chapter": 3,
+    "title": "Protéger ce qui va transmettre.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "21.6px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 198,
+      "bottom": 568.515625,
+      "footer": 788
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      1440,
+      900
+    ],
+    "chapter": 4,
+    "title": "Collecter en Europe. Préparer pour une nouvelle destination.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(0, 84, 166)",
+    "bodySize": null,
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 117,
+      "bottom": 386.625,
+      "footer": 788
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      1440,
+      900
+    ],
+    "chapter": 5,
+    "title": "Prendre la route du port.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(0, 84, 166)",
+    "bodySize": "21.6px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 117,
+      "bottom": 443.125,
+      "footer": 788
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      1440,
+      900
+    ],
+    "chapter": 6,
+    "title": "Acheminer là où le matériel peut faire la différence.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": null,
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 306,
+      "bottom": 461.8125,
+      "footer": 788
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      1440,
+      900
+    ],
+    "chapter": 7,
+    "title": "Traverser pour transmettre.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "21.6px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 429.875,
+      "bottom": 756,
+      "footer": 788
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      1440,
+      900
+    ],
+    "chapter": 8,
+    "title": "Une nouvelle étape commence.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "21.6px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 198,
+      "bottom": 635.515625,
+      "footer": 788
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      820,
+      1180
+    ],
+    "chapter": 1,
+    "title": "Tout commence en Europe.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "18.86px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 112,
+      "bottom": 381.09375,
+      "footer": 1072
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      820,
+      1180
+    ],
+    "chapter": 2,
+    "title": "Du matériel encore utile peut continuer à transmettre le savoir.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "18.86px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 106.1903305053711,
+      "bottom": 439.7528305053711,
+      "footer": 1072
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      820,
+      1180
+    ],
+    "chapter": 3,
+    "title": "Protéger ce qui va transmettre.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "18.86px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 106.19453430175781,
+      "bottom": 346.06951904296875,
+      "footer": 1072
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      820,
+      1180
+    ],
+    "chapter": 4,
+    "title": "Collecter en Europe. Préparer pour une nouvelle destination.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(0, 84, 166)",
+    "bodySize": null,
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 106.1980972290039,
+      "bottom": 334.1043472290039,
+      "footer": 1072
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      820,
+      1180
+    ],
+    "chapter": 5,
+    "title": "Prendre la route du port.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(0, 84, 166)",
+    "bodySize": "18.86px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 106.20240020751953,
+      "bottom": 375.29615020751953,
+      "footer": 1072
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      820,
+      1180
+    ],
+    "chapter": 6,
+    "title": "Acheminer là où le matériel peut faire la différence.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": null,
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 401.1875,
+      "bottom": 629.09375,
+      "footer": 1072
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      820,
+      1180
+    ],
+    "chapter": 7,
+    "title": "Traverser pour transmettre.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "18.86px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 770.90625,
+      "bottom": 1040,
+      "footer": 1072
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      820,
+      1180
+    ],
+    "chapter": 8,
+    "title": "Une nouvelle étape commence.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "18.86px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 106.1875,
+      "bottom": 413.0625,
+      "footer": 1072
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      390,
+      844
+    ],
+    "chapter": 1,
+    "title": "Tout commence en Europe.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "17px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 112,
+      "bottom": 316.5,
+      "footer": 736
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      390,
+      844
+    ],
+    "chapter": 2,
+    "title": "Du matériel encore utile peut continuer à transmettre le savoir.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "17px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 75.98628997802734,
+      "bottom": 316.97066497802734,
+      "footer": 736
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      390,
+      844
+    ],
+    "chapter": 3,
+    "title": "Protéger ce qui va transmettre.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "17px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 75.97924041748047,
+      "bottom": 254.13549041748047,
+      "footer": 736
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      390,
+      844
+    ],
+    "chapter": 4,
+    "title": "Collecter en Europe. Préparer pour une nouvelle destination.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(0, 84, 166)",
+    "bodySize": null,
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 75.95429992675781,
+      "bottom": 256.39178466796875,
+      "footer": 736
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      390,
+      844
+    ],
+    "chapter": 5,
+    "title": "Prendre la route du port.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(0, 84, 166)",
+    "bodySize": "17px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 75.96603393554688,
+      "bottom": 280.4660339355469,
+      "footer": 736
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      390,
+      844
+    ],
+    "chapter": 6,
+    "title": "Acheminer là où le matériel peut faire la différence.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": null,
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 286.953125,
+      "bottom": 467.390625,
+      "footer": 736
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      390,
+      844
+    ],
+    "chapter": 7,
+    "title": "Traverser pour transmettre.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "17px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 499.5,
+      "bottom": 704,
+      "footer": 736
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      390,
+      844
+    ],
+    "chapter": 8,
+    "title": "Une nouvelle étape commence.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "17px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 75.953125,
+      "bottom": 321.109375,
+      "footer": 736
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "mode": "simple",
+    "size": [
+      1440,
+      900
+    ],
+    "titles": [
+      {
+        "text": "Tout commence en Europe.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      },
+      {
+        "text": "Du matériel encore utile peut continuer à transmettre le savoir.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      },
+      {
+        "text": "Protéger ce qui va transmettre.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      },
+      {
+        "text": "Collecter en Europe. Préparer pour une nouvelle destination.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      },
+      {
+        "text": "Prendre la route du port.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      },
+      {
+        "text": "Acheminer là où le matériel peut faire la différence.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      },
+      {
+        "text": "Traverser pour transmettre.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      },
+      {
+        "text": "Une nouvelle étape commence.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      }
+    ],
+    "noOverflow": true,
+    "canvas": 0
+  },
+  {
+    "mode": "simple",
+    "size": [
+      390,
+      844
+    ],
+    "titles": [
+      {
+        "text": "Tout commence en Europe.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      },
+      {
+        "text": "Du matériel encore utile peut continuer à transmettre le savoir.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      },
+      {
+        "text": "Protéger ce qui va transmettre.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      },
+      {
+        "text": "Collecter en Europe. Préparer pour une nouvelle destination.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      },
+      {
+        "text": "Prendre la route du port.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      },
+      {
+        "text": "Acheminer là où le matériel peut faire la différence.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      },
+      {
+        "text": "Traverser pour transmettre.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      },
+      {
+        "text": "Une nouvelle étape commence.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      }
+    ],
+    "noOverflow": true,
+    "canvas": 0
+  },
+  {
+    "mode": "simple",
+    "size": [
+      320,
+      568
+    ],
+    "titles": [
+      {
+        "text": "Tout commence en Europe.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      },
+      {
+        "text": "Du matériel encore utile peut continuer à transmettre le savoir.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      },
+      {
+        "text": "Protéger ce qui va transmettre.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      },
+      {
+        "text": "Collecter en Europe. Préparer pour une nouvelle destination.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      },
+      {
+        "text": "Prendre la route du port.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      },
+      {
+        "text": "Acheminer là où le matériel peut faire la différence.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      },
+      {
+        "text": "Traverser pour transmettre.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      },
+      {
+        "text": "Une nouvelle étape commence.",
+        "transform": "none",
+        "weight": "800",
+        "accent": "rgb(255, 242, 0)"
+      }
+    ],
+    "noOverflow": true,
+    "canvas": 0
+  },
+  {
+    "size": [
+      320,
+      568
+    ],
+    "chapter": 1,
+    "title": "Tout commence en Europe.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "16px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 112.05319213867188,
+      "bottom": 276.4438171386719,
+      "footer": 460
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      320,
+      568
+    ],
+    "chapter": 2,
+    "title": "Du matériel encore utile peut continuer à transmettre le savoir.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "16px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 28.390625,
+      "bottom": 244.28125,
+      "footer": 460
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      320,
+      568
+    ],
+    "chapter": 3,
+    "title": "Protéger ce qui va transmettre.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "16px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 28.390625,
+      "bottom": 170.390625,
+      "footer": 454.8125
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      320,
+      568
+    ],
+    "chapter": 4,
+    "title": "Collecter en Europe. Préparer pour une nouvelle destination.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(0, 84, 166)",
+    "bodySize": null,
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 51.109375,
+      "bottom": 194.546875,
+      "footer": 454.8125
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      320,
+      568
+    ],
+    "chapter": 5,
+    "title": "Prendre la route du port.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(0, 84, 166)",
+    "bodySize": "16px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 51.11526107788086,
+      "bottom": 215.50588607788086,
+      "footer": 460
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      320,
+      568
+    ],
+    "chapter": 6,
+    "title": "Acheminer là où le matériel peut faire la différence.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": null,
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 193.11907958984375,
+      "bottom": 307.44720458984375,
+      "footer": 460
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      320,
+      568
+    ],
+    "chapter": 7,
+    "title": "Traverser pour transmettre.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "16px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 263.609375,
+      "bottom": 428,
+      "footer": 460
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      320,
+      568
+    ],
+    "chapter": 8,
+    "title": "Une nouvelle étape commence.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "16px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 28.390625,
+      "bottom": 237.390625,
+      "footer": 460
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      1440,
+      600
+    ],
+    "chapter": 1,
+    "title": "Tout commence en Europe.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "18px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 96,
+      "bottom": 358.453125,
+      "footer": 488
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      1440,
+      600
+    ],
+    "chapter": 2,
+    "title": "Du matériel encore utile peut continuer à transmettre le savoir.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "18px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 96,
+      "bottom": 386.390625,
+      "footer": 488
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      1440,
+      600
+    ],
+    "chapter": 3,
+    "title": "Protéger ce qui va transmettre.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "18px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 96,
+      "bottom": 330.5625,
+      "footer": 488
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      1440,
+      600
+    ],
+    "chapter": 4,
+    "title": "Collecter en Europe. Préparer pour une nouvelle destination.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(0, 84, 166)",
+    "bodySize": null,
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 78,
+      "bottom": 264.71875,
+      "footer": 488
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      1440,
+      600
+    ],
+    "chapter": 5,
+    "title": "Prendre la route du port.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(0, 84, 166)",
+    "bodySize": "18px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 78,
+      "bottom": 340.453125,
+      "footer": 488
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      1440,
+      600
+    ],
+    "chapter": 6,
+    "title": "Acheminer là où le matériel peut faire la différence.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": null,
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 204,
+      "bottom": 339.8125,
+      "footer": 488
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      1440,
+      600
+    ],
+    "chapter": 7,
+    "title": "Traverser pour transmettre.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "18px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 197.546875,
+      "bottom": 460,
+      "footer": 488
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      1440,
+      600
+    ],
+    "chapter": 8,
+    "title": "Une nouvelle étape commence.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "18px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 96,
+      "bottom": 397.5625,
+      "footer": 488
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      1024,
+      600
+    ],
+    "chapter": 1,
+    "title": "Tout commence en Europe.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "18px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 96,
+      "bottom": 323.140625,
+      "footer": 488
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      1024,
+      600
+    ],
+    "chapter": 2,
+    "title": "Du matériel encore utile peut continuer à transmettre le savoir.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "18px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 96,
+      "bottom": 342.28125,
+      "footer": 488
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      1024,
+      600
+    ],
+    "chapter": 3,
+    "title": "Protéger ce qui va transmettre.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "18px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 96,
+      "bottom": 295.25,
+      "footer": 488
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      1024,
+      600
+    ],
+    "chapter": 4,
+    "title": "Collecter en Europe. Préparer pour une nouvelle destination.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(0, 84, 166)",
+    "bodySize": null,
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 78,
+      "bottom": 220.609375,
+      "footer": 488
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      1024,
+      600
+    ],
+    "chapter": 5,
+    "title": "Prendre la route du port.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(0, 84, 166)",
+    "bodySize": "18px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 78,
+      "bottom": 305.140625,
+      "footer": 488
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      1024,
+      600
+    ],
+    "chapter": 6,
+    "title": "Acheminer là où le matériel peut faire la différence.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": null,
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 204,
+      "bottom": 310.40625,
+      "footer": 488
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      1024,
+      600
+    ],
+    "chapter": 7,
+    "title": "Traverser pour transmettre.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "18px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 232.859375,
+      "bottom": 460,
+      "footer": 488
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "size": [
+      1024,
+      600
+    ],
+    "chapter": 8,
+    "title": "Une nouvelle étape commence.",
+    "transform": "none",
+    "weight": "800",
+    "accent": "rgb(255, 242, 0)",
+    "bodySize": "18px",
+    "onlyOne": true,
+    "clearOfControls": true,
+    "noOverflow": true,
+    "bounds": {
+      "top": 96,
+      "bottom": 362.25,
+      "footer": 488
+    },
+    "equipmentClear": true,
+    "stepsClear": true
+  },
+  {
+    "exceptions": []
+  }
+]

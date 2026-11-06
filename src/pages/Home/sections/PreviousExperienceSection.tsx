@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Boxes, Truck, PackageCheck } from "lucide-react";
+import { hospitalExperience } from "../../../data/editorialContent";
 import FadeIn from "../../../components/animations/FadeIn";
 export default function PreviousExperienceSection() {
   return (
@@ -11,23 +12,16 @@ export default function PreviousExperienceSection() {
       <FadeIn>
         <div className="experience-grid">
           <div>
-            <p className="eyebrow">12 — Une expérience à transmettre</p>
+            <p className="eyebrow">Notre expérience · L’équipement d’un hôpital</p>
             <h2 id="experience-title">
-              Savoir faire arriver.
+              Une expérience qui montre
               <br />
-              <em>Et mettre en service.</em>
+              <em>que le modèle est possible.</em>
             </h2>
           </div>
           <div>
-            <p>
-              L’équipe s’appuie sur une expérience antérieure d’équipement d’une
-              structure hospitalière en RDC : collecte en Europe, préparation
-              logistique, acheminement, réception et installation.
-            </p>
-            <p>
-              Cette expérience nourrit la méthode de LabCongo, aujourd’hui
-              tournée vers le matériel scientifique et les écoles.
-            </p>
+            <p>{hospitalExperience.lead}</p>
+            <p>{hospitalExperience.conclusion}</p>
             <Link className="text-link" to="/a-propos#experience">
               Découvrir ce qui nous guide ↗
             </Link>
@@ -45,7 +39,7 @@ export default function PreviousExperienceSection() {
         </span>
         <span>
           <PackageCheck aria-hidden="true" />
-          Installer & vérifier
+          Remettre au bénéficiaire
         </span>
       </div>
     </section>

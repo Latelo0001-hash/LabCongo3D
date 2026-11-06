@@ -78,7 +78,7 @@ export default function ProvinceDetails({ province }: Props) {
           ↗
         </Link>
       </div>
-      <Link to="/contact" className="province-contact">
+      <Link to="/contact?objet=ecole" className="province-contact">
         Présenter une école <ArrowUpRight size={18} aria-hidden="true" />
       </Link>
       <p className="province-context">

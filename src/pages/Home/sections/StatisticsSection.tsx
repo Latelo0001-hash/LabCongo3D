@@ -10,7 +10,7 @@ export default function StatisticsSection() {
       <div className="container">
         <div className="media-section-heading">
           <div>
-            <p className="eyebrow">15 — Des résultats documentés</p>
+            <p className="eyebrow">Suivre · Les résultats</p>
             <h2 id="statistics-title">Mesurer ce qui change.</h2>
           </div>
           <p>
@@ -19,7 +19,7 @@ export default function StatisticsSection() {
           </p>
         </div>
         <ImpactIndicators />
-        <Link className="text-link" to="/impact#suivi">
+        <Link className="text-link" to="/projet-pilote#suivi">
           Notre méthode de suivi ↗
         </Link>
       </div>

@@ -1,9 +1,25 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+
+// La page vient-elle d'être rechargée (et non ouverte depuis un lien ou l'historique) ?
+const reloaded = (performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined)?.type === "reload";
 
 export default function ScrollToTop() {
   const { pathname, hash } = useLocation();
+  const navigate = useNavigate();
+  // Un rechargement repart du haut de la page (sur l'accueil, le hero), même si l'adresse garde l'ancre d'un clic
+  // précédent (« Découvrir le projet » mène à #decouvrir) : l'ancre est retirée. Une ancre reçue en arrivant d'un lien
+  // ou d'une autre page reste suivie.
+  const reload = useRef(reloaded);
   useEffect(() => {
+    if (reload.current) {
+      if (hash) {
+        // Les filtres d'une page (paramètres de l'adresse) sont gardés ; changer de filtre ne ramène pas en haut.
+        navigate({ pathname, search: window.location.search }, { replace: true });
+        return;
+      }
+      reload.current = false;
+    }
     window.scrollTo({ top: 0, behavior: "instant" });
     if (!hash) return;
     let id: string;
@@ -32,6 +48,6 @@ export default function ScrollToTop() {
       observer.disconnect();
       window.clearTimeout(timeout);
     };
-  }, [pathname, hash]);
+  }, [pathname, hash, navigate]);
   return null;
 }

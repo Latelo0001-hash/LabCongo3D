@@ -35,6 +35,8 @@ export default function MessageForm({
       email: "",
       organisation: "",
       location: "",
+      country: "",
+      phone: "",
       equipment: "",
       quantity: "",
       condition: "",
@@ -49,6 +51,8 @@ export default function MessageForm({
       | "email"
       | "organisation"
       | "location"
+      | "country"
+      | "phone"
       | "equipment"
       | "quantity"
       | "condition",
@@ -63,7 +67,7 @@ export default function MessageForm({
       </label>
       <input
         id={`${id}-${name}`}
-        type={name === "email" ? "email" : "text"}
+        type={name === "email" ? "email" : name === "phone" ? "tel" : "text"}
         autoComplete={
           name === "name"
             ? "name"
@@ -71,7 +75,11 @@ export default function MessageForm({
               ? "email"
               : name === "organisation"
                 ? "organization"
-                : "off"
+                : name === "phone"
+                  ? "tel"
+                  : name === "country"
+                    ? "country-name"
+                    : "off"
         }
         aria-required={required}
         aria-invalid={Boolean(errors[name])}
@@ -154,6 +162,10 @@ export default function MessageForm({
           selected === "ecole" ? "Nom de l’école" : "Organisation",
           ["ecole", "partenariat"].includes(selected),
         )}
+        <div className="form-row">
+          {field("country", "Pays")}
+          {field("phone", "Téléphone")}
+        </div>
         {field(
           "location",
           "Ville et pays",
