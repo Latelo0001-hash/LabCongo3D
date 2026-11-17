@@ -5,11 +5,21 @@ import {
   schoolPath,
 } from "../../features/schools/services/catalog";
 import type { Province } from "../../data/provinces";
+import {
+  isMiningProvince,
+  nationalSecondaryStats,
+  secondaryStatsByProvince,
+} from "../../data/educationStatistics";
+import ProvinceStatistics from "./ProvinceStatistics";
 interface Props {
   province?: Province;
+  collapsibleStats?: boolean;
 }
-export default function ProvinceDetails({ province }: Props) {
+export default function ProvinceDetails({ province, collapsibleStats = false }: Props) {
   const schools = getPublishedSchools({ province: province?.code });
+  const stats = province
+    ? secondaryStatsByProvince[province.code]
+    : nationalSecondaryStats;
   return (
     <aside
       className="province-details"
@@ -26,12 +36,16 @@ export default function ProvinceDetails({ province }: Props) {
         <h3 id="province-title">
           {province?.name ?? "Un territoire, des possibilités."}
         </h3>
+        {isMiningProvince(province?.code) && (
+          <p className="province-badge">Province minière</p>
+        )}
         <p>
           {province
             ? "République démocratique du Congo"
             : "Sélectionnez une province sur la carte ou dans la liste."}
         </p>
       </div>
+      {stats && (collapsibleStats ? <details open className="province-statistics-disclosure"><summary>Contexte scolaire · 2023–2024</summary><ProvinceStatistics stats={stats} national={!province} /></details> : <ProvinceStatistics stats={stats} national={!province} />)}
       <div className="province-school-state">
         <School size={27} strokeWidth={1.2} aria-hidden="true" />
         <h4>Les écoles, au cœur du projet</h4>
@@ -69,7 +83,7 @@ export default function ProvinceDetails({ province }: Props) {
           to={
             province
               ? `/ecoles?province=${encodeURIComponent(province.code)}`
-              : "/ecoles"
+              : "/activites-realisations"
           }
         >
           {province

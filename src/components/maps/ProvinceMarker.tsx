@@ -3,22 +3,25 @@ interface Props {
   province: Province;
   path: string;
   selected: boolean;
+  mining?: boolean;
   onSelect: (code: string) => void;
 }
 export default function ProvinceMarker({
   province,
   path,
   selected,
+  mining = false,
   onSelect,
 }: Props) {
+  const label = mining ? `${province.name}, province minière` : province.name;
   return (
     <path
       d={path}
       fillRule="evenodd"
-      className="province-shape"
+      className={mining ? "province-shape is-mining" : "province-shape"}
       role="button"
       tabIndex={0}
-      aria-label={province.name}
+      aria-label={label}
       aria-pressed={selected}
       aria-controls="province-details"
       data-province={province.code}
@@ -30,7 +33,7 @@ export default function ProvinceMarker({
         }
       }}
     >
-      <title>{province.name}</title>
+      <title>{label}</title>
     </path>
   );
 }

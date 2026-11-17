@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Map, RotateCcw } from "lucide-react";
 import { provinces } from "../../data/provinces";
+import { isMiningProvince } from "../../data/educationStatistics";
 import { getProvinceShapes } from "../../services/provinces.api";
 import { useNearViewport } from "../../hooks/useNearViewport";
 import ProvinceMarker from "./ProvinceMarker";
@@ -40,6 +41,7 @@ export default function CongoMap({ selectedCode, onSelect }: Props) {
                 province={province}
                 path={shape.path}
                 selected={selectedCode === province.code}
+                mining={isMiningProvince(province.code)}
                 onSelect={onSelect}
               />
             ) : null;

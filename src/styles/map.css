@@ -350,3 +350,99 @@
     font-size: 11px;
   }
 }
+
+/* Provinces minières et chiffres officiels du secondaire (Annuaire statistique 2023-2024). */
+.province-shape.is-mining { fill: #f1d86a; }
+.province-shape.is-mining:hover { fill: #e2c13c; }
+.province-shape.is-mining[aria-pressed="true"] { fill: var(--brand-blue); }
+.map-legend i.mining { background: #f1d86a; border-color: #c9a92a; }
+.province-badge {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: #f7e9a6;
+  color: var(--ink);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.province-stats {
+  margin: 0 0 20px;
+  padding: 22px 24px;
+  background: #fff;
+  border: 1px solid #dce7f4;
+  border-radius: 14px;
+}
+.province-stats h4 {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 6px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.province-stats h4 span {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.province-stats dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 20px;
+  margin: 0;
+}
+.province-stats dl > div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 4px;
+  min-width: 0;
+  padding-block: 12px;
+  border-bottom: 1px solid #e3ecf6;
+}
+.province-stats .province-stats-wide {
+  grid-column: 1 / -1;
+  border-bottom: 0;
+}
+.province-stats dt {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+.province-stats dd {
+  margin: 0;
+  color: var(--brand-blue);
+  font: 400 1.75rem/1.15 var(--font-editorial);
+  font-variant-numeric: tabular-nums;
+}
+.province-stats dd small {
+  margin-left: 6px;
+  color: var(--ink);
+  font: 600 0.8125rem/1.5 var(--font-body, sans-serif);
+}
+.province-stats .province-stats-note {
+  margin: 4px 0 0;
+  color: var(--ink);
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+.province-stats .province-stats-source {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+.province-stats-source a {
+  color: var(--brand-blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 760px) {
+  .province-stats { padding: 18px; }
+  .province-stats dd { font-size: 1.5rem; }
+}
