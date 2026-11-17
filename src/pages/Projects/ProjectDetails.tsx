@@ -16,7 +16,7 @@ export default function ProjectDetails() {
     return (
       <UnavailableContent
         title="Ce projet n’est pas disponible."
-        to="/ecoles#school-results"
+        to="/activites-realisations#school-results"
         label="Voir les projets"
       />
     );
@@ -29,13 +29,6 @@ export default function ProjectDetails() {
         <title>{`${project.name} — LabCongo`}</title>
         <meta name="description" content={project.summary} />
       </Helmet>
-      <nav className="school-breadcrumb" aria-label="Fil d’Ariane">
-        <Link to="/">Accueil</Link>
-        <span>/</span>
-        <Link to="/ecoles#school-results">Écoles & réalisations</Link>
-        <span>/</span>
-        <span aria-current="page">{project.name}</span>
-      </nav>
       <header>
         <p className="eyebrow">
           {projectStatuses[project.status]} · {project.location}

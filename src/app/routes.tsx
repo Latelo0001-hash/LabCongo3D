@@ -7,6 +7,7 @@ import PageReady from "../components/common/PageReady";
 const Experience = lazy(() => import("../pages/Experience/Experience"));
 const Home = lazy(() => import("../pages/Home/Home"));
 const NotFound = lazy(() => import("../pages/NotFound/NotFound"));
+const MemberProfile = lazy(() => import("../pages/Team/MemberProfile"));
 const About = lazy(() => import("../pages/About/About"));
 const Pilot = lazy(() => import("../pages/Pilot/Pilot"));
 const Information = lazy(() => import("../pages/Information/Information"));
@@ -34,13 +35,17 @@ function LegacyProcess() {
   const aliases: Record<string, string> = { "#material-journey": "#parcours", "#collecte": "#mobiliser", "#preparation": "#preparer", "#transport": "#acheminer", "#installation": "#installer" };
   return <Navigate to={`/notre-approche${search}${aliases[hash] ?? hash}`} replace />;
 }
+function LegacyActivities() {
+  const { search, hash } = useLocation();
+  return <Navigate to={`/activites-realisations${search}${hash}`} replace />;
+}
 function LegacySupport() {
   const { hash, search } = useLocation();
   return <Navigate to={`/nous-soutenir${search}${hash}`} replace />;
 }
 function RelocatedPage({ to, anchor }: { to: string; anchor: string }) {
   const { hash, search } = useLocation();
-  const destinationHash = to === "/" ? anchor : to === "/ecoles" && hash !== "#avant-apres" ? anchor : hash || anchor;
+  const destinationHash = to === "/" ? anchor : to === "/activites-realisations" && hash !== "#avant-apres" ? anchor : hash || anchor;
   return <Navigate to={`${to}${search}${destinationHash}`} replace />;
 }
 export const router = createBrowserRouter([
@@ -50,16 +55,18 @@ export const router = createBrowserRouter([
       { index: true, element: deferred(<Home />) },
       { path: "experience", element: deferred(<Experience />) },
       { path: "a-propos", element: deferred(<About />) },
+      { path: "equipe/:slug", element: deferred(<MemberProfile />) },
       { path: "mission", element: <Navigate to="/a-propos#mission" replace /> },
       { path: "notre-demarche", element: <LegacyProcess /> },
       { path: "notre-approche", element: deferred(<Process />) },
       { path: "projet-pilote", element: deferred(<Pilot />) },
-      { path: "ecoles", element: deferred(<Schools />) },
+      { path: "activites-realisations", element: deferred(<Schools />) },
+      { path: "ecoles", element: <LegacyActivities /> },
       { path: "ecoles/:slug", element: deferred(<SchoolDetails />) },
-      { path: "projets", element: <RelocatedPage to="/ecoles" anchor="#school-results" /> },
+      { path: "projets", element: <RelocatedPage to="/activites-realisations" anchor="#school-results" /> },
       {
         path: "realisations",
-        element: <Navigate to="/ecoles?statut=equipped#avant-apres" replace />,
+        element: <Navigate to="/activites-realisations?statut=equipped#avant-apres" replace />,
       },
       { path: "projets/:slug", element: deferred(<ProjectDetails />) },
       { path: "equipements", element: deferred(<Equipment />) },

@@ -1,5 +1,9 @@
-/* Navigation classique : liens directs sur ordinateur, liste unique sur mobile. */
+/* Navigation classique : styles des deux en-têtes disponibles avant les pages différées. */
+.site-header.home-header { position: absolute; z-index: 20; inset: 0 0 auto; color: white; border-bottom-color: #ffffff52; }
+.home-header .header-cta { border-color: #ffffff70; border-radius: 30px; }
+.home-header .menu-toggle { color: white; }
 .site-header.container { width: min(1440px, 94%); gap: 20px; }
+.site-header:not(.home-header) { border-bottom-color: #aebfd8; }
 .site-header .brand-logo { width: 130px; }
 .site-header .desktop-nav { display: flex; gap: clamp(12px, 1.2vw, 22px); margin-left: auto; }
 .site-header .desktop-nav a { font: 600 .9375rem/1.5 "Manrope", Arial, sans-serif; }
@@ -40,4 +44,17 @@
   .site-header .brand-logo { width: 116px; }
   .site-header .menu-toggle { min-width: 44px; width: 44px; padding: 10px; }
   .site-header .menu-toggle > span { display: none; }
+}
+
+/* Liens sobres, avec un repère actif distinct du simple survol. */
+.site-header .desktop-nav a { position: relative; min-height: 46px; padding-block: 12px; border-bottom: 0; letter-spacing: -.015em; color: #405674; transition: color .2s ease; }
+.site-header .desktop-nav a:is(:hover, :focus-visible, .active) { color: var(--brand-blue); }
+.site-header.home-header .desktop-nav a { color: #e3ecf9; transition: none; }
+.site-header.home-header .desktop-nav a:is(:hover, :focus-visible, .active) { color: #fff; }
+.mobile-menu nav { gap: 6px; padding-top: 16px; }
+.mobile-menu nav a { position: relative; padding: 14px 18px; border: 1px solid transparent; border-radius: 10px; min-height: 52px; color: #405674; font-size: 1rem; line-height: 1.5; transition: color .2s ease, background .2s ease, border-color .2s ease; }
+.mobile-menu nav a:is(:hover, :focus-visible) { background: #eaf1fa; color: var(--brand-blue); border-color: #d8e4f3; }
+.mobile-menu nav a.active { background: linear-gradient(110deg, #e5eefb, #f0f5fc); color: var(--brand-blue); border-color: #cfdef0; font-weight: 700; }
+@media (prefers-reduced-motion: reduce) {
+  .site-header .desktop-nav a, .mobile-menu nav a { transition: none; }
 }

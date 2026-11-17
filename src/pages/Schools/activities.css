@@ -1,0 +1,74 @@
+/* Présentation de la rubrique, indépendante des fiches d’établissements. */
+.public-content .activities-page { width: min(1240px, 90%); padding-bottom: 80px; }
+.public-content .activities-page .school-directory-heading { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 7%; align-items: center; padding-block: 40px 48px; }
+.activities-intro-copy { min-width: 0; }
+.public-content .activities-page .school-directory-heading h1 { margin: 22px 0; max-width: 22ch; font-size: clamp(2.4rem, 3.8vw, 3.6rem); line-height: 1.13; text-wrap: pretty; }
+.public-content .activities-page .school-directory-heading h1 em { font-style: normal; }
+.public-content .activities-intro-copy > p:not(.eyebrow) { max-width: 55ch; margin: 0 0 24px; color: var(--muted); font-size: 1.0625rem; line-height: 1.85; }
+.activities-intro-visual { position: relative; margin: 0; min-width: 0; }
+.activities-intro-visual img { display: block; width: 100%; height: auto; aspect-ratio: 6 / 5; object-fit: cover; object-position: 50% 35%; border-radius: 24px; box-shadow: 0 20px 48px #031b4e14; }
+.activities-intro-visual figcaption { position: absolute; left: 18px; right: 18px; bottom: 18px; display: flex; gap: 14px; align-items: center; padding: 18px; background: #031b4ef2; border: 1px solid #ffffff26; border-radius: 14px; color: #fff; font-size: .9375rem; font-weight: 700; }
+.activities-intro-visual figcaption svg { color: var(--brand-yellow); flex-shrink: 0; }
+.activities-intro-visual small { display: block; margin-top: 5px; font-size: .75rem; font-weight: 400; color: #d4e3f5; }
+.public-content .activities-page > .content-subnav { margin: 0; padding: 12px; border: 1px solid #dce6f3; border-radius: 16px; background: linear-gradient(110deg, #edf3fc, #f8fafc); }
+.activities-page .activities-section { padding-top: 56px; margin-top: 56px; border-top: 1px solid var(--line); scroll-margin-top: 24px; }
+.activities-page .activities-section > .eyebrow { display: flex; align-items: center; gap: 12px; color: var(--brand-blue); font-size: .6875rem; line-height: 1.6; font-weight: 800; letter-spacing: .14em; }
+.activities-page .activities-section > .eyebrow::before { content: ""; width: 20px; height: 3px; background: var(--brand-red); flex-shrink: 0; }
+.public-content .activities-page .activities-section > h2 { margin: 14px 0 20px; max-width: 28ch; font-size: clamp(1.9rem, 3vw, 2.8rem); line-height: 1.16; }
+.public-content .activities-page .activities-lead { max-width: 74ch; color: var(--muted); font-size: 1rem; line-height: 1.85; margin-bottom: 32px; }
+.activities-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.activities-grid > article { display: flex; flex-direction: column; align-items: start; min-width: 0; padding: 30px; border: 1px solid #d7e4f3; border-radius: 20px; background: linear-gradient(145deg, #fff, #f0f5fc); box-shadow: 0 12px 30px #031b4e05; }
+.activity-card-heading { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 16px; }
+.activity-card-heading > svg { box-sizing: content-box; padding: 14px; border-radius: 16px; background: #e5effc; color: var(--brand-blue); }
+.activity-card-heading > span { color: #647c9c; font: 700 .75rem/1 var(--font-body); letter-spacing: .1em; }
+.public-content .activities-grid h3 { margin: 28px 0 16px; font: 400 clamp(1.6rem, 2.1vw, 1.9rem)/1.2 var(--font-editorial); }
+.public-content .activities-grid p { margin: 0 0 28px; font-size: .9375rem; line-height: 1.85; color: var(--muted); }
+.activities-page .text-link { display: inline-flex; align-items: center; gap: 10px; white-space: normal; }
+.activities-page .text-link svg { flex-shrink: 0; }
+.activities-grid .text-link { margin-top: auto; font-size: .875rem; }
+.activities-grid > article:first-child { background: var(--gradient-journey); border-color: #17396a; }
+.public-content .activities-grid > article:first-child h3 { color: #fff; }
+.public-content .activities-grid > article:first-child p { color: #d7e5f6; }
+.activities-grid > article:first-child .activity-card-heading > svg { background: #ffffff12; color: var(--brand-yellow); }
+.activities-grid > article:first-child .activity-card-heading > span { color: #aec4e1; }
+.public-content .activities-grid > article:first-child .text-link { color: var(--brand-yellow); }
+.activities-experience { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7%; padding: clamp(28px, 4vw, 48px); background: radial-gradient(ellipse at top right, #145ca555, transparent 65%), var(--gradient-journey); border: 1px solid #17396a; color: #fff; border-radius: 24px; }
+.public-content .activities-experience .eyebrow { color: var(--brand-yellow); font-size: .6875rem; font-weight: 700; letter-spacing: .1em; }
+.public-content .activities-experience h3 { margin: 22px 0; color: #fff; font-size: clamp(1.7rem, 2.5vw, 2.3rem); line-height: 1.2; }
+.public-content .activities-experience p, .public-content .activities-experience li { color: #e0eaf7; font-size: .9375rem; line-height: 1.85; }
+.activities-experience-process { min-width: 0; padding: 24px; border: 1px solid #ffffff26; border-radius: 18px; background: #ffffff06; }
+.public-content .activities-experience .activities-route { display: flex; align-items: center; gap: 16px; margin: 0 0 24px; padding-bottom: 18px; border-bottom: 1px solid #ffffff26; color: #fff; font-weight: 700; }
+.activities-route svg { color: var(--brand-yellow); }
+.activities-experience ol { counter-reset: activity; list-style: none; padding: 0; margin: 0 0 24px; display: grid; gap: 14px; }
+.activities-experience li { display: flex; align-items: center; gap: 12px; }
+.activities-experience li::before { counter-increment: activity; content: counter(activity, decimal-leading-zero); display: grid; place-items: center; width: 30px; height: 30px; flex-shrink: 0; border: 1px solid #ffffff30; border-radius: 50%; color: var(--brand-yellow); font: 700 .6875rem/1 var(--font-body); }
+.public-content .activities-experience .text-link { color: var(--brand-yellow); font-size: .875rem; }
+.activities-projects, .activities-updates { margin-top: 32px; }
+.activities-page .activities-updates > h3 { font-size: 1.6rem; margin-bottom: 24px; }
+.public-content .activities-page #etablissements .school-filters { padding: 24px; background: #edf3fc; border-radius: 18px; }
+.public-content .activities-page .school-empty { background: linear-gradient(130deg, #fff, #edf4fc); border-radius: 22px; }
+.public-content .activities-page .school-directory-note { padding: 30px; background: linear-gradient(120deg, #e8f0fc, #f8fafc); border: 1px solid #d7e4f3; border-radius: 20px; }
+@media (max-width: 1000px) {
+ .public-content .activities-page .school-directory-heading { gap: 5%; }
+ .activities-grid { grid-template-columns: 1fr; }
+ .activities-experience { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 760px) {
+ .public-content .activities-page .school-directory-heading { grid-template-columns: 1fr; gap: 28px; padding-block: 30px 36px; }
+ .public-content .activities-page .school-directory-heading h1 { font-size: clamp(2.2rem, 8.5vw, 3.2rem); }
+ .activities-intro-visual img { aspect-ratio: 4 / 3; border-radius: 18px; }
+ .activities-intro-visual figcaption { left: 12px; right: 12px; bottom: 12px; padding: 14px; font-size: .875rem; }
+ .activities-page .activities-section { padding-top: 36px; margin-top: 36px; }
+ .activities-grid > article { padding: 24px; }
+ .activities-experience { padding: 24px; border-radius: 18px; }
+ .activities-experience-process { padding: 18px; }
+}
+
+.activities-illustration-note { max-width: 80ch; margin: 0 0 28px; padding: 16px 20px; border-left: 3px solid var(--brand-yellow); border-radius: 0 12px 12px 0; background: #edf3fc; color: var(--muted); font-size: .875rem; line-height: 1.8; }
+.activities-photo-section .photo-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.activities-photo-section .gallery-item { border: 1px solid #d7e4f3; background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 10px 28px #031b4e08; }
+.activities-photo-section .gallery-caption { padding: 18px; color: var(--ink); font-size: .875rem; line-height: 1.65; }
+.activities-photo-section .gallery-thumbnail { aspect-ratio: 3 / 2; }
+@media (max-width: 900px) { .activities-photo-section .photo-gallery { grid-template-columns: 1fr; } }
+.activities-photo-section .gallery-item { display: flex; flex-direction: column; justify-content: flex-start; padding: 0; text-align: left; }
+.activities-photo-section .gallery-thumbnail { display: block; width: 100%; flex-shrink: 0; }

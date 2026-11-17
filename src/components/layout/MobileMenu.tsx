@@ -36,7 +36,7 @@ export default function MobileMenu() {
       </div>
       <nav aria-label="Toutes les rubriques">
         {navigation.map((item) => (
-          <NavLink key={item.to} to={item.to} onClick={() => setOpen(false)}>{item.label}</NavLink>
+          <NavLink key={item.to} to={item.to} end={item.to === "/"} onClick={() => setOpen(false)}>{item.label}</NavLink>
         ))}
       </nav>
     </dialog>

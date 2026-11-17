@@ -27,7 +27,7 @@ export default function SchoolDetails() {
           Elle n’a pas encore été publiée ou le lien ne correspond à aucune
           école.
         </p>
-        <Link className="button" to="/ecoles">
+        <Link className="button" to="/activites-realisations">
           <ArrowLeft size={18} aria-hidden="true" /> Voir les écoles
         </Link>
       </section>
@@ -39,13 +39,6 @@ export default function SchoolDetails() {
         <title>{`${school.name} — LabCongo`}</title>
         <meta name="description" content={school.summary} />
       </Helmet>
-      <nav aria-label="Fil d’Ariane" className="school-breadcrumb">
-        <Link to="/">Accueil</Link>
-        <span aria-hidden="true">/</span>
-        <Link to="/ecoles">Les écoles</Link>
-        <span aria-hidden="true">/</span>
-        <span aria-current="page">{school.name}</span>
-      </nav>
       <header className="school-detail-heading">
         <SchoolStatus status={school.status} />
         <h1>{school.name}</h1>

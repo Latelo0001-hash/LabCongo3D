@@ -39,7 +39,7 @@ export default function SchoolComparisons() {
               Les premières comparaisons seront publiées avec les photos
               validées des écoles.
             </p>
-            <Link to="/ecoles">
+            <Link to="/activites-realisations#etablissements">
               Découvrir les écoles <ArrowUpRight size={17} aria-hidden="true" />
             </Link>
           </div>
