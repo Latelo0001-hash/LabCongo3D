@@ -60,3 +60,11 @@ Contrôles Chrome à 1 440, 820, 390 et 320 px : 26 provinces affichées, sélec
 ## Participation et soutien
 
 Sur l’accueil, la présentation des partenaires et l’appel au soutien sont réunis dans le bloc final « Participer · Nous soutenir ». Il conserve les trois façons de contribuer et ajoute un accès « Devenir partenaire ». Les partenaires confirmés s’affichent dans ce même bloc lorsqu’ils sont disponibles. L’ancre `#partenaires` est conservée à cet endroit. Les pages Partenaires et Nous soutenir restent accessibles séparément depuis le menu.
+
+## À propos — 10 novembre 2026
+
+La page utilise toujours `PageIntro`, les images et les textes existants. Son style spécifique est isolé dans `src/pages/About/about.css` : introduction avec image de laboratoire, trois cartes pour le constat, enjeu national sur fond bleu, mission en photo et panneau clair, cinq capacités logistiques illustrées et carte d’équipe avec initiales. L’expérience hospitalière reste une réalisation antérieure. Aucun membre, chiffre ou témoignage n’a été ajouté. Les cinq ancres du sommaire sont conservées.
+
+ESLint et compilation réussis. Chrome à 1 440, 820, 390 et 320 px : un titre principal, aucune ancre manquante, aucun débordement horizontal ni erreur JavaScript. Captures examinées sur ordinateur et mobile. Les outils et captures restent dans `/tmp/labcongo-about-*`. Les modifications locales préexistantes du film et de Notre approche ne sont pas touchées par cette passe.
+
+Les trois portraits fournis dans `src/assets/img/team` remplacent les initiales. La section équipe occupe toute la largeur : trois cartes sur ordinateur, deux sur tablette et une sur téléphone. Copies allégées et sources documentées dans `public/images/team/README.md`. La fonction de Kethia est conservée ; celles de Benjamain et Evi attendent précision. Build et ESLint réussis ; quatre tailles contrôlées dans Chrome, trois images chargées et aucun débordement ni erreur JavaScript. Captures examinées : `/tmp/labcongo-team-*`.

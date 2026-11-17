@@ -6,9 +6,9 @@ import { partnerActors } from "../../../data/editorialContent";
 export default function PartnershipContent() {
   return <div id="partenaires" className="editorial-group">
         <section id="acteurs">
-          <h2>Des rôles complémentaires.</h2>
+          <div className="donate-heading"><p className="eyebrow">04 — Agir ensemble</p><h2>Des rôles complémentaires.</h2></div>
           <ul className="content-tags">{partnerActors.map((actor) => <li key={actor}>{actor}</li>)}</ul>
-          <div className="editorial-columns">
+          <div className="editorial-columns donate-partner-roles">
             {partnerRoles.map((item) => (
               <article key={item.title}>
                 <h3>{item.title}</h3>
@@ -20,7 +20,7 @@ export default function PartnershipContent() {
         </section>
         <section id="devenir-partenaire" className="form-layout">
           <div>
-            <p className="eyebrow">Devenir partenaire</p>
+            <p className="eyebrow">05 — Devenir partenaire</p>
             <h2>Partons de votre contribution.</h2>
             <p>
               Présentez votre organisation, les compétences ou les ressources

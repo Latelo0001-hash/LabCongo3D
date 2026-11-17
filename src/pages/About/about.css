@@ -1,0 +1,118 @@
+/* Mise en page propre à À propos ; les autres pages gardent leurs composants partagés. */
+.public-content .about-page > .container { width: min(1240px, 90%); }
+.public-content .about-intro { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); column-gap: 7%; row-gap: 18px; padding-bottom: 64px; }
+.public-content .about-intro > .eyebrow { grid-column: 1; grid-row: 1; margin: 20px 0 0; align-self: end; }
+.public-content .about-intro > h1 { grid-column: 1; grid-row: 2; font-size: clamp(2.6rem, 4.1vw, 3.8rem); line-height: 1.12; margin: 0; align-self: center; text-wrap: pretty; }
+.public-content .about-intro > .page-intro-description { grid-column: 1; grid-row: 3; margin: 0; padding-bottom: 24px; font-size: 1.125rem; }
+.public-content .about-intro > .page-section-nav { grid-column: 1 / -1; grid-row: 4; margin-top: 26px; }
+.about-intro-visual { grid-column: 2; grid-row: 1 / 4; margin: 0; min-width: 0; align-self: center; }
+.about-intro-visual > img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 24px; border-bottom: 5px solid var(--brand-yellow); box-shadow: 0 18px 45px #031b4e14; }
+.public-content .about-page .about-section-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 7%; align-items: start; }
+.public-content .about-page .about-section-heading h2 { margin-top: 12px; max-width: 20ch; }
+.public-content .about-page .about-section-heading > p,
+.public-content .about-page .about-section-heading > div > p:first-child:not(.eyebrow) { margin-top: 0; }
+.public-content .about-page .about-section-heading > div > p + p { margin-top: 16px; }
+.public-content .about-context { padding-top: 30px; border-top: 1px solid var(--line); }
+.about-findings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 32px; }
+.about-findings article { padding: 30px; background: #fff; border: 1px solid #dce6f0; border-radius: 18px; }
+.about-icon { display: inline-flex; padding: 13px; background: #eaf3fc; color: var(--brand-blue); border-radius: 14px; }
+.public-content .about-findings h3 { margin: 24px 0 14px; font-size: 1.2rem; }
+.public-content .about-findings p { margin: 0; font-size: .9375rem; line-height: 1.8; }
+.public-content .about-page .about-opening { padding-bottom: 0; }
+.public-content .about-page #enjeu-national { margin-top: 64px; padding: 64px 0; border: 0; border-radius: 0; }
+.about-national-content { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8%; width: min(1240px, 90%); }
+.about-national h2 { font-size: clamp(2rem, 3.2vw, 3.1rem); line-height: 1.16; margin: 14px 0 24px; text-wrap: balance; }
+.about-national p { font-size: 1.0625rem; line-height: 1.85; margin: 0 0 20px; }
+.about-national p:last-child { margin-bottom: 0; }
+.about-national .eyebrow { display: flex; align-items: center; gap: 12px; font-size: .6875rem; font-weight: 800; line-height: 1.7; letter-spacing: .16em; }
+.about-national .eyebrow::before { content: ""; width: 20px; height: 3px; flex: 0 0 20px; }
+.about-national .content-tags li { font-size: .8125rem; line-height: 1.5; }
+.public-content .about-page .about-body { padding-top: 64px; }
+.about-national-rule { display: block; width: 64px; height: 4px; background: var(--brand-yellow); margin-top: 32px; }
+.public-content .about-page .about-national-action { padding: 18px 22px; border-left: 3px solid var(--brand-yellow); background: #031b4e80; border-radius: 0 10px 10px 0; }
+.about-mission-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); align-items: start; gap: 32px; margin-top: 28px; }
+.public-content .about-page .about-mission-photo { margin: 0; }
+.public-content .about-page .about-mission-photo img { aspect-ratio: 4 / 5; max-height: 620px; object-position: 50% 30%; }
+.about-mission-panel { padding: clamp(26px, 3vw, 40px); background: linear-gradient(135deg, #edf4fc, #f5f8fd); border: 1px solid #d7e4f3; border-radius: 20px; }
+.public-content .about-mission-panel .eyebrow { margin-top: 0; }
+.public-content .about-mission-panel .about-mission-statement { font: 400 clamp(1.5rem, 2vw, 1.9rem)/1.4 var(--font-editorial); letter-spacing: -.02em; color: var(--ink); margin-block: 22px; }
+.public-content .about-mission-panel .editorial-list { padding-top: 16px; margin-block: 24px; border-top: 1px solid #cbddef; }
+.public-content .about-mission-panel .editorial-list li { font-size: .9375rem; }
+.public-content .about-page .text-link { display: inline-flex; align-items: center; gap: 8px; }
+.public-content .about-page .text-link svg { flex-shrink: 0; }
+.public-content .about-page .about-experience { background: var(--gradient-journey); color: #fff; border-radius: 0; border: 0; margin-top: 64px; padding: 64px 0; }
+.public-content .about-page .about-experience-label { color: var(--brand-blue); font-size: .875rem; font-weight: 700; }
+.about-logistics { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin: 32px 0; padding: 0; list-style: none; }
+.about-logistics li { padding: 22px 18px; border: 1px solid #d7e4f3; border-radius: 14px; background: #fff; min-width: 0; }
+.about-logistics-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--brand-blue); }
+.about-logistics-top > span { color: var(--muted); font-size: .6875rem; font-weight: 700; }
+.public-content .about-logistics p { font-size: .875rem; font-weight: 600; line-height: 1.65; color: var(--ink); margin: 20px 0 0; }
+.public-content .about-page .about-experience-conclusion { margin: 0; max-width: none; padding: 24px 0 0; border-top: 1px solid #cbddef; color: var(--brand-blue); font-weight: 600; font-size: 1rem; }
+.public-content .about-team { padding-top: 40px; border-top: 1px solid var(--line); }
+.about-team-heading { display: flex; align-items: end; justify-content: space-between; gap: 32px; margin-bottom: 30px; }
+.public-content .about-team-heading h2 { max-width: 24ch; margin-bottom: 0; }
+.about-team-heading > .text-link { flex-shrink: 0; }
+.about-team-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 0; padding: 0; list-style: none; }
+.about-team-list li { min-width: 0; }
+@media (max-width: 1050px) {
+  .public-content .about-intro { column-gap: 5%; }
+  .about-logistics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .about-findings { gap: 16px; }
+  .about-findings article { padding: 24px; }
+}
+@media (max-width: 760px) {
+  .public-content .about-intro { display: flex; flex-direction: column; gap: 18px; }
+  .public-content .about-intro > .eyebrow { align-self: start; margin: 0; }
+  .public-content .about-intro > h1 { font-size: clamp(2.2rem, 8.5vw, 3.1rem); }
+  .public-content .about-intro > .page-intro-description { padding: 0; font-size: 1rem; }
+  .public-content .about-intro > .page-section-nav { margin-top: 8px; }
+  .about-intro-visual { width: 100%; margin-top: 8px; }
+  .about-intro-visual > img { aspect-ratio: 4 / 3; border-radius: 18px; }
+  .public-content .about-page .about-section-heading, .about-mission-grid, .about-findings { grid-template-columns: 1fr; gap: 22px; }
+  .public-content .about-page .about-section-heading h2 { max-width: none; }
+  .public-content .about-page #enjeu-national { margin-top: 40px; padding: 40px 0; }
+  .about-national-content { grid-template-columns: 1fr; gap: 28px; }
+  .public-content .about-page .about-body { padding-top: 40px; }
+  .about-national-rule { margin-top: 24px; }
+  .about-logistics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .about-logistics li:last-child { grid-column: 1 / -1; }
+  .public-content .about-page .about-experience { margin-top: 40px; padding: 40px 0; }
+  .public-content .about-page .about-mission-photo img { aspect-ratio: 4 / 3; }
+}
+
+@media (max-width: 1050px) {
+  .about-team-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .about-team-heading { align-items: start; flex-direction: column; gap: 18px; }
+}
+@media (max-width: 640px) {
+  .about-team-list { grid-template-columns: 1fr; gap: 22px; }
+}
+
+/* Même fond et mêmes motifs que le parcours de l’accueil. */
+.public-content .about-experience > .motif-field { opacity: .65; border-radius: inherit; }
+.public-content .about-experience h2 { color: #fff; }
+.public-content .about-experience .about-section-heading p { color: #d0e1f6; }
+.public-content .about-experience .about-section-heading .eyebrow,
+.public-content .about-experience .about-section-heading .about-experience-label { color: var(--brand-yellow); }
+.public-content .about-experience .eyebrow::before { background: var(--brand-yellow); }
+.public-content .about-experience .about-logistics li { background: #0c284de6; border-color: #315172; }
+.public-content .about-experience .about-logistics-top,
+.public-content .about-experience .about-logistics-top > span { color: var(--brand-yellow); }
+.public-content .about-experience .about-logistics p { color: #fff; }
+.public-content .about-page .about-experience .about-experience-conclusion { color: #d0e1f6; border-color: #315172; }
+
+.public-content .about-page .about-mission-body { padding-bottom: 0; }
+.public-content .about-experience .about-experience-content { width: min(1240px, 90%); padding-bottom: 0; }
+
+/* Chiffres officiels du secondaire sous l’enjeu national. */
+.about-national-data { width: min(1240px, 90%); margin-top: 48px; padding-top: 32px; border-top: 1px solid #ffffff2e; }
+.about-national-figures { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin: 0; padding: 0; list-style: none; }
+.public-content .about-national-figures li { display: flex; flex-direction: column; gap: 12px; min-width: 0; padding: 24px; background: #0c284de6; border: 1px solid #315172; border-radius: 16px; color: #cadbec; font-size: .9375rem; line-height: 1.7; }
+.public-content .about-national-figures strong { color: var(--brand-yellow); font: 400 clamp(2rem, 3vw, 2.75rem)/1.1 var(--font-editorial); letter-spacing: -.02em; }
+.public-content .about-page .about-national-source { margin: 20px 0 0; max-width: 110ch; font-size: .8125rem; line-height: 1.7; color: #cadbec; }
+.about-national-source a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 760px) {
+  .about-national-data { margin-top: 32px; padding-top: 24px; }
+  .about-national-figures { grid-template-columns: 1fr; gap: 14px; }
+  .public-content .about-national-figures li { padding: 20px; }
+}

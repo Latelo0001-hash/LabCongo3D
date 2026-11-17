@@ -1,0 +1,44 @@
+/* Même ambiance que l'ancien parcours de l'accueil, sans modifier les autres listes. */
+.public-content .approach-journey { position: relative; padding-block: 64px; background: var(--gradient-journey); color: #fff; }
+.public-content .approach-journey-content { position: relative; width: min(1240px, 90%); padding-bottom: 0; }
+.approach-journey > .motif-field { opacity: .65; }
+.public-content .approach-journey-heading { max-width: 950px; }
+.public-content .approach-journey-heading .eyebrow { color: #c8def6; }
+.public-content .approach-journey-heading .eyebrow::before { background: var(--brand-yellow); }
+.public-content .approach-journey-heading h2 { color: #fff; font-size: clamp(2rem, 3.5vw, 3.2rem); line-height: 1.15; }
+.public-content .approach-journey-heading h2 em { color: var(--brand-yellow); font-style: normal; }
+.public-content .approach-journey-heading > p:last-child { color: #d0e1f6; font-size: 1.0625rem; line-height: 1.85; }
+
+.public-content .approach-after-journey { padding-top: 64px; }
+.approach-journey :focus-visible { outline-color: var(--brand-yellow); }
+.progression-path { display: grid; grid-template-columns: minmax(220px, .65fr) minmax(0, 1.35fr); gap: 7%; align-items: start; margin-top: 40px; }
+.progression-nav { position: sticky; top: 24px; padding: 16px 0; }
+.progression-nav ol { position: relative; display: grid; gap: 8px; padding: 0; margin: 0; list-style: none; }
+.progression-nav ol::before { content: ""; position: absolute; left: 19px; top: 22px; bottom: 22px; width: 1px; background: #53779d; }
+.progression-nav a { position: relative; display: flex; align-items: center; gap: 16px; min-height: 48px; padding: 4px 0; color: #a9bfdc; font: 600 .875rem/1.5 var(--font-body); }
+.progression-dot { display: grid; place-items: center; flex-shrink: 0; width: 40px; height: 40px; border: 1px solid #53779d; border-radius: 50%; background: #0b2548; color: #b7cbe4; font-size: .6875rem; transition: background .2s, border-color .2s, color .2s; }
+.progression-nav a:is(.is-current, :hover, :focus-visible) { color: #fff; }
+.progression-nav a.is-current .progression-dot { background: var(--brand-yellow); color: var(--ink); border-color: var(--brand-yellow); box-shadow: 0 0 0 5px #f7d61812; }
+.progression-nav a.is-past .progression-dot { border-color: var(--brand-yellow); color: var(--brand-yellow); }
+.progression-steps { list-style: none; padding: 0; margin: 0; }
+.progression-steps > li { min-height: 240px; padding: 36px 0; border-top: 1px solid #ffffff26; scroll-margin-top: 120px; }
+.progression-steps > li:first-child { padding-top: 16px; border-top: 0; }
+.progression-step-number { color: #9bb5d6; font: 700 .75rem/1.5 var(--font-body); letter-spacing: .1em; }
+.progression-steps > li.is-current .progression-step-number { color: var(--brand-yellow); }
+.public-content .approach-journey .progression-steps h3 { color: #fff; font-size: clamp(1.7rem, 2.5vw, 2.3rem); line-height: 1.2; margin: 16px 0; }
+.public-content .approach-journey .progression-steps p { color: #c9dbf0; font-size: 1rem; line-height: 1.85; }
+.public-content .approach-journey .progression-steps .progression-tagline { color: #fff; font-weight: 600; }
+@media (max-width: 760px) {
+ .public-content .approach-journey { padding-block: 44px; }
+ .progression-path { display: block; }
+ .progression-nav { top: 0; z-index: 2; padding: 12px 4px; border-block: 1px solid #ffffff26; background: #061c38f5; border-radius: 12px; }
+ .progression-nav ol { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 0; }
+ .progression-nav ol::before { left: 14px; right: 14px; width: auto; top: 24px; bottom: auto; height: 1px; }
+ .progression-nav a { justify-content: center; min-height: 48px; padding: 4px 0; }
+ .progression-dot { width: 26px; height: 26px; font-size: .625rem; }
+ .progression-label { display: none; }
+ .progression-steps > li { padding-block: 32px; }
+ .progression-steps > li:first-child { padding-top: 32px; }
+ .public-content .approach-after-journey { padding-top: 44px; }
+}
+@media (prefers-reduced-motion: reduce) { .progression-dot { transition: none; } }

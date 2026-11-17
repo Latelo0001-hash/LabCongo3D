@@ -1,0 +1,78 @@
+/* Styles limités à la page de soutien : mêmes couleurs et typographies que le site. */
+.public-content .donate-page > .container { width: min(1240px, 90%); }
+.public-content .donate-intro { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 18px 7%; padding-bottom: 64px; }
+.public-content .donate-intro > .eyebrow { grid-column: 1; grid-row: 1; margin: 12px 0 0; align-self: end; }
+.public-content .donate-intro > h1 { grid-column: 1; grid-row: 2; margin: 0; font-size: clamp(2.6rem, 4.3vw, 4.2rem); line-height: 1.12; text-wrap: pretty; }
+.public-content .donate-intro > .page-intro-description { grid-column: 1; grid-row: 3; margin: 0; font-size: 1.0625rem; }
+.donate-intro-visual { position: relative; grid-column: 2; grid-row: 1 / 4; margin: 0; min-width: 0; align-self: center; }
+.donate-intro-visual img { width: 100%; height: auto; aspect-ratio: 5 / 4; object-fit: cover; display: block; border-radius: 24px; box-shadow: 0 16px 40px #031b4e14; }
+.donate-intro-visual figcaption { display: flex; align-items: center; gap: 14px; position: absolute; left: 18px; right: 18px; bottom: 18px; padding: 18px; background: #031b4ef2; color: white; border: 1px solid #ffffff26; border-radius: 14px; font-size: 1rem; font-weight: 700; }
+.donate-intro-visual figcaption svg { flex-shrink: 0; color: var(--brand-yellow); }
+.donate-intro-visual small { display: block; margin-top: 4px; font-size: .8125rem; font-weight: 400; color: #dce8f6; }
+.public-content .donate-intro > .page-section-nav { grid-column: 1 / -1; margin-top: 26px; }
+.public-content .donate-heading h2 { max-width: 25ch; margin: 12px 0 30px; }
+.public-content .donate-page .support-options { gap: 22px; margin-top: 0; }
+.public-content .donate-page .support-options article { min-width: 0; padding: 30px; border-radius: 20px; background: linear-gradient(145deg, #fff, #f0f5fc); border: 1px solid #dce6f3; box-shadow: 0 12px 32px #031b4e05; }
+.public-content .donate-page .support-options article:first-child { background: var(--gradient-journey); border-color: #17396a; }
+.donate-card-top { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.public-content .donate-card-top > svg { color: var(--brand-blue); background: #e4edf9; padding: 13px; }
+.public-content .donate-card-top > span { font-size: .75rem; font-weight: 700; letter-spacing: .1em; color: #617796; }
+.public-content .support-options article:first-child .donate-card-top > span { color: #aec4e1; }
+.public-content .donate-page .support-options h3 { font-family: var(--font-editorial); font-weight: 400; font-size: clamp(1.6rem, 2.2vw, 1.95rem); line-height: 1.22; margin: 26px 0 16px; }
+.public-content .donate-page .support-options p { font-size: .9375rem; line-height: 1.85; }
+.public-content .donate-page .text-link { display: inline-flex; gap: 10px; align-items: center; white-space: normal; line-height: 1.6; }
+.public-content .donate-page .support-options .text-link > svg { box-sizing: border-box; flex-shrink: 0; padding: 0; background: none; border-radius: 0; color: currentColor; }
+.public-content .donate-page #preparer { gap: 7%; padding: clamp(26px, 4vw, 48px); background: linear-gradient(125deg, #eaf2fc, #f6f9fd); border: 1px solid #d8e4f3; border-radius: 24px; }
+.public-content .donate-page #preparer h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); }
+.donate-checklist { display: grid; gap: 12px; list-style: none; margin: 28px 0 0; padding: 0; }
+.public-content .donate-checklist li { display: flex; align-items: start; gap: 10px; font-size: .875rem; color: var(--ink); }
+.donate-checklist svg { flex-shrink: 0; margin-top: 4px; color: var(--brand-blue); }
+.public-content .donate-page .form-layout { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 6%; padding-top: 32px; border-top: 1px solid var(--line); }
+.public-content .donate-page .form-layout h2 { font-size: clamp(2rem, 3vw, 2.8rem); }
+.public-content .donate-page .donate-contact-note { margin-top: 28px; padding: 20px; border-left: 3px solid var(--brand-yellow); border-radius: 0 12px 12px 0; background: #edf3fb; font-size: .875rem; }
+.public-content .donate-page .message-form-wrapper { background: #fff; border: 1px solid #d5e1f0; border-radius: 24px; box-shadow: 0 16px 48px #031b4e08; padding: clamp(22px, 3vw, 36px); }
+.public-content .donate-page .form-intro { background: #f0f5fc; padding: 16px 18px; border: 0; border-radius: 12px; }
+.public-content .donate-page :is(input:not([type='checkbox']), select, textarea) { border-radius: 10px; background: #fbfcfe; }
+.public-content .donate-page .material-fields { border-radius: 14px; background: #f5f8fd; }
+.public-content .donate-page #partenaires { margin-top: 80px; }
+.public-content .donate-page #acteurs { padding: clamp(26px, 4vw, 48px); border: 1px solid #17396a; border-radius: 24px; background: var(--gradient-journey); color: white; }
+.public-content .donate-page #acteurs h2 { color: white; }
+.public-content .donate-page #acteurs .eyebrow { color: var(--brand-yellow); }
+.public-content .donate-page #acteurs .content-tags { gap: 8px; margin-bottom: 32px; }
+.public-content .donate-page #acteurs .content-tags li { color: #e0ebf8; border-color: #ffffff30; background: #ffffff08; }
+.public-content .donate-page .donate-partner-roles { gap: 20px; }
+.public-content .donate-page .donate-partner-roles article { padding: 24px; background: #ffffff08; border: 1px solid #ffffff26; border-radius: 16px; }
+.public-content .donate-page .donate-partner-roles h3 { color: white; margin-top: 0; font-size: 1.125rem; }
+.public-content .donate-page .donate-partner-roles p { color: #d5e3f5; font-size: .9375rem; margin-bottom: 0; }
+.public-content .donate-page #acteurs .publication-note { color: #d5e3f5; border-color: #ffffff26; background: #ffffff08; margin-bottom: 0; }
+@media (max-width: 1000px) {
+  .public-content .donate-intro { gap: 18px 5%; }
+  .public-content .donate-page .support-options { grid-template-columns: 1fr; }
+  .public-content .donate-page .form-layout { grid-template-columns: 1fr; }
+  .public-content .donate-page .donate-partner-roles { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  .public-content .donate-intro { display: flex; flex-direction: column; padding-bottom: 40px; }
+  .public-content .donate-intro > h1 { font-size: clamp(2.2rem, 9vw, 3rem); }
+  .donate-intro-visual { width: 100%; margin-top: 8px; }
+  .donate-intro-visual img { aspect-ratio: 4 / 3; border-radius: 18px; }
+  .donate-intro-visual figcaption { left: 12px; right: 12px; bottom: 12px; padding: 14px; font-size: .9375rem; }
+  .public-content .donate-page #preparer { grid-template-columns: 1fr; gap: 24px; }
+  .public-content .donate-page :is(.support-options article, #preparer, #acteurs) { padding: 24px; border-radius: 18px; }
+  .public-content .donate-page #partenaires { margin-top: 56px; }
+}
+
+.public-content .donate-page .support-options article:first-child h3 { color: #fff; }
+
+/* Le don matériel occupe toute la largeur ; les coordonnées se répartissent sur deux colonnes. */
+.public-content .donate-page #proposer { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+@media (min-width: 701px) {
+  .public-content .donate-page #proposer > div:first-child { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px 6%; }
+  .public-content .donate-page #proposer > div:first-child > .eyebrow { grid-column: 1 / -1; margin: 0; }
+  .public-content .donate-page #proposer h2 { grid-column: 1; grid-row: 2 / 4; margin: 0; }
+  .public-content .donate-page #proposer > div:first-child > p:not(.eyebrow) { grid-column: 2; margin: 0; }
+  .public-content .donate-page #proposer .message-form { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 24px; }
+  .public-content .donate-page #proposer .message-form > .form-row { display: contents; }
+  .public-content .donate-page #proposer .message-form > :not(.form-row):not(.form-field),
+  .public-content .donate-page #proposer .message-form > .form-field:has(textarea) { grid-column: 1 / -1; }
+}
