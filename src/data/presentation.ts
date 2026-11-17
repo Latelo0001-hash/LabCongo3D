@@ -104,7 +104,22 @@ export const results = {
   },
 };
 
-export const team = [{ name: "Kethia Grâce BAKAATO", role: "Vice-présidente" }];
+export interface TeamMemberProfile {
+  slug: string;
+  name: string;
+  role?: string;
+  // Texte approuvé : séparer les paragraphes par deux sauts de ligne.
+  biography?: string;
+  photo: { src: string; small: string; width: number; height: number; position: string; zoom?: number };
+}
+
+// Fonctions : « LAB CONGO Statuts.docx FINAL 5.docx », listes de direction et annexes.
+// La correspondance du portrait « Evi Longodja » avec LOMBI Evy est confirmée par l’utilisateur.
+export const team: readonly TeamMemberProfile[] = [
+  { slug: "kethia-bakaato", name: "Kethia Grâce BAKAATO", role: "Coordonnatrice adjointe chargée des programmes et responsable du projet", biography: "", photo: { src: "/images/team/kethia-bakaato-1280.jpg", small: "/images/team/kethia-bakaato-640.jpg", width: 1024, height: 1280, position: "50% 35%", zoom: 1.32 } },
+  { slug: "benjamin-itamba", name: "Benjamin Itamba", role: "Chargé des finances", biography: "", photo: { src: "/images/team/benjamain-itamba-1280.jpg", small: "/images/team/benjamain-itamba-640.jpg", width: 853, height: 1280, position: "50% 75%" } },
+  { slug: "lombi-evy", name: "LOMBI Evy", role: "Chargé de communication", biography: "", photo: { src: "/images/team/evi-longodja-1280.jpg", small: "/images/team/evi-longodja-640.jpg", width: 853, height: 1280, position: "50% 75%" } },
+];
 
 // Images d'illustration de la présentation : elles ne montrent pas des actions de LabCongo.
 const presentationImage = (name: string, width: number, height: number, caption: string, alt: string, position?: string): NarrativePhoto => ({
