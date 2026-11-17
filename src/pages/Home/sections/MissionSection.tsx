@@ -1,7 +1,7 @@
 import { MotifField } from "../../../components/motifs/LabMotifs";
 import FadeIn from "../../../components/animations/FadeIn";
 import Button from "../../../components/common/Button";
-import { PhotoCredit, PhotoImage } from "../../../components/common/Photo";
+import { PhotoImage } from "../../../components/common/Photo";
 import { narrativePhotos } from "../../../features/experience/photos";
 export default function MissionSection() {
   return (
@@ -10,7 +10,6 @@ export default function MissionSection() {
       <div className="container mission-layout">
         <figure className="mission-image">
           <PhotoImage photo={narrativePhotos.instruments} sizes="(max-width: 1050px) 88vw, 44vw" />
-          <figcaption><PhotoCredit photo={narrativePhotos.instruments} /></figcaption>
         </figure>
         <FadeIn>
           <div className="mission-copy">

@@ -1,0 +1,7 @@
+.open-pit-motifs { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.open-pit-landscape { position: absolute; left: -8%; bottom: 10px; width: min(90vw, 1200px); height: auto; fill: none; stroke: #a9c7df; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; opacity: .18; }
+.open-pit-landscape path { vector-effect: non-scaling-stroke; }
+.open-pit-landscape .mine-ramp { stroke-width: 1.4; }
+@media (max-width: 760px) {
+ .open-pit-landscape { width: 150vw; max-width: none; left: -32%; bottom: 16px; opacity: .15; }
+}

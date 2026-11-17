@@ -60,7 +60,7 @@
   .school-empty-link, .comparison-pending a, .equipment-section-footer a, .cta-text-link,
   .province-contact, .province-directory-link, .province-select select, .map-reset,
   .experience-chain span) { font-size: 1rem; line-height: 1.6; }
-.home-content :is(.collection-figure figcaption > span:last-child, .journey-route-caption,
+.home-content :is(.journey-route-caption,
   .journey-route-caption > span:last-child, .journey-step-number, .map-instructions,
   .map-legend, .map-province-count, .map-attribution, .province-select label,
   .province-heading p, .province-data-status, .publication-note, .indicator-grid small,
@@ -92,12 +92,6 @@
 .home-content .journey-access-actions svg { flex-shrink: 0; }
 .home-content .journey-access-photo { margin: 0; min-width: 0; }
 .home-content .journey-access-photo > img { display: block; width: 100%; height: auto; aspect-ratio: 5 / 6; object-fit: cover; border-radius: 12px; border-bottom: 4px solid var(--brand-yellow); }
-.home-content :is(.journey-access-photo, .mission-image) figcaption { margin-top: 16px; }
-.home-content :is(.journey-access-photo, .mission-image) .photo-credit { color: #d2e6ff; }
-.home-content .photo-credit { display: flex; flex-direction: column; gap: 4px; font-size: .8125rem; line-height: 1.6; }
-.home-content .photo-credit > span + span { font-size: .75rem; }
-.home-content .photo-credit a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
-.home-content .photo-credit a:hover { text-decoration-thickness: 2px; }
 .home-content .home-section-nav { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; margin-top: 60px; border-top: 1px solid #ffffff38; }
 .home-content .home-section-nav a { display: flex; align-items: center; gap: 12px; min-width: 0; min-height: 88px; padding: 20px 18px; font-size: 1rem; line-height: 1.4; border-right: 1px solid #ffffff24; }
 .home-content .home-section-nav a:first-child { padding-left: 0; }
@@ -159,8 +153,6 @@
 .home-content .process-photo { margin: 0; min-width: 0; }
 .home-content .process-image { display: block; width: 100%; height: auto; aspect-ratio: 4/3; overflow: hidden; background: var(--home-blue-pale); border-radius: 9px 9px 0 0; }
 .home-content .process-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.home-content .process-photo figcaption { margin: 0; padding: 14px 24px; border-bottom: 1px solid var(--home-blue-line); }
-.home-content .process-photo .photo-credit { color: var(--muted); }
 .home-content .process-copy { padding: 26px; }
 .home-content .process-number { display: block; color: var(--brand-red); font-size: var(--home-label); font-weight: 700; margin: 0 0 16px; padding: 0; }
 .home-content .process-copy h3 { font: 600 var(--home-card-title)/1.3 var(--font-body); letter-spacing: -.025em; margin: 0 0 16px; }
@@ -208,7 +200,7 @@
 .home-content .collection-section { background: #fff; border: 0; }
 .home-content .collection-copy { padding: 28px; background: var(--home-blue-pale); border-top: 3px solid var(--brand-blue); }
 .home-content .collection-figure img { aspect-ratio: 4/3; }
-.home-content .journey-section { background: linear-gradient(120deg, #04152f, #031b4e); padding-block: var(--home-space); }
+.home-content .journey-section { background: var(--gradient-journey); padding-block: var(--home-space); }
 .home-content .journey-section .eyebrow { color: #c8def6; }
 .home-content .journey-section .eyebrow::before { background: var(--brand-yellow); }
 .home-content .journey-section :focus-visible { outline-color: var(--brand-yellow); }
@@ -297,18 +289,17 @@
   .home-content .cta-text-link { align-self: start; }
 }
 
-/* Les légendes et titres gardent les mêmes lignes de départ sur les rangées de cartes. */
+/* Les titres gardent les mêmes lignes de départ sur les rangées de cartes. */
 @media (min-width: 1051px) {
-  .home-content .process-photo figcaption { min-height: 110px; }
   .home-content .process-copy h3, .home-content .home-outcomes h3 { min-height: 2.6em; }
 }
 
 /* Ajustements de la nouvelle composition sur tablette et téléphone. */
 @media (max-width: 1050px) {
   .home-content .process-row { display: grid; grid-template-columns: 1fr 1.15fr; }
-  .home-content .process-image { border-radius: 9px 0 0 0; }
+  /* Sans légende sous la photo, l'image occupe toute la hauteur de la carte. */
+  .home-content .process-image { height: 100%; aspect-ratio: auto; border-radius: 9px 0 0 9px; }
   .home-content .process-photo { border-right: 1px solid var(--home-blue-line); }
-  .home-content .process-photo figcaption { border-bottom: 0; }
   .home-content .home-outcomes { grid-template-columns: 1fr; gap: 18px; }
   .home-content .home-outcomes article { padding: 28px; }
   .home-content .home-context-note, .home-content .home-impact-followup { grid-template-columns: 1fr; gap: 16px; }
@@ -323,8 +314,7 @@
   .home-content .mission-image img { aspect-ratio: 4/3; }
   .home-content .process-row { display: flex; }
   .home-content .process-photo { border-right: 0; }
-  .home-content .process-image { aspect-ratio: 4/3; border-radius: 9px 9px 0 0; }
-  .home-content .process-photo figcaption { border-bottom: 1px solid var(--home-blue-line); }
+  .home-content .process-image { height: auto; aspect-ratio: 4/3; border-radius: 9px 9px 0 0; }
   .home-content .process-copy { padding: 24px; }
   .home-content .home-phases { padding-inline: 24px; }
   .home-content .home-phases ol { grid-template-columns: 1fr; }
@@ -340,7 +330,6 @@
 .home-content .national-intro { max-width: 75ch; margin-top: 36px; }
 .home-content .national-layout figure { margin: 0; min-width: 0; }
 .home-content .national-layout img { display: block; width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; border-radius: 12px; border-bottom: 4px solid var(--brand-blue); }
-.home-content .national-layout figcaption { margin-top: 16px; }
 .home-content .journey-access-ambition { color: #d0e1f6; font-size: var(--home-body); line-height: 1.75; }
 .home-content .pilot-section { padding-block: var(--home-space); background: var(--home-blue-pale); }
 .home-content .pilot-overview { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; list-style: none; padding: 0; margin: 40px 0; }
@@ -382,7 +371,6 @@
 .home-content h2 { font-family: var(--font-editorial); letter-spacing: -.025em; line-height: 1.14; }
 .home-content h3 { font-family: var(--font-body); letter-spacing: -.025em; font-weight: 700; }
 .home-content h2 em { font-style: normal; }
-.home-content .photo-credit { color: var(--muted); }
 .home-content .eyebrow { font-size: .6875rem; font-weight: 800; letter-spacing: .16em; }
 .home-content :is(.challenge, .process-row, .equipment-card, .home-outcomes article, .partners-section .editorial-columns article, .indicator-grid article, .publication-card) { border: 1px solid var(--home-blue-line); border-radius: 20px; box-shadow: 0 12px 36px #03255208; }
 .home-content .challenge { padding: 32px; }
@@ -576,3 +564,9 @@
 @media (max-width: 760px) {
   .home-content .home-partnerships { flex-direction: column; align-items: start; gap: 22px; padding: 24px; }
 }
+
+/* Provinces minières : couleur propre, la sélection reste en bleu. */
+.home-content .province-shape.is-mining { fill: #f1d86a; }
+.home-content .province-shape.is-mining:hover { fill: #e2c13c; }
+.home-content .province-shape.is-mining[aria-pressed="true"] { fill: var(--brand-blue); }
+.home-content .map-legend i.mining { background: #f1d86a; border-color: #c9a92a; }

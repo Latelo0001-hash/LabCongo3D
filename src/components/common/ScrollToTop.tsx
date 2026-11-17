@@ -1,5 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { scrollImmediately } from "../../lib/lenis";
 
 // La page vient-elle d'être rechargée (et non ouverte depuis un lien ou l'historique) ?
 const reloaded = (performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined)?.type === "reload";
@@ -11,7 +12,7 @@ export default function ScrollToTop() {
   // précédent (« Découvrir le projet » mène à #decouvrir) : l'ancre est retirée. Une ancre reçue en arrivant d'un lien
   // ou d'une autre page reste suivie.
   const reload = useRef(reloaded);
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (reload.current) {
       if (hash) {
         // Les filtres d'une page (paramètres de l'adresse) sont gardés ; changer de filtre ne ramène pas en haut.
@@ -20,7 +21,7 @@ export default function ScrollToTop() {
       }
       reload.current = false;
     }
-    window.scrollTo({ top: 0, behavior: "instant" });
+    scrollImmediately(0);
     if (!hash) return;
     let id: string;
     try {

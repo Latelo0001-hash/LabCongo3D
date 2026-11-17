@@ -4,6 +4,7 @@ import FadeIn from "../../../components/animations/FadeIn";
 import { getTestimonials } from "../../../services/publication";
 export default function TestimonialsSection() {
   const items = getTestimonials();
+  if (!items.length) return null;
   return (
     <section
       id="temoignages"

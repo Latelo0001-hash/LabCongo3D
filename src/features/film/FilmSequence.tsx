@@ -31,9 +31,6 @@ const route = 'M-300 -180C-260 60-60 360 76 374';
 const ghosts = [
   { word: 'Acheminer', from: 4, to: 5.62, tone: 'dark' },
 ] as const;
-const credits = <>
-  Images d’illustration : elles ne montrent pas des actions de LabCongo · Laboratoire : images et vidéo générées · Navire : vidéos de bellergy (Pixabay) et Alexander Bobrov (Pexels) · Camion : « <a href="https://sketchfab.com/3d-models/scania-truck-59889032d0ad457c81d7e058c79eedf8" target="_blank" rel="noreferrer">Scania truck</a> » de PAndras, <a href="https://creativecommons.org/licenses/by/4.0/deed.fr" target="_blank" rel="noreferrer">CC BY 4.0</a>, allégé et sans logo · Carte : geoBoundaries, © OpenStreetMap (ODbL)
-</>;
 
 // Message d'accueil : qui est LabCongo, ce qu'elle fait, et les deux actions principales.
 function HeroCopy() {
@@ -108,7 +105,6 @@ function StaticFilm({ onAnimate }: { onAnimate?: () => void }) {
       {images[card.id] ? <img src={`${images[card.id][0]}.jpg`} alt={`Image d’illustration : ${images[card.id][1]}`} loading={i === 0 ? 'eager' : 'lazy'} width="1600" height="900" /> : <div aria-hidden="true" />}
       <div><p className="film-kicker">{card.kicker}</p><ChapterTitle card={card} />{card.text && <p className="film-text">{card.text}</p>}</div>
     </article>)}
-    <p className="film-simple-note">{credits}</p>
   </section>;
 }
 
@@ -341,10 +337,10 @@ export default function FilmSequence() {
       // s'ouvre donc depuis une fente verticale au centre, comme la route s'ouvre sur le navire, pendant que la caméra
       // avance encore sur le port : il y a toujours une image, sans surimpression.
       const sea = seg(x, 7.2, 7.62);
-      set('--deck-scale', mix(1, 1.12, seg(x, 7.05, 7.62)));
+      set('--deck-scale', mix(1, 1.06, seg(x, 7.05, 7.62)));
       set('--sea-opacity', x > 7.2 ? 1 : 0);
       set('--sea-clip', `inset(0 ${mix(50, 0, sea).toFixed(2)}% 0 ${mix(50, 0, sea).toFixed(2)}%)`);
-      set('--sea-scale', mix(1.18, 1, seg(x, 7.07, 8.87)));
+      set('--sea-scale', mix(1.08, 1, seg(x, 7.07, 8.87)));
       set('--shade-opacity', seg(x, 7.27, 7.87) * .3 + seg(x, 8.57, 9.17) * .45);
       set('--tint-opacity', seg(x, 6.42, 6.67) * .42 - seg(x, 7.27, 7.87) * .27 + seg(x, 8.57, 9.17) * .4);
       set('--map-opacity', seg(x, 8.57, 9.07));
@@ -446,7 +442,7 @@ export default function FilmSequence() {
         <div className="film-scrim is-band" />
         <div className="film-scrim is-caption" />
       </div>
-      <div className="film-hero"><MotifField set="hero" drift={false} /><HeroCopy /></div>
+      <div className="film-hero"><MotifField set="hero" drift={false} /><HeroCopy /><p className="film-scroll-cue" aria-hidden="true"><MoveDown size={16} />Faites défiler</p></div>
       <div className="film-cards">
         {cards.map((card) => {
           return <div key={card.id} className={`film-card is-${card.place} is-${card.tone}${card.title.length > 40 ? ' is-long' : ''}`} aria-hidden="true">
@@ -478,10 +474,6 @@ export default function FilmSequence() {
           </nav>
           <button type="button" className="film-mode" onClick={changeMode}>Lecture simple</button>
         </div>
-        <details className="film-credits">
-          <summary>Images d’illustration · Crédits</summary>
-          <p data-lenis-prevent>{credits}</p>
-        </details>
       </div>
     </div>
   </section>;

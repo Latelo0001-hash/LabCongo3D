@@ -49,7 +49,6 @@ const captions: Text[] = [
   { from: .8, to: 1.2, kicker: 'Contrôler', title: 'Chaque caisse est vérifiée.', text: 'Son contenu est rapproché de l’inventaire établi avant le départ.' },
   { from: 1.95, to: 2.45, kicker: 'Installer et tester', title: 'Chaque appareil trouve sa place.', text: 'Les équipements sont installés et testés dans un espace adapté aux activités scientifiques de l’établissement.' },
 ];
-const disclosure = 'Illustrations générées : elles ne montrent pas une école équipée par LabCongo.';
 // Version fixe (mouvements réduits, petit écran en paysage) : un plan par chapitre.
 const stills = [
   { src: `${media}-cour.jpg`, alt: 'Image d’illustration générée : dans la cour d’une école secondaire de RDC, l’équipe de l’établissement attend devant un camion portant un conteneur bleu.' },
@@ -171,7 +170,6 @@ export default function SchoolFilm() {
             <p className="film-text">{chapter.text}</p>
           </div>
         </article>)}
-        <p className="school-film-note">{disclosure}</p>
       </div>
     </section>
   );
@@ -201,7 +199,6 @@ export default function SchoolFilm() {
             <p className="film-text">{caption.text}</p>
           </div>)}
         </div>
-        <p className="school-film-note">{disclosure}</p>
       </div>
     </section>
   );

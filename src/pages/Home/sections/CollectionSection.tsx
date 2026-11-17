@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 import FadeIn from "../../../components/animations/FadeIn";
 import Button from "../../../components/common/Button";
-import { PhotoCredit, PhotoImage } from "../../../components/common/Photo";
+import { PhotoImage } from "../../../components/common/Photo";
 import { narrativePhotos } from "../../../features/experience/photos";
 
 const equipment = [
@@ -52,9 +52,6 @@ export default function CollectionSection() {
         <div className="collection-grid">
           <figure className="collection-figure">
             <PhotoImage photo={narrativePhotos.instruments} />
-            <figcaption>
-              <PhotoCredit photo={narrativePhotos.instruments} />
-            </figcaption>
           </figure>
           <FadeIn>
             <div className="collection-copy">

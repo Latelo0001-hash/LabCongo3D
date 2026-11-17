@@ -1,7 +1,7 @@
 import { ArrowDown, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { MotifField } from '../../components/motifs/LabMotifs';
-import { PhotoCredit, PhotoImage } from '../../components/common/Photo';
+import { PhotoImage } from '../../components/common/Photo';
 import { association } from "../../data/editorialContent";
 import { presentationPhotos } from '../../data/presentation';
 import './home.css';
@@ -31,7 +31,6 @@ export default function JourneyAccess() {
         </div>
         <figure className="journey-access-photo">
           <PhotoImage photo={presentationPhotos.laboratoireScolaire} sizes="(max-width: 760px) 88vw, 42vw" />
-          <figcaption><PhotoCredit photo={presentationPhotos.laboratoireScolaire} /></figcaption>
         </figure>
       </div>
       <nav className="home-section-nav" aria-label="Découvrir le projet, section par section">

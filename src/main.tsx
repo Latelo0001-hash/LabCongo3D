@@ -4,9 +4,20 @@ import App from "./app/App";
 import Providers from "./app/providers";
 import "./styles/globals.css";
 import { dismissSplash } from "./lib/splash";
-// Au rechargement, le navigateur rétablirait l'ancienne position de défilement une fois la page chargée (au milieu du
-// film, par exemple) : on repart toujours du haut, sur le hero. Une ancre dans l'adresse reste suivie (ScrollToTop).
+import { scrollImmediately } from "./lib/lenis";
+// L'accueil démarre sur le hero, avant même le montage du routeur et des scènes.
+// Les ancres cliquées ensuite dans le site restent utilisables.
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+if (window.location.pathname === "/") {
+  if (window.location.hash) {
+    history.replaceState(history.state, "", window.location.pathname + window.location.search);
+  }
+  scrollImmediately(0);
+  // Certains navigateurs restaurent leur position après le montage initial.
+  window.addEventListener("pageshow", () => {
+    if (window.location.pathname === "/" && !window.location.hash) scrollImmediately(0);
+  }, { once: true });
+}
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Providers>

@@ -1,8 +1,4 @@
 /* Accueil : en-tête transparent, bloc d’accès sous le film et « Le projet en détail ». */
-.site-header.home-header { position: absolute; z-index: 20; inset: 0 0 auto; color: white; border-bottom-color: #ffffff24; }
-.home-header .header-cta { border-color: #ffffff70; border-radius: 30px; }
-.home-header .desktop-nav .active { border-color: white; }
-.home-header .menu-toggle { color: white; }
 .journey-access { position: relative; background: var(--paper); color: var(--ink); padding: 100px 0 75px; }
 .journey-access h2 { max-width: 950px; font-size: clamp(32px, 4vw, 60px); }
 .journey-access > .container > p:not(.eyebrow) { max-width: 60ch; color: var(--muted); line-height: 1.8; }

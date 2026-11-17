@@ -1,0 +1,58 @@
+/* Variante immersive, limitée à la section Territoires de l'accueil. */
+.home-content.home-summary .home-summary-territories { background: radial-gradient(ellipse at 35% 55%, #124d83aa, transparent 65%), var(--gradient-journey); border-color: #173d69; color: #fff; }
+.home-content .home-summary-territories .map-heading { gap: 6%; align-items: end; margin-bottom: 36px; }
+.home-content .home-summary-territories .map-heading .eyebrow { color: #d1e1f5; }
+.home-content .home-summary-territories .map-heading .eyebrow::before { background: var(--brand-yellow); }
+.home-content .home-summary-territories .map-heading h2 { color: #fff; }
+.home-content .home-summary-territories .map-heading h2 em { color: var(--brand-yellow); }
+.home-content .home-summary-territories .map-heading > p { color: #d0e1f6; font-size: 1rem; line-height: 1.85; }
+.home-content .home-summary-territories .map-grid { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+.home-content .home-summary-territories .map-surface { position: sticky; top: 24px; background: transparent; border: 0; border-radius: 0; box-shadow: none; overflow: visible; }
+.home-content .home-summary-territories .map-surface-heading { padding: 0 0 16px; background: transparent; border-bottom: 1px solid #ffffff26; }
+.home-content .home-summary-territories .map-surface-heading > span:first-child { color: #dce8f7; font-size: .8125rem; }
+.home-content .home-summary-territories .map-surface-heading svg { color: var(--brand-yellow); }
+.home-content .home-summary-territories .map-view-label { padding: 6px 10px; background: #ffffff0d; border: 1px solid #ffffff26; color: #e1ebf9; }
+.home-content .home-summary-territories .congo-map { max-width: 760px; margin: 16px auto; }
+.home-content .home-summary-territories .province-shape { fill: #4179aa; stroke: #092345; stroke-width: 1.2; }
+.home-content .home-summary-territories .province-shape.is-mining { fill: #c5ad58; }
+.home-content .home-summary-territories .province-shape:hover { fill: #76a6ce; }
+.home-content .home-summary-territories .province-shape.is-mining:hover { fill: #e2c967; }
+.home-content .home-summary-territories .province-shape:focus-visible { fill: #76a6ce; stroke: #fff; stroke-width: 3; }
+.home-content.home-summary .home-summary-territories .province-shape[aria-pressed="true"] { fill: var(--brand-yellow); stroke: #fff; stroke-width: 2.5; }
+.home-content .home-summary-territories .map-compass path { stroke: #c4d6ec; }
+.home-content .home-summary-territories .map-compass text { fill: #c4d6ec; }
+.home-content .home-summary-territories .map-instructions { margin: 0 0 14px; color: #bdcfe6; font-size: .75rem; }
+.home-content .home-summary-territories .map-legend { padding: 16px 0 0; margin: 0; gap: 14px 20px; border-top: 1px solid #ffffff26; background: transparent; color: #d5e3f5; }
+.home-content .home-summary-territories .map-legend i { background: #4179aa; border-color: #7599bb; }
+.home-content .home-summary-territories .map-legend i.mining { background: #c5ad58; border-color: #e2cf8a; }
+.home-content .home-summary-territories .map-legend i.selected { background: var(--brand-yellow); border: 2px solid #fff; }
+.home-content .home-summary-territories .map-details-panel { padding: 26px; background: #fff; color: var(--ink); border: 1px solid #d7e4f3; border-radius: 22px; box-shadow: 0 20px 56px #020d2433; }
+.home-content .home-summary-territories .map-toolbar { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 0 0 22px; margin: 0 0 24px; border: 0; border-bottom: 1px solid #d7e4f3; border-radius: 0; background: transparent; }
+.home-content .home-summary-territories .province-select { width: 100%; min-width: 0; flex: initial; }
+.home-content .home-summary-territories .province-select label { color: var(--ink); font-size: .8125rem; }
+.home-content .home-summary-territories .province-select select { width: 100%; background: #f8fafd; }
+.home-content .home-summary-territories .map-reset { justify-self: start; min-height: 44px; font-size: .75rem; background: #edf3fc; color: var(--brand-blue); border-color: #d7e4f3; }
+.home-content .home-summary-territories .province-details { padding: 0; border: 0; border-radius: 0; box-shadow: none; background: transparent; }
+.home-content .home-summary-territories .province-heading { margin-block: 20px; }
+.home-content .home-summary-territories .province-heading h3 { color: var(--ink); font-size: clamp(1.7rem, 2.4vw, 2.2rem); }
+.home-content .home-summary-territories .province-statistics-disclosure { margin-bottom: 20px; border: 1px solid #d7e4f3; border-radius: 12px; background: #f3f7fc; overflow: hidden; }
+.home-content .home-summary-territories .province-statistics-disclosure summary { padding: 14px 16px; cursor: pointer; color: var(--brand-blue); font-size: .8125rem; font-weight: 700; }
+.home-content .home-summary-territories .province-statistics-disclosure .province-stats { padding: 18px; margin: 0; border: 0; border-top: 1px solid #d7e4f3; border-radius: 0; background: #f3f7fc; }
+.home-content .home-summary-territories .province-school-state { padding-block: 20px; }
+.home-content .home-summary-territories .province-school-state h4 { margin-top: 12px; }
+.home-content .home-summary-territories .province-context { margin-bottom: 0; }
+.home-content .home-summary-territories .map-attribution { color: #c5d7ee; border-top: 1px solid #ffffff26; padding-top: 20px; margin-top: 32px; }
+.home-content .home-summary-territories .map-attribution a { color: #dbe8f8; }
+.home-content .home-summary-territories .map-placeholder { background: #102e50; color: #dbe8f8; border-radius: 18px; }
+@media (max-width: 900px) {
+ .home-content .home-summary-territories .map-heading { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+ .home-content .home-summary-territories .map-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+ .home-content .home-summary-territories .map-surface { position: relative; top: auto; }
+ .home-content .home-summary-territories .congo-map { max-width: 600px; }
+}
+@media (max-width: 480px) {
+ .home-content .home-summary-territories .map-details-panel { padding: 22px; border-radius: 18px; }
+ .home-content .home-summary-territories .map-surface-heading { gap: 10px; }
+ .home-content .home-summary-territories .map-legend { gap: 12px; font-size: .6875rem; }
+ .home-content .home-summary-territories .map-heading h2 { font-size: 2rem; }
+}
