@@ -33,11 +33,6 @@ export default function Equipment() {
           content="Microscopes, verrerie, instruments de mesure et accessoires : découvrez le matériel pour la pratique des sciences dans les écoles."
         />
       </Helmet>
-      <nav className="school-breadcrumb" aria-label="Fil d’Ariane">
-        <Link to="/">Accueil</Link>
-        <span aria-hidden="true">/</span>
-        <span aria-current="page">Les équipements</span>
-      </nav>
       <header className="equipment-page-heading">
         <p className="eyebrow">Le matériel scientifique</p>
         <h1 id="equipment-page-title">

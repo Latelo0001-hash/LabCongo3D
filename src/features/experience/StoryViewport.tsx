@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useStore } from "zustand";
 import { useNearViewport } from "../../hooks/useNearViewport";
-import { PhotoImage, PhotoCredit } from "../../components/common/Photo";
+import { PhotoImage } from "../../components/common/Photo";
 import type { StoryStore } from "./store";
 import { chapterPhotos } from "./photos";
 import { storyChapters } from "./scenario";
@@ -59,9 +59,6 @@ export default function StoryViewport({
             priority={visible}
           />
         </div>
-        <figcaption className="story-photo-caption">
-          <PhotoCredit photo={photo} />
-        </figcaption>
       </figure>
     </div>
   );

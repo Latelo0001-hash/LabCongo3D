@@ -7,10 +7,8 @@
 .page-intro-description, .publication-lead { font-size: 20px; line-height: 1.75; }
 .editorial-page .eyebrow { font-size: 13px; }
 .editorial-page h3 { font-size: 24px; line-height: 1.35; }
-.editorial-page .photo-credit { display: block; font-size: 13px; line-height: 1.6; }
 .editorial-photograph { margin: 32px 0 0; }
 .editorial-photograph img { display: block; width: 100%; max-height: 550px; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px; }
-.editorial-photograph figcaption { padding-top: 14px; }
 .content-emphasis { font-weight: 600; color: var(--brand-blue); }
 .content-tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0; padding: 0; list-style: none; }
 .content-tags li { padding: 10px 16px; border: 1px solid #cbddef; border-radius: 6px; color: var(--brand-blue); font-size: 16px; line-height: 1.5; background: #f5f9fe; }

@@ -49,18 +49,6 @@
   height: auto;
   object-fit: cover;
 }
-.collection-figure figcaption {
-  padding-top: 18px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 24px;
-  justify-content: space-between;
-  line-height: 1.6;
-}
-.collection-figure figcaption > span:last-child {
-  font-size: 10px;
-  color: var(--muted);
-}
 .collection-equipment {
   padding: 0;
   margin: 22px 0;

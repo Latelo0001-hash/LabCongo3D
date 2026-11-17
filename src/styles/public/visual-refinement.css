@@ -59,8 +59,6 @@
 .public-content .editorial-list li { position: relative; padding-left: 22px; margin-bottom: 10px; }
 .public-content .editorial-list li::before { content: ""; position: absolute; left: 0; top: .75em; width: 6px; height: 6px; border-radius: 50%; background: var(--brand-blue); }
 .public-content .editorial-photograph img { border-radius: 18px; box-shadow: 0 18px 45px #031b4e12; }
-.public-content .editorial-photograph .photo-credit { display: flex; flex-direction: column; gap: 4px; color: var(--muted); font-size: .75rem; line-height: 1.7; }
-.public-content .editorial-photograph .photo-credit > span + span { font-size: .6875rem; }
 .public-content .content-tags { gap: 8px; }
 .public-content .content-tags li { background: #fff; padding: 9px 14px; border-radius: 30px; border-color: var(--card-line); font-size: .8125rem; font-weight: 600; color: var(--brand-blue); }
 .public-content .content-subnav { border: 0; padding: 16px; gap: 8px; border-radius: 16px; background: #eaf0f7; }

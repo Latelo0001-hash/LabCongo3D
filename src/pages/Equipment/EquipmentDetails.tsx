@@ -29,13 +29,6 @@ export default function EquipmentDetails() {
         <title>{`${item.name} — LabCongo`}</title>
         <meta name="description" content={item.summary} />
       </Helmet>
-      <nav className="school-breadcrumb" aria-label="Fil d’Ariane">
-        <Link to="/">Accueil</Link>
-        <span aria-hidden="true">/</span>
-        <Link to="/equipements">Les équipements</Link>
-        <span aria-hidden="true">/</span>
-        <span aria-current="page">{item.name}</span>
-      </nav>
       <header className="equipment-detail-hero">
         <div>
           <p className="eyebrow">{equipmentPurposes[item.purpose]}</p>

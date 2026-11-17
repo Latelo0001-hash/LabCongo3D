@@ -37,31 +37,3 @@ export function PhotoImage({
     />
   );
 }
-export function PhotoCredit({ photo }: { photo: NarrativePhoto }) {
-  return (
-    <span className="photo-credit">
-      <span>{photo.label ?? "Photographie d’illustration"} · {photo.caption}</span>
-      <span>
-        {photo.source ? (
-          <a href={photo.source} target="_blank" rel="noreferrer">
-            {photo.author}
-          </a>
-        ) : (
-          "Ressource fournie"
-        )}
-        {photo.licenseUrl && (
-          <>
-            {" "}
-            ·{" "}
-            <a href={photo.licenseUrl} target="_blank" rel="noreferrer">
-              {photo.license}
-            </a>
-          </>
-        )}
-        {!photo.licenseUrl && photo.license && <> · {photo.license}</>}
-        {" · "}
-        <a href="/experience#credits-photos">Crédits</a>
-      </span>
-    </span>
-  );
-}

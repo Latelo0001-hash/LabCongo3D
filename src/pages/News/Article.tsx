@@ -23,13 +23,6 @@ export default function Article() {
         <title>{`${article.title} — LabCongo`}</title>
         <meta name="description" content={article.summary} />
       </Helmet>
-      <nav className="school-breadcrumb" aria-label="Fil d’Ariane">
-        <Link to="/">Accueil</Link>
-        <span>/</span>
-        <Link to="/#actualites">Actualités</Link>
-        <span>/</span>
-        <span aria-current="page">{article.title}</span>
-      </nav>
       <header>
         <p className="eyebrow">{articleCategories[article.category]}</p>
         <h1>{article.title}</h1>
